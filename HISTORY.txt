@@ -1,7 +1,15 @@
 UNIXem - History
 ================
 
-Updated:    13th August 2010
+Updated:    4th February 2011
+
+
+4th February 2011 - 1.9.2
+-------------------------
+
+ * removed include/sys/select.h (which was vestigial)
+ * various tidyings
+ * handling EZERO, ERROR_FILE_TOO_LARGE, ERROR_DISK_TOO_FRAGMENTED (in unixem_internal_errno_from_Win32())
 
 
 12th August 2010 - 1.9.1

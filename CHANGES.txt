@@ -1,7 +1,7 @@
 UNIXem - Changes
 ================
 
-Updated:    13th August 2010
+Updated:    4th February 2011
 
 
     ************************************
@@ -13,6 +13,50 @@ Updated:    13th August 2010
     *  *  means a general bullet-point *
     *                                  *
     ************************************
+
+
+4th February 2011 - 1.9.2
+=========================
+
+Summary:
+--------
+
+ * removed include/sys/select.h (which was vestigial)
+ * various tidyings
+ * handling EZERO, ERROR_FILE_TOO_LARGE, ERROR_DISK_TOO_FRAGMENTED (in unixem_internal_errno_from_Win32())
+
+Details:
+--------
+
+General:
+
+ ~ include/glob.h:
+ ~ include/sys/mman.h:
+ + include/unixem/unixem.h:
+   ~ various tidyings
+
+ - include/sys/mman.h:
+   - removed vestigial file
+
+ ~ src/internal/util.c:
+    ~ unixem_internal_errno_from_Win32() default (unmatched) return now -1, and handles EZERO, ERROR_FILE_TOO_LARGE, ERROR_DISK_TOO_FRAGMENTED
+
+Distribution:
+
+Makefiles / Project-files:
+
+Examples:
+
+Test:
+
+Test.Unit:
+
+Test.Component:
+
+Test.Scratch:
+
+Depends on:
+
 
 
 12th August 2010 - 1.9.1

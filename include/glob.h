@@ -5,7 +5,7 @@
  *          Win32 platform.
  *
  * Created: 13th November 2002
- * Updated: 13th August 2010
+ * Updated: 26th August 2010
  *
  * Home:    http://synesis.com.au/software/
  *
@@ -50,8 +50,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define SYNSOFT_UNIXEM_VER_H_GLOB_MAJOR    3
 # define SYNSOFT_UNIXEM_VER_H_GLOB_MINOR    0
-# define SYNSOFT_UNIXEM_VER_H_GLOB_REVISION 1
-# define SYNSOFT_UNIXEM_VER_H_GLOB_EDIT     36
+# define SYNSOFT_UNIXEM_VER_H_GLOB_REVISION 2
+# define SYNSOFT_UNIXEM_VER_H_GLOB_EDIT     37
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* ////////////////////////////////////////////////////////////////////// */
@@ -73,6 +73,12 @@
 #endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
+ * Includes
+ */
+
+#include <unixem/glob.h>
+
+/* /////////////////////////////////////////////////////////////////////////
  * Constants and definitions
  */
 
@@ -91,7 +97,7 @@
 #define GLOB_NOCHECK        (UNIXEM_GLOB_NOCHECK)   /*!< If nothing matches, return the pattern. Supported from version 1.6 of UNIXem. */
 #define GLOB_APPEND         (UNIXEM_GLOB_APPEND)    /*!< Append to results of a previous call. Not currently supported in this implementation. */
 #define GLOB_NOESCAPE       (UNIXEM_GLOB_NOESCAPE)  /*!< Backslashes don't quote metacharacters. Has no effect in this implementation, since escaping is not supported. */
-                            
+
 #define GLOB_PERIOD         (UNIXEM_GLOB_PERIOD)    /*!< Leading `.' can be matched by metachars. Supported from version 1.6 of UNIXem. */
 #define GLOB_MAGCHAR        (UNIXEM_GLOB_MAGCHAR)   /*!< Set in gl_flags if any metachars seen. Supported from version 1.6 of UNIXem. */
 /* #define GLOB_ALTDIRFUNC     (UNIXEM_GLOB_ALTDIRFUNC) */    /*!< Use gl_opendir et al functions. Not currently supported in this implementation. */
