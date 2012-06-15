@@ -1,7 +1,15 @@
 UNIXem - History
 ================
 
-Updated:    4th February 2011
+Updated:    16th June 2012
+
+
+16th June 2012 - 1.9.3
+----------------------
+
+ * GLOB_ONLYFILE => GLOB_ONLYREG
+ * glob() now preserves dots directories when included in leaf-most pattern part
+ * fix to definition of WIN32 when using WinSock
 
 
 4th February 2011 - 1.9.2

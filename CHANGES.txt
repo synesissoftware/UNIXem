@@ -1,7 +1,7 @@
 UNIXem - Changes
 ================
 
-Updated:    4th February 2011
+Updated:    16th June 2012
 
 
     ************************************
@@ -13,6 +13,56 @@ Updated:    4th February 2011
     *  *  means a general bullet-point *
     *                                  *
     ************************************
+
+
+
+
+
+16th June 2012 - 1.9.3
+======================
+
+Summary:
+--------
+
+ * GLOB_ONLYFILE => GLOB_ONLYREG
+ * glob() now preserves dots directories when included in leaf-most pattern part
+ * fix to definition of WIN32 when using WinSock
+
+Details:
+--------
+
+General:
+
+ ~ include/glob.h:
+ ~ include/unixem/unixem.h:
+    ~ GLOB_ONLYFILE => GLOB_ONLYREG
+
+ ~ include/unixem/internal/winsock.h:
+   ~ now undefines WIN32 if it was not previously defined and was defined by the inclusion of winsock.h
+
+ - include/sys/mman.h:
+   - removed vestigial file
+
+ ~ src/glob.c:
+    ~ now preserves dots directories, if either is the leaf-most pattern part
+    ~ UNIXEM_GLOB_ONLYFILE => UNIXEM_GLOB_ONLYREG
+
+Distribution:
+
+Makefiles / Project-files:
+
+Examples:
+
+Test:
+
+Test.Unit:
+
+Test.Component:
+
+Test.Scratch:
+
+Depends on:
+
 
 
 4th February 2011 - 1.9.2

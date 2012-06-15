@@ -5,11 +5,11 @@
  *          support timeval and gethostname()).
  *
  * Created: 28th December 2007
- * Updated: 5th February 2010
+ * Updated: 13th August 2011
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2007-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2007-2011, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,8 +54,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_MAJOR     1
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_MINOR     0
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_REVISION  1
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_EDIT      4
+# define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_REVISION  2
+# define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_EDIT      5
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -63,6 +63,14 @@
  */
 
 #include <unixem/unixem.h>
+
+#ifdef UNIXEM_internal_WIN32_is_defined_
+# undef UNIXEM_internal_WIN32_is_defined_
+#endif /* UNIXEM_internal_WIN32_is_defined_ */
+
+#ifdef WIN32
+# define UNIXEM_internal_WIN32_is_defined_
+#endif /* WIN32 */
 
 #if !defined(WIN32_LEAN_AND_MEAN)
 # if defined(_WINSOCKAPI_) || \
@@ -81,11 +89,22 @@
 #   define UNIXEM_WINSOCK_IS_INCLUDED
 #   define UNIXEM_WINSOCK2_IS_INCLUDED
 #  else /* _WIN32_WINNT */
+
+#ifdef WIN32
+#error WIN32
+#endif /* WIN32 */
+
 #   include <winsock.h>
 #   define UNIXEM_WINSOCK_IS_INCLUDED
 #  endif /* _WIN32_WINNT >=  0x0400 */
 # endif /* winsock ? */
 #endif /* !WIN32_LEAN_AND_MEAN */
+
+#ifdef WIN32
+# ifndef UNIXEM_internal_WIN32_is_defined_
+#  undef WIN32
+# endif /* !UNIXEM_internal_WIN32_is_defined_ */
+#endif /* WIN32 */
 
 /* ////////////////////////////////////////////////////////////////////// */
 

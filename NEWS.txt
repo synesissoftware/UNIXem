@@ -1,11 +1,13 @@
 UNIXem - News
 =============
 
-Updated:    4th February 2011
+Updated:    16th June 2012
 
 
 
 News:
+
+  16th Jun 2012     -   UNIXem 1.9.3 released
 
   4th Feb 2011      -   UNIXem 1.9.2 released
 

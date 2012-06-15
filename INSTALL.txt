@@ -1,12 +1,12 @@
 UNIXem - Install
 ================
 
-Updated:    4th February 2011
+Updated:    16th June 2012
 
 
 
 UNIXem requires manual installation, by copying files after building,
-as described in the accompanying doc/html/1.9.2/index.html file.
+as described in the accompanying doc/html/1.9.3/index.html file.
 
 
 =============================== End of file ================================
