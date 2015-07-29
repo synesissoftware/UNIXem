@@ -4,11 +4,11 @@
  * Purpose: Root header for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 16th June 2012
+ * Updated: 30th July 2015
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2005-2012, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2015, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MAJOR       1
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MINOR       6
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_REVISION    3
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        16
+# define UNIXEM_VER_UNIXEM_H_UNIXEM_REVISION    4
+# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        17
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /** \def UNIXEM_VER_MAJOR
@@ -73,10 +73,10 @@
  */
 
 #define UNIXEM_VER_MAJOR       1
-#define UNIXEM_VER_MINOR       9
-#define UNIXEM_VER_REVISION    3
+#define UNIXEM_VER_MINOR       10
+#define UNIXEM_VER_REVISION    1
 
-#define UNIXEM_VER             0x010903ff
+#define UNIXEM_VER             0x010a01ff
 
 /* ////////////////////////////////////////////////////////////////////// */
 

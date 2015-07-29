@@ -1,7 +1,14 @@
 UNIXem - History
 ================
 
-Updated:    16th June 2012
+Updated:    30th July 2015
+
+
+30th July 2015 - 1.10.1
+-----------------------
+
+ * added unixem_timegm() / timegm()
+ * added VC++11 and VC++12 support
 
 
 16th June 2012 - 1.9.3

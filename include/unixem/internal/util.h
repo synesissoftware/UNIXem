@@ -4,11 +4,11 @@
  * Purpose: Internal utility header for the UNIXem API.
  *
  * Created: 2nd September 2005
- * Updated: 13th August 2010
+ * Updated: 5th May 2014
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 1994-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 1994-2014, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,9 +51,9 @@
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_MAJOR    1
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_MINOR    3
+# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_MINOR    4
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_REVISION 1
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_EDIT     10
+# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_EDIT     11
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -140,6 +140,12 @@ long unixem_internal_FILETIMEToUNIXTime(
 ,   long*       microseconds
 );
 
+/** Determines whether the year is a leap year
+ */
+int
+unixem_internal_yearIsLeap(
+    int year
+);
 
 #ifdef __cplusplus
 } /* extern "C" */

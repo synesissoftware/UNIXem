@@ -4,11 +4,11 @@
  * Purpose: Implicit linking for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 12th August 2010
+ * Updated: 30th July 2015
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright 1994-2010, Matthew Wilson and Synesis Software
+ * Copyright 1994-2015, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,9 +51,9 @@
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_MAJOR    1
-# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_MINOR    5
-# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_REVISION 1
-# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_EDIT     14
+# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_MINOR    6
+# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_REVISION 3
+# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_EDIT     17
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -72,11 +72,67 @@
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
+ * Architecture discrimination
+ */
+
+#if defined(__amd64__) || \
+    defined(__amd64) || \
+    defined(_AMD64_) || \
+    defined(_M_AMD64) || \
+    defined(_M_X64)
+# define UNIXEM_ARCH_IS_X64
+#elif defined(__ia64__) || \
+      defined(__ia64) || \
+      defined(_IA64_) || \
+      defined(_M_IA64)
+# define UNIXEM_ARCH_IS_IA64
+#elif defined(__i386__) || \
+      defined(__i386) || \
+      defined(_X86_) || \
+      defined(_M_IX86)
+# define UNIXEM_ARCH_IS_X86
+#endif /* _M_?? */
+
+/* /////////////////////////////////////////////////////////////////////////
  * Implicit linking
  */
 
 #if defined(_WIN32) || \
     defined(_WIN64)
+
+ /* architecture */
+# if !defined(UNIXEM_ARCH_IS_X86) && \
+	 !defined(UNIXEM_ARCH_IS_X64) && \
+	 !defined(UNIXEM_ARCH_IS_IA64)
+
+  /* see if using PlatformSTL */
+#  ifdef PLATFORMSTL_OS_IS_WINDOWS
+
+   /* prefer PlatformSTL discrimination */
+#   if defined(UNIXEM_ARCH_IS_X86)
+#    define UNIXEM_ARCH_IS_X86
+#   elif defined(UNIXEM_ARCH_IS_X64)
+#    define UNIXEM_ARCH_IS_X64
+#   elif defined(UNIXEM_ARCH_IS_IA64)
+#    define UNIXEM_ARCH_IS_IA64
+#   endif
+
+#  else /* ? PLATFORMSTL_OS_IS_WINDOWS */
+
+   /* custom discrimination */
+
+#   if defined(_M_IA64)
+#    define UNIXEM_ARCH_IS_IA64
+#   elif defined(_M_X64) || \
+         defined(_M_AMD64)
+#    define UNIXEM_ARCH_IS_X64
+#   elif defined(_M_IX86)
+#    define UNIXEM_ARCH_IS_X86
+#   endif /* arch */
+
+#  endif /* PLATFORMSTL_OS_IS_WINDOWS */
+# endif /* !UNIXEM_ARCH_IS_???? */
+
 
 # if defined(__BORLANDC__) || \
      /* defined(__DMC__) || */ \
@@ -184,6 +240,10 @@
 #    define UNIXEM_IMPL_LINK_COMPILER_NAME           "vc9"
 #   elif _MSC_VER == 1600
 #    define UNIXEM_IMPL_LINK_COMPILER_NAME           "vc10"
+#   elif _MSC_VER == 1700
+#    define UNIXEM_IMPL_LINK_COMPILER_NAME           "vc11"
+#   elif _MSC_VER == 1800
+#    define UNIXEM_IMPL_LINK_COMPILER_NAME           "vc12"
 #   else /* ? _MSC_VER */
 #    error Visual C++ version not supported
 #   endif /* _MSC_VER */
