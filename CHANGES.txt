@@ -1,7 +1,7 @@
 UNIXem - Changes
 ================
 
-Updated:    30th July 2015
+Updated:    25th September 2015
 
 
     ************************************
@@ -13,6 +13,40 @@ Updated:    30th July 2015
     *  *  means a general bullet-point *
     *                                  *
     ************************************
+
+
+25th September 2015 - 1.10.2
+============================
+
+Summary:
+--------
+
+ * minor fix to unixem_gettimeofday()
+
+Details:
+--------
+
+General:
+
+ ~ src/time.c:
+   ~ handling possible failure of SystemTimeToFileTime() within unixem_gettimeofday()
+
+Distribution:
+
+Makefiles / Project-files:
+
+Examples:
+
+Test:
+
+Test.Unit:
+
+Test.Component:
+
+Test.Scratch:
+
+Depends on:
+
 
 
 30th July 2015 - 1.10.1

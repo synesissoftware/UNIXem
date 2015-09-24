@@ -1,7 +1,13 @@
 UNIXem - History
 ================
 
-Updated:    30th July 2015
+Updated:    25th September 2015
+
+
+25th September 2015 - 1.10.2
+----------------------------
+
+ * minor fix to unixem_gettimeofday()
 
 
 30th July 2015 - 1.10.1

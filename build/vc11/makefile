@@ -1,11 +1,11 @@
 ############################################################################
 # File:		makefile
 #
-# Purpose:	Makefile for the UNIXem project, for the Visual C++ 11 (Win32)
+# Purpose:	Makefile for the UNIXem project, for the Visual C++ 11
 #           compiler, on Win32
 #
-# Created:	15th Feburary 2005
-# Updated:	30th July 2015
+# Created:	15th February 2005
+# Updated:	3rd August 2015
 #
 ############################################################################
 
@@ -27,6 +27,7 @@ OS_TAG				=
 PROJ_TAG			=	unixem
 PROJ_VER_MAJOR		=	1
 PROJ_TAG_VER		=	$(PROJ_TAG).$(PROJ_VER_MAJOR)
+COMP_ARCH_OS_TAG	=	$(COMP_TAG)$(OS_TAG)$(ARCH_TAG)
 
 PROJ_MAKEFILE_NAME  =   makefile
 
@@ -210,17 +211,17 @@ LD_ARGS				=	-nologo $(COMMON_LIB)
 ############################################################################
 # Targets
 
-TARGET_LIB_MT_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).mt.debug.lib
-TARGET_LIB_UN_MT_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).mt.debug.lib
-TARGET_LIB_DLL_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).dll.debug.lib
-TARGET_LIB_UN_DLL_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).dll.debug.lib
-TARGET_LIB_DLL_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).dll.lib
-TARGET_LIB_UN_DLL_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).dll.lib
-TARGET_LIB_MT_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).mt.lib
-TARGET_LIB_UN_MT_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).mt.lib
+TARGET_LIB_MT_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).mt.debug.lib
+TARGET_LIB_UN_MT_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).mt.debug.lib
+TARGET_LIB_DLL_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).dll.debug.lib
+TARGET_LIB_UN_DLL_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).dll.debug.lib
+TARGET_LIB_DLL_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).dll.lib
+TARGET_LIB_UN_DLL_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).dll.lib
+TARGET_LIB_MT_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).mt.lib
+TARGET_LIB_UN_MT_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).mt.lib
 
-TARGET_PDB_MT_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).mt.debug.pdb
-TARGET_PDB_DLL_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).dll.debug.pdb
+TARGET_PDB_MT_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).mt.debug.pdb
+TARGET_PDB_DLL_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).dll.debug.pdb
 
 
 TARGETS = \

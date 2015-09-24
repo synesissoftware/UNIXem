@@ -4,11 +4,11 @@
  * Purpose: gettimeofday() for the Win32 platform.
  *
  * Created: 1st November 2003
- * Updated: 5th May 2014
+ * Updated: 18th March 2015
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2003-2014, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2015, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -68,6 +68,7 @@ struct timezone;
 #include <windows.h>
 
 #include <assert.h>
+#include <errno.h>
 #include <time.h>
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -184,14 +185,29 @@ unixem_gettimeofday(
     SYSTEMTIME  st;
     FILETIME    ft;
 
+    assert(NULL != tv);
+
     ((void)dummy);
 
     GetSystemTime(&st);
-    (void)SystemTimeToFileTime(&st, &ft);
 
-    tv->tv_sec = unixem_internal_FILETIMEToUNIXTime(&ft, &tv->tv_usec);
+    if(!SystemTimeToFileTime(&st, &ft))
+    {
+        DWORD const e = GetLastError();
 
-    return 0;
+        errno = unixem_internal_errno_from_Win32(e);
+
+        tv->tv_sec  =   0;
+        tv->tv_usec =   0;
+
+        return -1;
+    }
+    else
+    {
+        tv->tv_sec = unixem_internal_FILETIMEToUNIXTime(&ft, &tv->tv_usec);
+
+        return 0;
+    }
 }
 
 time_t
