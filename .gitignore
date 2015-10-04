@@ -1,32 +1,83 @@
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
 
-# Precompiled Headers
-*.gch
-*.pch
+# directories (by name)
 
-# Libraries
-*.lib
+include/b64/
+include/shwild/
+include/xcontract/
+include/xcover/
+include/xtests/
+
+src/b64/
+src/shwild/
+src/xcontract/
+src/xcover/
+src/xtests/
+
+vc71/
+vc8/
+vc9/
+
+ideas/
+
+bin/
+
+lib/
+
+ideas/
+
+Debug/
+Debug Multithreaded/
+Debug Multithreaded DLL/
+Unicode Debug/
+Unicode Debug Multithreaded/
+Unicode Debug Multithreaded DLL/
+Release/
+Release Multithreaded/
+Release Multithreaded DLL/
+Unicode Release/
+Unicode Release Multithreaded/
+Unicode Release Multithreaded DLL/
+
+# directories (by pattern)
+
+# files (by name)
+
+list_changes.cmd
+
+include/fastformat/internal/dos2unix.has.been.performed
+
+test/tests-plan.txt
+
+# files (by pattern)
+
+*~
 *.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
 *.app
-*.i*86
-*.x86_64
-*.hex
+*.dll
+*.dylib
+*.exe
+*.gch
+*.ilk
+*.lib
+*.ncb
+*.o
+*.obj
+*.opensdf
+*.opt
+*.org
+*.out
+*.pch
+*.pdb
+*.sdf
+*.sbr
+*.scc
+*.so
+*.suo
+*.swp
+*.vcproj*.user
+*.vcxproj*.user
 
-# Debug files
-*.dSYM/
+*.vc71.sln
+*.vc8.sln
+*.vc9.sln
+
