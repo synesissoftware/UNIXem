@@ -1,25 +1,25 @@
-# Microsoft Developer Studio Project File - Name="test.unit.unistd.gethostname" - Package Owner=<4>
+# Microsoft Developer Studio Project File - Name="test.component.unistd.mkstemp" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
 # ** DO NOT EDIT **
 
 # TARGTYPE "Win32 (x86) Console Application" 0x0103
 
-CFG=test.unit.unistd.gethostname - Win32 Debug
+CFG=test.component.unistd.mkstemp - Win32 Debug
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
-!MESSAGE
-!MESSAGE NMAKE /f "test.unit.unistd.gethostname.mak".
-!MESSAGE
+!MESSAGE 
+!MESSAGE NMAKE /f "test.component.unistd.mkstemp.mak".
+!MESSAGE 
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
-!MESSAGE
-!MESSAGE NMAKE /f "test.unit.unistd.gethostname.mak" CFG="test.unit.unistd.gethostname - Win32 Debug"
-!MESSAGE
+!MESSAGE 
+!MESSAGE NMAKE /f "test.component.unistd.mkstemp.mak" CFG="test.component.unistd.mkstemp - Win32 Debug"
+!MESSAGE 
 !MESSAGE Possible choices for configuration are:
-!MESSAGE
-!MESSAGE "test.unit.unistd.gethostname - Win32 Release" (based on "Win32 (x86) Console Application")
-!MESSAGE "test.unit.unistd.gethostname - Win32 Debug" (based on "Win32 (x86) Console Application")
-!MESSAGE
+!MESSAGE 
+!MESSAGE "test.component.unistd.mkstemp - Win32 Release" (based on "Win32 (x86) Console Application")
+!MESSAGE "test.component.unistd.mkstemp - Win32 Debug" (based on "Win32 (x86) Console Application")
+!MESSAGE 
 
 # Begin Project
 # PROP AllowPerConfigDependencies 0
@@ -28,7 +28,7 @@ CFG=test.unit.unistd.gethostname - Win32 Debug
 CPP=cl.exe
 RSC=rc.exe
 
-!IF  "$(CFG)" == "test.unit.unistd.gethostname - Win32 Release"
+!IF  "$(CFG)" == "test.component.unistd.mkstemp - Win32 Release"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 0
@@ -52,7 +52,7 @@ LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /machine:I386
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /machine:I386 /libpath:"$(XTESTS_C_ROOT)/lib"
 
-!ELSEIF  "$(CFG)" == "test.unit.unistd.gethostname - Win32 Debug"
+!ELSEIF  "$(CFG)" == "test.component.unistd.mkstemp - Win32 Debug"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 1
@@ -66,7 +66,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /I "$(XTESTS_C_ROOT)/include" /I "../../../../include" /I "$(STLSOFT)/include" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /GZ /c
+# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /I "$(XTESTS_C_ROOT)/include" /I "../../../../include" /I "$(STLSOFT)/include" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR /YX /FD /GZ /c
 # ADD BASE RSC /l 0xc09 /d "_DEBUG"
 # ADD RSC /l 0xc09 /d "_DEBUG"
 BSC32=bscmake.exe
@@ -76,22 +76,22 @@ LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /debug /machine:I386 /pdbtype:sept
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /debug /machine:I386 /pdbtype:sept /libpath:"$(XTESTS_C_ROOT)/lib"
 
-!ENDIF
+!ENDIF 
 
 # Begin Target
 
-# Name "test.unit.unistd.gethostname - Win32 Release"
-# Name "test.unit.unistd.gethostname - Win32 Debug"
+# Name "test.component.unistd.mkstemp - Win32 Release"
+# Name "test.component.unistd.mkstemp - Win32 Debug"
 # Begin Group "Source Files"
 
-# PROP Default_Filter "c;cpp;"
+# PROP Default_Filter "c;cpp"
 # Begin Source File
 
 SOURCE=..\implicit_link.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\test.unit.unistd.gethostname.c
+SOURCE=..\test.component.unistd.mkstemp.c
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -150,6 +150,10 @@ SOURCE="$(UNIXEM)\include\unixem\implicit_link.h"
 # End Source File
 # Begin Source File
 
+SOURCE="$(UNIXEM)\include\unixem\unistd.h"
+# End Source File
+# Begin Source File
+
 SOURCE="$(UNIXEM)\include\unixem\unixem.h"
 # End Source File
 # End Group
@@ -165,6 +169,10 @@ SOURCE="$(XTESTS_C_ROOT)\include\xtests\implicit_link.h"
 SOURCE="$(XTESTS_C_ROOT)\include\xtests\xtests.h"
 # End Source File
 # End Group
+# Begin Source File
+
+SOURCE="$(UNIXEM)\include\unistd.h"
+# End Source File
 # End Group
 # End Target
 # End Project

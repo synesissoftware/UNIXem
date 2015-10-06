@@ -1,24 +1,24 @@
-# Microsoft Developer Studio Project File - Name="test.unit.unistd.gethostname" - Package Owner=<4>
+# Microsoft Developer Studio Project File - Name="test.component.unistd.mkdtemp" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
 # ** DO NOT EDIT **
 
 # TARGTYPE "Win32 (x86) Console Application" 0x0103
 
-CFG=test.unit.unistd.gethostname - Win32 Debug
+CFG=test.component.unistd.mkdtemp - Win32 Debug
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
 !MESSAGE
-!MESSAGE NMAKE /f "test.unit.unistd.gethostname.mak".
+!MESSAGE NMAKE /f "test.component.unistd.mkdtemp.mak".
 !MESSAGE
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE
-!MESSAGE NMAKE /f "test.unit.unistd.gethostname.mak" CFG="test.unit.unistd.gethostname - Win32 Debug"
+!MESSAGE NMAKE /f "test.component.unistd.mkdtemp.mak" CFG="test.component.unistd.mkdtemp - Win32 Debug"
 !MESSAGE
 !MESSAGE Possible choices for configuration are:
 !MESSAGE
-!MESSAGE "test.unit.unistd.gethostname - Win32 Release" (based on "Win32 (x86) Console Application")
-!MESSAGE "test.unit.unistd.gethostname - Win32 Debug" (based on "Win32 (x86) Console Application")
+!MESSAGE "test.component.unistd.mkdtemp - Win32 Release" (based on "Win32 (x86) Console Application")
+!MESSAGE "test.component.unistd.mkdtemp - Win32 Debug" (based on "Win32 (x86) Console Application")
 !MESSAGE
 
 # Begin Project
@@ -28,7 +28,7 @@ CFG=test.unit.unistd.gethostname - Win32 Debug
 CPP=cl.exe
 RSC=rc.exe
 
-!IF  "$(CFG)" == "test.unit.unistd.gethostname - Win32 Release"
+!IF  "$(CFG)" == "test.component.unistd.mkdtemp - Win32 Release"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 0
@@ -52,7 +52,7 @@ LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /machine:I386
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /machine:I386 /libpath:"$(XTESTS_C_ROOT)/lib"
 
-!ELSEIF  "$(CFG)" == "test.unit.unistd.gethostname - Win32 Debug"
+!ELSEIF  "$(CFG)" == "test.component.unistd.mkdtemp - Win32 Debug"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 1
@@ -80,18 +80,18 @@ LINK32=link.exe
 
 # Begin Target
 
-# Name "test.unit.unistd.gethostname - Win32 Release"
-# Name "test.unit.unistd.gethostname - Win32 Debug"
+# Name "test.component.unistd.mkdtemp - Win32 Release"
+# Name "test.component.unistd.mkdtemp - Win32 Debug"
 # Begin Group "Source Files"
 
-# PROP Default_Filter "c;cpp;"
+# PROP Default_Filter "c;cpp"
 # Begin Source File
 
 SOURCE=..\implicit_link.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\test.unit.unistd.gethostname.c
+SOURCE=..\test.component.unistd.mkdtemp.c
 # End Source File
 # End Group
 # Begin Group "Header Files"

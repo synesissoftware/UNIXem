@@ -4,13 +4,13 @@
  * Purpose:     Implementation file for the test.scratch.uio project.
  *
  * Created:     19th September 2005
- * Updated:     9th February 2008
+ * Updated:     4th October 2015
  *
  * Status:      Wizard-generated
  *
  * License:     (Licensed under the Synesis Software Open License)
  *
- *              Copyright (c) 1999-2008, Synesis Software Pty Ltd.
+ *              Copyright (c) 1999-2015, Synesis Software Pty Ltd.
  *              All rights reserved.
  *
  *              www:        http://www.synesis.com.au/software
@@ -42,17 +42,6 @@
  * ////////////////////////////////////////////////////////////////////////// */
 
 
-/* Standard C++ Header Files */
-#include <exception>
-
-#ifdef __WATCOMC__
-namespace std
-{
-    using ::exception;
-}
-#endif /* __WATCOMC__ */
-
-
 /* Standard C Header Files */
 #include <fcntl.h>
 #include <io.h>
@@ -78,11 +67,12 @@ static int main_(int argc, char **argv)
     else
     {
         char const      *fileName   =   argv[1];
-        int             fd          =   ::_open(fileName, _O_RDONLY);
+        int             fd          =   _open(fileName, _O_RDONLY);
         struct iovec    vectors[3];
         char            sz1[10];
         char            sz2[2];
         char            sz3[21];
+        size_t          n;
 
         vectors[0].iov_base =   &sz1[0];
         vectors[0].iov_len  =   sizeof(sz1);
@@ -91,7 +81,7 @@ static int main_(int argc, char **argv)
         vectors[2].iov_base =   &sz3[0];
         vectors[2].iov_len  =   sizeof(sz3);
 
-        size_t          n           =   readv(fd, &vectors[0], 3);
+        n                   =   readv(fd, &vectors[0], 3);
     }
 
     return 0;
@@ -99,24 +89,7 @@ static int main_(int argc, char **argv)
 
 int main(int argc, char *argv[])
 {
-#if 0
-    { for(size_t i = 0; i < 0xffffffff; ++i){} }
-#endif /* 0 */
-
-    try
-    {
-        return main_(argc, argv);
-    }
-    catch(std::exception &x)
-    {
-        fprintf(stderr, "Unhandled error: %s\n", x.what());
-    }
-    catch(...)
-    {
-        fprintf(stderr, "Unhandled unknown error\n");
-    }
-
-    return EXIT_FAILURE;
+    return main_(argc, argv);
 }
 
-/* ////////////////////////////////////////////////////////////////////////// */
+/* ///////////////////////////// end of file //////////////////////////// */

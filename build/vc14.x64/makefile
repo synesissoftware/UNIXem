@@ -1,7 +1,7 @@
 ############################################################################
 # File:		makefile
 #
-# Purpose:	Makefile for the UNIXem project, for the Visual C++ 8 (x64 64-bit)
+# Purpose:	Makefile for the UNIXem project, for the Visual C++ 14 (x64 64-bit)
 #           compiler, on Win64
 #
 # Created:	15th February 2005
@@ -16,7 +16,7 @@
 ########################################
 # Project & compiler version
 
-COMP_TAG            =   vc8
+COMP_TAG            =   vc14
 ARCH_TAG            =   .x64
 OS_TAG				=   
 PROJ_TAG			=	unixem.core
@@ -122,7 +122,7 @@ TARGET_LIB_MT_R	=
 
 COMMON_DEFS			=	-DWIN64
 
-CUSTOM_DEFS			=
+CUSTOM_DEFS			=	
 
 CC_CUSTOM_DEFS		=	$(CUSTOM_DEFS)
 
@@ -148,7 +148,7 @@ CC_APP_F_WARNING_ERR	=	$(CC_F_WARNING_ERR)
 
 CPPC_F_NOLOGO			=	-nologo
 CPPC_F_COMPILE_ONLY 	=	-c
-CPPC_F_WARNING_MAX		=	-W4
+CPPC_F_WARNING_MAX		=	-W4 -wd4800
 CPPC_F_WARNING_ERR		=	-WX
 CPPC_F_WARNINGS_LIMIT	=	
 CPPC_F_MINIMUM_SIZE 	=	

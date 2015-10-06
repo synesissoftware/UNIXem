@@ -1,7 +1,16 @@
 UNIXem - History
 ================
 
-Updated:    25th September 2015
+Updated:    7th October 2015
+
+
+7th October 2015 - 1.11.1
+-------------------------
+
+ * built library name prefix changes from "unixem" to "unixem.core"
+ * added mkdtemp()
+ * added mkstemp()
+ * added VC++14 support
 
 
 25th September 2015 - 1.10.2

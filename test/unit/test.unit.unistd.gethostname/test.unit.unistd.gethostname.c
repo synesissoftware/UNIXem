@@ -14,10 +14,10 @@ int main(int argc, char** argv)
 
     XTESTS_COMMANDLINE_PARSEVERBOSITY(argc, argv, &verbosity);
 
-    if(XTESTS_START_RUNNER("test.component.unistd.pathconf", verbosity))
+    if(XTESTS_START_RUNNER("test.component.unistd.gethostname", verbosity))
     {
         /* Test-1 */
-        if(XTESTS_CASE_BEGIN("Test-1", "testing pathconf"))
+        if(XTESTS_CASE_BEGIN("Test-1", "testing gethostname"))
         {
             char    hostName[100];
 

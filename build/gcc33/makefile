@@ -4,8 +4,8 @@
 # Purpose:	Makefile for the UNIXem project, for the GCC 3.3
 #           compiler, on Win32
 #
-# Created:	15th Feburary 2005
-# Updated:	12th August 2010
+# Created:	15th February 2005
+# Updated:	5th October 2015
 #
 ############################################################################
 
@@ -19,16 +19,17 @@
 COMP_TAG            =   gcc33
 ARCH_TAG            =   
 OS_TAG				=   
-PROJ_TAG			=	unixem
+PROJ_TAG			=	unixem.core
 PROJ_VER_MAJOR		=	1
 PROJ_TAG_VER		=	$(PROJ_TAG).$(PROJ_VER_MAJOR)
+COMP_ARCH_OS_TAG	=	$(COMP_TAG)$(OS_TAG)$(ARCH_TAG)
 
 PROJ_MAKEFILE_NAME  =   makefile
 
 ########################################
 # Testing verbosity
 
-TEST_VERBOSITY		=	2
+TEST_VERBOSITY      =   2
 
 ########################################
 # Directories
@@ -201,10 +202,10 @@ LD_ARGS				=	 $(COMMON_LIB)
 ############################################################################
 # Targets
 
-TARGET_LIB_ST_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).debug.lib
-TARGET_LIB_UN_ST_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).debug.lib
-TARGET_LIB_ST_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).lib
-TARGET_LIB_UN_ST_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).lib
+TARGET_LIB_ST_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).debug.lib
+TARGET_LIB_UN_ST_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).debug.lib
+TARGET_LIB_ST_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).lib
+TARGET_LIB_UN_ST_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).lib
 
 
 
@@ -220,6 +221,7 @@ OBJ_PROJ_dirent__ST_D = $(PROJ_OBJ_DIR)\dirent.debug.obj
 OBJ_PROJ_dlfcn__ST_D = $(PROJ_OBJ_DIR)\dlfcn.debug.obj
 OBJ_PROJ_glob__ST_D = $(PROJ_OBJ_DIR)\glob.debug.obj
 OBJ_PROJ_hostname__ST_D = $(PROJ_OBJ_DIR)\hostname.debug.obj
+OBJ_PROJ_mktemp__ST_D = $(PROJ_OBJ_DIR)\mktemp.debug.obj
 OBJ_PROJ_mmap__ST_D = $(PROJ_OBJ_DIR)\mmap.debug.obj
 OBJ_PROJ_resource__ST_D = $(PROJ_OBJ_DIR)\resource.debug.obj
 OBJ_PROJ_setenv__ST_D = $(PROJ_OBJ_DIR)\setenv.debug.obj
@@ -234,6 +236,7 @@ OBJ_PROJ_ST_D = \
  $(OBJ_PROJ_dlfcn__ST_D)\
  $(OBJ_PROJ_glob__ST_D)\
  $(OBJ_PROJ_hostname__ST_D)\
+ $(OBJ_PROJ_mktemp__ST_D)\
  $(OBJ_PROJ_mmap__ST_D)\
  $(OBJ_PROJ_resource__ST_D)\
  $(OBJ_PROJ_setenv__ST_D)\
@@ -248,6 +251,7 @@ OBJ_PROJ_dirent__ST_R = $(PROJ_OBJ_DIR)\dirent.obj
 OBJ_PROJ_dlfcn__ST_R = $(PROJ_OBJ_DIR)\dlfcn.obj
 OBJ_PROJ_glob__ST_R = $(PROJ_OBJ_DIR)\glob.obj
 OBJ_PROJ_hostname__ST_R = $(PROJ_OBJ_DIR)\hostname.obj
+OBJ_PROJ_mktemp__ST_R = $(PROJ_OBJ_DIR)\mktemp.obj
 OBJ_PROJ_mmap__ST_R = $(PROJ_OBJ_DIR)\mmap.obj
 OBJ_PROJ_resource__ST_R = $(PROJ_OBJ_DIR)\resource.obj
 OBJ_PROJ_setenv__ST_R = $(PROJ_OBJ_DIR)\setenv.obj
@@ -262,6 +266,7 @@ OBJ_PROJ_ST_R = \
  $(OBJ_PROJ_dlfcn__ST_R)\
  $(OBJ_PROJ_glob__ST_R)\
  $(OBJ_PROJ_hostname__ST_R)\
+ $(OBJ_PROJ_mktemp__ST_R)\
  $(OBJ_PROJ_mmap__ST_R)\
  $(OBJ_PROJ_resource__ST_R)\
  $(OBJ_PROJ_setenv__ST_R)\
@@ -342,6 +347,8 @@ $(OBJ_PROJ_glob__ST_D):	$(PROJ_SRC_DIR)\glob.c $(PROJ_INCLUDE_DIR)\glob.h makefi
 	$(CC) $(CC_ARGS_ST_D) -o $@ $(PROJ_SRC_DIR)\glob.c
 $(OBJ_PROJ_hostname__ST_D):	$(PROJ_SRC_DIR)\hostname.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
 	$(CC) $(CC_ARGS_ST_D) -o $@ $(PROJ_SRC_DIR)\hostname.c
+$(OBJ_PROJ_mktemp__ST_D):	$(PROJ_SRC_DIR)\mktemp.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
+	$(CC) $(CC_ARGS_ST_D) -o $@ $(PROJ_SRC_DIR)\mktemp.c
 $(OBJ_PROJ_mmap__ST_D):	$(PROJ_SRC_DIR)\mmap.c $(PROJ_INCLUDE_DIR)\sys\mman.h makefile
 	$(CC) $(CC_ARGS_ST_D) -o $@ $(PROJ_SRC_DIR)\mmap.c
 $(OBJ_PROJ_resource__ST_D):	$(PROJ_SRC_DIR)\resource.c $(PROJ_INCLUDE_DIR)\sys\resource.h makefile
@@ -376,6 +383,8 @@ $(OBJ_PROJ_glob__ST_R):	$(PROJ_SRC_DIR)\glob.c $(PROJ_INCLUDE_DIR)\glob.h makefi
 	$(CC) $(CC_ARGS_ST_R) -o $@ $(PROJ_SRC_DIR)\glob.c
 $(OBJ_PROJ_hostname__ST_R):	$(PROJ_SRC_DIR)\hostname.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
 	$(CC) $(CC_ARGS_ST_R) -o $@ $(PROJ_SRC_DIR)\hostname.c
+$(OBJ_PROJ_mktemp__ST_R):	$(PROJ_SRC_DIR)\mktemp.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
+	$(CC) $(CC_ARGS_ST_R) -o $@ $(PROJ_SRC_DIR)\mktemp.c
 $(OBJ_PROJ_mmap__ST_R):	$(PROJ_SRC_DIR)\mmap.c $(PROJ_INCLUDE_DIR)\sys\mman.h makefile
 	$(CC) $(CC_ARGS_ST_R) -o $@ $(PROJ_SRC_DIR)\mmap.c
 $(OBJ_PROJ_resource__ST_R):	$(PROJ_SRC_DIR)\resource.c $(PROJ_INCLUDE_DIR)\sys\resource.h makefile

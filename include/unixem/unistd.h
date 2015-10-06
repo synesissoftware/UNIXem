@@ -4,11 +4,11 @@
  * Purpose: Declaration of various UNIX standard functions.
  *
  * Created: 1st November 2003
- * Updated: 13th August 2010
+ * Updated: 4th October 2015
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2003-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2015, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,9 +49,9 @@
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_MAJOR       3
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_MINOR       0
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_MINOR       1
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_REVISION    1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_EDIT        43
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_EDIT        44
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -265,6 +265,29 @@ int unixem_usleep(unsigned long microSeconds);
 /** Returns the current process identifier
  */
 unixem_pid_t unixem_getpid(void);
+
+
+
+/** Obtains a temporary directory name
+ *
+ * \note This is a macro, which resolves to unixem_mkdtemp()
+ */
+char*
+unixem_mkdtemp(
+    char*   template_path
+);
+
+
+/** Obtains a temporary directory name
+ *
+ * \note This is a macro, which resolves to unixem_mkstemp()
+ */
+int
+unixem_mkstemp(
+    char*   template_path
+);
+
+
 
 
 /** Returns the host name for the current machine

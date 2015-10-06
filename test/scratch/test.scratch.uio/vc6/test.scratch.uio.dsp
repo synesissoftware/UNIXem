@@ -92,7 +92,7 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=..\test.scratch.uio.cpp
+SOURCE=..\test.scratch.uio.c
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -100,7 +100,23 @@ SOURCE=..\test.scratch.uio.cpp
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=..\..\..\include\sys\uio.h
+SOURCE=..\..\..\..\include\sys\uio.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\..\include\unixem\sys\uio.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\..\include\unistd.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\..\include\unixem\unistd.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\..\include\unixem\unixem.h
 # End Source File
 # End Group
 # Begin Group "Resource Files"

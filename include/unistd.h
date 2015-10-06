@@ -4,11 +4,11 @@
  * Purpose: Declaration of various UNIX standard functions.
  *
  * Created: 1st November 2003
- * Updated: 13th August 2010
+ * Updated: 4th October 2015
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2003-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2015, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,9 +49,9 @@
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_MAJOR      3
-# define SYNSOFT_UNIXEM_VER_H_UNISTD_MINOR      0
+# define SYNSOFT_UNIXEM_VER_H_UNISTD_MINOR      1
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_REVISION   1
-# define SYNSOFT_UNIXEM_VER_H_UNISTD_EDIT       43
+# define SYNSOFT_UNIXEM_VER_H_UNISTD_EDIT       44
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -238,6 +238,7 @@ typedef unixem_pid_t    pid_t;
 extern "C" {
 #endif /* __cplusplus */
 
+
 /** Creates a hardlink.
  *
  * This function creates a link from \c originalFile to \c linkName.
@@ -260,6 +261,7 @@ int link(
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
 # define link       unixem_link
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 #ifndef UNIXEM_unlink_PROVIDED_BY_COMPILER
 /** Unlinks a file or directory
@@ -376,6 +378,7 @@ int close(int handle);
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 #endif /* !UNIXEM_close_PROVIDED_BY_COMPILER */
 
+
 /* * \def pipe()
  *
  * Creates a pipe
@@ -395,6 +398,7 @@ int getpagesize(void);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
 # define getpagesize    unixem_getpagesize
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /** Provides access to various system limits not available at compile time
  *
@@ -428,6 +432,7 @@ char* realpath(
 # define realpath       unixem_realpath
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /** Suspends execution for the given internal
  *
  * \param microSeconds The number of microseconds in the sleep interval
@@ -449,6 +454,28 @@ int usleep(unsigned long microSeconds);
 pid_t getpid(void);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
 # define getpid     unixem_getpid
+#endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
+
+/** Obtains a temporary directory name
+ *
+ * \note This is a macro, which resolves to unixem_mkdtemp()
+ */
+#ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
+char* mkdtemp(char*);
+#else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
+# define mkdtemp    unixem_mkdtemp
+#endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
+
+/** Obtains a temporary directory name
+ *
+ * \note This is a macro, which resolves to unixem_mkstemp()
+ */
+#ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
+int mkstemp(char*);
+#else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
+# define mkstemp    unixem_mkstemp
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -477,7 +504,6 @@ int gethostname(char* name, size_t cchName);
   *
   * and then redefine gethostname() to this with a macro
   */
-
 # ifdef __cplusplus
 extern "C++"
 {

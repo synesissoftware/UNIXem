@@ -4,7 +4,7 @@
  * Purpose: Implicit linking for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 30th July 2015
+ * Updated: 4th October 2015
  *
  * Home:    http://synesis.com.au/software/
  *
@@ -50,10 +50,10 @@
  */
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_MAJOR    1
-# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_MINOR    6
-# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_REVISION 3
-# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_EDIT     17
+# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_MAJOR    2
+# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_MINOR    0
+# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_REVISION 1
+# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_EDIT     18
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -157,7 +157,7 @@
 
   /* library basename */
 
-#  define UNIXEM_IMPL_LINK_LIBRARY_BASENAME          "unixem"
+#  define UNIXEM_IMPL_LINK_LIBRARY_BASENAME          "unixem.core"
 
   /* major version */
 
@@ -244,6 +244,8 @@
 #    define UNIXEM_IMPL_LINK_COMPILER_NAME           "vc11"
 #   elif _MSC_VER == 1800
 #    define UNIXEM_IMPL_LINK_COMPILER_NAME           "vc12"
+#   elif _MSC_VER == 1900
+#    define UNIXEM_IMPL_LINK_COMPILER_NAME           "vc14"
 #   else /* ? _MSC_VER */
 #    error Visual C++ version not supported
 #   endif /* _MSC_VER */

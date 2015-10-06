@@ -1,7 +1,7 @@
 UNIXem - Changes
 ================
 
-Updated:    25th September 2015
+Updated:    7th October 2015
 
 
     ************************************
@@ -13,6 +13,78 @@ Updated:    25th September 2015
     *  *  means a general bullet-point *
     *                                  *
     ************************************
+
+
+7th October 2015 - 1.11.1
+=========================
+
+Summary:
+--------
+
+ * built library name prefix changes from "unixem" to "unixem.core"
+ * added mkdtemp()
+ * added mkstemp()
+ * added VC++14 support
+
+Details:
+--------
+
+General:
+
+ ~ include/unistd.h:
+   + added mkdtemp() (which is a function-like macro that calls unixem_mkdtemp())
+   + added mkstemp() (which is a function-like macro that calls unixem_mkstemp())
+
+ ~ include/unixem/unistd.h:
+ ~ src/mktemp.c:
+   + added unixem_mkdtemp()
+   + added unixem_mkstemp()
+
+ ~ include/unixem/implicit_link.h:
+   ~ built library name prefix changes from "unixem" to "unixem.core"
+   + support for VC++14
+
+Distribution:
+
+Makefiles / Project-files:
+
+ ~ build/gcc295/makefile:
+ ~ build/gcc32/makefile:
+ ~ build/gcc33/makefile:
+ ~ build/gcc34/makefile:
+ ~ build/ow15/makefile:
+ ~ build/ow16/makefile:
+ ~ build/ow17/makefile:
+ ~ build/vc10.x64/makefile:
+ ~ build/vc10/makefile:
+ ~ build/vc11.x64/makefile:
+ ~ build/vc11/makefile:
+ ~ build/vc12.x64/makefile:
+ ~ build/vc12/makefile:
+ ~ build/vc6/makefile:
+ ~ build/vc7/makefile:
+ ~ build/vc8.x64/makefile:
+ ~ build/vc9.x64/makefile:
+   ~ built library name prefix changes from "unixem" to "unixem.core"
+   + added mkdtemp()
+   + added mkstemp()
+   ~ canonicalising structure
+
+ + build/vc14.x64/makefile:
+ + build/vc14/makefile:
+
+Examples:
+
+Test:
+
+Test.Unit:
+
+Test.Component:
+
+Test.Scratch:
+
+Depends on:
+
 
 
 25th September 2015 - 1.10.2

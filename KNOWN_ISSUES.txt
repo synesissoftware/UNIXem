@@ -1,18 +1,18 @@
 UNIXem - Known Issues
 =====================
 
-Updated:    25th September 2015
+Updated:    7th October 2015
 
 
 
-UNIXem 1.9 Known Issues:
-------------------------
+UNIXem 1.11 Known Issues:
+-------------------------
 
  <none>
 
 
-UNIXem 1.9 Suspected Issues:
-----------------------------
+UNIXem 1.11 Suspected Issues:
+-----------------------------
 
  <none>
 
