@@ -1,11 +1,11 @@
 UNIXem - README
 ===============
 
-Updated:    7th October 2015
+Updated:    2nd January 2017
 
 
 
-See the introduction in the accompanying doc/html/1.11.1/index.html file.
+See the introduction in the accompanying doc/html/1.11.2/index.html file.
 
 
 =============================== End of file ================================

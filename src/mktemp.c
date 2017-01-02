@@ -4,11 +4,11 @@
  * Purpose: mkstemp()/mkdtemp() etc. for the Windows platform.
  *
  * Created: 4th October 2015
- * Updated: 4th October 2015
+ * Updated: 1st January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2015, Matthew Wilson and Synesis Software
+ * Copyright (c) 2015-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,8 +42,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_MKTEMP_MAJOR        1
 # define _SYNSOFT_VER_C_MKTEMP_MINOR        0
-# define _SYNSOFT_VER_C_MKTEMP_REVISION     2
-# define _SYNSOFT_VER_C_MKTEMP_EDIT         2
+# define _SYNSOFT_VER_C_MKTEMP_REVISION     3
+# define _SYNSOFT_VER_C_MKTEMP_EDIT         3
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -100,6 +100,7 @@ unixem_mkstemp(
     char*       pX;
     char        fmt[21];
     unsigned    limit;
+    unsigned    access_failures = 0;
 
     assert(NULL != template_path);
 
@@ -163,6 +164,24 @@ unixem_mkstemp(
         if(-1 != hFile)
         {
             return hFile;
+        }
+        else
+        {
+            int const e = errno;
+
+            switch(e)
+            {
+            case EACCES:
+            case EPERM:
+                if(100 == ++access_failures)
+                {
+            case ENOMEM:
+                    return -1;
+                }
+                break;
+            default:
+                break;
+            }
         }
     }
 

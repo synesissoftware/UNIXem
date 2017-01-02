@@ -5,11 +5,11 @@
  *          Win32 platform.
  *
  * Created: 19th October 2002
- * Updated: 13th August 2010
+ * Updated: 2nd January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2002-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,7 +51,7 @@
 # define SYNSOFT_UNIXEM_VER_H_DIRENT_MAJOR      4
 # define SYNSOFT_UNIXEM_VER_H_DIRENT_MINOR      0
 # define SYNSOFT_UNIXEM_VER_H_DIRENT_REVISION   1
-# define SYNSOFT_UNIXEM_VER_H_DIRENT_EDIT       35
+# define SYNSOFT_UNIXEM_VER_H_DIRENT_EDIT       36
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* ////////////////////////////////////////////////////////////////////// */
@@ -69,7 +69,7 @@
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifndef _WIN32
-# error This file is only currently defined for compilation on Win32 systems
+# error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -40,6 +40,7 @@ RSC=rc.exe
 # PROP Use_Debug_Libraries 0
 # PROP Output_Dir "Release"
 # PROP Intermediate_Dir "Release"
+# PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /YX /FD /c
 # ADD CPP /nologo /W3 /GX /O2 /I "$(UNIXEM)/include" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "STRICT" /D "_CONSOLE" /YX /FD /c
@@ -66,6 +67,7 @@ LINK32=link.exe
 # PROP Use_Debug_Libraries 1
 # PROP Output_Dir "Debug"
 # PROP Intermediate_Dir "Debug"
+# PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MTd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /YX /FD /GZ /c
 # ADD CPP /nologo /W3 /Gm /GX /Zi /Od /I "$(UNIXEM)/include" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "STRICT" /D "_CONSOLE" /FR /YX /FD /GZ /c
@@ -78,7 +80,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 unixem.1.vc6.debug.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /version:1.0 /subsystem:console /map /debug /machine:I386 /out:"Debug/Uio_test.debug.exe" /pdbtype:sept /libpath:"$(UNIXEM)/lib"
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /version:1.0 /subsystem:console /map /debug /machine:I386 /out:"Debug/Uio_test.debug.exe" /pdbtype:sept /libpath:"$(UNIXEM)/lib"
 # SUBTRACT LINK32 /pdb:none
 
 !ENDIF 

@@ -4,11 +4,11 @@
  * Purpose: Implicit linking for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 4th October 2015
+ * Updated: 2nd January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright 1994-2015, Matthew Wilson and Synesis Software
+ * Copyright 1994-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_MAJOR    2
 # define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_MINOR    0
 # define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_REVISION 1
-# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_EDIT     18
+# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_EDIT     19
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -157,7 +157,7 @@
 
   /* library basename */
 
-#  define UNIXEM_IMPL_LINK_LIBRARY_BASENAME          "unixem.core"
+#  define UNIXEM_IMPL_LINK_LIBRARY_BASENAME          "unixem"
 
   /* major version */
 
@@ -165,7 +165,7 @@
 
   /* module name */
 
-#  define UNIXEM_IMPL_LINK_MODULE_NAME               ""
+#  define UNIXEM_IMPL_LINK_MODULE_NAME               ".core"
 
   /* compiler tag */
 

@@ -4,11 +4,11 @@
  * Purpose: Declaration of various UNIX standard functions.
  *
  * Created: 1st November 2003
- * Updated: 4th October 2015
+ * Updated: 2nd January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2003-2015, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,7 +51,7 @@
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_MAJOR      3
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_MINOR      1
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_REVISION   1
-# define SYNSOFT_UNIXEM_VER_H_UNISTD_EDIT       44
+# define SYNSOFT_UNIXEM_VER_H_UNISTD_EDIT       45
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -140,7 +140,7 @@
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifndef _WIN32
-# error This file is only currently defined for compilation on Win32 systems
+# error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////

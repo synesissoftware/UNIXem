@@ -1,7 +1,15 @@
 UNIXem - History
 ================
 
-Updated:    7th October 2015
+Updated:    2nd January 2017
+
+
+2nd January 2017 - 1.11.2
+-------------------------
+
+ * fixed name of built library prefix from "unixem.core.1.*" to "unixem.1.core.*"
+ * moved build/vc6/unixem.dsp => projects/core/vc6/unixem.core.dsp
+ * added VC++10 project and props files
 
 
 7th October 2015 - 1.11.1

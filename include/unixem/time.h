@@ -4,7 +4,7 @@
  * Purpose: Time functions and types for the Win32 platform.
  *
  * Created: 5th May 2014
- * Updated: 5th May 2014
+ * Updated: 2nd January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
@@ -51,7 +51,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_MAJOR		1
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_MINOR		0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_REVISION	1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_EDIT		1
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_EDIT		2
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

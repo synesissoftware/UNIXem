@@ -1,7 +1,7 @@
 UNIXem - Changes
 ================
 
-Updated:    7th October 2015
+Updated:    2nd January 2017
 
 
     ************************************
@@ -13,6 +13,81 @@ Updated:    7th October 2015
     *  *  means a general bullet-point *
     *                                  *
     ************************************
+
+
+2nd January 2017 - 1.11.2
+=========================
+
+Summary:
+--------
+
+ * fixed name of built library prefix from "unixem.core.1.*" to "unixem.1.core.*"
+ * moved build/vc6/unixem.dsp => projects/core/vc6/unixem.core.dsp
+ * added VC++10 project and props files
+
+Details:
+--------
+
+General:
+
+ ~ include/asm/atomic.h
+ ~ include/dirent.h
+ ~ include/dlfcn.h
+ ~ include/glob.h
+ ~ include/sys/mman.h
+ ~ include/sys/resource.h
+ ~ include/sys/time.h
+ ~ include/sys/uio.h
+ ~ include/unistd.h
+ ~ include/unixem/asm/atomic.h
+ ~ include/unixem/dirent.h
+ ~ include/unixem/dlfcn.h
+ ~ include/unixem/glob.h
+ ~ include/unixem/internal/safestr.h
+ ~ include/unixem/internal/util.h
+ ~ include/unixem/internal/winsock.h
+ ~ include/unixem/setenv.h
+ ~ include/unixem/sys/mman.h
+ ~ include/unixem/sys/resource.h
+ ~ include/unixem/sys/time.h
+ ~ include/unixem/sys/uio.h
+ ~ include/unixem/time.h
+ ~ include/unixem/unistd.h
+ ~ include/unixem/unixem.h
+   ~ documentation improvements
+
+ ~ include/unixem/implicit_link.h
+   ~ fixed name of built library prefix from "unixem.core.1.*" to "unixem.1.core.*"
+
+ ~ src/mktemp.c:
+   ~ limiting the number of access failures (to 100)
+
+Distribution:
+
+Makefiles / Project-files:
+
+ ~ unixem.vc6.dsw:
+ - build/vc6/unixem.dsp:
+ + projects/core/vc6/unixem.core.dsp:
+   ~ build/vc6/unixem.dsp => projects/core/vc6/unixem.core.dsp
+
+ + unixem.vc10.sln
+ + projects/core/vc10/unixem.core.vcxproj
+ + projects/core/vc10/unixem.core.vcxproj.filters
+ + projects/vcprops/unixem.common.props
+
+Examples:
+
+Test:
+
+Test.Unit:
+
+Test.Component:
+
+Test.Scratch:
+
+Depends on:
+
 
 
 7th October 2015 - 1.11.1

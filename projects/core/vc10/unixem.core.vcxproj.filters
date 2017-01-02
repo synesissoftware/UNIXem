@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\UNIXem Header Files">
+      <UniqueIdentifier>{a71e245d-6c24-4d93-bcc0-aecb8575fda3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UNIXem Header Files\arpa">
+      <UniqueIdentifier>{33275784-adc0-4975-80ad-f6210cd1405a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UNIXem Header Files\asm">
+      <UniqueIdentifier>{f24766c5-b103-4eca-8a6f-3dcd9eff3aff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UNIXem Header Files\internal">
+      <UniqueIdentifier>{f543313c-44b2-4155-b4a3-54b186314505}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UNIXem Header Files\netinet">
+      <UniqueIdentifier>{e848cfb2-5fef-4c2c-8f07-36bad6857532}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UNIXem Header Files\sys">
+      <UniqueIdentifier>{e4e2788e-d3ad-49f1-b8e0-a1313134a582}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\unistd.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\atomic.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dirent.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dlfcn.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\glob.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\hostname.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\mmap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\resource.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\setenv.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\time.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\uio.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\internal\util.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\mktemp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\unixem\arpa\inet.h">
+      <Filter>Header Files\UNIXem Header Files\arpa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\asm\atomic.h">
+      <Filter>Header Files\UNIXem Header Files\asm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\internal\safestr.h">
+      <Filter>Header Files\UNIXem Header Files\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\internal\util.h">
+      <Filter>Header Files\UNIXem Header Files\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\internal\winsock.h">
+      <Filter>Header Files\UNIXem Header Files\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\netinet\in.h">
+      <Filter>Header Files\UNIXem Header Files\netinet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\sys\mman.h">
+      <Filter>Header Files\UNIXem Header Files\sys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\sys\resource.h">
+      <Filter>Header Files\UNIXem Header Files\sys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\sys\socket.h">
+      <Filter>Header Files\UNIXem Header Files\sys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\sys\time.h">
+      <Filter>Header Files\UNIXem Header Files\sys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\sys\uio.h">
+      <Filter>Header Files\UNIXem Header Files\sys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unistd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\dirent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\dlfcn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\glob.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\unixem.h">
+      <Filter>Header Files\UNIXem Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\dirent.h">
+      <Filter>Header Files\UNIXem Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\dlfcn.h">
+      <Filter>Header Files\UNIXem Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\glob.h">
+      <Filter>Header Files\UNIXem Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\implicit_link.h">
+      <Filter>Header Files\UNIXem Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\setenv.h">
+      <Filter>Header Files\UNIXem Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\time.h">
+      <Filter>Header Files\UNIXem Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\unixem\unistd.h">
+      <Filter>Header Files\UNIXem Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
