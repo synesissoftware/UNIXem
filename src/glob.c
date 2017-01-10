@@ -4,11 +4,11 @@
  * Purpose: Definition of the glob() API functions for the Win32 platform.
  *
  * Created: 13th November 2002
- * Updated: 22nd May 2012
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2002-2012, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,11 +43,11 @@
 # define _SYNSOFT_VER_C_UNIXEM_GLOB_MAJOR      3
 # define _SYNSOFT_VER_C_UNIXEM_GLOB_MINOR      1
 # define _SYNSOFT_VER_C_UNIXEM_GLOB_REVISION   2
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT       55
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT       56
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/glob.h>
@@ -62,7 +62,7 @@
 #include <windows.h>
 
 /* /////////////////////////////////////////////////////////////////////////
- * Helper functions
+ * helper functions
  */
 
 static char const* unixem_strrpbrk_(

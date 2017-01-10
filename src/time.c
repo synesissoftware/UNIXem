@@ -4,11 +4,11 @@
  * Purpose: gettimeofday() for the Win32 platform.
  *
  * Created: 1st November 2003
- * Updated: 18th March 2015
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2003-2015, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,11 +43,11 @@
 # define _SYNSOFT_VER_C_TIME_MAJOR      3
 # define _SYNSOFT_VER_C_TIME_MINOR      1
 # define _SYNSOFT_VER_C_TIME_REVISION   1
-# define _SYNSOFT_VER_C_TIME_EDIT       27
+# define _SYNSOFT_VER_C_TIME_EDIT       28
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 /* If we're going to include 'windows.h', then it has to be included first, so
@@ -72,7 +72,7 @@ struct timezone;
 #include <time.h>
 
 /* /////////////////////////////////////////////////////////////////////////
- * Internal helper functions
+ * internal helper functions
  */
 
 static
@@ -109,7 +109,7 @@ unixem_impl_numberOfDaysInMonth(
 }
 
 /* /////////////////////////////////////////////////////////////////////////
- * Helper functions
+ * helper functions
  */
 
 /** This function is from the STLSoft libraries */

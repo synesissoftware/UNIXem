@@ -4,7 +4,7 @@
  * Purpose:     Implementation file for the test.scratch.setenv project.
  *
  * Created:     9th December 2005
- * Updated:     2nd January 2017
+ * Updated:     10th January 2017
  *
  * Status:      Wizard-generated
  *
@@ -58,7 +58,7 @@
 #endif /* _MSC_VER) && _DEBUG */
 
 /* /////////////////////////////////////////////////////////////////////////////
- * Typedefs
+ * typedefs
  */
 
 #if 0
@@ -66,7 +66,7 @@ typedef std::string     string_t;
 #endif /* 0 */
 
 /* /////////////////////////////////////////////////////////////////////////////
- * Forward declarations
+ * forward declarations
  */
 
 /* ////////////////////////////////////////////////////////////////////////// */

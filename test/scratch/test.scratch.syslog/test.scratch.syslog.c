@@ -4,13 +4,13 @@
  * Purpose:     Implementation file for the test.scratch.syslog project.
  *
  * Created:     1st October 2006
- * Updated:     13th May 2008
+ * Updated:     10th January 2017
  *
  * Status:      Wizard-generated
  *
  * License:     (Licensed under the Synesis Software Open License)
  *
- *              Copyright (c) 2006-2008, Synesis Software Pty Ltd.
+ *              Copyright (c) 2006-2017, Synesis Software Pty Ltd.
  *              All rights reserved.
  *
  *              www:        http://www.synesis.com.au/software
@@ -37,7 +37,7 @@
 #endif /* _MSC_VER) && _DEBUG */
 
 /* /////////////////////////////////////////////////////////////////////////////
- * Macros and definitions
+ * macros and definitions
  */
 
 #ifdef true
@@ -50,7 +50,7 @@
 #define false   (0)
 
 /* /////////////////////////////////////////////////////////////////////////////
- * Globals
+ * globals
  */
 
 #if defined(_DEBUG) || \
@@ -62,12 +62,12 @@ static int  s_bDebugging                =   false;
 //extern "C" const char FE_SIMPLE_PROCESS_IDENTITY[]    =   "test.scratch.syslog";
 
 /* /////////////////////////////////////////////////////////////////////////////
- * Typedefs
+ * typedefs
  */
 
 
 /* /////////////////////////////////////////////////////////////////////////////
- * Forward declarations
+ * forward declarations
  */
 
 /* ////////////////////////////////////////////////////////////////////////// */

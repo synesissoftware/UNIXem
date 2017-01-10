@@ -5,7 +5,7 @@
  *          support timeval and gethostname()).
  *
  * Created: 28th December 2007
- * Updated: 2nd January 2017
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
@@ -48,18 +48,18 @@
 #define UNIXEM_INCL_UNIXEM_INTERNAL_H_WINSOCK
 
 /* /////////////////////////////////////////////////////////////////////////
- * Version
+ * version
  */
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_MAJOR     1
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_MINOR     0
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_REVISION  3
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_EDIT      7
+# define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_EDIT      8
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/unixem.h>

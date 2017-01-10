@@ -4,7 +4,7 @@
  * Purpose: Internal utility header for the UNIXem API.
  *
  * Created: 28th December 2007
- * Updated: 2nd January 2017
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
@@ -46,18 +46,18 @@
 #define UNIXEM_INCL_UNIXEM_INTERNAL_H_SAFESTR
 
 /* /////////////////////////////////////////////////////////////////////////
- * Version
+ * version
  */
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_MAJOR     1
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_MINOR     0
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_REVISION  1
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_EDIT      6
+# define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_EDIT      7
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/unixem.h>
@@ -89,7 +89,7 @@
 #endif /* UNIXEM_SAFE_STR_USE_crtdefs_h_ */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Feature detection
+ * feature detection
  */
 
 #ifdef __STDC_SECURE_LIB__

@@ -5,11 +5,11 @@
  *          Win32 platform.
  *
  * Created: 21st November 2003
- * Updated: 12th August 2010
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2003-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,11 +44,11 @@
 # define _SYNSOFT_VER_C_ATOMIC_MAJOR    3
 # define _SYNSOFT_VER_C_ATOMIC_MINOR    0
 # define _SYNSOFT_VER_C_ATOMIC_REVISION 1
-# define _SYNSOFT_VER_C_ATOMIC_EDIT     19
+# define _SYNSOFT_VER_C_ATOMIC_EDIT     20
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/asm/atomic.h>
@@ -65,7 +65,7 @@
 #endif /* WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Constants and definitions
+ * constants and definitions
  */
 
 /* /////////////////////////////////////////////////////////////////////////

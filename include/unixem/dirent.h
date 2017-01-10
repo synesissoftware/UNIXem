@@ -5,7 +5,7 @@
  *          Win32 platform.
  *
  * Created: 19th October 2002
- * Updated: 2nd January 2017
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_MAJOR       4
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_MINOR       0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_REVISION    1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_EDIT        35
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_EDIT        36
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* ////////////////////////////////////////////////////////////////////// */
@@ -74,14 +74,14 @@
 #endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/unixem.h>
 #include <stddef.h>
 
 /* /////////////////////////////////////////////////////////////////////////
- * Constants and definitions
+ * constants and definitions
  */
 
 #ifndef NAME_MAX
@@ -89,7 +89,7 @@
 #endif /* !NAME_MAX */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Typedefs
+ * typedefs
  */
 
 typedef struct dirent_dir   unixem_DIR;     /*!< Handle type for multibyte string directory enumeration. \note dirent_dir is defined internally */

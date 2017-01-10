@@ -4,7 +4,7 @@
  * Purpose: mkstemp()/mkdtemp() etc. for the Windows platform.
  *
  * Created: 4th October 2015
- * Updated: 1st January 2017
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
@@ -43,11 +43,11 @@
 # define _SYNSOFT_VER_C_MKTEMP_MAJOR        1
 # define _SYNSOFT_VER_C_MKTEMP_MINOR        0
 # define _SYNSOFT_VER_C_MKTEMP_REVISION     3
-# define _SYNSOFT_VER_C_MKTEMP_EDIT         3
+# define _SYNSOFT_VER_C_MKTEMP_EDIT         4
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 /* If we're going to include 'windows.h', then it has to be included first, so

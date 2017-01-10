@@ -4,13 +4,13 @@
  * Purpose:     Implementation file for the test.scratch.fnmatch project.
  *
  * Created:     24th April 2006
- * Updated:     13th May 2008
+ * Updated:     10th January 2017
  *
  * Status:      Wizard-generated
  *
  * License:     (Licensed under the Synesis Software Open License)
  *
- *              Copyright (c) 2006-2008, Synesis Software Pty Ltd.
+ *              Copyright (c) 2006-2017, Synesis Software Pty Ltd.
  *              All rights reserved.
  *
  *              www:        http://www.synesis.com.au/software
@@ -54,7 +54,7 @@
 #endif /* _MSC_VER) && _DEBUG */
 
 /* /////////////////////////////////////////////////////////////////////////////
- * Macros and definitions
+ * macros and definitions
  */
 
 #ifdef true
@@ -67,18 +67,18 @@
 #define false   (0)
 
 /* /////////////////////////////////////////////////////////////////////////////
- * Globals
+ * globals
  */
 
 static int  s_bDebugging    =   false;
 
 /* /////////////////////////////////////////////////////////////////////////////
- * Typedefs
+ * typedefs
  */
 
 
 /* /////////////////////////////////////////////////////////////////////////////
- * Forward declarations
+ * forward declarations
  */
 
 static void test_1(void);

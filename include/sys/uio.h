@@ -4,7 +4,7 @@
  * Purpose: Vector file read/write.
  *
  * Created: 19th September 2005
- * Updated: 2nd January 2017
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
@@ -50,11 +50,11 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_UIO_MAJOR     2
 # define SYNSOFT_UNIXEM_VER_SYS_H_UIO_MINOR     0
 # define SYNSOFT_UNIXEM_VER_SYS_H_UIO_REVISION  1
-# define SYNSOFT_UNIXEM_VER_SYS_H_UIO_EDIT      13
+# define SYNSOFT_UNIXEM_VER_SYS_H_UIO_EDIT      14
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/sys/uio.h>
@@ -79,7 +79,7 @@ extern "C"
 #endif /* __cplusplus */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Typedefs
+ * typedefs
  */
 
 #ifndef _SSIZE_T_DEFINED
@@ -95,7 +95,7 @@ typedef unixem_ssize_t  ssize_t;
 #define iovec       unixem_iovec
 
 /* /////////////////////////////////////////////////////////////////////////
- * Functions
+ * functions
  */
 
 /** Reads from a file into a set of memory blocks

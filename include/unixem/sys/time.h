@@ -5,7 +5,7 @@
  *          types for the Win32 platform.
  *
  * Created: 8th December 2002
- * Updated: 2nd January 2017
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
@@ -52,11 +52,11 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_MAJOR     3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_MINOR     0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_REVISION  2
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_EDIT      27
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_EDIT      28
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <stddef.h>

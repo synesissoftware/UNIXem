@@ -4,7 +4,7 @@
  * Purpose: Declaration of various UNIX standard functions.
  *
  * Created: 1st November 2003
- * Updated: 2nd January 2017
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
@@ -51,11 +51,11 @@
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_MAJOR      3
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_MINOR      1
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_REVISION   1
-# define SYNSOFT_UNIXEM_VER_H_UNISTD_EDIT       45
+# define SYNSOFT_UNIXEM_VER_H_UNISTD_EDIT       46
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/unistd.h>
@@ -144,7 +144,7 @@
 #endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Constants and definitions
+ * constants and definitions
  */
 
 
@@ -216,7 +216,7 @@
 #define _PC_SYNC_IO             UNIXEM_PC_SYNC_IO
 
 /* /////////////////////////////////////////////////////////////////////////
- * Typedefs
+ * typedefs
  */
 
 #if !defined(UNIXEM_pid_t_PROVIDED_BY_COMPILER) && \

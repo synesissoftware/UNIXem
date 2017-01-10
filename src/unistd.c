@@ -4,11 +4,11 @@
  * Purpose: Definition of the chdir() and other API functions for the Win32 platform.
  *
  * Created: 1st November 2003
- * Updated: 12th August 2010
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2003-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,11 +43,11 @@
 # define _SYNSOFT_VER_C_UNISTD_MAJOR      3
 # define _SYNSOFT_VER_C_UNISTD_MINOR      0
 # define _SYNSOFT_VER_C_UNISTD_REVISION   3
-# define _SYNSOFT_VER_C_UNISTD_EDIT       36
+# define _SYNSOFT_VER_C_UNISTD_EDIT       37
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/unistd.h>
@@ -60,7 +60,7 @@
 #include <windows.h>
 
 /* /////////////////////////////////////////////////////////////////////////
- * Feature support
+ * feature support
  */
 
 #if defined(__BORLANDC__)
@@ -82,7 +82,7 @@ _WCRTLINK extern long _get_osfhandle( int __posixhandle );
 #endif /* compiler */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Constants and definitions
+ * constants and definitions
  */
 
 #ifndef FILE_ATTRIBUTE_ERROR
@@ -94,7 +94,7 @@ _WCRTLINK extern long _get_osfhandle( int __posixhandle );
 #endif /* __BORLANDC__ */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Worker functions
+ * worker functions
  */
 
 static long unixem__unistd__pathconf_diff(

@@ -5,7 +5,7 @@
  *          Win32 platform.
  *
  * Created: 13th November 2002
- * Updated: 2nd January 2017
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
@@ -52,11 +52,11 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_MAJOR     3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_MINOR     0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_REVISION  2
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_EDIT      40
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_EDIT      41
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/unixem.h>
@@ -80,7 +80,7 @@
 #endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Constants and definitions
+ * constants and definitions
  */
 
 /* Result codes */
@@ -113,7 +113,7 @@
 #define UNIXEM_GLOB_LIMIT           0x00020000          /*!< Limits the search to the number specified by the caller in gl_matchc. Supported from version 1.6 of UNIXem. */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Typedefs
+ * typedefs
  */
 
 /** Result structure for unixem_glob()

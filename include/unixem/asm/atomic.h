@@ -5,7 +5,7 @@
  *          Win32 platform.
  *
  * Created: 21st November 2003
- * Updated: 2nd January 2017
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
@@ -47,7 +47,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_MAJOR       3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_MINOR       0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_REVISION    1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_EDIT        18
+# define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_EDIT        19
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* ////////////////////////////////////////////////////////////////////// */
@@ -57,13 +57,13 @@
 #endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Constants and definitions
+ * constants and definitions
  */
 
 #include <unixem/unixem.h>
 
 /* /////////////////////////////////////////////////////////////////////////
- * Typedefs
+ * typedefs
  */
 
 typedef signed long     unixem_atomic_t;

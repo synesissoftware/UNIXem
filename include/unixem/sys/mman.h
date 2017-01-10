@@ -4,7 +4,7 @@
  * Purpose: Declaration of the mmap() and munmap() API functions.
  *
  * Created: 18th December 2003
- * Updated: 2nd January 2017
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
@@ -51,11 +51,11 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_MAJOR     3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_MINOR     0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_REVISION  1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_EDIT      25
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_EDIT      26
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <stddef.h>     /* for size_t */
@@ -81,7 +81,7 @@
 #endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Constants and definitions
+ * constants and definitions
  */
 
 #define UNIXEM_PROT_READ        (0x01)          /*!< page can be read */

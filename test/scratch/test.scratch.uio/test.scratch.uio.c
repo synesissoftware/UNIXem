@@ -4,13 +4,13 @@
  * Purpose:     Implementation file for the test.scratch.uio project.
  *
  * Created:     19th September 2005
- * Updated:     4th October 2015
+ * Updated:     10th January 2017
  *
  * Status:      Wizard-generated
  *
  * License:     (Licensed under the Synesis Software Open License)
  *
- *              Copyright (c) 1999-2015, Synesis Software Pty Ltd.
+ *              Copyright (c) 1999-2017, Synesis Software Pty Ltd.
  *              All rights reserved.
  *
  *              www:        http://www.synesis.com.au/software
@@ -52,7 +52,7 @@
 #include <sys/uio.h>
 
 /* /////////////////////////////////////////////////////////////////////////////
- * Forward declarations
+ * forward declarations
  */
 
 /* ////////////////////////////////////////////////////////////////////////// */

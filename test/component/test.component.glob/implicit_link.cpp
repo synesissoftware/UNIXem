@@ -4,7 +4,7 @@
  * Purpose:     Implicit link file for the test.component.glob project.
  *
  * Created:     20th May 2012
- * Updated:     20th May 2012
+ * Updated:     10th January 2017
  *
  * Status:      Wizard-generated
  *
@@ -19,7 +19,7 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 /* UNIXem Header Files */

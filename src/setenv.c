@@ -4,11 +4,11 @@
  * Purpose: Implementation of the setenv() and unsetenv() functions.
  *
  * Created: 9th December 2005
- * Updated: 12th August 2010
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2005-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,11 +43,11 @@
 # define _SYNSOFT_VER_C_SETENV_MAJOR    1
 # define _SYNSOFT_VER_C_SETENV_MINOR    0
 # define _SYNSOFT_VER_C_SETENV_REVISION 5
-# define _SYNSOFT_VER_C_SETENV_EDIT     7
+# define _SYNSOFT_VER_C_SETENV_EDIT     8
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/setenv.h>
@@ -62,7 +62,7 @@
 #include <windows.h>
 
 /* /////////////////////////////////////////////////////////////////////////
- * Feature support
+ * feature support
  */
 
 #if defined(__BORLANDC__) || \
@@ -73,7 +73,7 @@
 #endif /* compiler */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Helper functions
+ * helper functions
  */
 
 static int unixem__setenv__putenv_(

@@ -4,7 +4,7 @@
  * Purpose:     Implementation file for the test.component.glob project.
  *
  * Created:     20th May 2012
- * Updated:     20th May 2012
+ * Updated:     10th January 2017
  *
  * Status:      Wizard-generated
  *
@@ -25,7 +25,7 @@
 #include <glob.h>
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 /* xTests Header Files */
@@ -51,7 +51,7 @@
 #endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Forward declarations
+ * forward declarations
  */
 
 namespace
@@ -89,7 +89,7 @@ namespace
 } // anonymous namespace
 
 /* /////////////////////////////////////////////////////////////////////////
- * Main
+ * main
  */
 
 int main(int argc, char **argv)
@@ -149,7 +149,7 @@ int main(int argc, char **argv)
 }
 
 /* /////////////////////////////////////////////////////////////////////////
- * Test function implementations
+ * test function implementations
  */
 
 namespace

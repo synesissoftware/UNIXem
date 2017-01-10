@@ -4,7 +4,7 @@
  * Purpose: Implicit linking for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 2nd January 2017
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
@@ -46,24 +46,24 @@
 #define UNIXEM_INCL_UNIXEM_H_IMPLICIT_LINK
 
 /* /////////////////////////////////////////////////////////////////////////
- * Version
+ * version
  */
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_MAJOR    2
 # define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_MINOR    0
 # define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_REVISION 1
-# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_EDIT     19
+# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_EDIT     20
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/unixem.h>
 
 /* /////////////////////////////////////////////////////////////////////////
- * Macros and definitions
+ * macros and definitions
  */
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
@@ -72,7 +72,7 @@
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Architecture discrimination
+ * architecture discrimination
  */
 
 #if defined(__amd64__) || \
@@ -94,7 +94,7 @@
 #endif /* _M_?? */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Implicit linking
+ * implicit linking
  */
 
 #if defined(_WIN32) || \
