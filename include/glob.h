@@ -91,7 +91,7 @@
 #define GLOB_NOCHECK        (UNIXEM_GLOB_NOCHECK)   /*!< If nothing matches, return the pattern. Supported from version 1.6 of UNIXem. */
 #define GLOB_APPEND         (UNIXEM_GLOB_APPEND)    /*!< Append to results of a previous call. Not currently supported in this implementation. */
 #define GLOB_NOESCAPE       (UNIXEM_GLOB_NOESCAPE)  /*!< Backslashes don't quote metacharacters. Has no effect in this implementation, since escaping is not supported. */
-                            (
+                            
 #define GLOB_PERIOD         (UNIXEM_GLOB_PERIOD)    /*!< Leading `.' can be matched by metachars. Supported from version 1.6 of UNIXem. */
 #define GLOB_MAGCHAR        (UNIXEM_GLOB_MAGCHAR)   /*!< Set in gl_flags if any metachars seen. Supported from version 1.6 of UNIXem. */
 /* #define GLOB_ALTDIRFUNC     (UNIXEM_GLOB_ALTDIRFUNC) */    /*!< Use gl_opendir et al functions. Not currently supported in this implementation. */
