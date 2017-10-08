@@ -83,7 +83,7 @@
 #define GLOB_NOSYS          (UNIXEM_GLOB_NOSYS)     /*!< (Error result code:) . */
 #define GLOB_ABEND          (UNIXEM_GLOB_ABEND)     /*!< (Error result code:) . */
 
-/* Flags */ */
+/* Flags */
 #define GLOB_ERR            (UNIXEM_GLOB_ERR)       /*!< Return on read errors. */
 #define GLOB_MARK           (UNIXEM_GLOB_MARK)      /*!< Append a slash to each name. */
 #define GLOB_NOSORT         (UNIXEM_GLOB_NOSORT)    /*!< Don't sort the names. */
