@@ -23,7 +23,10 @@ bin/
 
 lib/
 
-ideas/
+ipch/
+
+Win32/
+x64/
 
 Debug/
 Debug Multithreaded/
