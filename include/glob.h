@@ -5,11 +5,11 @@
  *          Win32 platform.
  *
  * Created: 13th November 2002
- * Updated: 13th August 2010
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2002-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,8 +50,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define SYNSOFT_UNIXEM_VER_H_GLOB_MAJOR    3
 # define SYNSOFT_UNIXEM_VER_H_GLOB_MINOR    0
-# define SYNSOFT_UNIXEM_VER_H_GLOB_REVISION 1
-# define SYNSOFT_UNIXEM_VER_H_GLOB_EDIT     36
+# define SYNSOFT_UNIXEM_VER_H_GLOB_REVISION 3
+# define SYNSOFT_UNIXEM_VER_H_GLOB_EDIT     40
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* ////////////////////////////////////////////////////////////////////// */
@@ -69,11 +69,17 @@
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifndef _WIN32
-# error This file is only currently defined for compilation on Win32 systems
+# error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Constants and definitions
+ * includes
+ */
+
+#include <unixem/glob.h>
+
+/* /////////////////////////////////////////////////////////////////////////
+ * constants and definitions
  */
 
 /* Error codes */
@@ -91,7 +97,7 @@
 #define GLOB_NOCHECK        (UNIXEM_GLOB_NOCHECK)   /*!< If nothing matches, return the pattern. Supported from version 1.6 of UNIXem. */
 #define GLOB_APPEND         (UNIXEM_GLOB_APPEND)    /*!< Append to results of a previous call. Not currently supported in this implementation. */
 #define GLOB_NOESCAPE       (UNIXEM_GLOB_NOESCAPE)  /*!< Backslashes don't quote metacharacters. Has no effect in this implementation, since escaping is not supported. */
-                            
+
 #define GLOB_PERIOD         (UNIXEM_GLOB_PERIOD)    /*!< Leading `.' can be matched by metachars. Supported from version 1.6 of UNIXem. */
 #define GLOB_MAGCHAR        (UNIXEM_GLOB_MAGCHAR)   /*!< Set in gl_flags if any metachars seen. Supported from version 1.6 of UNIXem. */
 /* #define GLOB_ALTDIRFUNC     (UNIXEM_GLOB_ALTDIRFUNC) */    /*!< Use gl_opendir et al functions. Not currently supported in this implementation. */
@@ -100,12 +106,12 @@
 #define GLOB_TILDE          (UNIXEM_GLOB_TILDE)         /*!< Expand ~user and ~ to home directories. Partially supported from version 1.6 of UNIXem: leading ~ is expanded to %HOMEDRIVE%%HOMEPATH%. */
 #define GLOB_ONLYDIR        (UNIXEM_GLOB_ONLYDIR)       /*!< Match only directories. This implementation guarantees to only return directories when this flag is specified. */
 #define GLOB_TILDE_CHECK    (UNIXEM_GLOB_TILDE_CHECK)   /*!< Like GLOB_TILDE but return an GLOB_NOMATCH even if GLOB_NOCHECK specified. Supported from version 1.6 of UNIXem. */
-#define GLOB_ONLYFILE       (UNIXEM_GLOB_ONLYFILE)      /*!< Match only files. Supported from version 1.6 of UNIXem. */
+#define GLOB_ONLYREG        (UNIXEM_GLOB_ONLYREG)       /*!< Match only files. Supported from version 1.6 of UNIXem. */
 #define GLOB_NODOTSDIRS     (UNIXEM_GLOB_NODOTSDIRS)    /*!< Elide "." and ".." directories from wildcard searches. Supported from version 1.6 of UNIXem. */
 #define GLOB_LIMIT          (UNIXEM_GLOB_LIMIT)         /*!< Limits the search to the number specified by the caller in gl_matchc. Supported from version 1.6 of UNIXem. */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Typedefs
+ * typedefs
  */
 
 /** Result structure for glob()

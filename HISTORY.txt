@@ -1,7 +1,53 @@
 UNIXem - History
 ================
 
-Updated:    13th August 2010
+Updated:    2nd January 2017
+
+
+2nd January 2017 - 1.11.2
+-------------------------
+
+ * fixed name of built library prefix from "unixem.core.1.*" to "unixem.1.core.*"
+ * moved build/vc6/unixem.dsp => projects/core/vc6/unixem.core.dsp
+ * added VC++10 project and props files
+
+
+7th October 2015 - 1.11.1
+-------------------------
+
+ * built library name prefix changes from "unixem" to "unixem.core"
+ * added mkdtemp()
+ * added mkstemp()
+ * added VC++14 support
+
+
+25th September 2015 - 1.10.2
+----------------------------
+
+ * minor fix to unixem_gettimeofday()
+
+
+30th July 2015 - 1.10.1
+-----------------------
+
+ * added unixem_timegm() / timegm()
+ * added VC++11 and VC++12 support
+
+
+16th June 2012 - 1.9.3
+----------------------
+
+ * GLOB_ONLYFILE => GLOB_ONLYREG
+ * glob() now preserves dots directories when included in leaf-most pattern part
+ * fix to definition of WIN32 when using WinSock
+
+
+4th February 2011 - 1.9.2
+-------------------------
+
+ * removed include/sys/select.h (which was vestigial)
+ * various tidyings
+ * handling EZERO, ERROR_FILE_TOO_LARGE, ERROR_DISK_TOO_FRAGMENTED (in unixem_internal_errno_from_Win32())
 
 
 12th August 2010 - 1.9.1

@@ -5,11 +5,11 @@
  *          platform.
  *
  * Created: 9th June 2006
- * Updated: 12th August 2010
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2006-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,11 +44,11 @@
 # define SYNSOFT_UNIXEM_VER_SYS_C_USAGE_MAJOR       2
 # define SYNSOFT_UNIXEM_VER_SYS_C_USAGE_MINOR       0
 # define SYNSOFT_UNIXEM_VER_SYS_C_USAGE_REVISION    1
-# define SYNSOFT_UNIXEM_VER_SYS_C_USAGE_EDIT        7
+# define SYNSOFT_UNIXEM_VER_SYS_C_USAGE_EDIT        8
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 /* If we're going to include 'windows.h', then it has to be included first,
@@ -69,7 +69,7 @@
 #include <windows.h>
 
 /* /////////////////////////////////////////////////////////////////////////
- * Helper functions
+ * helper functions
  */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,11 +4,11 @@
  * Purpose: Definition of the glob() API functions for the Win32 platform.
  *
  * Created: 13th November 2002
- * Updated: 12th August 2010
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2002-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,13 +41,13 @@
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_UNIXEM_GLOB_MAJOR      3
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_MINOR      0
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_REVISION   9
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT       51
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_MINOR      1
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_REVISION   2
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT       56
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/glob.h>
@@ -62,7 +62,7 @@
 #include <windows.h>
 
 /* /////////////////////////////////////////////////////////////////////////
- * Helper functions
+ * helper functions
  */
 
 static char const* unixem_strrpbrk_(
@@ -94,6 +94,30 @@ static char const* unixem_strrpbrk_(
     }
 
     return part;
+}
+
+static
+int
+unixem_glob_isdots_(
+    char const* s
+)
+{
+    if('.' == s[0])
+    {
+        if('\0' == s[1])
+        {
+            return 1;
+        }
+        else if('.' == s[1])
+        {
+            if('\0' == s[2])
+            {
+                return 1;
+            }
+        }
+    }
+
+    return 0;
 }
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -128,6 +152,7 @@ int unixem_glob(
     const int           bMagic              =   (NULL != strpbrk(pattern, "?*"));
     int                 bNoMagic            =   0;
     int                 bMagic0;
+    int                 bLeafIsDots;
     size_t              maxMatches          =   ~(size_t)(0);
 
     assert(NULL != pglob);
@@ -182,6 +207,7 @@ int unixem_glob(
     }
 
     bMagic0 =   (leafMost == strpbrk(leafMost, "?*"));
+    bLeafIsDots = unixem_glob_isdots_(leafMost);
 
     hFind   =   FindFirstFileA(effectivePattern, &find_data);
     buffer  =   NULL;
@@ -239,19 +265,18 @@ int unixem_glob(
 
             if(find_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
             {
-#ifdef UNIXEM_GLOB_ONLYFILE
-                if(flags & UNIXEM_GLOB_ONLYFILE)
+#ifdef UNIXEM_GLOB_ONLYREG
+                if(flags & UNIXEM_GLOB_ONLYREG)
                 {
                     continue;
                 }
-#endif /* UNIXEM_GLOB_ONLYFILE */
+#endif /* UNIXEM_GLOB_ONLYREG */
 
                 if( bMagic0 &&
                     UNIXEM_GLOB_NODOTSDIRS == (flags & UNIXEM_GLOB_NODOTSDIRS))
                 {
                     /* Pattern must begin with '.' to match either dots directory */
-                    if( 0 == lstrcmpA(".", find_data.cFileName) ||
-                        0 == lstrcmpA("..", find_data.cFileName))
+                    if(unixem_glob_isdots_(find_data.cFileName))
                     {
                         continue;
                     }
@@ -259,9 +284,6 @@ int unixem_glob(
 
                 if(flags & UNIXEM_GLOB_MARK)
                 {
-#if 0
-                    if(find_data.cFileName[0] >= 'A' && find_data.cFileName[0] <= 'M')
-#endif /* 0 */
                     (void)lstrcatA(find_data.cFileName, "/");
                 }
             }
@@ -270,12 +292,19 @@ int unixem_glob(
                 if(flags & UNIXEM_GLOB_ONLYDIR)
                 {
                     /* Skip all further actions, and get the next entry */
-#if 0
-                    if(find_data.cFileName[0] >= 'A' && find_data.cFileName[0] <= 'M')
-#endif /* 0 */
                     continue;
                 }
             }
+
+			if(bLeafIsDots)
+			{
+				(void)lstrcpyA(find_data.cFileName, leafMost);
+
+                if(flags & UNIXEM_GLOB_MARK)
+                {
+                    (void)lstrcatA(find_data.cFileName, "/");
+                }
+			}
 
             cch = lstrlenA(find_data.cFileName);
             if(NULL != file_part)
@@ -286,7 +315,7 @@ int unixem_glob(
             new_cbAlloc = (size_t)cbCurr + cch + 1;
             if(new_cbAlloc > cbAlloc)
             {
-                char    *new_buffer;
+                char* new_buffer;
 
                 new_cbAlloc *= 2;
 

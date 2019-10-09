@@ -5,11 +5,11 @@
  *          API functions.
  *
  * Created: 1st January 2004
- * Updated: 12th August 2010
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2004-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,11 +44,11 @@
 # define _SYNSOFT_VER_C_DLFCN_MAJOR     3
 # define _SYNSOFT_VER_C_DLFCN_MINOR     0
 # define _SYNSOFT_VER_C_DLFCN_REVISION  1
-# define _SYNSOFT_VER_C_DLFCN_EDIT      17
+# define _SYNSOFT_VER_C_DLFCN_EDIT      18
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/dlfcn.h>
@@ -64,19 +64,19 @@
 #endif /* WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Constants and definitions
+ * constants and definitions
  */
 
 #define RTLD_BINDING_MASK   (0x00003)       /*!< Mask of binding time value. */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Statics
+ * statics
  */
 
 static const char* s_error;
 
 /* /////////////////////////////////////////////////////////////////////////
- * Internal functions
+ * internal functions
  */
 
 static void unixem_set_error_(DWORD dwErr)

@@ -4,13 +4,13 @@
  * Purpose:     Implementation file for the test.scratch.link project.
  *
  * Created:     2nd September 2005
- * Updated:     13th May 2008
+ * Updated:     10th January 2017
  *
  * Status:      Wizard-generated
  *
  * License:     (Licensed under the Synesis Software Open License)
  *
- *              Copyright (c) 1999-2008, Synesis Software Pty Ltd.
+ *              Copyright (c) 1999-2017, Synesis Software Pty Ltd.
  *              All rights reserved.
  *
  *              www:        http://www.synesis.com.au/software
@@ -53,7 +53,7 @@
 #include <unistd.h>
 
 /* /////////////////////////////////////////////////////////////////////////////
- * Forward declarations
+ * forward declarations
  */
 
 /* ////////////////////////////////////////////////////////////////////////// */

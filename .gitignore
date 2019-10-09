@@ -38,6 +38,11 @@ Unicode Release/
 Unicode Release Multithreaded/
 Unicode Release Multithreaded DLL/
 
+DebugMTUnix/
+DebugUnix/
+ReleaseMTUnix/
+ReleaseUnix/
+
 # directories (by pattern)
 
 # files (by name)

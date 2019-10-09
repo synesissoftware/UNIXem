@@ -5,11 +5,11 @@
  *          types for the Win32 platform.
  *
  * Created: 9th June 2006
- * Updated: 13th August 2010
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2006-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,11 +52,11 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_MAJOR     2
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_MINOR     0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_REVISION  1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_EDIT      8
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_EDIT      10
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <sys/time.h>

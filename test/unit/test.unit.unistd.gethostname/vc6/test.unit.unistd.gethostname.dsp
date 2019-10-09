@@ -7,19 +7,19 @@
 CFG=test.unit.unistd.gethostname - Win32 Debug
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
-!MESSAGE 
+!MESSAGE
 !MESSAGE NMAKE /f "test.unit.unistd.gethostname.mak".
-!MESSAGE 
+!MESSAGE
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
-!MESSAGE 
+!MESSAGE
 !MESSAGE NMAKE /f "test.unit.unistd.gethostname.mak" CFG="test.unit.unistd.gethostname - Win32 Debug"
-!MESSAGE 
+!MESSAGE
 !MESSAGE Possible choices for configuration are:
-!MESSAGE 
+!MESSAGE
 !MESSAGE "test.unit.unistd.gethostname - Win32 Release" (based on "Win32 (x86) Console Application")
 !MESSAGE "test.unit.unistd.gethostname - Win32 Debug" (based on "Win32 (x86) Console Application")
-!MESSAGE 
+!MESSAGE
 
 # Begin Project
 # PROP AllowPerConfigDependencies 0
@@ -76,12 +76,15 @@ LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /debug /machine:I386 /pdbtype:sept
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /debug /machine:I386 /pdbtype:sept /libpath:"$(XTESTS_C_ROOT)/lib"
 
-!ENDIF 
+!ENDIF
 
 # Begin Target
 
 # Name "test.unit.unistd.gethostname - Win32 Release"
 # Name "test.unit.unistd.gethostname - Win32 Debug"
+# Begin Group "Source Files"
+
+# PROP Default_Filter "c;cpp;"
 # Begin Source File
 
 SOURCE=..\implicit_link.c
@@ -90,5 +93,78 @@ SOURCE=..\implicit_link.c
 
 SOURCE=..\test.unit.unistd.gethostname.c
 # End Source File
+# End Group
+# Begin Group "Header Files"
+
+# PROP Default_Filter "h;hpp"
+# Begin Group "STLSoft Header Files"
+
+# PROP Default_Filter ""
+# Begin Group "STLSoft"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE="$(STLSOFT)\include\stlsoft\internal\head_version.h"
+# End Source File
+# Begin Source File
+
+SOURCE="$(STLSOFT)\include\stlsoft\internal\lead_version.h"
+# End Source File
+# Begin Source File
+
+SOURCE="$(STLSOFT)\include\stlsoft\internal\cccap\msvc.h"
+# End Source File
+# Begin Source File
+
+SOURCE="$(STLSOFT)\include\stlsoft\internal\cccap\obsolete.h"
+# End Source File
+# Begin Source File
+
+SOURCE="$(STLSOFT)\include\stlsoft\stlsoft.h"
+# End Source File
+# End Group
+# Begin Group "PlatformSTL"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE="$(STLSOFT)\include\platformstl\platformstl.h"
+# End Source File
+# End Group
+# Begin Group "WinSTL"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE="$(STLSOFT)\include\winstl\winstl.h"
+# End Source File
+# End Group
+# End Group
+# Begin Group "UNIXem Header Files"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE="$(UNIXEM)\include\unixem\implicit_link.h"
+# End Source File
+# Begin Source File
+
+SOURCE="$(UNIXEM)\include\unixem\unixem.h"
+# End Source File
+# End Group
+# Begin Group "xTests Header Files"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE="$(XTESTS_C_ROOT)\include\xtests\implicit_link.h"
+# End Source File
+# Begin Source File
+
+SOURCE="$(XTESTS_C_ROOT)\include\xtests\xtests.h"
+# End Source File
+# End Group
+# End Group
 # End Target
 # End Project

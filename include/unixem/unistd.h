@@ -4,11 +4,11 @@
  * Purpose: Declaration of various UNIX standard functions.
  *
  * Created: 1st November 2003
- * Updated: 13th August 2010
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2003-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,13 +49,13 @@
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_MAJOR       3
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_MINOR       0
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_MINOR       1
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_REVISION    1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_EDIT        43
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_EDIT        47
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/unixem.h>
@@ -77,11 +77,11 @@
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifndef _WIN32
-# error This file is only currently defined for compilation on Win32 systems
+# error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Constants and definitions
+ * constants and definitions
  */
 
 #if 0
@@ -124,7 +124,7 @@ enum
 };
 
 /* /////////////////////////////////////////////////////////////////////////
- * Typedefs
+ * typedefs
  */
 
 /** Process-identifier type */
@@ -265,6 +265,37 @@ int unixem_usleep(unsigned long microSeconds);
 /** Returns the current process identifier
  */
 unixem_pid_t unixem_getpid(void);
+
+
+
+/** Obtains a temporary directory name
+ *
+ * \param template_path The last N letters that are 'X' are replaced by a
+ *   string that makes the directory name unique
+ *
+ * \return template_path if successful
+ * \retval NULL If the directory cannot be created
+ */
+char*
+unixem_mkdtemp(
+    char*   template_path
+);
+
+
+/** Obtains a temporary directory name
+ *
+ * \param template_path The last N letters that are 'X' are replaced by a
+ *   string that makes the file name unique
+ *
+ * \return The file handle, if successful
+ * \retval -1 If the file cannot be created
+ */
+int
+unixem_mkstemp(
+    char*   template_path
+);
+
+
 
 
 /** Returns the host name for the current machine

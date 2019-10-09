@@ -4,13 +4,13 @@
  * Purpose:     Implementation file for the test.scratch.setenv project.
  *
  * Created:     9th December 2005
- * Updated:     9th February 2008
+ * Updated:     10th January 2017
  *
  * Status:      Wizard-generated
  *
  * License:     (Licensed under the Synesis Software Open License)
  *
- *              Copyright 1999-2008, Synesis Software Pty Ltd.
+ *              Copyright 1999-2017, Synesis Software Pty Ltd.
  *              All rights reserved.
  *
  *              www:        http://www.synesis.com.au/software
@@ -42,7 +42,7 @@
  * ////////////////////////////////////////////////////////////////////////// */
 
 /* STLSoft Header Files */
-#include <stlsoft.h>
+#include <stlsoft/stlsoft.h>
 
 
 /* Standard C Header Files */
@@ -58,7 +58,7 @@
 #endif /* _MSC_VER) && _DEBUG */
 
 /* /////////////////////////////////////////////////////////////////////////////
- * Typedefs
+ * typedefs
  */
 
 #if 0
@@ -66,7 +66,7 @@ typedef std::string     string_t;
 #endif /* 0 */
 
 /* /////////////////////////////////////////////////////////////////////////////
- * Forward declarations
+ * forward declarations
  */
 
 /* ////////////////////////////////////////////////////////////////////////// */

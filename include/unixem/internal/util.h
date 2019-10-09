@@ -4,11 +4,11 @@
  * Purpose: Internal utility header for the UNIXem API.
  *
  * Created: 2nd September 2005
- * Updated: 13th August 2010
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 1994-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 1994-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,24 +46,24 @@
 #define UNIXEM_INCL_UNIXEM_INTERNAL_H_UTIL
 
 /* /////////////////////////////////////////////////////////////////////////
- * Version
+ * version
  */
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_MAJOR    1
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_MINOR    3
+# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_MINOR    4
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_REVISION 1
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_EDIT     10
+# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_EDIT     13
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/unixem.h>
 
 /* /////////////////////////////////////////////////////////////////////////
- * Macros
+ * macros
  */
 
 /** \def NUM_ELEMENTS(ar)
@@ -87,7 +87,7 @@
 #endif /* !NUM_ELEMENTS */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Linkage specifications
+ * linkage specifications
  */
 
 /** \def UNIXEM_STGCLS_IMP
@@ -111,7 +111,7 @@
 #endif /* compiler */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Function declarations
+ * function declarations
  */
 
 #ifdef __cplusplus
@@ -140,6 +140,12 @@ long unixem_internal_FILETIMEToUNIXTime(
 ,   long*       microseconds
 );
 
+/** Determines whether the year is a leap year
+ */
+int
+unixem_internal_yearIsLeap(
+    int year
+);
 
 #ifdef __cplusplus
 } /* extern "C" */

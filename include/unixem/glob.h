@@ -5,11 +5,11 @@
  *          Win32 platform.
  *
  * Created: 13th November 2002
- * Updated: 13th August 2010
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2002-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,12 +51,12 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_MAJOR     3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_MINOR     0
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_REVISION  1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_EDIT      36
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_REVISION  2
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_EDIT      41
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/unixem.h>
@@ -76,22 +76,23 @@
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifndef _WIN32
-# error This file is only currently defined for compilation on Win32 systems
+# error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Constants and definitions
+ * constants and definitions
  */
 
-/* Error codes */
-#define UNIXEM_GLOB_NOSPACE         (1)                 /*!< (Error result code:) An attempt to allocate memory failed, or if errno was 0 UNIXEM_GLOB_LIMIT was specified in the flags and ARG_MAX patterns were matched. */
-#define UNIXEM_GLOB_ABORTED         (2)                 /*!< (Error result code:) The scan was stopped because an error was encountered and either UNIXEM_GLOB_ERR was set or (*errfunc)() returned non-zero. */
-#define UNIXEM_GLOB_NOMATCH         (3)                 /*!< (Error result code:) The pattern does not match any existing pathname, and UNIXEM_GLOB_NOCHECK was not set int flags. */
-#define UNIXEM_GLOB_NOSYS           (4)                 /*!< (Error result code:) . */
-#define UNIXEM_GLOB_ABEND           UNIXEM_GLOB_ABORTED /*!< (Error result code:) . */
+/* Result codes */
+#define UNIXEM_GLOB_SUCCESS         (0)                 /*!< (Result code:) The operation completed successfully. */
+#define UNIXEM_GLOB_NOSPACE         (1)                 /*!< (Result code:) An attempt to allocate memory failed, or if errno was 0 UNIXEM_GLOB_LIMIT was specified in the flags and ARG_MAX patterns were matched. */
+#define UNIXEM_GLOB_ABORTED         (2)                 /*!< (Result code:) The scan was stopped because an error was encountered and either UNIXEM_GLOB_ERR was set or (*errfunc)() returned non-zero. */
+#define UNIXEM_GLOB_NOMATCH         (3)                 /*!< (Result code:) The pattern does not match any existing pathname, and UNIXEM_GLOB_NOCHECK was not set int flags. */
+#define UNIXEM_GLOB_NOSYS           (4)                 /*!< (Result code:) . */
+#define UNIXEM_GLOB_ABEND           UNIXEM_GLOB_ABORTED /*!< (Result code:) . */
 
 /* Flags */
-#define UNIXEM_GLOB_ERR             0x00000001          /*!< Return on read errors. */
+#define UNIXEM_GLOB_ERR             0x00000001          /*!< Return on read failures. */
 #define UNIXEM_GLOB_MARK            0x00000002          /*!< Append a slash to each name. */
 #define UNIXEM_GLOB_NOSORT          0x00000004          /*!< Don't sort the names. */
 #define UNIXEM_GLOB_DOOFFS          0x00000008          /*!< Insert PGLOB->gl_offs NULLs. Supported from version 1.6 of UNIXem. */
@@ -99,7 +100,7 @@
 #define UNIXEM_GLOB_APPEND          0x00000020          /*!< Append to results of a previous call. Not currently supported in this implementation. */
 #define UNIXEM_GLOB_NOESCAPE        0x00000040          /*!< Backslashes don't quote metacharacters. Has no effect in this implementation, since escaping is not supported. */
 
-#define UNIXEM_GLOB_PERIOD          0x00000080          /*!< Leading `.' can be matched by metachars. Supported from version 1.6 of UNIXem. */
+#define UNIXEM_GLOB_PERIOD          0x00000080          /*!< Leading '.' can be matched by metachars. Supported from version 1.6 of UNIXem. */
 #define UNIXEM_GLOB_MAGCHAR         0x00000100          /*!< Set in gl_flags if any metachars seen. Supported from version 1.6 of UNIXem. */
 /* #define UNIXEM_GLOB_ALTDIRFUNC      0x00000200 */       /*!< Use gl_opendir et al functions. Not currently supported in this implementation. */
 /* #define UNIXEM_GLOB_BRACE           0x00000400 */       /*!< Expand "{a,b}" to "a" "b". Not currently supported in this implementation. */
@@ -107,12 +108,12 @@
 #define UNIXEM_GLOB_TILDE           0x00001000          /*!< Expand ~user and ~ to home directories. Partially supported from version 1.6 of UNIXem: leading ~ is expanded to %HOMEDRIVE%%HOMEPATH%. */
 #define UNIXEM_GLOB_ONLYDIR         0x00002000          /*!< Match only directories. This implementation guarantees to only return directories when this flag is specified. */
 #define UNIXEM_GLOB_TILDE_CHECK     0x00004000          /*!< Like UNIXEM_GLOB_TILDE but return an UNIXEM_GLOB_NOMATCH even if UNIXEM_GLOB_NOCHECK specified. Supported from version 1.6 of UNIXem. */
-#define UNIXEM_GLOB_ONLYFILE        0x00008000          /*!< Match only files. Supported from version 1.6 of UNIXem. */
+#define UNIXEM_GLOB_ONLYREG         0x00008000          /*!< Match only regular files. Supported from version 1.6 of UNIXem. */
 #define UNIXEM_GLOB_NODOTSDIRS      0x00010000          /*!< Elide "." and ".." directories from wildcard searches. Supported from version 1.6 of UNIXem. */
 #define UNIXEM_GLOB_LIMIT           0x00020000          /*!< Limits the search to the number specified by the caller in gl_matchc. Supported from version 1.6 of UNIXem. */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Typedefs
+ * typedefs
  */
 
 /** Result structure for unixem_glob()
@@ -126,7 +127,7 @@ typedef struct
   int       gl_matchc;  /*!< count of paths matching pattern */
   int       gl_offs;    /*!< reserved at beginning of gl_pathv */
   int       gl_flags;   /*!< returned flags */
-  char**    gl_pathv; /*!< list of paths matching pattern */
+  char**    gl_pathv;   /*!< list of paths matching pattern */
 } unixem_glob_t;
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -146,7 +147,7 @@ extern "C" {
  * \param flags A combination of the <b>UNIXEM_GLOB_*</b> flags
  * \param errfunc A function that is called each time part of the search processing fails
  * \param pglob Pointer to a glob_t structure to receive the search results
- * \return 0 on success, otherwise one of the <b>UNIXEM_GLOB_*</b> error codes
+ * \return 0 on success, otherwise one of the <b>UNIXEM_GLOB_*</b> result codes
  */
 int unixem_glob(
     char const*     pattern

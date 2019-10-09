@@ -4,11 +4,11 @@
  * Purpose: Vector file read/write.
  *
  * Created: 19th September 2005
- * Updated: 13th August 2010
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2005-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,11 +51,11 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_MAJOR      2
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_MINOR      0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_REVISION   1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_EDIT       12
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_EDIT       14
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <stddef.h>
@@ -80,7 +80,7 @@ extern "C"
 #endif /* __cplusplus */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Typedefs
+ * typedefs
  */
 
 /** Signed size type */
@@ -94,7 +94,7 @@ struct unixem_iovec
 };
 
 /* /////////////////////////////////////////////////////////////////////////
- * Functions
+ * functions
  */
 
 /** Reads from a file into a set of memory blocks

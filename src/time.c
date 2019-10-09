@@ -4,11 +4,11 @@
  * Purpose: gettimeofday() for the Win32 platform.
  *
  * Created: 1st November 2003
- * Updated: 12th August 2010
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2003-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,13 +41,13 @@
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_TIME_MAJOR      3
-# define _SYNSOFT_VER_C_TIME_MINOR      0
+# define _SYNSOFT_VER_C_TIME_MINOR      1
 # define _SYNSOFT_VER_C_TIME_REVISION   1
-# define _SYNSOFT_VER_C_TIME_EDIT       25
+# define _SYNSOFT_VER_C_TIME_EDIT       28
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 /* If we're going to include 'windows.h', then it has to be included first, so
@@ -58,18 +58,64 @@
 # include <windows.h>
 #endif /* !__MWERKS__ */
 
+#include <unixem/time.h>
 #include <unixem/sys/time.h>
+
+#include <unixem/internal/util.h>
 
 struct timezone;
 
 #include <windows.h>
 
+#include <assert.h>
+#include <errno.h>
+#include <time.h>
+
 /* /////////////////////////////////////////////////////////////////////////
- * Helper functions
+ * internal helper functions
+ */
+
+static
+int
+unixem_impl_numberOfDaysInMonth(
+    int year
+,   int month
+)
+{
+    assert(year >= 1970);
+    assert(month >= 0 && month < 12);
+
+    switch(month)
+    {
+        case    3:  /* Apr */
+        case    5:  /* Jun */
+        case    8:  /* Sep */
+        case    10: /* Nov */
+            return 30;
+
+        case    1:  /* Feb */
+            if(unixem_internal_yearIsLeap(year))
+            {
+                return 29;
+            }
+            else
+            {
+                return 28;
+            }
+
+        default:
+            return 31;
+    }
+}
+
+/* /////////////////////////////////////////////////////////////////////////
+ * helper functions
  */
 
 /** This function is from the STLSoft libraries */
-extern long unixem_internal_FILETIMEToUNIXTime(
+extern
+long
+unixem_internal_FILETIMEToUNIXTime(
     FILETIME const* ft
 ,   long*           microseconds
 )
@@ -103,11 +149,35 @@ extern long unixem_internal_FILETIMEToUNIXTime(
     return (long)i;
 }
 
+int
+unixem_internal_yearIsLeap(
+    int year
+)
+{
+    if(0 != (year % 4))
+    {
+        return 0;
+    }
+    else
+    if(0 != (year % 100))
+    {
+        return 1;
+    }
+    else
+    if(0 == (year % 400))
+    {
+        return 1;
+    }
+
+    return 0;
+}
+
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
  */
 
-int unixem_gettimeofday(
+int
+unixem_gettimeofday(
     struct unixem_timeval*  tv
 ,   void*                   dummy
 )
@@ -115,14 +185,95 @@ int unixem_gettimeofday(
     SYSTEMTIME  st;
     FILETIME    ft;
 
+    assert(NULL != tv);
+
     ((void)dummy);
 
     GetSystemTime(&st);
-    (void)SystemTimeToFileTime(&st, &ft);
 
-    tv->tv_sec = unixem_internal_FILETIMEToUNIXTime(&ft, &tv->tv_usec);
+    if(!SystemTimeToFileTime(&st, &ft))
+    {
+        DWORD const e = GetLastError();
 
-    return 0;
+        errno = unixem_internal_errno_from_Win32(e);
+
+        tv->tv_sec  =   0;
+        tv->tv_usec =   0;
+
+        return -1;
+    }
+    else
+    {
+        tv->tv_sec = unixem_internal_FILETIMEToUNIXTime(&ft, &tv->tv_usec);
+
+        return 0;
+    }
+}
+
+time_t
+unixem_timegm(
+    struct tm* tm
+)
+{
+    time_t t = 0;
+
+    assert(NULL != tm);
+    assert(tm->tm_year >= 0);
+    assert(tm->tm_mon >= 0);
+    assert(tm->tm_yday >= 0);
+    assert(tm->tm_mday >= 0);
+    assert(tm->tm_wday >= 0);
+    assert(tm->tm_hour >= 0);
+    assert(tm->tm_min >= 0);
+    assert(tm->tm_sec >= 0);
+
+    assert(tm->tm_mon < 12);
+    assert(tm->tm_yday < 367);
+    assert(tm->tm_mday < 32);
+    assert(tm->tm_wday < 6);
+    assert(tm->tm_hour < 24);
+    assert(tm->tm_min < 60);
+    assert(tm->tm_sec < 60);
+
+    /* days (from year, month, and day) */
+
+    { int y; for(y = 70; y != tm->tm_year; ++y)
+    {
+        t += 365;
+
+        if(unixem_internal_yearIsLeap(1900 + y))
+        {
+            ++t;
+        }
+    }}
+
+    { int m; for(m = 0; m != tm->tm_mon; ++m)
+    {
+        t += unixem_impl_numberOfDaysInMonth(tm->tm_year + 1900, m);
+    }}
+
+    t += tm->tm_mday - 1;
+
+    /* hours */
+
+    t *= 24;
+
+    t += tm->tm_hour;
+
+    /* minutes */
+
+    t *= 60;
+
+    t += tm->tm_min;
+
+    /* seconds */
+
+    t *= 60;
+
+    t += tm->tm_sec;
+
+
+    return t;
 }
 
 /* ///////////////////////////// end of file //////////////////////////// */

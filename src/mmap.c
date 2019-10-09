@@ -4,11 +4,11 @@
  * Purpose: mmap(), munmap() and msync() for the Win32 platform.
  *
  * Created: 18th December 2003
- * Updated: 12th August 2010
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2003-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,11 +43,11 @@
 # define _SYNSOFT_VER_C_MMAP_MAJOR      3
 # define _SYNSOFT_VER_C_MMAP_MINOR      0
 # define _SYNSOFT_VER_C_MMAP_REVISION   1
-# define _SYNSOFT_VER_C_MMAP_EDIT       28
+# define _SYNSOFT_VER_C_MMAP_EDIT       29
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/sys/mman.h>
@@ -75,7 +75,7 @@ _WCRTLINK extern long _get_osfhandle( int __posixhandle );
 #endif /* compiler */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Helper functions
+ * helper functions
  */
 
 static int unixem_win32_flags_from_mmap_(

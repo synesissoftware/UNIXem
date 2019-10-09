@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug Multithreaded DLL|Win32">
+      <Configuration>Debug Multithreaded DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Multithreaded DLL|x64">
+      <Configuration>Debug Multithreaded DLL</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Multithreaded|Win32">
+      <Configuration>Debug Multithreaded</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Multithreaded|x64">
+      <Configuration>Debug Multithreaded</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Multithreaded DLL|Win32">
+      <Configuration>Release Multithreaded DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Multithreaded DLL|x64">
+      <Configuration>Release Multithreaded DLL</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Multithreaded|Win32">
+      <Configuration>Release Multithreaded</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Multithreaded|x64">
+      <Configuration>Release Multithreaded</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{757A9DA8-0F86-45DA-A020-599B0C558F17}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>unixemcore</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <CharacterSet>Multibyte</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Multithreaded|Win32'" Label="Configuration">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Multithreaded DLL|Win32'" Label="Configuration">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Multithreaded|x64'" Label="Configuration">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Multithreaded DLL|x64'" Label="Configuration">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Multithreaded|Win32'" Label="Configuration">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Multithreaded DLL|Win32'" Label="Configuration">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Multithreaded|x64'" Label="Configuration">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Multithreaded DLL|x64'" Label="Configuration">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(SolutionDir)projects/vcprops/unixem.common.props" Condition="exists('$(SolutionDir)projects/vcprops/unixem.common.props')" Label="UNIXemStandardProperties" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Multithreaded|Win32'">
+    <TargetName>unixem.1.core.vc10.mt.debug</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Multithreaded DLL|Win32'">
+    <TargetName>unixem.1.core.vc10.mt.debug</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Multithreaded|Win32'">
+    <TargetName>unixem.1.core.vc10.mt</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Multithreaded DLL|Win32'">
+    <TargetName>unixem.1.core.vc10.mt</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Multithreaded|x64'">
+    <TargetName>unixem.1.core.vc10.x64.mt.debug</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Multithreaded DLL|x64'">
+    <TargetName>unixem.1.core.vc10.x64.mt.debug</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Multithreaded|x64'">
+    <TargetName>unixem.1.core.vc10.x64.mt</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Multithreaded DLL|x64'">
+    <TargetName>unixem.1.core.vc10.x64.mt</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>../../../include;</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist "$(ProjectDir)..\..\..\lib" mkdir "$(ProjectDir)..\..\..\lib"
+copy /B /V /Y "$(TargetPath)" "$(ProjectDir)..\..\..\lib"</Command>
+      <Message>Copying static library into lib directory ...</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="$(Configuration.Contains('Release'))">
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Multithreaded|Win32'">
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Multithreaded DLL|Win32'">
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Multithreaded|x64'">
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Multithreaded DLL|x64'">
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Multithreaded|Win32'">
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Multithreaded DLL|Win32'">
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Multithreaded|x64'">
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Multithreaded DLL|x64'">
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\atomic.c" />
+    <ClCompile Include="..\..\..\src\dirent.c" />
+    <ClCompile Include="..\..\..\src\dlfcn.c" />
+    <ClCompile Include="..\..\..\src\glob.c" />
+    <ClCompile Include="..\..\..\src\hostname.c" />
+    <ClCompile Include="..\..\..\src\internal\util.c" />
+    <ClCompile Include="..\..\..\src\mktemp.c" />
+    <ClCompile Include="..\..\..\src\mmap.c" />
+    <ClCompile Include="..\..\..\src\resource.c" />
+    <ClCompile Include="..\..\..\src\setenv.c" />
+    <ClCompile Include="..\..\..\src\time.c" />
+    <ClCompile Include="..\..\..\src\uio.c" />
+    <ClCompile Include="..\..\..\src\unistd.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\dirent.h" />
+    <ClInclude Include="..\..\..\include\dlfcn.h" />
+    <ClInclude Include="..\..\..\include\glob.h" />
+    <ClInclude Include="..\..\..\include\unistd.h" />
+    <ClInclude Include="..\..\..\include\unixem\arpa\inet.h" />
+    <ClInclude Include="..\..\..\include\unixem\asm\atomic.h" />
+    <ClInclude Include="..\..\..\include\unixem\dirent.h" />
+    <ClInclude Include="..\..\..\include\unixem\dlfcn.h" />
+    <ClInclude Include="..\..\..\include\unixem\glob.h" />
+    <ClInclude Include="..\..\..\include\unixem\implicit_link.h" />
+    <ClInclude Include="..\..\..\include\unixem\internal\safestr.h" />
+    <ClInclude Include="..\..\..\include\unixem\internal\util.h" />
+    <ClInclude Include="..\..\..\include\unixem\internal\winsock.h" />
+    <ClInclude Include="..\..\..\include\unixem\netinet\in.h" />
+    <ClInclude Include="..\..\..\include\unixem\setenv.h" />
+    <ClInclude Include="..\..\..\include\unixem\sys\mman.h" />
+    <ClInclude Include="..\..\..\include\unixem\sys\resource.h" />
+    <ClInclude Include="..\..\..\include\unixem\sys\socket.h" />
+    <ClInclude Include="..\..\..\include\unixem\sys\time.h" />
+    <ClInclude Include="..\..\..\include\unixem\sys\uio.h" />
+    <ClInclude Include="..\..\..\include\unixem\time.h" />
+    <ClInclude Include="..\..\..\include\unixem\unistd.h" />
+    <ClInclude Include="..\..\..\include\unixem\unixem.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

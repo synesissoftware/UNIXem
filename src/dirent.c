@@ -4,11 +4,11 @@
  * Purpose: Definition of the opendir() API functions for the Win32 platform.
  *
  * Created: 19th October 2002
- * Updated: 12th August 2010
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2002-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,11 +43,11 @@
 # define _SYNSOFT_VER_C_DIRENT_MAJOR      3
 # define _SYNSOFT_VER_C_DIRENT_MINOR      0
 # define _SYNSOFT_VER_C_DIRENT_REVISION   3
-# define _SYNSOFT_VER_C_DIRENT_EDIT       38
+# define _SYNSOFT_VER_C_DIRENT_EDIT       39
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/dirent.h>
@@ -57,7 +57,7 @@
 #include <windows.h>
 
 /* /////////////////////////////////////////////////////////////////////////
- * Compiler differences
+ * compiler differences
  */
 
 #if defined(__BORLANDC__)
@@ -78,7 +78,7 @@
 #endif /* !UNIXEM_opendir_PROVIDED_BY_COMPILER */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Constants and definitions
+ * constants and definitions
  */
 
 #ifndef FILE_ATTRIBUTE_ERROR
@@ -86,7 +86,7 @@
 #endif /* FILE_ATTRIBUTE_ERROR */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Typedefs
+ * typedefs
  */
 
 struct dirent_dir
@@ -106,7 +106,7 @@ struct wdirent_dir
 };
 
 /* /////////////////////////////////////////////////////////////////////////
- * Helper functions
+ * helper functions
  */
 
 static HANDLE unixem__dirent__findfile_directory(

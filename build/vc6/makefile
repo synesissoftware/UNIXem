@@ -4,15 +4,10 @@
 # Purpose:	Makefile for the UNIXem project, for the Visual C++ 6.0
 #           compiler, on Win32
 #
-# Created:	15th Feburary 2005
-# Updated:	12th August 2010
+# Created:	15th February 2005
+# Updated:	5th October 2015
 #
 ############################################################################
-
-
-############################################################################
-# Environment check
-#
 
 
 ############################################################################
@@ -24,16 +19,17 @@
 COMP_TAG            =   vc6
 ARCH_TAG            =   
 OS_TAG				=   
-PROJ_TAG			=	unixem
+PROJ_TAG			=	unixem.core
 PROJ_VER_MAJOR		=	1
 PROJ_TAG_VER		=	$(PROJ_TAG).$(PROJ_VER_MAJOR)
+COMP_ARCH_OS_TAG	=	$(COMP_TAG)$(OS_TAG)$(ARCH_TAG)
 
 PROJ_MAKEFILE_NAME  =   makefile
 
 ########################################
 # Testing verbosity
 
-TEST_VERBOSITY		=	2
+TEST_VERBOSITY      =   2
 
 ########################################
 # Directories
@@ -214,22 +210,22 @@ LD_ARGS				=	-nologo $(COMMON_LIB)
 ############################################################################
 # Targets
 
-TARGET_LIB_MT_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).mt.debug.lib
-TARGET_LIB_UN_MT_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).mt.debug.lib
-TARGET_LIB_DLL_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).dll.debug.lib
-TARGET_LIB_UN_DLL_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).dll.debug.lib
-TARGET_LIB_DLL_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).dll.lib
-TARGET_LIB_UN_DLL_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).dll.lib
-TARGET_LIB_MT_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).mt.lib
-TARGET_LIB_UN_MT_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).mt.lib
-TARGET_LIB_ST_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).debug.lib
-TARGET_LIB_UN_ST_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).debug.lib
-TARGET_LIB_ST_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).lib
-TARGET_LIB_UN_ST_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).lib
+TARGET_LIB_MT_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).mt.debug.lib
+TARGET_LIB_UN_MT_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).mt.debug.lib
+TARGET_LIB_DLL_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).dll.debug.lib
+TARGET_LIB_UN_DLL_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).dll.debug.lib
+TARGET_LIB_DLL_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).dll.lib
+TARGET_LIB_UN_DLL_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).dll.lib
+TARGET_LIB_MT_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).mt.lib
+TARGET_LIB_UN_MT_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).mt.lib
+TARGET_LIB_ST_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).debug.lib
+TARGET_LIB_UN_ST_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).debug.lib
+TARGET_LIB_ST_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).lib
+TARGET_LIB_UN_ST_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).lib
 
-TARGET_PDB_MT_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).mt.debug.pdb
-TARGET_PDB_DLL_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).dll.debug.pdb
-TARGET_PDB_ST_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_TAG)$(OS_TAG)$(ARCH_TAG).debug.pdb
+TARGET_PDB_MT_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).mt.debug.pdb
+TARGET_PDB_DLL_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).dll.debug.pdb
+TARGET_PDB_ST_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).debug.pdb
 
 
 TARGETS = \
@@ -255,6 +251,7 @@ OBJ_PROJ_dirent__MT_D = $(PROJ_OBJ_DIR)\dirent.mt.debug.obj
 OBJ_PROJ_dlfcn__MT_D = $(PROJ_OBJ_DIR)\dlfcn.mt.debug.obj
 OBJ_PROJ_glob__MT_D = $(PROJ_OBJ_DIR)\glob.mt.debug.obj
 OBJ_PROJ_hostname__MT_D = $(PROJ_OBJ_DIR)\hostname.mt.debug.obj
+OBJ_PROJ_mktemp__MT_D = $(PROJ_OBJ_DIR)\mktemp.mt.debug.obj
 OBJ_PROJ_mmap__MT_D = $(PROJ_OBJ_DIR)\mmap.mt.debug.obj
 OBJ_PROJ_resource__MT_D = $(PROJ_OBJ_DIR)\resource.mt.debug.obj
 OBJ_PROJ_setenv__MT_D = $(PROJ_OBJ_DIR)\setenv.mt.debug.obj
@@ -269,6 +266,7 @@ OBJ_PROJ_MT_D = \
  $(OBJ_PROJ_dlfcn__MT_D)\
  $(OBJ_PROJ_glob__MT_D)\
  $(OBJ_PROJ_hostname__MT_D)\
+ $(OBJ_PROJ_mktemp__MT_D)\
  $(OBJ_PROJ_mmap__MT_D)\
  $(OBJ_PROJ_resource__MT_D)\
  $(OBJ_PROJ_setenv__MT_D)\
@@ -283,6 +281,7 @@ OBJ_PROJ_dirent__DLL_D = $(PROJ_OBJ_DIR)\dirent.dll.debug.obj
 OBJ_PROJ_dlfcn__DLL_D = $(PROJ_OBJ_DIR)\dlfcn.dll.debug.obj
 OBJ_PROJ_glob__DLL_D = $(PROJ_OBJ_DIR)\glob.dll.debug.obj
 OBJ_PROJ_hostname__DLL_D = $(PROJ_OBJ_DIR)\hostname.dll.debug.obj
+OBJ_PROJ_mktemp__DLL_D = $(PROJ_OBJ_DIR)\mktemp.dll.debug.obj
 OBJ_PROJ_mmap__DLL_D = $(PROJ_OBJ_DIR)\mmap.dll.debug.obj
 OBJ_PROJ_resource__DLL_D = $(PROJ_OBJ_DIR)\resource.dll.debug.obj
 OBJ_PROJ_setenv__DLL_D = $(PROJ_OBJ_DIR)\setenv.dll.debug.obj
@@ -297,6 +296,7 @@ OBJ_PROJ_DLL_D = \
  $(OBJ_PROJ_dlfcn__DLL_D)\
  $(OBJ_PROJ_glob__DLL_D)\
  $(OBJ_PROJ_hostname__DLL_D)\
+ $(OBJ_PROJ_mktemp__DLL_D)\
  $(OBJ_PROJ_mmap__DLL_D)\
  $(OBJ_PROJ_resource__DLL_D)\
  $(OBJ_PROJ_setenv__DLL_D)\
@@ -311,6 +311,7 @@ OBJ_PROJ_dirent__DLL_R = $(PROJ_OBJ_DIR)\dirent.dll.obj
 OBJ_PROJ_dlfcn__DLL_R = $(PROJ_OBJ_DIR)\dlfcn.dll.obj
 OBJ_PROJ_glob__DLL_R = $(PROJ_OBJ_DIR)\glob.dll.obj
 OBJ_PROJ_hostname__DLL_R = $(PROJ_OBJ_DIR)\hostname.dll.obj
+OBJ_PROJ_mktemp__DLL_R = $(PROJ_OBJ_DIR)\mktemp.dll.obj
 OBJ_PROJ_mmap__DLL_R = $(PROJ_OBJ_DIR)\mmap.dll.obj
 OBJ_PROJ_resource__DLL_R = $(PROJ_OBJ_DIR)\resource.dll.obj
 OBJ_PROJ_setenv__DLL_R = $(PROJ_OBJ_DIR)\setenv.dll.obj
@@ -325,6 +326,7 @@ OBJ_PROJ_DLL_R = \
  $(OBJ_PROJ_dlfcn__DLL_R)\
  $(OBJ_PROJ_glob__DLL_R)\
  $(OBJ_PROJ_hostname__DLL_R)\
+ $(OBJ_PROJ_mktemp__DLL_R)\
  $(OBJ_PROJ_mmap__DLL_R)\
  $(OBJ_PROJ_resource__DLL_R)\
  $(OBJ_PROJ_setenv__DLL_R)\
@@ -339,6 +341,7 @@ OBJ_PROJ_dirent__MT_R = $(PROJ_OBJ_DIR)\dirent.mt.obj
 OBJ_PROJ_dlfcn__MT_R = $(PROJ_OBJ_DIR)\dlfcn.mt.obj
 OBJ_PROJ_glob__MT_R = $(PROJ_OBJ_DIR)\glob.mt.obj
 OBJ_PROJ_hostname__MT_R = $(PROJ_OBJ_DIR)\hostname.mt.obj
+OBJ_PROJ_mktemp__MT_R = $(PROJ_OBJ_DIR)\mktemp.mt.obj
 OBJ_PROJ_mmap__MT_R = $(PROJ_OBJ_DIR)\mmap.mt.obj
 OBJ_PROJ_resource__MT_R = $(PROJ_OBJ_DIR)\resource.mt.obj
 OBJ_PROJ_setenv__MT_R = $(PROJ_OBJ_DIR)\setenv.mt.obj
@@ -353,6 +356,7 @@ OBJ_PROJ_MT_R = \
  $(OBJ_PROJ_dlfcn__MT_R)\
  $(OBJ_PROJ_glob__MT_R)\
  $(OBJ_PROJ_hostname__MT_R)\
+ $(OBJ_PROJ_mktemp__MT_R)\
  $(OBJ_PROJ_mmap__MT_R)\
  $(OBJ_PROJ_resource__MT_R)\
  $(OBJ_PROJ_setenv__MT_R)\
@@ -367,6 +371,7 @@ OBJ_PROJ_dirent__ST_D = $(PROJ_OBJ_DIR)\dirent.debug.obj
 OBJ_PROJ_dlfcn__ST_D = $(PROJ_OBJ_DIR)\dlfcn.debug.obj
 OBJ_PROJ_glob__ST_D = $(PROJ_OBJ_DIR)\glob.debug.obj
 OBJ_PROJ_hostname__ST_D = $(PROJ_OBJ_DIR)\hostname.debug.obj
+OBJ_PROJ_mktemp__ST_D = $(PROJ_OBJ_DIR)\mktemp.debug.obj
 OBJ_PROJ_mmap__ST_D = $(PROJ_OBJ_DIR)\mmap.debug.obj
 OBJ_PROJ_resource__ST_D = $(PROJ_OBJ_DIR)\resource.debug.obj
 OBJ_PROJ_setenv__ST_D = $(PROJ_OBJ_DIR)\setenv.debug.obj
@@ -381,6 +386,7 @@ OBJ_PROJ_ST_D = \
  $(OBJ_PROJ_dlfcn__ST_D)\
  $(OBJ_PROJ_glob__ST_D)\
  $(OBJ_PROJ_hostname__ST_D)\
+ $(OBJ_PROJ_mktemp__ST_D)\
  $(OBJ_PROJ_mmap__ST_D)\
  $(OBJ_PROJ_resource__ST_D)\
  $(OBJ_PROJ_setenv__ST_D)\
@@ -395,6 +401,7 @@ OBJ_PROJ_dirent__ST_R = $(PROJ_OBJ_DIR)\dirent.obj
 OBJ_PROJ_dlfcn__ST_R = $(PROJ_OBJ_DIR)\dlfcn.obj
 OBJ_PROJ_glob__ST_R = $(PROJ_OBJ_DIR)\glob.obj
 OBJ_PROJ_hostname__ST_R = $(PROJ_OBJ_DIR)\hostname.obj
+OBJ_PROJ_mktemp__ST_R = $(PROJ_OBJ_DIR)\mktemp.obj
 OBJ_PROJ_mmap__ST_R = $(PROJ_OBJ_DIR)\mmap.obj
 OBJ_PROJ_resource__ST_R = $(PROJ_OBJ_DIR)\resource.obj
 OBJ_PROJ_setenv__ST_R = $(PROJ_OBJ_DIR)\setenv.obj
@@ -409,6 +416,7 @@ OBJ_PROJ_ST_R = \
  $(OBJ_PROJ_dlfcn__ST_R)\
  $(OBJ_PROJ_glob__ST_R)\
  $(OBJ_PROJ_hostname__ST_R)\
+ $(OBJ_PROJ_mktemp__ST_R)\
  $(OBJ_PROJ_mmap__ST_R)\
  $(OBJ_PROJ_resource__ST_R)\
  $(OBJ_PROJ_setenv__ST_R)\
@@ -512,6 +520,8 @@ $(OBJ_PROJ_glob__MT_D):	$(PROJ_SRC_DIR)\glob.c $(PROJ_INCLUDE_DIR)\glob.h makefi
 	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\glob.c
 $(OBJ_PROJ_hostname__MT_D):	$(PROJ_SRC_DIR)\hostname.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
 	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\hostname.c
+$(OBJ_PROJ_mktemp__MT_D):	$(PROJ_SRC_DIR)\mktemp.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
+	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\mktemp.c
 $(OBJ_PROJ_mmap__MT_D):	$(PROJ_SRC_DIR)\mmap.c $(PROJ_INCLUDE_DIR)\sys\mman.h makefile
 	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\mmap.c
 $(OBJ_PROJ_resource__MT_D):	$(PROJ_SRC_DIR)\resource.c $(PROJ_INCLUDE_DIR)\sys\resource.h makefile
@@ -546,6 +556,8 @@ $(OBJ_PROJ_glob__DLL_D):	$(PROJ_SRC_DIR)\glob.c $(PROJ_INCLUDE_DIR)\glob.h makef
 	$(CC) $(CC_ARGS_DLL_D) -Fo$@ $(PROJ_SRC_DIR)\glob.c
 $(OBJ_PROJ_hostname__DLL_D):	$(PROJ_SRC_DIR)\hostname.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
 	$(CC) $(CC_ARGS_DLL_D) -Fo$@ $(PROJ_SRC_DIR)\hostname.c
+$(OBJ_PROJ_mktemp__DLL_D):	$(PROJ_SRC_DIR)\mktemp.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
+	$(CC) $(CC_ARGS_DLL_D) -Fo$@ $(PROJ_SRC_DIR)\mktemp.c
 $(OBJ_PROJ_mmap__DLL_D):	$(PROJ_SRC_DIR)\mmap.c $(PROJ_INCLUDE_DIR)\sys\mman.h makefile
 	$(CC) $(CC_ARGS_DLL_D) -Fo$@ $(PROJ_SRC_DIR)\mmap.c
 $(OBJ_PROJ_resource__DLL_D):	$(PROJ_SRC_DIR)\resource.c $(PROJ_INCLUDE_DIR)\sys\resource.h makefile
@@ -580,6 +592,8 @@ $(OBJ_PROJ_glob__DLL_R):	$(PROJ_SRC_DIR)\glob.c $(PROJ_INCLUDE_DIR)\glob.h makef
 	$(CC) $(CC_ARGS_DLL_R) -Fo$@ $(PROJ_SRC_DIR)\glob.c
 $(OBJ_PROJ_hostname__DLL_R):	$(PROJ_SRC_DIR)\hostname.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
 	$(CC) $(CC_ARGS_DLL_R) -Fo$@ $(PROJ_SRC_DIR)\hostname.c
+$(OBJ_PROJ_mktemp__DLL_R):	$(PROJ_SRC_DIR)\mktemp.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
+	$(CC) $(CC_ARGS_DLL_R) -Fo$@ $(PROJ_SRC_DIR)\mktemp.c
 $(OBJ_PROJ_mmap__DLL_R):	$(PROJ_SRC_DIR)\mmap.c $(PROJ_INCLUDE_DIR)\sys\mman.h makefile
 	$(CC) $(CC_ARGS_DLL_R) -Fo$@ $(PROJ_SRC_DIR)\mmap.c
 $(OBJ_PROJ_resource__DLL_R):	$(PROJ_SRC_DIR)\resource.c $(PROJ_INCLUDE_DIR)\sys\resource.h makefile
@@ -614,6 +628,8 @@ $(OBJ_PROJ_glob__MT_R):	$(PROJ_SRC_DIR)\glob.c $(PROJ_INCLUDE_DIR)\glob.h makefi
 	$(CC) $(CC_ARGS_MT_R) -Fo$@ $(PROJ_SRC_DIR)\glob.c
 $(OBJ_PROJ_hostname__MT_R):	$(PROJ_SRC_DIR)\hostname.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
 	$(CC) $(CC_ARGS_MT_R) -Fo$@ $(PROJ_SRC_DIR)\hostname.c
+$(OBJ_PROJ_mktemp__MT_R):	$(PROJ_SRC_DIR)\mktemp.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
+	$(CC) $(CC_ARGS_MT_R) -Fo$@ $(PROJ_SRC_DIR)\mktemp.c
 $(OBJ_PROJ_mmap__MT_R):	$(PROJ_SRC_DIR)\mmap.c $(PROJ_INCLUDE_DIR)\sys\mman.h makefile
 	$(CC) $(CC_ARGS_MT_R) -Fo$@ $(PROJ_SRC_DIR)\mmap.c
 $(OBJ_PROJ_resource__MT_R):	$(PROJ_SRC_DIR)\resource.c $(PROJ_INCLUDE_DIR)\sys\resource.h makefile
@@ -648,6 +664,8 @@ $(OBJ_PROJ_glob__ST_D):	$(PROJ_SRC_DIR)\glob.c $(PROJ_INCLUDE_DIR)\glob.h makefi
 	$(CC) $(CC_ARGS_ST_D) -Fo$@ $(PROJ_SRC_DIR)\glob.c
 $(OBJ_PROJ_hostname__ST_D):	$(PROJ_SRC_DIR)\hostname.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
 	$(CC) $(CC_ARGS_ST_D) -Fo$@ $(PROJ_SRC_DIR)\hostname.c
+$(OBJ_PROJ_mktemp__ST_D):	$(PROJ_SRC_DIR)\mktemp.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
+	$(CC) $(CC_ARGS_ST_D) -Fo$@ $(PROJ_SRC_DIR)\mktemp.c
 $(OBJ_PROJ_mmap__ST_D):	$(PROJ_SRC_DIR)\mmap.c $(PROJ_INCLUDE_DIR)\sys\mman.h makefile
 	$(CC) $(CC_ARGS_ST_D) -Fo$@ $(PROJ_SRC_DIR)\mmap.c
 $(OBJ_PROJ_resource__ST_D):	$(PROJ_SRC_DIR)\resource.c $(PROJ_INCLUDE_DIR)\sys\resource.h makefile
@@ -682,6 +700,8 @@ $(OBJ_PROJ_glob__ST_R):	$(PROJ_SRC_DIR)\glob.c $(PROJ_INCLUDE_DIR)\glob.h makefi
 	$(CC) $(CC_ARGS_ST_R) -Fo$@ $(PROJ_SRC_DIR)\glob.c
 $(OBJ_PROJ_hostname__ST_R):	$(PROJ_SRC_DIR)\hostname.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
 	$(CC) $(CC_ARGS_ST_R) -Fo$@ $(PROJ_SRC_DIR)\hostname.c
+$(OBJ_PROJ_mktemp__ST_R):	$(PROJ_SRC_DIR)\mktemp.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
+	$(CC) $(CC_ARGS_ST_R) -Fo$@ $(PROJ_SRC_DIR)\mktemp.c
 $(OBJ_PROJ_mmap__ST_R):	$(PROJ_SRC_DIR)\mmap.c $(PROJ_INCLUDE_DIR)\sys\mman.h makefile
 	$(CC) $(CC_ARGS_ST_R) -Fo$@ $(PROJ_SRC_DIR)\mmap.c
 $(OBJ_PROJ_resource__ST_R):	$(PROJ_SRC_DIR)\resource.c $(PROJ_INCLUDE_DIR)\sys\resource.h makefile

@@ -4,11 +4,11 @@
  * Purpose: Utility functions for UNIXem.
  *
  * Created: 2nd September 2005
- * Updated: 12th August 2010
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2005-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,13 +41,13 @@
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_INTERNAL_C_UTIL_MAJOR     2
-# define _SYNSOFT_VER_INTERNAL_C_UTIL_MINOR     0
+# define _SYNSOFT_VER_INTERNAL_C_UTIL_MINOR     1
 # define _SYNSOFT_VER_INTERNAL_C_UTIL_REVISION  1
-# define _SYNSOFT_VER_INTERNAL_C_UTIL_EDIT      10
+# define _SYNSOFT_VER_INTERNAL_C_UTIL_EDIT      12
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/internal/util.h>
@@ -60,18 +60,29 @@
 #include <windows.h>
 
 /* /////////////////////////////////////////////////////////////////////////
- * Typedefs
+ * typedefs
  */
 
+#ifndef EZERO
+# define EZERO                                  (0)
+#endif
 #if !defined(ECURDIR)
-# define ECURDIR        EACCES
+# define ECURDIR                                EACCES
 #endif /* !ECURDIR */
 #if !defined(ENOSYS)
-# define ENOSYS         EPERM
+# define ENOSYS                                 EPERM
 #endif /* !ENOSYS */
 
+#ifndef ERROR_FILE_TOO_LARGE
+# define ERROR_FILE_TOO_LARGE                   (223)
+#endif
+#ifndef ERROR_DISK_TOO_FRAGMENTED
+# define ERROR_DISK_TOO_FRAGMENTED              (302)
+#endif
+
+
 /* /////////////////////////////////////////////////////////////////////////
- * Feature support
+ * feature support
  */
 
 #if defined(__BORLANDC__)
@@ -118,8 +129,10 @@ int unixem_internal_errno_from_Win32(unsigned long w32Err)
         int             eerrno;
     };
 
-    static const struct errmap_t    errmap[] = 
+    static const struct errmap_t    errmap[] =
     {
+        /*   1 */       {   ERROR_SUCCESS                   ,   EZERO           }
+                    ,
         /*   1 */       {   ERROR_INVALID_FUNCTION          ,   EINVAL          }
         /*   2 */   ,   {   ERROR_FILE_NOT_FOUND            ,   ENOENT          }
         /*   3 */   ,   {   ERROR_PATH_NOT_FOUND            ,   ENOENT          }
@@ -322,9 +335,13 @@ int unixem_internal_errno_from_Win32(unsigned long w32Err)
 
         /* 206 */   ,   {   ERROR_FILENAME_EXCED_RANGE      ,   ENAMETOOLONG    }
 
+        /* 223 */   ,   {   ERROR_FILE_TOO_LARGE            ,   EFBIG           }
+
         /* 215 */   ,   {   ERROR_NESTING_NOT_ALLOWED       ,   EAGAIN          }
 
         /* 267 */   ,   {   ERROR_DIRECTORY                 ,   ENOTDIR         }
+
+        /* 302 */   ,   {   ERROR_DISK_TOO_FRAGMENTED       ,   ENOSPC          }
 
 #ifdef EINPROGRESS
         /* 997 */   ,   {   ERROR_IO_PENDING                ,   EINPROGRESS     }
@@ -347,7 +364,7 @@ int unixem_internal_errno_from_Win32(unsigned long w32Err)
 
     assert(!"Unrecognised value");
 
-    return EINVAL;
+    return -1;
 }
 
 char unixem_internal_get_current_drive(void)

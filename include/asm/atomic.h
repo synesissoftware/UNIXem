@@ -5,11 +5,11 @@
  *          Win32 platform.
  *
  * Created: 21st November 2003
- * Updated: 12th August 2010
+ * Updated: 10th January 2017
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2003-2010, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,11 +46,11 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_MAJOR      3
 # define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_MINOR      0
 # define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_REVISION   1
-# define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_EDIT       18
+# define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_EDIT       20
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
 #include <unixem/asm/atomic.h>
@@ -58,11 +58,11 @@
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifndef _WIN32
-# error This file is only currently defined for compilation on Win32 systems
+# error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Typedefs
+ * typedefs
  */
 
 typedef unixem_atomic_t atomic_t;

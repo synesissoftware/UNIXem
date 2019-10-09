@@ -1,7 +1,7 @@
 UNIXem - Changes
 ================
 
-Updated:    13th August 2010
+Updated:    2nd January 2017
 
 
     ************************************
@@ -13,6 +13,323 @@ Updated:    13th August 2010
     *  *  means a general bullet-point *
     *                                  *
     ************************************
+
+
+2nd January 2017 - 1.11.2
+=========================
+
+Summary:
+--------
+
+ * fixed name of built library prefix from "unixem.core.1.*" to "unixem.1.core.*"
+ * moved build/vc6/unixem.dsp => projects/core/vc6/unixem.core.dsp
+ * added VC++10 project and props files
+
+Details:
+--------
+
+General:
+
+ ~ include/asm/atomic.h
+ ~ include/dirent.h
+ ~ include/dlfcn.h
+ ~ include/glob.h
+ ~ include/sys/mman.h
+ ~ include/sys/resource.h
+ ~ include/sys/time.h
+ ~ include/sys/uio.h
+ ~ include/unistd.h
+ ~ include/unixem/asm/atomic.h
+ ~ include/unixem/dirent.h
+ ~ include/unixem/dlfcn.h
+ ~ include/unixem/glob.h
+ ~ include/unixem/internal/safestr.h
+ ~ include/unixem/internal/util.h
+ ~ include/unixem/internal/winsock.h
+ ~ include/unixem/setenv.h
+ ~ include/unixem/sys/mman.h
+ ~ include/unixem/sys/resource.h
+ ~ include/unixem/sys/time.h
+ ~ include/unixem/sys/uio.h
+ ~ include/unixem/time.h
+ ~ include/unixem/unistd.h
+ ~ include/unixem/unixem.h
+   ~ documentation improvements
+
+ ~ include/unixem/implicit_link.h
+   ~ fixed name of built library prefix from "unixem.core.1.*" to "unixem.1.core.*"
+
+ ~ src/mktemp.c:
+   ~ limiting the number of access failures (to 100)
+
+Distribution:
+
+Makefiles / Project-files:
+
+ ~ unixem.vc6.dsw:
+ - build/vc6/unixem.dsp:
+ + projects/core/vc6/unixem.core.dsp:
+   ~ build/vc6/unixem.dsp => projects/core/vc6/unixem.core.dsp
+
+ + unixem.vc10.sln
+ + projects/core/vc10/unixem.core.vcxproj
+ + projects/core/vc10/unixem.core.vcxproj.filters
+ + projects/vcprops/unixem.common.props
+
+Examples:
+
+Test:
+
+Test.Unit:
+
+Test.Component:
+
+Test.Scratch:
+
+Depends on:
+
+
+
+7th October 2015 - 1.11.1
+=========================
+
+Summary:
+--------
+
+ * built library name prefix changes from "unixem" to "unixem.core"
+ * added mkdtemp()
+ * added mkstemp()
+ * added VC++14 support
+
+Details:
+--------
+
+General:
+
+ ~ include/unistd.h:
+   + added mkdtemp() (which is a function-like macro that calls unixem_mkdtemp())
+   + added mkstemp() (which is a function-like macro that calls unixem_mkstemp())
+
+ ~ include/unixem/unistd.h:
+ ~ src/mktemp.c:
+   + added unixem_mkdtemp()
+   + added unixem_mkstemp()
+
+ ~ include/unixem/implicit_link.h:
+   ~ built library name prefix changes from "unixem" to "unixem.core"
+   + support for VC++14
+
+Distribution:
+
+Makefiles / Project-files:
+
+ ~ build/gcc295/makefile:
+ ~ build/gcc32/makefile:
+ ~ build/gcc33/makefile:
+ ~ build/gcc34/makefile:
+ ~ build/ow15/makefile:
+ ~ build/ow16/makefile:
+ ~ build/ow17/makefile:
+ ~ build/vc10.x64/makefile:
+ ~ build/vc10/makefile:
+ ~ build/vc11.x64/makefile:
+ ~ build/vc11/makefile:
+ ~ build/vc12.x64/makefile:
+ ~ build/vc12/makefile:
+ ~ build/vc6/makefile:
+ ~ build/vc7/makefile:
+ ~ build/vc8.x64/makefile:
+ ~ build/vc9.x64/makefile:
+   ~ built library name prefix changes from "unixem" to "unixem.core"
+   + added mkdtemp()
+   + added mkstemp()
+   ~ canonicalising structure
+
+ + build/vc14.x64/makefile:
+ + build/vc14/makefile:
+
+Examples:
+
+Test:
+
+Test.Unit:
+
+Test.Component:
+
+Test.Scratch:
+
+Depends on:
+
+
+
+25th September 2015 - 1.10.2
+============================
+
+Summary:
+--------
+
+ * minor fix to unixem_gettimeofday()
+
+Details:
+--------
+
+General:
+
+ ~ src/time.c:
+   ~ handling possible failure of SystemTimeToFileTime() within unixem_gettimeofday()
+
+Distribution:
+
+Makefiles / Project-files:
+
+Examples:
+
+Test:
+
+Test.Unit:
+
+Test.Component:
+
+Test.Scratch:
+
+Depends on:
+
+
+
+30th July 2015 - 1.10.1
+=======================
+
+Summary:
+--------
+
+ * added unixem_timegm() / timegm()
+ * added VC++11 and VC++12 support
+
+Details:
+--------
+
+General:
+
+ + include/unixem/time.h:
+ ~ src/time.c:
+   + added unixem_timegm()
+   + added timegm()
+
+ ~ include/unixem/internal/time.h:
+   + added utility function unixem_internal_yearIsLeap()
+
+Distribution:
+
+Makefiles / Project-files:
+
+ + build/vc11.x64/makefile:
+ + build/vc11/makefile:
+ + build/vc12.x64/makefile:
+ + build/vc12/makefile:
+
+Examples:
+
+Test:
+
+Test.Unit:
+
+Test.Component:
+
+Test.Scratch:
+
+Depends on:
+
+
+
+16th June 2012 - 1.9.3
+======================
+
+Summary:
+--------
+
+ * GLOB_ONLYFILE => GLOB_ONLYREG
+ * glob() now preserves dots directories when included in leaf-most pattern part
+ * fix to definition of WIN32 when using WinSock
+
+Details:
+--------
+
+General:
+
+ ~ include/glob.h:
+ ~ include/unixem/unixem.h:
+    ~ GLOB_ONLYFILE => GLOB_ONLYREG
+
+ ~ include/unixem/internal/winsock.h:
+   ~ now undefines WIN32 if it was not previously defined and was defined by the inclusion of winsock.h
+
+ - include/sys/mman.h:
+   - removed vestigial file
+
+ ~ src/glob.c:
+    ~ now preserves dots directories, if either is the leaf-most pattern part
+    ~ UNIXEM_GLOB_ONLYFILE => UNIXEM_GLOB_ONLYREG
+
+Distribution:
+
+Makefiles / Project-files:
+
+Examples:
+
+Test:
+
+Test.Unit:
+
+Test.Component:
+
+Test.Scratch:
+
+Depends on:
+
+
+
+4th February 2011 - 1.9.2
+=========================
+
+Summary:
+--------
+
+ * removed include/sys/select.h (which was vestigial)
+ * various tidyings
+ * handling EZERO, ERROR_FILE_TOO_LARGE, ERROR_DISK_TOO_FRAGMENTED (in unixem_internal_errno_from_Win32())
+
+Details:
+--------
+
+General:
+
+ ~ include/glob.h:
+ ~ include/sys/mman.h:
+ + include/unixem/unixem.h:
+   ~ various tidyings
+
+ - include/sys/mman.h:
+   - removed vestigial file
+
+ ~ src/internal/util.c:
+    ~ unixem_internal_errno_from_Win32() default (unmatched) return now -1, and handles EZERO, ERROR_FILE_TOO_LARGE, ERROR_DISK_TOO_FRAGMENTED
+
+Distribution:
+
+Makefiles / Project-files:
+
+Examples:
+
+Test:
+
+Test.Unit:
+
+Test.Component:
+
+Test.Scratch:
+
+Depends on:
+
 
 
 12th August 2010 - 1.9.1
