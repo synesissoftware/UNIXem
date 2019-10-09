@@ -1,17 +1,17 @@
 UNIXem - Known Issues
 =====================
 
-Updated:    2nd January 2017
+Updated:    9th October 2019
 
 
 
-UNIXem 1.11 Known Issues:
+UNIXem 1.12 Known Issues:
 -------------------------
 
  <none>
 
 
-UNIXem 1.11 Suspected Issues:
+UNIXem 1.12 Suspected Issues:
 -----------------------------
 
  <none>

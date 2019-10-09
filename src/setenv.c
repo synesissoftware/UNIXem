@@ -4,11 +4,11 @@
  * Purpose: Implementation of the setenv() and unsetenv() functions.
  *
  * Created: 9th December 2005
- * Updated: 10th January 2017
+ * Updated: 9th October 2019
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,8 +42,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_SETENV_MAJOR    1
 # define _SYNSOFT_VER_C_SETENV_MINOR    0
-# define _SYNSOFT_VER_C_SETENV_REVISION 5
-# define _SYNSOFT_VER_C_SETENV_EDIT     8
+# define _SYNSOFT_VER_C_SETENV_REVISION 7
+# define _SYNSOFT_VER_C_SETENV_EDIT     10
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -96,7 +96,7 @@ static int unixem__setenv__putenv_(
         size_t  valueLen    =   strlen(value);
         size_t  required    =   1 + nameLen + 1 + valueLen;
         char    buffer_[101];
-        char    *buffer     =   (NUM_ELEMENTS(buffer_) < required)
+        char*   buffer      =   (NUM_ELEMENTS(buffer_) < required)
                                     ? (char*)malloc(required * sizeof(char))
                                     : &buffer_[0];
 
@@ -108,18 +108,23 @@ static int unixem__setenv__putenv_(
         }
         else
         {
+            size_t const cchBuffer = required;
             int r;
 
 #ifdef UNIXEM_USING_SAFE_STR_FUNCTIONS
-            (void)strncpy_s(&buffer[0], NUM_ELEMENTS(buffer), name, nameLen);
+
+            (void)strncpy_s(&buffer[0], cchBuffer, name, nameLen);
 #else /* ? UNIXEM_USING_SAFE_STR_FUNCTIONS */
+
             (void)strncpy(&buffer[0], name, nameLen);
 #endif /* UNIXEM_USING_SAFE_STR_FUNCTIONS */
             buffer[nameLen] = '=';
             buffer[nameLen + 1] = '\0';
 #ifdef UNIXEM_USING_SAFE_STR_FUNCTIONS
-            (void)strncpy_s(&buffer[nameLen + 1], NUM_ELEMENTS(buffer) - (nameLen + 1), value, valueLen);
+
+            (void)strncpy_s(&buffer[nameLen + 1], cchBuffer - (nameLen + 1), value, valueLen);
 #else /* ? UNIXEM_USING_SAFE_STR_FUNCTIONS */
+
             (void)strncpy(&buffer[nameLen + 1], value, valueLen);
 #endif /* UNIXEM_USING_SAFE_STR_FUNCTIONS */
             buffer[nameLen + 1 + valueLen] = '\0';
@@ -151,7 +156,7 @@ static int unixem__setenv__putenv(
  * API functions
  */
 
-int setenv(
+int unixem_setenv(
     const char* name
 ,   const char* value
 ,   int         bOverwrite
@@ -179,7 +184,7 @@ int setenv(
     return unixem__setenv__putenv(name, value);
 }
 
-void unsetenv(const char *name)
+void unixem_unsetenv(const char *name)
 {
     assert(NULL != name);
 
@@ -187,3 +192,4 @@ void unsetenv(const char *name)
 }
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

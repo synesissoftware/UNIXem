@@ -4,13 +4,13 @@
  * Purpose:     Implementation file for the test.scratch.getrusage project.
  *
  * Created:     9th June 2006
- * Updated:     13th May 2008
+ * Updated:     9th October 2019
  *
  * Status:      Wizard-generated
  *
  * License:     (Licensed under the Synesis Software Open License)
  *
- *              Copyright (c) 2006-2008, Synesis Software Pty Ltd.
+ *              Copyright (c) 2006-2019, Synesis Software Pty Ltd.
  *              All rights reserved.
  *
  *              www:        http://www.synesis.com.au/software
@@ -42,11 +42,11 @@
  * ////////////////////////////////////////////////////////////////////////// */
 
 
-/* UNIXem Header Files */
+/* UNIXem header files */
 #include <sys/resource.h>
 #include <unixem/internal/safestr.h>
 
-/* Standard C Header Files */
+/* Standard C header files */
 #include <stdio.h>
 #include <stdlib.h>
 

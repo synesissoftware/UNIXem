@@ -4,13 +4,13 @@
  * Purpose:     Implementation file for the test.scratch.setenv project.
  *
  * Created:     9th December 2005
- * Updated:     10th January 2017
+ * Updated:     9th October 2019
  *
  * Status:      Wizard-generated
  *
  * License:     (Licensed under the Synesis Software Open License)
  *
- *              Copyright 1999-2017, Synesis Software Pty Ltd.
+ *              Copyright 1999-2019, Synesis Software Pty Ltd.
  *              All rights reserved.
  *
  *              www:        http://www.synesis.com.au/software
@@ -41,16 +41,16 @@
  *
  * ////////////////////////////////////////////////////////////////////////// */
 
-/* STLSoft Header Files */
-#include <stlsoft/stlsoft.h>
-
-
-/* Standard C Header Files */
-#include <stdio.h>
-#include <stdlib.h>
 
 #include <unixem/setenv.h>
 
+/* STLSoft header files */
+#include <stlsoft/stlsoft.h>
+
+
+/* Standard C header files */
+#include <stdio.h>
+#include <stdlib.h>
 
 #if defined(_MSC_VER) && \
     defined(_DEBUG)
@@ -58,12 +58,15 @@
 #endif /* _MSC_VER) && _DEBUG */
 
 /* /////////////////////////////////////////////////////////////////////////////
- * typedefs
+ * compatibility
  */
 
-#if 0
-typedef std::string     string_t;
-#endif /* 0 */
+#define setenv                unixem_setenv
+#define unsetenv              unixem_unsetenv
+
+/* /////////////////////////////////////////////////////////////////////////////
+ * typedefs
+ */
 
 /* /////////////////////////////////////////////////////////////////////////////
  * forward declarations
@@ -111,5 +114,5 @@ int main(int argc, char *argv[])
     return EXIT_SUCCESS;
 }
 
+/* ///////////////////////////// end of file //////////////////////////// */
 
-/* ////////////////////////////////////////////////////////////////////////// */

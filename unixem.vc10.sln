@@ -1,7 +1,49 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{A3186CF3-91C0-446F-901D-A2EA59F107D1}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unixem.core", "projects\core\vc10\unixem.core.vcxproj", "{757A9DA8-0F86-45DA-A020-599B0C558F17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC07198C-29D6-4A6D-9F0C-CA7B47B4B896}"
+	ProjectSection(SolutionItems) = preProject
+		projects\vcprops\unixem.common.props = projects\vcprops\unixem.common.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dist-src", "dist-src", "{35CBFAF2-6C52-4B15-B52F-DAC9A29693B5}"
+	ProjectSection(SolutionItems) = preProject
+		AUTHORS.txt = AUTHORS.txt
+		CHANGES.txt = CHANGES.txt
+		FAQ.txt = FAQ.txt
+		HISTORY.txt = HISTORY.txt
+		INSTALL.txt = INSTALL.txt
+		KNOWN_ISSUES.txt = KNOWN_ISSUES.txt
+		LICENSE.txt = LICENSE.txt
+		NEWS.txt = NEWS.txt
+		README.md = README.md
+		README.txt = README.txt
+		TODO.txt = TODO.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "projects", "projects", "{DF2D1E2B-D2BD-4658-B1A4-4650F7E6FE26}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "vcprops", "vcprops", "{BBF10CE7-568E-4ABB-ADA4-07370E1440F7}"
+	ProjectSection(SolutionItems) = preProject
+		projects\vcprops\unixem.common.props = projects\vcprops\unixem.common.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8657DBFF-C602-4DD4-B2C5-F74CD99D9741}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scratch", "scratch", "{A58774CD-C030-4D16-B6AB-33FE13040853}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test.scratch.setenv", "test\scratch\test.scratch.setenv\vc10\test.scratch.setenv.vcxproj", "{DC2C05B9-AF46-4732-939E-2F20F253B819}"
+	ProjectSection(ProjectDependencies) = postProject
+		{757A9DA8-0F86-45DA-A020-599B0C558F17} = {757A9DA8-0F86-45DA-A020-599B0C558F17}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "component", "component", "{9367A254-4888-4F0D-B707-28D0CE4FDD5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unit", "unit", "{E13C595B-299C-46DD-8236-E73A7EDFABD5}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test.unit.unistd.getpid", "test\unit\test.unit.unistd.getpid\vc10\test.unit.unistd.getpid.vcxproj", "{01325CFA-41C2-4926-AA09-5E48478DFCF6}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -36,6 +78,22 @@ Global
 		{757A9DA8-0F86-45DA-A020-599B0C558F17}.Release Multithreaded|Win32.Build.0 = Release Multithreaded|Win32
 		{757A9DA8-0F86-45DA-A020-599B0C558F17}.Release Multithreaded|x64.ActiveCfg = Release Multithreaded|x64
 		{757A9DA8-0F86-45DA-A020-599B0C558F17}.Release Multithreaded|x64.Build.0 = Release Multithreaded|x64
+		{DC2C05B9-AF46-4732-939E-2F20F253B819}.Debug Multithreaded DLL|Win32.ActiveCfg = Debug Multithreaded DLL|Win32
+		{DC2C05B9-AF46-4732-939E-2F20F253B819}.Debug Multithreaded DLL|Win32.Build.0 = Debug Multithreaded DLL|Win32
+		{DC2C05B9-AF46-4732-939E-2F20F253B819}.Debug Multithreaded DLL|x64.ActiveCfg = Debug Multithreaded DLL|x64
+		{DC2C05B9-AF46-4732-939E-2F20F253B819}.Debug Multithreaded DLL|x64.Build.0 = Debug Multithreaded DLL|x64
+		{DC2C05B9-AF46-4732-939E-2F20F253B819}.Debug Multithreaded|Win32.ActiveCfg = Debug Multithreaded|Win32
+		{DC2C05B9-AF46-4732-939E-2F20F253B819}.Debug Multithreaded|Win32.Build.0 = Debug Multithreaded|Win32
+		{DC2C05B9-AF46-4732-939E-2F20F253B819}.Debug Multithreaded|x64.ActiveCfg = Debug Multithreaded|x64
+		{DC2C05B9-AF46-4732-939E-2F20F253B819}.Debug Multithreaded|x64.Build.0 = Debug Multithreaded|x64
+		{DC2C05B9-AF46-4732-939E-2F20F253B819}.Release Multithreaded DLL|Win32.ActiveCfg = Release Multithreaded DLL|Win32
+		{DC2C05B9-AF46-4732-939E-2F20F253B819}.Release Multithreaded DLL|Win32.Build.0 = Release Multithreaded DLL|Win32
+		{DC2C05B9-AF46-4732-939E-2F20F253B819}.Release Multithreaded DLL|x64.ActiveCfg = Release Multithreaded DLL|x64
+		{DC2C05B9-AF46-4732-939E-2F20F253B819}.Release Multithreaded DLL|x64.Build.0 = Release Multithreaded DLL|x64
+		{DC2C05B9-AF46-4732-939E-2F20F253B819}.Release Multithreaded|Win32.ActiveCfg = Release Multithreaded|Win32
+		{DC2C05B9-AF46-4732-939E-2F20F253B819}.Release Multithreaded|Win32.Build.0 = Release Multithreaded|Win32
+		{DC2C05B9-AF46-4732-939E-2F20F253B819}.Release Multithreaded|x64.ActiveCfg = Release Multithreaded|x64
+		{DC2C05B9-AF46-4732-939E-2F20F253B819}.Release Multithreaded|x64.Build.0 = Release Multithreaded|x64
 		{01325CFA-41C2-4926-AA09-5E48478DFCF6}.Debug Multithreaded DLL|Win32.ActiveCfg = Debug Multithreaded DLL|Win32
 		{01325CFA-41C2-4926-AA09-5E48478DFCF6}.Debug Multithreaded DLL|Win32.Build.0 = Debug Multithreaded DLL|Win32
 		{01325CFA-41C2-4926-AA09-5E48478DFCF6}.Debug Multithreaded DLL|x64.ActiveCfg = Debug Multithreaded DLL|x64
@@ -55,5 +113,16 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{757A9DA8-0F86-45DA-A020-599B0C558F17} = {A3186CF3-91C0-446F-901D-A2EA59F107D1}
+		{DF2D1E2B-D2BD-4658-B1A4-4650F7E6FE26} = {FC07198C-29D6-4A6D-9F0C-CA7B47B4B896}
+		{35CBFAF2-6C52-4B15-B52F-DAC9A29693B5} = {FC07198C-29D6-4A6D-9F0C-CA7B47B4B896}
+		{BBF10CE7-568E-4ABB-ADA4-07370E1440F7} = {DF2D1E2B-D2BD-4658-B1A4-4650F7E6FE26}
+		{A58774CD-C030-4D16-B6AB-33FE13040853} = {8657DBFF-C602-4DD4-B2C5-F74CD99D9741}
+		{9367A254-4888-4F0D-B707-28D0CE4FDD5B} = {8657DBFF-C602-4DD4-B2C5-F74CD99D9741}
+		{E13C595B-299C-46DD-8236-E73A7EDFABD5} = {8657DBFF-C602-4DD4-B2C5-F74CD99D9741}
+		{DC2C05B9-AF46-4732-939E-2F20F253B819} = {A58774CD-C030-4D16-B6AB-33FE13040853}
+		{01325CFA-41C2-4926-AA09-5E48478DFCF6} = {E13C595B-299C-46DD-8236-E73A7EDFABD5}
 	EndGlobalSection
 EndGlobal

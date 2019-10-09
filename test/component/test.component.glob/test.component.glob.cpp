@@ -4,13 +4,13 @@
  * Purpose:     Implementation file for the test.component.glob project.
  *
  * Created:     20th May 2012
- * Updated:     10th January 2017
+ * Updated:     9th October 2019
  *
  * Status:      Wizard-generated
  *
  * License:     (Licensed under the Synesis Software Open License)
  *
- *              Copyright (c) 2012, Synesis Software Pty Ltd.
+ *              Copyright (c) 2012-2019, Synesis Software Pty Ltd.
  *              All rights reserved.
  *
  *              www:        http://www.synesis.com.au/software
@@ -28,21 +28,21 @@
  * includes
  */
 
-/* xTests Header Files */
+/* xTests header files */
 #include <xtests/xtests.h>
 
-/* STLSoft Header Files */
+/* STLSoft header files */
 #include <platformstl/filesystem/current_directory.hpp>
 #include <platformstl/system/temporary_directory.hpp>
 #include <platformstl/test/filesystem/temporary_directory_contents.hpp>
 #include <stlsoft/smartptr/scoped_handle.hpp>
 
-/* Standard C Header Files */
+/* Standard C header files */
 #include <errno.h>
 #include <stdlib.h>
 #include <string.h>
 
-/* Compiler-specific Header Files */
+/* Compiler-specific header files */
 #ifdef _WIN32
 # include <direct.h>
 # if __STDC__

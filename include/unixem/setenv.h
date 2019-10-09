@@ -4,11 +4,11 @@
  * Purpose: Definition of the setenv() and unsetenv() functions.
  *
  * Created: 9th December 2005
- * Updated: 10th January 2017
+ * Updated: 9th October 2019
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,7 @@
 # define UNIXEM_VER_UNIXEM_H_SETENV_MAJOR       2
 # define UNIXEM_VER_UNIXEM_H_SETENV_MINOR       0
 # define UNIXEM_VER_UNIXEM_H_SETENV_REVISION    1
-# define UNIXEM_VER_UNIXEM_H_SETENV_EDIT        9
+# define UNIXEM_VER_UNIXEM_H_SETENV_EDIT        10
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -57,6 +57,7 @@
  */
 
 #include <unixem/unixem.h>
+
 #include <stddef.h>     /* for size_t */
 #include <sys/types.h>  /* for mode_t */
 
@@ -105,8 +106,6 @@ int unixem_setenv(
 /** Deletes the named environment variable, if it exists.
  *
  * \param name The name of the environment to delete
- *
- * \return O on success, or -1 if there is an error
  */
 void unixem_unsetenv(char const* name);
 
@@ -123,3 +122,4 @@ void unixem_unsetenv(char const* name);
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_H_SETENV */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

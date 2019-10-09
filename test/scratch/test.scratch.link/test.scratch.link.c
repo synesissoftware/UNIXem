@@ -4,13 +4,13 @@
  * Purpose:     Implementation file for the test.scratch.link project.
  *
  * Created:     2nd September 2005
- * Updated:     10th January 2017
+ * Updated:     9th October 2019
  *
  * Status:      Wizard-generated
  *
  * License:     (Licensed under the Synesis Software Open License)
  *
- *              Copyright (c) 1999-2017, Synesis Software Pty Ltd.
+ *              Copyright (c) 1999-2019, Synesis Software Pty Ltd.
  *              All rights reserved.
  *
  *              www:        http://www.synesis.com.au/software
@@ -42,11 +42,11 @@
  * ////////////////////////////////////////////////////////////////////////// */
 
 
-/* UNIXem Header Files */
+/* UNIXem header files */
 #include <unixem/unixem.h>
 #include <unixem/implicit_link.h>
 
-/* Standard C Header Files */
+/* Standard C header files */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

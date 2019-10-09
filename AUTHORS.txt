@@ -12,8 +12,10 @@ Authors:
 Bug reports, fixes, questions, requests and suggestions (for which we are
 very grateful):
 
+  chen1088          - merge request assistance
   Marc Treib        - gettimeofday() return type
   Paulo Custodio    - fixing syntax errors in header(s)
+  zydxhs            - project documentation
 
 
 Contributions are welcomed.

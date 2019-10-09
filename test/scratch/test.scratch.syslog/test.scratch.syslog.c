@@ -4,30 +4,30 @@
  * Purpose:     Implementation file for the test.scratch.syslog project.
  *
  * Created:     1st October 2006
- * Updated:     10th January 2017
+ * Updated:     9th October 2019
  *
  * Status:      Wizard-generated
  *
  * License:     (Licensed under the Synesis Software Open License)
  *
- *              Copyright (c) 2006-2017, Synesis Software Pty Ltd.
+ *              Copyright (c) 2006-2019, Synesis Software Pty Ltd.
  *              All rights reserved.
  *
  *              www:        http://www.synesis.com.au/software
  *
  * ////////////////////////////////////////////////////////////////////////// */
 
-/* STLSoft Header Files */
+/* STLSoft header files */
 #include <stlsoft/stlsoft.h>
 
-/* PlatformSTL Header Files */
+/* PlatformSTL header files */
 #include <platformstl/platformstl.h>
 
 
-/* UNIXem Header Files */
+/* UNIXem header files */
 #include <unixem/unixem.h>
 
-/* Standard C Header Files */
+/* Standard C header files */
 #include <stdio.h>
 #include <stdlib.h>
 

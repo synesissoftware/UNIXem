@@ -1,14 +1,14 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:    unixem/unixem.h
  *
- * Purpose: Root header for the UNIXem API.
+ * Purpose: Version header for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 10th January 2017
+ * Updated: 9th October 2019
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,7 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file unixem/unixem.h Root header for the UNIXem API
+/** \file unixem/unixem.h Version header for the UNIXem API
  */
 
 #ifndef UNIXEM_INCL_UNIXEM_H_UNIXEM
@@ -52,8 +52,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MAJOR       1
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MINOR       6
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_REVISION    7
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        22
+# define UNIXEM_VER_UNIXEM_H_UNIXEM_REVISION    8
+# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        23
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /** \def UNIXEM_VER_MAJOR
@@ -74,12 +74,13 @@
 
 #define UNIXEM_VER_MAJOR       1
 #define UNIXEM_VER_MINOR       11
-#define UNIXEM_VER_REVISION    3
+#define UNIXEM_VER_REVISION    4
 
-#define UNIXEM_VER             0x010b03ff
+#define UNIXEM_VER             0x010c01ff
 
 /* ////////////////////////////////////////////////////////////////////// */
 
 #endif /* UNIXEM_INCL_UNIXEM_H_UNIXEM */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

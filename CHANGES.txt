@@ -1,7 +1,7 @@
 UNIXem - Changes
 ================
 
-Updated:    2nd January 2017
+Updated:    9th October 2019
 
 
     ************************************
@@ -13,6 +13,52 @@ Updated:    2nd January 2017
     *  *  means a general bullet-point *
     *                                  *
     ************************************
+
+
+9th October 2019 - 1.11.4
+=========================
+
+Summary:
+--------
+
+ * fixing up setenv() / unsetenv()
+ * incorporating latest changes from GitHub repo
+ * fleshing out README.md for the GitHub site
+
+Details:
+--------
+
+General:
+
+ ~ include/unixem/setenv.h:
+   ~ setenv() => unixem_setenv()
+   ~ unsetenv() => unixem_unsetenv()
+   ~ tidying documentation
+
+ ~ src/setenv.c:
+   ~ setenv() => unixem_setenv()
+   ~ unsetenv() => unixem_unsetenv()
+   ~ fixing defect when compiled in light of VC++ 10+'s so-called "safe string" library
+
+Distribution:
+
+Makefiles / Project-files:
+
+ + test/scratch/test.scratch.setenv/vc10/test.scratch.setenv.vcxproj
+ + test/scratch/test.scratch.setenv/vc10/test.scratch.setenv.vcxproj.filters
+
+Examples:
+
+Test:
+
+Test.Unit:
+
+Test.Component:
+
+Test.Scratch:
+
+Depends on:
+
 
 
 2nd January 2017 - 1.11.2
