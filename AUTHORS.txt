@@ -1,7 +1,7 @@
 UNIXem - Authors
 ================
 
-Updated:    9th October 2019
+Updated:    14th October 2019
 
 
 Authors:
@@ -20,4 +20,5 @@ very grateful):
 
 Contributions are welcomed.
 
-=============================== End of file ================================
+=============================== end of file ================================
+

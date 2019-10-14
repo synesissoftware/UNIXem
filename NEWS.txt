@@ -1,11 +1,13 @@
 UNIXem - News
 =============
 
-Updated:    9th October 2019
+Updated:    14th October 2019
 
 
 
 News:
+
+  14th Oct 2019     -   UNIXem 1.12.2 released
 
   9th Oct 2019      -   UNIXem 1.11.4 released
 
@@ -63,5 +65,5 @@ News:
 
   2nd Feb 2003      -   UNIXem 1.0 released
 
+=============================== end of file ================================
 
-=============================== End of file ================================

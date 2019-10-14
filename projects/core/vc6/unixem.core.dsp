@@ -52,7 +52,7 @@ BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
-# ADD BASE LIB32 /nologo
+# ADD BASE LIB32 /nologo /out:"..\..\..\lib\unixem.1.core.vc6.lib"
 # ADD LIB32 /nologo /out:"..\..\..\lib\unixem.1.core.vc6.lib"
 
 !ELSEIF  "$(CFG)" == "unixem.core - Win32 Debug"
@@ -75,7 +75,7 @@ BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
-# ADD BASE LIB32 /nologo
+# ADD BASE LIB32 /nologo /out:"..\..\..\lib\unixem.1.core.vc6.debug.lib"
 # ADD LIB32 /nologo /out:"..\..\..\lib\unixem.1.core.vc6.debug.lib"
 
 !ELSEIF  "$(CFG)" == "unixem.core - Win32 Debug pseudoUnix"
@@ -98,7 +98,7 @@ BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
-# ADD BASE LIB32 /nologo /out:"..\..\..\lib\unixem.core.vc6.debug.lib"
+# ADD BASE LIB32 /nologo /out:"..\..\..\lib\unixem.1.core.vc6.unix.debug.lib"
 # ADD LIB32 /nologo /out:"..\..\..\lib\unixem.1.core.vc6.unix.debug.lib"
 
 !ELSEIF  "$(CFG)" == "unixem.core - Win32 Release pseudoUnix"
@@ -121,7 +121,7 @@ BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
-# ADD BASE LIB32 /nologo /out:"..\..\..\lib\unixem.core.vc6.lib"
+# ADD BASE LIB32 /nologo /out:"..\..\..\lib\unixem.1.core.vc6.unix.lib"
 # ADD LIB32 /nologo /out:"..\..\..\lib\unixem.1.core.vc6.unix.lib"
 
 !ELSEIF  "$(CFG)" == "unixem.core - Win32 Debug Multithreaded pseudoUnix"
@@ -144,7 +144,7 @@ BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
-# ADD BASE LIB32 /nologo /out:"..\..\..\lib\unixem.1.core.vc6.debug.lib"
+# ADD BASE LIB32 /nologo /out:"..\..\..\lib\unixem.1.core.vc6.unix.mt.debug.lib"
 # ADD LIB32 /nologo /out:"..\..\..\lib\unixem.1.core.vc6.unix.mt.debug.lib"
 
 !ELSEIF  "$(CFG)" == "unixem.core - Win32 Release Multithreaded pseudoUnix"
@@ -167,7 +167,7 @@ BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
-# ADD BASE LIB32 /nologo /out:"..\..\..\lib\unixem.1.core.vc6.lib"
+# ADD BASE LIB32 /nologo /out:"..\..\..\lib\unixem.1.core.vc6.unix.mt.lib"
 # ADD LIB32 /nologo /out:"..\..\..\lib\unixem.1.core.vc6.unix.mt.lib"
 
 !ENDIF 

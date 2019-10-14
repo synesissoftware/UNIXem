@@ -4,11 +4,11 @@
  * Purpose: gettimeofday() for the Win32 platform.
  *
  * Created: 1st November 2003
- * Updated: 10th January 2017
+ * Updated: 14th October 2019
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,8 +42,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_TIME_MAJOR      3
 # define _SYNSOFT_VER_C_TIME_MINOR      1
-# define _SYNSOFT_VER_C_TIME_REVISION   1
-# define _SYNSOFT_VER_C_TIME_EDIT       28
+# define _SYNSOFT_VER_C_TIME_REVISION   2
+# define _SYNSOFT_VER_C_TIME_EDIT       29
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -116,10 +116,12 @@ unixem_impl_numberOfDaysInMonth(
 extern
 long
 unixem_internal_FILETIMEToUNIXTime(
-    FILETIME const* ft
+    void const*     pv
 ,   long*           microseconds
 )
 {
+	FILETIME const* const ft = (FILETIME const*)(pv);
+
 #if defined(__COMO__)
     long long   i;
 #else /* ? compiler */

@@ -4,11 +4,11 @@
  * Purpose: mmap(), munmap() and msync() for the Win32 platform.
  *
  * Created: 18th December 2003
- * Updated: 10th January 2017
+ * Updated: 14th October 2019
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,8 +42,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_MMAP_MAJOR      3
 # define _SYNSOFT_VER_C_MMAP_MINOR      0
-# define _SYNSOFT_VER_C_MMAP_REVISION   1
-# define _SYNSOFT_VER_C_MMAP_EDIT       29
+# define _SYNSOFT_VER_C_MMAP_REVISION   2
+# define _SYNSOFT_VER_C_MMAP_EDIT       30
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -59,18 +59,30 @@
 #include <errno.h>
 #include <windows.h>
 
-#if defined(__BORLANDC__)
+#if 0
+#elif defined(__BORLANDC__)
+
 UNIXEM_STGCLS_IMP long _cdecl _get_osfhandle(int __handle);
 #elif defined(__DMC__) || \
       defined(__INTEL_COMPILER) || \
       defined(__MWERKS__) || \
       defined(_MSC_VER)
+
 UNIXEM_STGCLS_IMP long __cdecl _get_osfhandle(int __handle);
 #elif defined(__GNUC__)
+
+# if __GNUC__ >= 4
+
+_CRTIMP intptr_t __cdecl _get_osfhandle(int _FileHandle);
+# else
+
 __cdecl long _get_osfhandle(int __handle);
+# endif
 #elif defined(__WATCOMC__)
+
 _WCRTLINK extern long _get_osfhandle( int __posixhandle );
 #else
+
 # error Compiler not discriminated
 #endif /* compiler */
 

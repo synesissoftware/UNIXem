@@ -5,7 +5,7 @@
 #           compiler, on Win32
 #
 # Created:	15th February 2005
-# Updated:	5th October 2015
+# Updated:	14th October 2019
 #
 ############################################################################
 
@@ -19,7 +19,7 @@
 COMP_TAG            =   gcc32
 ARCH_TAG            =   
 OS_TAG				=   
-PROJ_TAG			=	unixem.core
+PROJ_TAG			=	unixem
 PROJ_VER_MAJOR		=	1
 PROJ_TAG_VER		=	$(PROJ_TAG).$(PROJ_VER_MAJOR)
 COMP_ARCH_OS_TAG	=	$(COMP_TAG)$(OS_TAG)$(ARCH_TAG)
@@ -202,10 +202,10 @@ LD_ARGS				=	 $(COMMON_LIB)
 ############################################################################
 # Targets
 
-TARGET_LIB_ST_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).debug.lib
-TARGET_LIB_UN_ST_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).debug.lib
-TARGET_LIB_ST_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).lib
-TARGET_LIB_UN_ST_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).lib
+TARGET_LIB_ST_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).core.$(COMP_ARCH_OS_TAG).debug.lib
+TARGET_LIB_UN_ST_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).core.$(COMP_ARCH_OS_TAG).debug.lib
+TARGET_LIB_ST_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).core.$(COMP_ARCH_OS_TAG).lib
+TARGET_LIB_UN_ST_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).core.$(COMP_ARCH_OS_TAG).lib
 
 
 

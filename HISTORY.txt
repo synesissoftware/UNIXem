@@ -1,7 +1,15 @@
 UNIXem - History
 ================
 
-Updated:    9th October 2019
+Updated:    14th October 2019
+
+
+14th October 2019 - 0.12.2
+--------------------------
+
+ * fixing generated library names to match implicit-link
+ * fixed invalid value of 1.11.4's UNIXEM_VER by bumping minor version
+ * added GCC 8.1 (MinGW) compatibility
 
 
 9th October 2019 - 1.11.4
@@ -134,5 +142,5 @@ Updated:    9th October 2019
  * fixed gettimeofday() - was returning local and not system time
  * library now compatible with Secure Library string functions
 
+=============================== end of file ================================
 
-=============================== End of file ================================

@@ -1,10 +1,10 @@
 ############################################################################
 # File:		makefile
 #
-# Purpose:	Makefile for the UNIXem project, for the Open Watcom C/C++ 1.6
+# Purpose:	Makefile for the UNIXem project, for the GCC 8.1
 #           compiler, on Win32
 #
-# Created:	15th February 2005
+# Created:	14th October 2019
 # Updated:	14th October 2019
 #
 ############################################################################
@@ -16,7 +16,7 @@
 ########################################
 # Project & compiler version
 
-COMP_TAG            =   ow16
+COMP_TAG            =   gcc81
 ARCH_TAG            =   
 OS_TAG				=   
 PROJ_TAG			=	unixem
@@ -50,10 +50,10 @@ PROJ_TEST_UNIT_DIR		=	$(PROJ_TEST_ROOT_DIR)\unit
 ########################################
 # tools
 
-CC						=	wcc386
-CPPC                    =   wpp386
-AR						=	wlib
-LD						=	wcl386
+CC						=	gcc
+CPPC                    =   g++
+AR						=	ar
+LD						=	g++
 RM						=	del /f
 CP						=	copy
 RC                      =   rc
@@ -132,10 +132,10 @@ CPPC_DEFS			=	$(COMMON_DEFS) $(CPPC_CUSTOM_DEFS)
 
 # CC flags
 
-CC_F_NOLOGO				=	-zq
-CC_F_COMPILE_ONLY		=	
-CC_F_WARNING_MAX		=	-w=9
-CC_F_WARNING_ERR		=	-we
+CC_F_NOLOGO				=	
+CC_F_COMPILE_ONLY		=	-c
+CC_F_WARNING_MAX		=	-Wall -pedantic -Wno-long-long
+CC_F_WARNING_ERR		=	-Werror
 CC_F_WARNINGS_LIMIT		=	
 CC_F_MINIMUM_SIZE		=	
 #CC_F_MAXIMUM_SPEED		=	
@@ -144,17 +144,17 @@ CC_APP_F_WARNING_ERR	=	$(CC_F_WARNING_ERR)
 
 # CPPC flags
 
-CPPC_F_NOLOGO			=	-zq
-CPPC_F_COMPILE_ONLY 	=	
-CPPC_F_WARNING_MAX		=	-w=9
-CPPC_F_WARNING_ERR		=	-we
+CPPC_F_NOLOGO			=	
+CPPC_F_COMPILE_ONLY 	=	-c
+CPPC_F_WARNING_MAX		=	-Wall -pedantic -Wno-long-long
+CPPC_F_WARNING_ERR		=	-Werror
 CPPC_F_WARNINGS_LIMIT	=	
 CPPC_F_MINIMUM_SIZE 	=	
 #CPPC_F_MAXIMUM_SPEED	=	
-CPPC_F_EXCEPTIONS		=	-xs
+CPPC_F_EXCEPTIONS		=	
 CPPC_F_NO_EXCEPTIONS	=	
 CPPC_F_WITH_EXCEPTIONS	=	
-CPPC_F_RTTI 			=	-xr
+CPPC_F_RTTI 			=	
 CPPC_APP_F_WARNING_MAX	=	$(CPPC_F_WARNING_MAX)
 CPPC_APP_F_WARNING_ERR	=	$(CPPC_F_WARNING_ERR)
 
@@ -192,12 +192,12 @@ CPPC_FLAGS=\
 
 # Arguments (= flags + defines + includes)
 
-CC_ARGS_ST_D				=	 $(CC_FLAGS) $(CC_DEFS) $(CC_INCLUDES)
-CC_ARGS_ST_R				=	 $(CC_FLAGS) $(CC_DEFS) $(CC_INCLUDES)
+CC_ARGS_ST_D				=	-D_DEBUG -UNDEBUG $(CC_FLAGS) $(CC_DEFS) $(CC_INCLUDES)
+CC_ARGS_ST_R				=	-DNDEBUG -U_DEBUG $(CC_FLAGS) $(CC_DEFS) $(CC_INCLUDES)
 
-AR_ARGS				=	-q -c
+AR_ARGS				=	
 
-LD_ARGS				=	-zq $(COMMON_LIB)
+LD_ARGS				=	 $(COMMON_LIB)
 
 ############################################################################
 # Targets
@@ -246,23 +246,6 @@ OBJ_PROJ_ST_D = \
  $(OBJ_PROJ_internal_util__ST_D)\
  \
 
-OBJ_PROJ_ST_D_P = \
- +$(OBJ_PROJ_atomic__ST_D)\
- +$(OBJ_PROJ_dirent__ST_D)\
- +$(OBJ_PROJ_dlfcn__ST_D)\
- +$(OBJ_PROJ_glob__ST_D)\
- +$(OBJ_PROJ_mktemp__ST_D)\
- +$(OBJ_PROJ_hostname__ST_D)\
- +$(OBJ_PROJ_mmap__ST_D)\
- +$(OBJ_PROJ_resource__ST_D)\
- +$(OBJ_PROJ_setenv__ST_D)\
- +$(OBJ_PROJ_time__ST_D)\
- +$(OBJ_PROJ_uio__ST_D)\
- +$(OBJ_PROJ_unistd__ST_D)\
- +$(OBJ_PROJ_internal_util__ST_D)\
- \
-
-
 OBJ_PROJ_atomic__ST_R = $(PROJ_OBJ_DIR)\atomic.obj
 OBJ_PROJ_dirent__ST_R = $(PROJ_OBJ_DIR)\dirent.obj
 OBJ_PROJ_dlfcn__ST_R = $(PROJ_OBJ_DIR)\dlfcn.obj
@@ -292,23 +275,6 @@ OBJ_PROJ_ST_R = \
  $(OBJ_PROJ_unistd__ST_R)\
  $(OBJ_PROJ_internal_util__ST_R)\
  \
-
-OBJ_PROJ_ST_R_P = \
- +$(OBJ_PROJ_atomic__ST_R)\
- +$(OBJ_PROJ_dirent__ST_R)\
- +$(OBJ_PROJ_dlfcn__ST_R)\
- +$(OBJ_PROJ_glob__ST_R)\
- +$(OBJ_PROJ_mktemp__ST_R)\
- +$(OBJ_PROJ_hostname__ST_R)\
- +$(OBJ_PROJ_mmap__ST_R)\
- +$(OBJ_PROJ_resource__ST_R)\
- +$(OBJ_PROJ_setenv__ST_R)\
- +$(OBJ_PROJ_time__ST_R)\
- +$(OBJ_PROJ_uio__ST_R)\
- +$(OBJ_PROJ_unistd__ST_R)\
- +$(OBJ_PROJ_internal_util__ST_R)\
- \
-
 
 OBJS = \
  $(OBJ_PROJ_ST_D)\
@@ -369,35 +335,34 @@ $(TARGET_LIB_UN_ST_D): $(TARGET_LIB_ST_D)
 
 $(TARGET_LIB_ST_D): $(OBJ_PROJ_ST_D) makefile
 	@-if not exist $(B64_LIB_DIR)\NUL mkdir $(B64_LIB_DIR)
-	@-$(RM) $(TARGET_LIB_ST_D)
-	$(AR) $(AR_ARGS) $@ $(OBJ_PROJ_ST_D_P)
+	$(AR) $(AR_ARGS) -r $@ $(OBJ_PROJ_ST_D)
 
 $(OBJ_PROJ_atomic__ST_D):	$(PROJ_SRC_DIR)\atomic.c $(PROJ_INCLUDE_DIR)\asm\atomic.h makefile
-	$(CC) $(CC_ARGS_ST_D) -fo=$@ $(PROJ_SRC_DIR)\atomic.c
+	$(CC) $(CC_ARGS_ST_D) -o $@ $(PROJ_SRC_DIR)\atomic.c
 $(OBJ_PROJ_dirent__ST_D):	$(PROJ_SRC_DIR)\dirent.c $(PROJ_INCLUDE_DIR)\dirent.h makefile
-	$(CC) $(CC_ARGS_ST_D) -fo=$@ $(PROJ_SRC_DIR)\dirent.c
+	$(CC) $(CC_ARGS_ST_D) -o $@ $(PROJ_SRC_DIR)\dirent.c
 $(OBJ_PROJ_dlfcn__ST_D):	$(PROJ_SRC_DIR)\dlfcn.c $(PROJ_INCLUDE_DIR)\dlfcn.h makefile
-	$(CC) $(CC_ARGS_ST_D) -fo=$@ $(PROJ_SRC_DIR)\dlfcn.c
+	$(CC) $(CC_ARGS_ST_D) -o $@ $(PROJ_SRC_DIR)\dlfcn.c
 $(OBJ_PROJ_glob__ST_D):	$(PROJ_SRC_DIR)\glob.c $(PROJ_INCLUDE_DIR)\glob.h makefile
-	$(CC) $(CC_ARGS_ST_D) -fo=$@ $(PROJ_SRC_DIR)\glob.c
+	$(CC) $(CC_ARGS_ST_D) -o $@ $(PROJ_SRC_DIR)\glob.c
 $(OBJ_PROJ_hostname__ST_D):	$(PROJ_SRC_DIR)\hostname.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
-	$(CC) $(CC_ARGS_ST_D) -fo=$@ $(PROJ_SRC_DIR)\hostname.c
+	$(CC) $(CC_ARGS_ST_D) -o $@ $(PROJ_SRC_DIR)\hostname.c
 $(OBJ_PROJ_mktemp__ST_D):	$(PROJ_SRC_DIR)\mktemp.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
-	$(CC) $(CC_ARGS_ST_D) -fo=$@ $(PROJ_SRC_DIR)\mktemp.c
+	$(CC) $(CC_ARGS_ST_D) -o $@ $(PROJ_SRC_DIR)\mktemp.c
 $(OBJ_PROJ_mmap__ST_D):	$(PROJ_SRC_DIR)\mmap.c $(PROJ_INCLUDE_DIR)\sys\mman.h makefile
-	$(CC) $(CC_ARGS_ST_D) -fo=$@ $(PROJ_SRC_DIR)\mmap.c
+	$(CC) $(CC_ARGS_ST_D) -o $@ $(PROJ_SRC_DIR)\mmap.c
 $(OBJ_PROJ_resource__ST_D):	$(PROJ_SRC_DIR)\resource.c $(PROJ_INCLUDE_DIR)\sys\resource.h makefile
-	$(CC) $(CC_ARGS_ST_D) -fo=$@ $(PROJ_SRC_DIR)\resource.c
+	$(CC) $(CC_ARGS_ST_D) -o $@ $(PROJ_SRC_DIR)\resource.c
 $(OBJ_PROJ_setenv__ST_D):	$(PROJ_SRC_DIR)\setenv.c $(PROJ_INCLUDE_DIR)\unixem\setenv.h makefile
-	$(CC) $(CC_ARGS_ST_D) -fo=$@ $(PROJ_SRC_DIR)\setenv.c
+	$(CC) $(CC_ARGS_ST_D) -o $@ $(PROJ_SRC_DIR)\setenv.c
 $(OBJ_PROJ_time__ST_D):	$(PROJ_SRC_DIR)\time.c $(PROJ_INCLUDE_DIR)\sys\time.h makefile
-	$(CC) $(CC_ARGS_ST_D) -fo=$@ $(PROJ_SRC_DIR)\time.c
+	$(CC) $(CC_ARGS_ST_D) -o $@ $(PROJ_SRC_DIR)\time.c
 $(OBJ_PROJ_uio__ST_D):	$(PROJ_SRC_DIR)\uio.c $(PROJ_INCLUDE_DIR)\sys\uio.h makefile
-	$(CC) $(CC_ARGS_ST_D) -fo=$@ $(PROJ_SRC_DIR)\uio.c
+	$(CC) $(CC_ARGS_ST_D) -o $@ $(PROJ_SRC_DIR)\uio.c
 $(OBJ_PROJ_unistd__ST_D):	$(PROJ_SRC_DIR)\unistd.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
-	$(CC) $(CC_ARGS_ST_D) -fo=$@ $(PROJ_SRC_DIR)\unistd.c
+	$(CC) $(CC_ARGS_ST_D) -o $@ $(PROJ_SRC_DIR)\unistd.c
 $(OBJ_PROJ_internal_util__ST_D): $(PROJ_SRC_DIR)\internal\util.c $(PROJ_INCLUDE_DIR)\unixem\internal\util.h makefile
-	$(CC) $(CC_ARGS_ST_D) -fo=$@ $(PROJ_SRC_DIR)\internal\util.c
+	$(CC) $(CC_ARGS_ST_D) -o $@ $(PROJ_SRC_DIR)\internal\util.c
 
 
 
@@ -406,35 +371,34 @@ $(TARGET_LIB_UN_ST_R): $(TARGET_LIB_ST_R)
 
 $(TARGET_LIB_ST_R): $(OBJ_PROJ_ST_R) makefile
 	@-if not exist $(B64_LIB_DIR)\NUL mkdir $(B64_LIB_DIR)
-	@-$(RM) $(TARGET_LIB_ST_R)
-	$(AR) $(AR_ARGS) $@ $(OBJ_PROJ_ST_R_P)
+	$(AR) $(AR_ARGS) -r $@ $(OBJ_PROJ_ST_R)
 
 $(OBJ_PROJ_atomic__ST_R):	$(PROJ_SRC_DIR)\atomic.c $(PROJ_INCLUDE_DIR)\asm\atomic.h makefile
-	$(CC) $(CC_ARGS_ST_R) -fo=$@ $(PROJ_SRC_DIR)\atomic.c
+	$(CC) $(CC_ARGS_ST_R) -o $@ $(PROJ_SRC_DIR)\atomic.c
 $(OBJ_PROJ_dirent__ST_R):	$(PROJ_SRC_DIR)\dirent.c $(PROJ_INCLUDE_DIR)\dirent.h makefile
-	$(CC) $(CC_ARGS_ST_R) -fo=$@ $(PROJ_SRC_DIR)\dirent.c
+	$(CC) $(CC_ARGS_ST_R) -o $@ $(PROJ_SRC_DIR)\dirent.c
 $(OBJ_PROJ_dlfcn__ST_R):	$(PROJ_SRC_DIR)\dlfcn.c $(PROJ_INCLUDE_DIR)\dlfcn.h makefile
-	$(CC) $(CC_ARGS_ST_R) -fo=$@ $(PROJ_SRC_DIR)\dlfcn.c
+	$(CC) $(CC_ARGS_ST_R) -o $@ $(PROJ_SRC_DIR)\dlfcn.c
 $(OBJ_PROJ_glob__ST_R):	$(PROJ_SRC_DIR)\glob.c $(PROJ_INCLUDE_DIR)\glob.h makefile
-	$(CC) $(CC_ARGS_ST_R) -fo=$@ $(PROJ_SRC_DIR)\glob.c
+	$(CC) $(CC_ARGS_ST_R) -o $@ $(PROJ_SRC_DIR)\glob.c
 $(OBJ_PROJ_hostname__ST_R):	$(PROJ_SRC_DIR)\hostname.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
-	$(CC) $(CC_ARGS_ST_R) -fo=$@ $(PROJ_SRC_DIR)\hostname.c
+	$(CC) $(CC_ARGS_ST_R) -o $@ $(PROJ_SRC_DIR)\hostname.c
 $(OBJ_PROJ_mktemp__ST_R):	$(PROJ_SRC_DIR)\mktemp.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
-	$(CC) $(CC_ARGS_ST_R) -fo=$@ $(PROJ_SRC_DIR)\mktemp.c
+	$(CC) $(CC_ARGS_ST_R) -o $@ $(PROJ_SRC_DIR)\mktemp.c
 $(OBJ_PROJ_mmap__ST_R):	$(PROJ_SRC_DIR)\mmap.c $(PROJ_INCLUDE_DIR)\sys\mman.h makefile
-	$(CC) $(CC_ARGS_ST_R) -fo=$@ $(PROJ_SRC_DIR)\mmap.c
+	$(CC) $(CC_ARGS_ST_R) -o $@ $(PROJ_SRC_DIR)\mmap.c
 $(OBJ_PROJ_resource__ST_R):	$(PROJ_SRC_DIR)\resource.c $(PROJ_INCLUDE_DIR)\sys\resource.h makefile
-	$(CC) $(CC_ARGS_ST_R) -fo=$@ $(PROJ_SRC_DIR)\resource.c
+	$(CC) $(CC_ARGS_ST_R) -o $@ $(PROJ_SRC_DIR)\resource.c
 $(OBJ_PROJ_setenv__ST_R):	$(PROJ_SRC_DIR)\setenv.c $(PROJ_INCLUDE_DIR)\unixem\setenv.h makefile
-	$(CC) $(CC_ARGS_ST_R) -fo=$@ $(PROJ_SRC_DIR)\setenv.c
+	$(CC) $(CC_ARGS_ST_R) -o $@ $(PROJ_SRC_DIR)\setenv.c
 $(OBJ_PROJ_time__ST_R):	$(PROJ_SRC_DIR)\time.c $(PROJ_INCLUDE_DIR)\sys\time.h makefile
-	$(CC) $(CC_ARGS_ST_R) -fo=$@ $(PROJ_SRC_DIR)\time.c
+	$(CC) $(CC_ARGS_ST_R) -o $@ $(PROJ_SRC_DIR)\time.c
 $(OBJ_PROJ_uio__ST_R):	$(PROJ_SRC_DIR)\uio.c $(PROJ_INCLUDE_DIR)\sys\uio.h makefile
-	$(CC) $(CC_ARGS_ST_R) -fo=$@ $(PROJ_SRC_DIR)\uio.c
+	$(CC) $(CC_ARGS_ST_R) -o $@ $(PROJ_SRC_DIR)\uio.c
 $(OBJ_PROJ_unistd__ST_R):	$(PROJ_SRC_DIR)\unistd.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
-	$(CC) $(CC_ARGS_ST_R) -fo=$@ $(PROJ_SRC_DIR)\unistd.c
+	$(CC) $(CC_ARGS_ST_R) -o $@ $(PROJ_SRC_DIR)\unistd.c
 $(OBJ_PROJ_internal_util__ST_R): $(PROJ_SRC_DIR)\internal\util.c $(PROJ_INCLUDE_DIR)\unixem\internal\util.h makefile
-	$(CC) $(CC_ARGS_ST_R) -fo=$@ $(PROJ_SRC_DIR)\internal\util.c
+	$(CC) $(CC_ARGS_ST_R) -o $@ $(PROJ_SRC_DIR)\internal\util.c
 
 
 

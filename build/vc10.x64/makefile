@@ -5,7 +5,7 @@
 #           compiler, on Win64
 #
 # Created:	15th February 2005
-# Updated:	5th October 2015
+# Updated:	14th October 2019
 #
 ############################################################################
 
@@ -19,7 +19,7 @@
 COMP_TAG            =   vc10
 ARCH_TAG            =   .x64
 OS_TAG				=   
-PROJ_TAG			=	unixem.core
+PROJ_TAG			=	unixem
 PROJ_VER_MAJOR		=	1
 PROJ_TAG_VER		=	$(PROJ_TAG).$(PROJ_VER_MAJOR)
 COMP_ARCH_OS_TAG	=	$(COMP_TAG)$(OS_TAG)$(ARCH_TAG)
@@ -206,14 +206,14 @@ LD_ARGS				=	-nologo $(COMMON_LIB)
 ############################################################################
 # Targets
 
-TARGET_LIB_MT_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).mt.debug.lib
-TARGET_LIB_UN_MT_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).mt.debug.lib
-TARGET_LIB_DLL_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).dll.debug.lib
-TARGET_LIB_UN_DLL_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).dll.debug.lib
-TARGET_LIB_DLL_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).dll.lib
-TARGET_LIB_UN_DLL_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).dll.lib
-TARGET_LIB_MT_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).mt.lib
-TARGET_LIB_UN_MT_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).$(COMP_ARCH_OS_TAG).mt.lib
+TARGET_LIB_MT_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).core.$(COMP_ARCH_OS_TAG).mt.debug.lib
+TARGET_LIB_UN_MT_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).core.$(COMP_ARCH_OS_TAG).mt.debug.lib
+TARGET_LIB_DLL_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).core.$(COMP_ARCH_OS_TAG).dll.debug.lib
+TARGET_LIB_UN_DLL_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).core.$(COMP_ARCH_OS_TAG).dll.debug.lib
+TARGET_LIB_DLL_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).core.$(COMP_ARCH_OS_TAG).dll.lib
+TARGET_LIB_UN_DLL_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).core.$(COMP_ARCH_OS_TAG).dll.lib
+TARGET_LIB_MT_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).core.$(COMP_ARCH_OS_TAG).mt.lib
+TARGET_LIB_UN_MT_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).core.$(COMP_ARCH_OS_TAG).mt.lib
 
 TARGET_PDB_MT_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).mt.debug.pdb
 TARGET_PDB_DLL_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).dll.debug.pdb

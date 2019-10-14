@@ -4,11 +4,11 @@
  * Purpose: mkstemp()/mkdtemp() etc. for the Windows platform.
  *
  * Created: 4th October 2015
- * Updated: 10th January 2017
+ * Updated: 14th October 2019
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2015-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2015-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,8 +42,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_MKTEMP_MAJOR        1
 # define _SYNSOFT_VER_C_MKTEMP_MINOR        0
-# define _SYNSOFT_VER_C_MKTEMP_REVISION     3
-# define _SYNSOFT_VER_C_MKTEMP_EDIT         4
+# define _SYNSOFT_VER_C_MKTEMP_REVISION     4
+# define _SYNSOFT_VER_C_MKTEMP_EDIT         5
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -93,8 +93,6 @@ unixem_mkstemp(
 )
 {
     size_t      len;
-    char const* b   =   template_path;
-    char const* e;
     unsigned    n;
     unsigned    nX;
     char*       pX;
@@ -105,8 +103,6 @@ unixem_mkstemp(
     assert(NULL != template_path);
 
     len = strlen(template_path);
-
-    e = b + len;
 
     for(n = 0, nX = 0, limit = 1; n != len; ++n, ++nX, limit *= 10)
     {
@@ -194,8 +190,6 @@ unixem_mkdtemp(
 )
 {
     size_t      len;
-    char const* b   =   template_path;
-    char const* e;
     unsigned    n;
     unsigned    nX;
     char*       pX;
@@ -205,8 +199,6 @@ unixem_mkdtemp(
     assert(NULL != template_path);
 
     len = strlen(template_path);
-
-    e = b + len;
 
     for(n = 0, nX = 0, limit = 1; n != len; ++n, ++nX, limit *= 10)
     {

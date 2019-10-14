@@ -40,7 +40,6 @@ RSC=rc.exe
 # PROP Use_Debug_Libraries 0
 # PROP Output_Dir "Release"
 # PROP Intermediate_Dir "Release"
-# PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /YX /FD /c
 # ADD CPP /nologo /W3 /GX /O2 /I "$(UNIXEM)/include" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "STRICT" /D "_CONSOLE" /YX /FD /c
@@ -67,7 +66,6 @@ LINK32=link.exe
 # PROP Use_Debug_Libraries 1
 # PROP Output_Dir "Debug"
 # PROP Intermediate_Dir "Debug"
-# PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MTd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /YX /FD /GZ /c
 # ADD CPP /nologo /W3 /Gm /GX /Zi /Od /I "$(UNIXEM)/include" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "STRICT" /D "_CONSOLE" /FR /YX /FD /GZ /c

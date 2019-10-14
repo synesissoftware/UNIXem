@@ -1,5 +1,5 @@
 /* /////////////////////////////////////////////////////////////////////////////
- * File:        test.scratch.uio.cpp
+ * File:        test.scratch.uio.c
  *
  * Purpose:     Implementation file for the test.scratch.uio project.
  *

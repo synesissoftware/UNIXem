@@ -4,11 +4,11 @@
  * Purpose: Utility functions for UNIXem.
  *
  * Created: 2nd September 2005
- * Updated: 10th January 2017
+ * Updated: 9th October 2019
  *
  * Home:    http://synesis.com.au/software/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@
 # define _SYNSOFT_VER_INTERNAL_C_UTIL_MAJOR     2
 # define _SYNSOFT_VER_INTERNAL_C_UTIL_MINOR     1
 # define _SYNSOFT_VER_INTERNAL_C_UTIL_REVISION  1
-# define _SYNSOFT_VER_INTERNAL_C_UTIL_EDIT      12
+# define _SYNSOFT_VER_INTERNAL_C_UTIL_EDIT      13
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

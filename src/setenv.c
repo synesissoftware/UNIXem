@@ -4,7 +4,7 @@
  * Purpose: Implementation of the setenv() and unsetenv() functions.
  *
  * Created: 9th December 2005
- * Updated: 9th October 2019
+ * Updated: 14th October 2019
  *
  * Home:    http://synesis.com.au/software/
  *
@@ -42,8 +42,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_SETENV_MAJOR    1
 # define _SYNSOFT_VER_C_SETENV_MINOR    0
-# define _SYNSOFT_VER_C_SETENV_REVISION 7
-# define _SYNSOFT_VER_C_SETENV_EDIT     10
+# define _SYNSOFT_VER_C_SETENV_REVISION 8
+# define _SYNSOFT_VER_C_SETENV_EDIT     11
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -108,10 +108,9 @@ static int unixem__setenv__putenv_(
         }
         else
         {
-            size_t const cchBuffer = required;
             int r;
-
 #ifdef UNIXEM_USING_SAFE_STR_FUNCTIONS
+            size_t const cchBuffer = required;
 
             (void)strncpy_s(&buffer[0], cchBuffer, name, nameLen);
 #else /* ? UNIXEM_USING_SAFE_STR_FUNCTIONS */
