@@ -42,8 +42,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_MMAP_MAJOR      3
 # define _SYNSOFT_VER_C_MMAP_MINOR      0
-# define _SYNSOFT_VER_C_MMAP_REVISION   2
-# define _SYNSOFT_VER_C_MMAP_EDIT       30
+# define _SYNSOFT_VER_C_MMAP_REVISION   3
+# define _SYNSOFT_VER_C_MMAP_EDIT       31
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -71,7 +71,7 @@ UNIXEM_STGCLS_IMP long _cdecl _get_osfhandle(int __handle);
 UNIXEM_STGCLS_IMP long __cdecl _get_osfhandle(int __handle);
 #elif defined(__GNUC__)
 
-# if __GNUC__ >= 4
+# if __GNUC__ > 4
 
 _CRTIMP intptr_t __cdecl _get_osfhandle(int _FileHandle);
 # else

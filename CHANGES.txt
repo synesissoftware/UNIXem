@@ -15,6 +15,42 @@ Updated:    14th October 2019
     ************************************
 
 
+14th October 2019 - 1.12.3
+==========================
+
+Summary:
+--------
+
+ * added GCC 4.9 (MinGW) compatibility
+
+Details:
+--------
+
+General:
+
+ ~ src/mmap.c:
+    + added GCC 4.9 (MinGW) compatibility
+
+Distribution:
+
+Makefiles / Project-files:
+
+ ~ build/gcc49/makefile:
+    + added GCC 4.9 (MinGW) compatibility
+
+Examples:
+
+Test:
+
+Test.Unit:
+
+Test.Component:
+
+Test.Scratch:
+
+Depends on:
+
+
 14th October 2019 - 1.12.2
 ==========================
 

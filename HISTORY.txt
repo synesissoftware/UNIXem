@@ -4,6 +4,12 @@ UNIXem - History
 Updated:    14th October 2019
 
 
+14th October 2019 - 0.12.3
+--------------------------
+
+ * added GCC 4.9 (MinGW) compatibility
+
+
 14th October 2019 - 0.12.2
 --------------------------
 

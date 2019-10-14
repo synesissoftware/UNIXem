@@ -6,7 +6,7 @@ Updated:    14th October 2019
 
 
 UNIXem uses the BSD-form license, as described in the accompanying
-doc/html/1.12.2/index.html file.
+doc/html/1.12.3/index.html file.
 
 =============================== end of file ================================
 
