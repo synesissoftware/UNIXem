@@ -1,20 +1,24 @@
 ############################################################################
 # File:		makefile
 #
-# Purpose:	Makefile for the UNIXem project, for the Visual C++ 11
-#           compiler, on Win32
+# Purpose:  Makefile for the UNIXem project,
+#           for the Visual C++ 11 (Win32) compiler,
+#           on the Win32 platform
 #
 # Created:	15th February 2005
-# Updated:	14th October 2019
+# Updated:	19th July 2020
 #
 ############################################################################
 
 
 ############################################################################
-# Symbols
+# environment check
+
+############################################################################
+# symbols
 
 ########################################
-# Project & compiler version
+# project & compiler version
 
 COMP_TAG            =   vc11
 ARCH_TAG            =   
@@ -27,12 +31,14 @@ COMP_ARCH_OS_TAG	=	$(COMP_TAG)$(OS_TAG)$(ARCH_TAG)
 PROJ_MAKEFILE_NAME  =   makefile
 
 ########################################
-# Testing verbosity
+# testing verbosity
 
+!ifndef TEST_VERBOSITY
 TEST_VERBOSITY      =   2
+!endif # !TEST_VERBOSITY
 
 ########################################
-# Directories
+# directories
 
 PROJ_BASE_DIR			=	..\..
 PROJ_BIN_DIR			=	$(PROJ_BASE_DIR)\bin
@@ -113,10 +119,10 @@ LIBPATHS=\
 
 # lib names
 
-TARGET_LIB_MT_D	= 
-TARGET_LIB_DLL_D	= 
-TARGET_LIB_DLL_R	= 
-TARGET_LIB_MT_R	= 
+TARGET_LIB_DLL_D	= advapi32.lib kernel32.lib ole32.lib oleaut32.lib shlwapi.lib user32.lib uuid.lib version.lib wininet.lib ws2_32.lib
+TARGET_LIB_DLL_R	= advapi32.lib kernel32.lib ole32.lib oleaut32.lib shlwapi.lib user32.lib uuid.lib version.lib wininet.lib ws2_32.lib
+TARGET_LIB_MT_D	= advapi32.lib kernel32.lib ole32.lib oleaut32.lib shlwapi.lib user32.lib uuid.lib version.lib wininet.lib ws2_32.lib
+TARGET_LIB_MT_R	= advapi32.lib kernel32.lib ole32.lib oleaut32.lib shlwapi.lib user32.lib uuid.lib version.lib wininet.lib ws2_32.lib
 
 # #defines
 
@@ -194,9 +200,9 @@ CPPC_FLAGS=\
 
 # Arguments (= flags + defines + includes)
 
-CC_ARGS_MT_D				=	-MTd -D_DEBUG -Zi -Fd$(TARGET_PDB_MT_D) $(CC_FLAGS) $(CC_DEFS) $(CC_INCLUDES)
 CC_ARGS_DLL_D				=	-MDd -D_DEBUG -Zi -Fd$(TARGET_PDB_DLL_D) $(CC_FLAGS) $(CC_DEFS) $(CC_INCLUDES)
 CC_ARGS_DLL_R				=	-MD -DNDEBUG -O1 $(CC_FLAGS) $(CC_DEFS) $(CC_INCLUDES)
+CC_ARGS_MT_D				=	-MTd -D_DEBUG -Zi -Fd$(TARGET_PDB_MT_D) $(CC_FLAGS) $(CC_DEFS) $(CC_INCLUDES)
 CC_ARGS_MT_R				=	-MT -DNDEBUG -O1 $(CC_FLAGS) $(CC_DEFS) $(CC_INCLUDES)
 
 AR_ARGS				=	-nologo
@@ -204,62 +210,32 @@ AR_ARGS				=	-nologo
 LD_ARGS				=	-nologo $(COMMON_LIB)
 
 ############################################################################
-# Targets
+# targets
 
-TARGET_LIB_MT_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).core.$(COMP_ARCH_OS_TAG).mt.debug.lib
-TARGET_LIB_UN_MT_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).core.$(COMP_ARCH_OS_TAG).mt.debug.lib
 TARGET_LIB_DLL_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).core.$(COMP_ARCH_OS_TAG).dll.debug.lib
 TARGET_LIB_UN_DLL_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).core.$(COMP_ARCH_OS_TAG).dll.debug.lib
 TARGET_LIB_DLL_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).core.$(COMP_ARCH_OS_TAG).dll.lib
 TARGET_LIB_UN_DLL_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).core.$(COMP_ARCH_OS_TAG).dll.lib
+TARGET_LIB_MT_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).core.$(COMP_ARCH_OS_TAG).mt.debug.lib
+TARGET_LIB_UN_MT_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).core.$(COMP_ARCH_OS_TAG).mt.debug.lib
 TARGET_LIB_MT_R			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).core.$(COMP_ARCH_OS_TAG).mt.lib
 TARGET_LIB_UN_MT_R		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).core.$(COMP_ARCH_OS_TAG).mt.lib
 
-TARGET_PDB_MT_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).mt.debug.pdb
 TARGET_PDB_DLL_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).dll.debug.pdb
+TARGET_PDB_MT_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).$(COMP_ARCH_OS_TAG).mt.debug.pdb
 
 
 TARGETS = \
- $(TARGET_LIB_MT_D)\
- $(TARGET_LIB_UN_MT_D)\
- $(TARGET_PDB_MT_D)\
  $(TARGET_LIB_DLL_D)\
  $(TARGET_LIB_UN_DLL_D)\
  $(TARGET_PDB_DLL_D)\
  $(TARGET_LIB_DLL_R)\
  $(TARGET_LIB_UN_DLL_R)\
+ $(TARGET_LIB_MT_D)\
+ $(TARGET_LIB_UN_MT_D)\
+ $(TARGET_PDB_MT_D)\
  $(TARGET_LIB_MT_R)\
  $(TARGET_LIB_UN_MT_R)\
- \
-
-OBJ_PROJ_atomic__MT_D = $(PROJ_OBJ_DIR)\atomic.mt.debug.obj
-OBJ_PROJ_dirent__MT_D = $(PROJ_OBJ_DIR)\dirent.mt.debug.obj
-OBJ_PROJ_dlfcn__MT_D = $(PROJ_OBJ_DIR)\dlfcn.mt.debug.obj
-OBJ_PROJ_glob__MT_D = $(PROJ_OBJ_DIR)\glob.mt.debug.obj
-OBJ_PROJ_hostname__MT_D = $(PROJ_OBJ_DIR)\hostname.mt.debug.obj
-OBJ_PROJ_mktemp__MT_D = $(PROJ_OBJ_DIR)\mktemp.mt.debug.obj
-OBJ_PROJ_mmap__MT_D = $(PROJ_OBJ_DIR)\mmap.mt.debug.obj
-OBJ_PROJ_resource__MT_D = $(PROJ_OBJ_DIR)\resource.mt.debug.obj
-OBJ_PROJ_setenv__MT_D = $(PROJ_OBJ_DIR)\setenv.mt.debug.obj
-OBJ_PROJ_time__MT_D = $(PROJ_OBJ_DIR)\time.mt.debug.obj
-OBJ_PROJ_uio__MT_D = $(PROJ_OBJ_DIR)\uio.mt.debug.obj
-OBJ_PROJ_unistd__MT_D = $(PROJ_OBJ_DIR)\unistd.mt.debug.obj
-OBJ_PROJ_internal_util__MT_D = $(PROJ_OBJ_DIR)\internal.util.mt.debug.obj
-
-OBJ_PROJ_MT_D = \
- $(OBJ_PROJ_atomic__MT_D)\
- $(OBJ_PROJ_dirent__MT_D)\
- $(OBJ_PROJ_dlfcn__MT_D)\
- $(OBJ_PROJ_glob__MT_D)\
- $(OBJ_PROJ_hostname__MT_D)\
- $(OBJ_PROJ_mktemp__MT_D)\
- $(OBJ_PROJ_mmap__MT_D)\
- $(OBJ_PROJ_resource__MT_D)\
- $(OBJ_PROJ_setenv__MT_D)\
- $(OBJ_PROJ_time__MT_D)\
- $(OBJ_PROJ_uio__MT_D)\
- $(OBJ_PROJ_unistd__MT_D)\
- $(OBJ_PROJ_internal_util__MT_D)\
  \
 
 OBJ_PROJ_atomic__DLL_D = $(PROJ_OBJ_DIR)\atomic.dll.debug.obj
@@ -322,6 +298,36 @@ OBJ_PROJ_DLL_R = \
  $(OBJ_PROJ_internal_util__DLL_R)\
  \
 
+OBJ_PROJ_atomic__MT_D = $(PROJ_OBJ_DIR)\atomic.mt.debug.obj
+OBJ_PROJ_dirent__MT_D = $(PROJ_OBJ_DIR)\dirent.mt.debug.obj
+OBJ_PROJ_dlfcn__MT_D = $(PROJ_OBJ_DIR)\dlfcn.mt.debug.obj
+OBJ_PROJ_glob__MT_D = $(PROJ_OBJ_DIR)\glob.mt.debug.obj
+OBJ_PROJ_hostname__MT_D = $(PROJ_OBJ_DIR)\hostname.mt.debug.obj
+OBJ_PROJ_mktemp__MT_D = $(PROJ_OBJ_DIR)\mktemp.mt.debug.obj
+OBJ_PROJ_mmap__MT_D = $(PROJ_OBJ_DIR)\mmap.mt.debug.obj
+OBJ_PROJ_resource__MT_D = $(PROJ_OBJ_DIR)\resource.mt.debug.obj
+OBJ_PROJ_setenv__MT_D = $(PROJ_OBJ_DIR)\setenv.mt.debug.obj
+OBJ_PROJ_time__MT_D = $(PROJ_OBJ_DIR)\time.mt.debug.obj
+OBJ_PROJ_uio__MT_D = $(PROJ_OBJ_DIR)\uio.mt.debug.obj
+OBJ_PROJ_unistd__MT_D = $(PROJ_OBJ_DIR)\unistd.mt.debug.obj
+OBJ_PROJ_internal_util__MT_D = $(PROJ_OBJ_DIR)\internal.util.mt.debug.obj
+
+OBJ_PROJ_MT_D = \
+ $(OBJ_PROJ_atomic__MT_D)\
+ $(OBJ_PROJ_dirent__MT_D)\
+ $(OBJ_PROJ_dlfcn__MT_D)\
+ $(OBJ_PROJ_glob__MT_D)\
+ $(OBJ_PROJ_hostname__MT_D)\
+ $(OBJ_PROJ_mktemp__MT_D)\
+ $(OBJ_PROJ_mmap__MT_D)\
+ $(OBJ_PROJ_resource__MT_D)\
+ $(OBJ_PROJ_setenv__MT_D)\
+ $(OBJ_PROJ_time__MT_D)\
+ $(OBJ_PROJ_uio__MT_D)\
+ $(OBJ_PROJ_unistd__MT_D)\
+ $(OBJ_PROJ_internal_util__MT_D)\
+ \
+
 OBJ_PROJ_atomic__MT_R = $(PROJ_OBJ_DIR)\atomic.mt.obj
 OBJ_PROJ_dirent__MT_R = $(PROJ_OBJ_DIR)\dirent.mt.obj
 OBJ_PROJ_dlfcn__MT_R = $(PROJ_OBJ_DIR)\dlfcn.mt.obj
@@ -353,9 +359,9 @@ OBJ_PROJ_MT_R = \
  \
 
 OBJS = \
- $(OBJ_PROJ_MT_D)\
  $(OBJ_PROJ_DLL_D)\
  $(OBJ_PROJ_DLL_R)\
+ $(OBJ_PROJ_MT_D)\
  $(OBJ_PROJ_MT_R)\
  \
 
@@ -365,19 +371,19 @@ usage:
 	@echo "make [usage | clean | all | test | target] - default is 'all'"
 
 clean:
-	@-$(RM) $(TARGET_LIB_MT_D)
-	@-$(RM) $(TARGET_LIB_UN_MT_D)
-	@-$(RM) $(TARGET_PDB_MT_D)
 	@-$(RM) $(TARGET_LIB_DLL_D)
 	@-$(RM) $(TARGET_LIB_UN_DLL_D)
 	@-$(RM) $(TARGET_PDB_DLL_D)
 	@-$(RM) $(TARGET_LIB_DLL_R)
 	@-$(RM) $(TARGET_LIB_UN_DLL_R)
+	@-$(RM) $(TARGET_LIB_MT_D)
+	@-$(RM) $(TARGET_LIB_UN_MT_D)
+	@-$(RM) $(TARGET_PDB_MT_D)
 	@-$(RM) $(TARGET_LIB_MT_R)
 	@-$(RM) $(TARGET_LIB_UN_MT_R)
-	@-$(RM) $(OBJ_PROJ_MT_D)
 	@-$(RM) $(OBJ_PROJ_DLL_D)
 	@-$(RM) $(OBJ_PROJ_DLL_R)
+	@-$(RM) $(OBJ_PROJ_MT_D)
 	@-$(RM) $(OBJ_PROJ_MT_R)
 
 
@@ -405,9 +411,9 @@ check.bin.dir:
 
 
 test_:
-#	$(TARGET_TEST_C_MT_D) --unittest
 #	$(TARGET_TEST_C_DLL_D) --unittest
 #	$(TARGET_TEST_C_DLL_R) --unittest
+#	$(TARGET_TEST_C_MT_D) --unittest
 #	$(TARGET_TEST_C_MT_R) --unittest
 
 test:	target test_
@@ -417,42 +423,7 @@ test:	target test_
 
 # library
 
-
-$(TARGET_LIB_UN_MT_D): $(TARGET_LIB_MT_D)
-	@$(CP) $(TARGET_LIB_MT_D) $@
-
-$(TARGET_LIB_MT_D): $(OBJ_PROJ_MT_D) makefile
-	@-if not exist $(B64_LIB_DIR)\NUL mkdir $(B64_LIB_DIR)
-	$(AR) $(AR_ARGS) -out:$@ $(OBJ_PROJ_MT_D)
-
-$(OBJ_PROJ_atomic__MT_D):	$(PROJ_SRC_DIR)\atomic.c $(PROJ_INCLUDE_DIR)\asm\atomic.h makefile
-	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\atomic.c
-$(OBJ_PROJ_dirent__MT_D):	$(PROJ_SRC_DIR)\dirent.c $(PROJ_INCLUDE_DIR)\dirent.h makefile
-	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\dirent.c
-$(OBJ_PROJ_dlfcn__MT_D):	$(PROJ_SRC_DIR)\dlfcn.c $(PROJ_INCLUDE_DIR)\dlfcn.h makefile
-	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\dlfcn.c
-$(OBJ_PROJ_glob__MT_D):	$(PROJ_SRC_DIR)\glob.c $(PROJ_INCLUDE_DIR)\glob.h makefile
-	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\glob.c
-$(OBJ_PROJ_hostname__MT_D):	$(PROJ_SRC_DIR)\hostname.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
-	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\hostname.c
-$(OBJ_PROJ_mktemp__MT_D):	$(PROJ_SRC_DIR)\mktemp.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
-	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\mktemp.c
-$(OBJ_PROJ_mmap__MT_D):	$(PROJ_SRC_DIR)\mmap.c $(PROJ_INCLUDE_DIR)\sys\mman.h makefile
-	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\mmap.c
-$(OBJ_PROJ_resource__MT_D):	$(PROJ_SRC_DIR)\resource.c $(PROJ_INCLUDE_DIR)\sys\resource.h makefile
-	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\resource.c
-$(OBJ_PROJ_setenv__MT_D):	$(PROJ_SRC_DIR)\setenv.c $(PROJ_INCLUDE_DIR)\unixem\setenv.h makefile
-	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\setenv.c
-$(OBJ_PROJ_time__MT_D):	$(PROJ_SRC_DIR)\time.c $(PROJ_INCLUDE_DIR)\sys\time.h makefile
-	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\time.c
-$(OBJ_PROJ_uio__MT_D):	$(PROJ_SRC_DIR)\uio.c $(PROJ_INCLUDE_DIR)\sys\uio.h makefile
-	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\uio.c
-$(OBJ_PROJ_unistd__MT_D):	$(PROJ_SRC_DIR)\unistd.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
-	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\unistd.c
-$(OBJ_PROJ_internal_util__MT_D): $(PROJ_SRC_DIR)\internal\util.c $(PROJ_INCLUDE_DIR)\unixem\internal\util.h makefile
-	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\internal\util.c
-
-
+$(TARGET_PDB_DLL_D):	$(TARGET_LIB_DLL_D)
 
 $(TARGET_LIB_UN_DLL_D): $(TARGET_LIB_DLL_D)
 	@$(CP) $(TARGET_LIB_DLL_D) $@
@@ -489,7 +460,6 @@ $(OBJ_PROJ_internal_util__DLL_D): $(PROJ_SRC_DIR)\internal\util.c $(PROJ_INCLUDE
 	$(CC) $(CC_ARGS_DLL_D) -Fo$@ $(PROJ_SRC_DIR)\internal\util.c
 
 
-
 $(TARGET_LIB_UN_DLL_R): $(TARGET_LIB_DLL_R)
 	@$(CP) $(TARGET_LIB_DLL_R) $@
 
@@ -524,6 +494,41 @@ $(OBJ_PROJ_unistd__DLL_R):	$(PROJ_SRC_DIR)\unistd.c $(PROJ_INCLUDE_DIR)\unistd.h
 $(OBJ_PROJ_internal_util__DLL_R): $(PROJ_SRC_DIR)\internal\util.c $(PROJ_INCLUDE_DIR)\unixem\internal\util.h makefile
 	$(CC) $(CC_ARGS_DLL_R) -Fo$@ $(PROJ_SRC_DIR)\internal\util.c
 
+$(TARGET_PDB_MT_D):	$(TARGET_LIB_MT_D)
+
+$(TARGET_LIB_UN_MT_D): $(TARGET_LIB_MT_D)
+	@$(CP) $(TARGET_LIB_MT_D) $@
+
+$(TARGET_LIB_MT_D): $(OBJ_PROJ_MT_D) makefile
+	@-if not exist $(B64_LIB_DIR)\NUL mkdir $(B64_LIB_DIR)
+	$(AR) $(AR_ARGS) -out:$@ $(OBJ_PROJ_MT_D)
+
+$(OBJ_PROJ_atomic__MT_D):	$(PROJ_SRC_DIR)\atomic.c $(PROJ_INCLUDE_DIR)\asm\atomic.h makefile
+	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\atomic.c
+$(OBJ_PROJ_dirent__MT_D):	$(PROJ_SRC_DIR)\dirent.c $(PROJ_INCLUDE_DIR)\dirent.h makefile
+	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\dirent.c
+$(OBJ_PROJ_dlfcn__MT_D):	$(PROJ_SRC_DIR)\dlfcn.c $(PROJ_INCLUDE_DIR)\dlfcn.h makefile
+	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\dlfcn.c
+$(OBJ_PROJ_glob__MT_D):	$(PROJ_SRC_DIR)\glob.c $(PROJ_INCLUDE_DIR)\glob.h makefile
+	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\glob.c
+$(OBJ_PROJ_hostname__MT_D):	$(PROJ_SRC_DIR)\hostname.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
+	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\hostname.c
+$(OBJ_PROJ_mktemp__MT_D):	$(PROJ_SRC_DIR)\mktemp.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
+	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\mktemp.c
+$(OBJ_PROJ_mmap__MT_D):	$(PROJ_SRC_DIR)\mmap.c $(PROJ_INCLUDE_DIR)\sys\mman.h makefile
+	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\mmap.c
+$(OBJ_PROJ_resource__MT_D):	$(PROJ_SRC_DIR)\resource.c $(PROJ_INCLUDE_DIR)\sys\resource.h makefile
+	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\resource.c
+$(OBJ_PROJ_setenv__MT_D):	$(PROJ_SRC_DIR)\setenv.c $(PROJ_INCLUDE_DIR)\unixem\setenv.h makefile
+	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\setenv.c
+$(OBJ_PROJ_time__MT_D):	$(PROJ_SRC_DIR)\time.c $(PROJ_INCLUDE_DIR)\sys\time.h makefile
+	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\time.c
+$(OBJ_PROJ_uio__MT_D):	$(PROJ_SRC_DIR)\uio.c $(PROJ_INCLUDE_DIR)\sys\uio.h makefile
+	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\uio.c
+$(OBJ_PROJ_unistd__MT_D):	$(PROJ_SRC_DIR)\unistd.c $(PROJ_INCLUDE_DIR)\unistd.h makefile
+	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\unistd.c
+$(OBJ_PROJ_internal_util__MT_D): $(PROJ_SRC_DIR)\internal\util.c $(PROJ_INCLUDE_DIR)\unixem\internal\util.h makefile
+	$(CC) $(CC_ARGS_MT_D) -Fo$@ $(PROJ_SRC_DIR)\internal\util.c
 
 
 $(TARGET_LIB_UN_MT_R): $(TARGET_LIB_MT_R)
@@ -561,5 +566,4 @@ $(OBJ_PROJ_internal_util__MT_R): $(PROJ_SRC_DIR)\internal\util.c $(PROJ_INCLUDE_
 	$(CC) $(CC_ARGS_MT_R) -Fo$@ $(PROJ_SRC_DIR)\internal\util.c
 
 
-
-############################################################################
+############################### end of file ################################

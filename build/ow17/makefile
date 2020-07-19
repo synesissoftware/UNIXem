@@ -1,20 +1,21 @@
 ############################################################################
 # File:		makefile
 #
-# Purpose:	Makefile for the UNIXem project, for the Open Watcom C/C++ 1.7
-#           compiler, on Win32
+# Purpose:  Makefile for the UNIXem project,
+#           for the Open Watcom C/C++ 1.7 compiler,
+#           on the Win32 platform
 #
 # Created:	15th February 2005
-# Updated:	14th October 2019
+# Updated:	19th July 2020
 #
 ############################################################################
 
 
 ############################################################################
-# Symbols
+# symbols
 
 ########################################
-# Project & compiler version
+# project & compiler version
 
 COMP_TAG            =   ow17
 ARCH_TAG            =   
@@ -27,12 +28,12 @@ COMP_ARCH_OS_TAG	=	$(COMP_TAG)$(OS_TAG)$(ARCH_TAG)
 PROJ_MAKEFILE_NAME  =   makefile
 
 ########################################
-# Testing verbosity
+# testing verbosity
 
 TEST_VERBOSITY      =   2
 
 ########################################
-# Directories
+# directories
 
 PROJ_BASE_DIR			=	..\..
 PROJ_BIN_DIR			=	$(PROJ_BASE_DIR)\bin
@@ -200,7 +201,7 @@ AR_ARGS				=	-q -c
 LD_ARGS				=	-zq $(COMMON_LIB)
 
 ############################################################################
-# Targets
+# targets
 
 TARGET_LIB_ST_D			=	$(PROJ_LIB_DIR)\$(PROJ_TAG_VER).core.$(COMP_ARCH_OS_TAG).debug.lib
 TARGET_LIB_UN_ST_D		=	$(PROJ_LIB_DIR)\$(PROJ_TAG).core.$(COMP_ARCH_OS_TAG).debug.lib
@@ -400,7 +401,6 @@ $(OBJ_PROJ_internal_util__ST_D): $(PROJ_SRC_DIR)\internal\util.c $(PROJ_INCLUDE_
 	$(CC) $(CC_ARGS_ST_D) -fo=$@ $(PROJ_SRC_DIR)\internal\util.c
 
 
-
 $(TARGET_LIB_UN_ST_R): $(TARGET_LIB_ST_R)
 	@$(CP) $(TARGET_LIB_ST_R) $@
 
@@ -437,5 +437,4 @@ $(OBJ_PROJ_internal_util__ST_R): $(PROJ_SRC_DIR)\internal\util.c $(PROJ_INCLUDE_
 	$(CC) $(CC_ARGS_ST_R) -fo=$@ $(PROJ_SRC_DIR)\internal\util.c
 
 
-
-############################################################################
+############################### end of file ################################
