@@ -63,10 +63,6 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 * [**Pantheios**](https://github.com/synesissoftware/Pantheios/)
 * [**recls**](https://github.com/synesissoftware/recls/)
 
-Projects in which **UNIXem** is used include:
-
-* [**libCLImate.Ruby**](https://github.com/synesissoftware/libCLImate.Ruby)
-
 ### License
 
 **UNIXem** is released under the 3-clause BSD license. See LICENSE for details.
