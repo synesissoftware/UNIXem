@@ -1,7 +1,7 @@
 UNIXem - Changes
 ================
 
-Updated:    14th October 2019
+Updated:    19th July 2020
 
 
     ************************************
@@ -13,6 +13,92 @@ Updated:    14th October 2019
     *  *  means a general bullet-point *
     *                                  *
     ************************************
+
+
+19th July 2020 - 1.12.4
+=======================
+
+Summary:
+--------
+
+ * refactored makefiles (in auto-generation)
+
+Details:
+--------
+
+General:
+
+ ~ include/unixem/unixem.h:
+    ~ updated makefiles
+
+Distribution:
+
+Makefiles / Project-files:
+
+ ~ build/ar/makefile:
+ ~ build/bc55/makefile:
+ ~ build/bc551/makefile:
+ ~ build/bc56/makefile:
+ ~ build/bc564/makefile:
+ ~ build/bc582/makefile:
+ ~ build/bc59x/makefile:
+ ~ build/bc61x/makefile:
+ ~ build/como433/makefile:
+ ~ build/cw7/makefile:
+ ~ build/cw8/makefile:
+ ~ build/dm/makefile:
+ ~ build/gcc295/makefile:
+ ~ build/gcc32/makefile:
+ ~ build/gcc33/makefile:
+ ~ build/gcc34/makefile:
+ ~ build/gcc49/makefile:
+ ~ build/gcc81/makefile:
+ ~ build/icl10/makefile:
+ ~ build/icl11/makefile:
+ ~ build/icl6/makefile:
+ ~ build/icl7/makefile:
+ ~ build/icl8/makefile:
+ ~ build/icl9/makefile:
+ ~ build/makefile.tmpl:
+ ~ build/makefile.tools.xml:
+ ~ build/ow12/makefile:
+ ~ build/ow13/makefile:
+ ~ build/ow14/makefile:
+ ~ build/ow15/makefile:
+ ~ build/ow16/makefile:
+ ~ build/ow17/makefile:
+ ~ build/vc10.x64/makefile:
+ ~ build/vc10/makefile:
+ ~ build/vc11.x64/makefile:
+ ~ build/vc11/makefile:
+ ~ build/vc12.x64/makefile:
+ ~ build/vc12/makefile:
+ ~ build/vc14.x64/makefile:
+ ~ build/vc14/makefile:
+ ~ build/vc42/makefile:
+ ~ build/vc5/makefile:
+ ~ build/vc6/makefile:
+ ~ build/vc7/makefile:
+ ~ build/vc71/makefile:
+ ~ build/vc8.x64/makefile:
+ ~ build/vc8/makefile:
+ ~ build/vc9.x64/makefile:
+ ~ build/vc9/makefile:
+    ~ updated variant libs
+    ~ tools file refactoring
+    ~ makefile refactoring
+
+Examples:
+
+Test:
+
+Test.Unit:
+
+Test.Component:
+
+Test.Scratch:
+
+Depends on:
 
 
 14th October 2019 - 1.12.3
