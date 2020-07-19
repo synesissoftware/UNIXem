@@ -1,7 +1,19 @@
 UNIXem - History
 ================
 
-Updated:    14th October 2019
+Updated:    19th July 2020
+
+
+19th July 2020 - 0.12.5
+-----------------------
+
+ * added support for Visual C++ 15 and 16
+
+
+19th July 2020 - 0.12.4
+-----------------------
+
+ * refactored makefiles (in auto-generation)
 
 
 14th October 2019 - 0.12.3

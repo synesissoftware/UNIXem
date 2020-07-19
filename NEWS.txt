@@ -7,6 +7,8 @@ Updated:    19th July 2020
 
 News:
 
+  19th Jul 2020     -   UNIXem 1.12.5 released
+
   19th Jul 2020     -   UNIXem 1.12.4 released
 
   14th Oct 2019     -   UNIXem 1.12.3 released

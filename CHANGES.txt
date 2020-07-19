@@ -15,6 +15,46 @@ Updated:    19th July 2020
     ************************************
 
 
+19th July 2020 - 1.12.5
+=======================
+
+Summary:
+--------
+
+ * added support for Visual C++ 15 and 16
+
+Details:
+--------
+
+General:
+
+ ~ include/unixem/implicit_link.h:
+ ~ include/unixem/unixem.h:
+    + added support for Visual C++ 15 and 16
+
+Distribution:
+
+Makefiles / Project-files:
+
+ + build/vc15.x64/makefile:
+ + build/vc15/makefile:
+ + build/vc16.x64/makefile:
+ + build/vc16/makefile:
+    + added support for Visual C++ 15 and 16
+
+Examples:
+
+Test:
+
+Test.Unit:
+
+Test.Component:
+
+Test.Scratch:
+
+Depends on:
+
+
 19th July 2020 - 1.12.4
 =======================
 

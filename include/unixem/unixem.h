@@ -54,8 +54,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MAJOR       1
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MINOR       7
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_REVISION    3
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        27
+# define UNIXEM_VER_UNIXEM_H_UNIXEM_REVISION    4
+# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        28
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /** \def UNIXEM_VER_MAJOR
@@ -76,9 +76,9 @@
 
 #define UNIXEM_VER_MAJOR       1
 #define UNIXEM_VER_MINOR       12
-#define UNIXEM_VER_REVISION    4
+#define UNIXEM_VER_REVISION    5
 
-#define UNIXEM_VER             0x010c04ff
+#define UNIXEM_VER             0x010c05ff
 
 /* ////////////////////////////////////////////////////////////////////// */
 
