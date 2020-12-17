@@ -52,6 +52,9 @@ ReleaseUnix/
 
 list_changes.cmd
 
+build/makefile.tmpl
+build/makefile.tools.xml
+
 include/fastformat/internal/dos2unix.has.been.performed
 
 test/tests-plan.txt
