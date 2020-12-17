@@ -1,7 +1,13 @@
 UNIXem - History
 ================
 
-Updated:    19th July 2020
+Updated:    17th December 2020
+
+
+17th December 2020 - 0.12.6
+---------------------------
+
+ * compatibility with Visual Studio 2019 (16.8.2)
 
 
 19th July 2020 - 0.12.5

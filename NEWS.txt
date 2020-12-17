@@ -1,11 +1,13 @@
 UNIXem - News
 =============
 
-Updated:    19th July 2020
+Updated:    17th December 2020
 
 
 
 News:
+
+  17th Dec 2020     -   UNIXem 1.12.6 released
 
   19th Jul 2020     -   UNIXem 1.12.5 released
 

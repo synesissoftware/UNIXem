@@ -4,7 +4,7 @@
  * Purpose: Version header for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 19th July 2020
+ * Updated: 17th December 2020
  *
  * Home:    http://synesis.com.au/software/
  *
@@ -54,8 +54,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MAJOR       1
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MINOR       7
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_REVISION    4
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        28
+# define UNIXEM_VER_UNIXEM_H_UNIXEM_REVISION    5
+# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        29
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /** \def UNIXEM_VER_MAJOR
@@ -76,9 +76,9 @@
 
 #define UNIXEM_VER_MAJOR       1
 #define UNIXEM_VER_MINOR       12
-#define UNIXEM_VER_REVISION    5
+#define UNIXEM_VER_REVISION    6
 
-#define UNIXEM_VER             0x010c05ff
+#define UNIXEM_VER             0x010c06ff
 
 /* ////////////////////////////////////////////////////////////////////// */
 

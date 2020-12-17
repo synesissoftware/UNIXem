@@ -1,12 +1,12 @@
 UNIXem - License
 ================
 
-Updated:    19th July 2020
+Updated:    17th December 2020
 
 
 
 UNIXem uses the BSD-form license, as described in the accompanying
-doc/html/1.12.5/index.html file.
+doc/html/1.12.6/index.html file.
 
 =============================== end of file ================================
 

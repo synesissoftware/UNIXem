@@ -4,7 +4,7 @@
  * Purpose: Implicit linking for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 19th July 2020
+ * Updated: 17th December 2020
  *
  * Home:    http://synesis.com.au/software/
  *
@@ -54,8 +54,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_MAJOR    2
 # define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_MINOR    1
-# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_REVISION 1
-# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_EDIT     21
+# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_REVISION 2
+# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_EDIT     22
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -252,7 +252,7 @@
 #    if 0
 #    elif _MSC_VER < 1920
 #     define UNIXEM_IMPL_LINK_COMPILER_NAME                 "vc15"
-#    elif _MSC_VER <= 1926
+#    elif _MSC_VER <= 1928
 #     define UNIXEM_IMPL_LINK_COMPILER_NAME                 "vc16"
 #    else
 #     error Visual C++ version that is >= vc16 is not recognised

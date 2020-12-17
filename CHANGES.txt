@@ -1,7 +1,7 @@
 UNIXem - Changes
 ================
 
-Updated:    19th July 2020
+Updated:    17th December 2020
 
 
     ************************************
@@ -13,6 +13,40 @@ Updated:    19th July 2020
     *  *  means a general bullet-point *
     *                                  *
     ************************************
+
+
+17th December 2020 - 1.12.6
+===========================
+
+Summary:
+--------
+
+ * compatibility with Visual Studio 2019 (16.8.2)
+
+Details:
+--------
+
+General:
+
+ ~ include/unixem/implicit_link.h:
+ ~ include/unixem/unixem.h:
+    ~ compatibility with Visual Studio 2019 (16.8.2)
+
+Distribution:
+
+Makefiles / Project-files:
+
+Examples:
+
+Test:
+
+Test.Unit:
+
+Test.Component:
+
+Test.Scratch:
+
+Depends on:
 
 
 19th July 2020 - 1.12.5
