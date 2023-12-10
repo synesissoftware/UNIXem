@@ -1,0 +1,3 @@
+include("${CMAKE_CURRENT_LIST_DIR}/b64Targets.cmake")
+set(b64_INCLUDE_DIRS "@PACKAGE_INCLUDE_DIR@")
+
