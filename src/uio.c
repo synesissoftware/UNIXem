@@ -47,6 +47,7 @@
 # define _SYNSOFT_VER_C_UIO_EDIT        14
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -58,6 +59,7 @@
 
 #include <errno.h>
 #include <windows.h>
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -172,4 +174,6 @@ unixem_ssize_t unixem_writev(
     return ret;
 }
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

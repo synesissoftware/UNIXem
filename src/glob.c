@@ -47,6 +47,7 @@
 # define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT       57
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -61,6 +62,7 @@
 #include <errno.h>
 #include <stdlib.h>
 #include <windows.h>
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * helper functions
@@ -120,6 +122,7 @@ unixem_glob_isdots_(
 
     return 0;
 }
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -499,4 +502,6 @@ void unixem_globfree(unixem_glob_t* pglob)
     }
 }
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

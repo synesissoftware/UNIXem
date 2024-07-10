@@ -55,6 +55,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_EDIT       14
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -80,6 +81,7 @@ extern "C"
 {
 #endif /* __cplusplus */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
@@ -93,6 +95,7 @@ struct unixem_iovec
     void*   iov_base;  /*!< Base address */
     size_t  iov_len;    /*!< Number of bytes referenced */
 };
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * functions
@@ -125,6 +128,7 @@ unixem_ssize_t unixem_writev(
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

@@ -56,6 +56,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_EDIT      28
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -122,6 +123,7 @@ extern int unixem_gettimeofday(
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

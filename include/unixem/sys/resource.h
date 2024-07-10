@@ -56,6 +56,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_EDIT      10
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -127,6 +128,7 @@ extern int unixem_getrusage(
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

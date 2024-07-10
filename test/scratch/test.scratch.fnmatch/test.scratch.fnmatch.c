@@ -8,6 +8,7 @@
  *
  * ////////////////////////////////////////////////////////////////////// */
 
+
 /* UNIXem header files */
 #include <fnmatch.h>
 
@@ -20,6 +21,7 @@
 # include <crtdbg.h>
 #endif /* _MSC_VER) && _DEBUG */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * macros and definitions
  */
@@ -30,14 +32,16 @@
 #ifdef false
 # undef false
 #endif /* false */
-#define true    (1)
-#define false   (0)
+#define true                                                (1)
+#define false                                               (0)
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * globals
  */
 
 static int  s_bDebugging    =   false;
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs

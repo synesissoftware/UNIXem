@@ -55,6 +55,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_EDIT      26
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -81,6 +82,7 @@
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
@@ -105,6 +107,7 @@
 #else /* ? _WIN64 */
 # define UNIXEM_MAP_FAILED      ((void*)~0)                /*!< Returned from mmap() when the mapping fails */
 #endif /* _WIN64 */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -177,6 +180,7 @@ int unixem_msync(
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

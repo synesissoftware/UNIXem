@@ -56,6 +56,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_EDIT     20
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -82,12 +83,14 @@
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
 
-#define UNIXEM_RTLD_LAZY        (0x00001)       /*!< Lazy function call binding. */
-#define UNIXEM_RTLD_NOW         (0x00002)       /*!< Immediate function call binding. */
+#define UNIXEM_RTLD_LAZY                                    (0x00001)   /*!< Lazy function call binding. */
+#define UNIXEM_RTLD_NOW                                     (0x00002)   /*!< Immediate function call binding. */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -144,6 +147,7 @@ char const* unixem_dlerror(void);
 } /* extern "C" */
 #endif /* __cplusplus */
 
+
 /* ////////////////////////////////////////////////////////////////////// */
 
 /** @} // end of group unixem_dlopen */
@@ -153,3 +157,4 @@ char const* unixem_dlerror(void);
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_H_DLFCN */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

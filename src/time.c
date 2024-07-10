@@ -47,6 +47,7 @@
 # define _SYNSOFT_VER_C_TIME_EDIT       30
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -71,6 +72,7 @@ struct timezone;
 #include <assert.h>
 #include <errno.h>
 #include <time.h>
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * internal helper functions
@@ -108,6 +110,7 @@ unixem_impl_numberOfDaysInMonth(
         return 31;
     }
 }
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * helper functions
@@ -174,6 +177,7 @@ unixem_internal_yearIsLeap(
 
     return 0;
 }
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -279,4 +283,6 @@ unixem_timegm(
     return t;
 }
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

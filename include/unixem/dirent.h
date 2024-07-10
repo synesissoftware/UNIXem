@@ -74,12 +74,14 @@
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
 
 #include <unixem/unixem.h>
 #include <stddef.h>
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
@@ -88,6 +90,7 @@
 #ifndef NAME_MAX
 # define NAME_MAX   (260)   /*!< The maximum number of characters (including null terminator) in a directory entry name */
 #endif /* !NAME_MAX */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
@@ -111,6 +114,7 @@ struct unixem_wdirent
     wchar_t d_name[NAME_MAX + 1];   /*!< file name (null-terminated) */
     int     d_mode;                 /*!< currently unused */
 };
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -177,6 +181,7 @@ struct unixem_wdirent* unixem_wreaddir(unixem_wDIR* dir);
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

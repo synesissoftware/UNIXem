@@ -47,6 +47,7 @@
 # define _SYNSOFT_VER_C_MMAP_EDIT       32
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -86,6 +87,7 @@ _WCRTLINK extern long _get_osfhandle( int __posixhandle );
 
 # error Compiler not discriminated
 #endif /* compiler */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * helper functions
@@ -147,6 +149,7 @@ static int unixem_win32_flags_from_mmap_(
 
     return 0;
 }
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -302,4 +305,6 @@ int unixem_msync(
     return FlushViewOfFile(addr, len) ? 0 : (errno = EINVAL, -1);
 }
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

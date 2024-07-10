@@ -50,6 +50,7 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_EDIT       20
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -62,11 +63,13 @@
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
 
 typedef unixem_atomic_t atomic_t;
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions

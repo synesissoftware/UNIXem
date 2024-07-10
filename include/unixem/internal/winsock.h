@@ -48,6 +48,7 @@
 #ifndef UNIXEM_INCL_UNIXEM_INTERNAL_H_WINSOCK
 #define UNIXEM_INCL_UNIXEM_INTERNAL_H_WINSOCK
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * version
  */
@@ -58,6 +59,7 @@
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_REVISION  3
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_EDIT      8
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -102,6 +104,7 @@
 #  undef WIN32
 # endif /* !UNIXEM_internal_WIN32_is_defined_ */
 #endif /* WIN32 */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

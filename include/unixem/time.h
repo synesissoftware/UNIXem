@@ -55,6 +55,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_EDIT		3
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -111,13 +112,14 @@ timegm(
 );
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
 # ifndef timegm
-#  define timegm	unixem_timegm
+#  define timegm                                            unixem_timegm
 # endif /* !timegm */
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

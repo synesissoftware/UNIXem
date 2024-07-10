@@ -47,6 +47,7 @@
 # define _SYNSOFT_VER_INTERNAL_C_UTIL_EDIT      14
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -60,25 +61,26 @@
 #include <limits.h>
 #include <windows.h>
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
 
 #ifndef EZERO
-# define EZERO                                  (0)
+# define EZERO                                              (0)
 #endif
 #if !defined(ECURDIR)
-# define ECURDIR                                EACCES
+# define ECURDIR                                            EACCES
 #endif /* !ECURDIR */
 #if !defined(ENOSYS)
-# define ENOSYS                                 EPERM
+# define ENOSYS                                             EPERM
 #endif /* !ENOSYS */
 
 #ifndef ERROR_FILE_TOO_LARGE
-# define ERROR_FILE_TOO_LARGE                   (223)
+# define ERROR_FILE_TOO_LARGE                               (223)
 #endif
 #ifndef ERROR_DISK_TOO_FRAGMENTED
-# define ERROR_DISK_TOO_FRAGMENTED              (302)
+# define ERROR_DISK_TOO_FRAGMENTED                          (302)
 #endif
 
 
@@ -391,4 +393,6 @@ char unixem_internal_get_current_drive(void)
     }
 }
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

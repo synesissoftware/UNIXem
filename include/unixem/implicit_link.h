@@ -47,6 +47,7 @@
 #ifndef UNIXEM_INCL_UNIXEM_H_IMPLICIT_LINK
 #define UNIXEM_INCL_UNIXEM_H_IMPLICIT_LINK
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * version
  */
@@ -58,42 +59,52 @@
 # define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_EDIT     22
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
 
 #include <unixem/unixem.h>
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * macros and definitions
  */
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define UNIXEM_STRINGIZE_(x)       #x
-# define UNIXEM_STRINGIZE(x)        UNIXEM_STRINGIZE_(x)
+# define UNIXEM_STRINGIZE_(x)                               #x
+# define UNIXEM_STRINGIZE(x)                                UNIXEM_STRINGIZE_(x)
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * architecture discrimination
  */
 
-#if defined(__amd64__) || \
-    defined(__amd64) || \
-    defined(_AMD64_) || \
-    defined(_M_AMD64) || \
-    defined(_M_X64)
+#if 0
+#elif defined(__amd64__) || \
+      defined(__amd64) || \
+      defined(_AMD64_) || \
+      defined(_M_AMD64) || \
+      defined(_M_X64) || \
+      0
 # define UNIXEM_ARCH_IS_X64
-#elif defined(__ia64__) || \
+#elif 0 ||
+      defined(__ia64__) || \
       defined(__ia64) || \
       defined(_IA64_) || \
-      defined(_M_IA64)
+      defined(_M_IA64) || \
+      0
 # define UNIXEM_ARCH_IS_IA64
-#elif defined(__i386__) || \
+#elif 0 || \
+      defined(__i386__) || \
       defined(__i386) || \
       defined(_X86_) || \
-      defined(_M_IX86)
+      defined(_M_IX86) || \
+      0
 # define UNIXEM_ARCH_IS_X86
 #endif /* _M_?? */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * implicit linking
@@ -333,17 +344,18 @@
     * [lib]<library-basename>.<major-version>.<module-name>.<compiler-name>[.<os-arch-tag>][.<char-encoding-tag>][.<threading-tag>][.<nox-tag>][.<debug-tag>].{a|lib}
     */
 
-#  define UNIXEM_IMPL_LINK_LIBRARY_NAME                     UNIXEM_IMPL_LINK_PREFIX \
-                                                               UNIXEM_IMPL_LINK_LIBRARY_BASENAME \
-                                                               UNIXEM_IMPL_LINK_MAJOR_VERSION \
-                                                               UNIXEM_IMPL_LINK_MODULE_NAME \
-                                                               "." UNIXEM_IMPL_LINK_COMPILER_NAME \
-                                                               UNIXEM_IMPL_LINK_OS_TAG \
-                                                               UNIXEM_IMPL_LINK_ARCH_TAG \
-                                                               UNIXEM_IMPL_LINK_ENCODING_TAG \
-                                                               UNIXEM_IMPL_LINK_THREADING_TAG \
-                                                               UNIXEM_IMPL_LINK_DEBUG_TAG \
-                                                               UNIXEM_IMPL_LINK_SUFFIX
+#  define UNIXEM_IMPL_LINK_LIBRARY_NAME     \
+    UNIXEM_IMPL_LINK_PREFIX                 \
+    UNIXEM_IMPL_LINK_LIBRARY_BASENAME       \
+    UNIXEM_IMPL_LINK_MAJOR_VERSION          \
+    UNIXEM_IMPL_LINK_MODULE_NAME            \
+    "." UNIXEM_IMPL_LINK_COMPILER_NAME      \
+    UNIXEM_IMPL_LINK_OS_TAG                 \
+    UNIXEM_IMPL_LINK_ARCH_TAG               \
+    UNIXEM_IMPL_LINK_ENCODING_TAG           \
+    UNIXEM_IMPL_LINK_THREADING_TAG          \
+    UNIXEM_IMPL_LINK_DEBUG_TAG              \
+    UNIXEM_IMPL_LINK_SUFFIX
 
 
 #  pragma message("lib: " UNIXEM_IMPL_LINK_LIBRARY_NAME)
@@ -351,8 +363,8 @@
 #  pragma comment(lib, UNIXEM_IMPL_LINK_LIBRARY_NAME)
 
 # endif /* UNIXEM_IMPLICIT_LINK_SUPPORT */
-
 #endif /* Win-32 || Win-64 */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

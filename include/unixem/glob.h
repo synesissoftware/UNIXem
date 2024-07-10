@@ -56,6 +56,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_EDIT      41
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -79,6 +80,7 @@
 #ifndef _WIN32
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
@@ -113,6 +115,7 @@
 #define UNIXEM_GLOB_NODOTSDIRS      0x00010000          /*!< Elide "." and ".." directories from wildcard searches. Supported from version 1.6 of UNIXem. */
 #define UNIXEM_GLOB_LIMIT           0x00020000          /*!< Limits the search to the number specified by the caller in gl_matchc. Supported from version 1.6 of UNIXem. */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
@@ -130,6 +133,7 @@ typedef struct
   int       gl_flags;   /*!< returned flags */
   char**    gl_pathv;   /*!< list of paths matching pattern */
 } unixem_glob_t;
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -173,6 +177,7 @@ void unixem_globfree(unixem_glob_t* pglob);
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

@@ -55,6 +55,7 @@
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_EDIT       46
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -144,6 +145,7 @@
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
@@ -216,6 +218,7 @@
 #define _PC_FILESIZEBITS        UNIXEM_PC_FILESIZEBITS
 #define _PC_SYNC_IO             UNIXEM_PC_SYNC_IO
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
@@ -230,6 +233,7 @@
 /** Process identifier type */
 typedef unixem_pid_t    pid_t;
 #endif /* !UNIXEM_pid_t_PROVIDED_BY_COMPILER && !pid_t */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions

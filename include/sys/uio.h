@@ -54,6 +54,7 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_UIO_EDIT      14
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -79,6 +80,7 @@ extern "C"
 {
 #endif /* __cplusplus */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
@@ -93,7 +95,8 @@ typedef unixem_ssize_t  ssize_t;
  *
  * Defines a memory vector.
  */
-#define iovec       unixem_iovec
+#define iovec                                               unixem_iovec
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * functions
@@ -138,6 +141,7 @@ ssize_t writev(
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

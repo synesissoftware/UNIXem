@@ -53,6 +53,7 @@
 # define UNIXEM_VER_UNIXEM_H_SETENV_EDIT        10
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -77,6 +78,7 @@
  * \brief setenv() and unsetenv() functions
  * @{
  */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -113,6 +115,7 @@ void unixem_unsetenv(char const* name);
 # ifdef __cplusplus
 } /* extern "C" */
 # endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

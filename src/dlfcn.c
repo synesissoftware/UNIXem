@@ -48,6 +48,7 @@
 # define _SYNSOFT_VER_C_DLFCN_EDIT      20
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -58,23 +59,27 @@
 
 #include <windows.h>
 
+
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifndef WIN32
 # error This file is only currently defined for Win32 compilation units
 #endif /* WIN32 */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
 
-#define RTLD_BINDING_MASK   (0x00003)       /*!< Mask of binding time value. */
+#define RTLD_BINDING_MASK                                   (0x00003)       /*!< Mask of binding time value. */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * statics
  */
 
 static const char* s_error;
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * internal functions
@@ -104,6 +109,7 @@ static void unixem_set_error_(DWORD dwErr)
         break;
     }
 }
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -192,4 +198,6 @@ char const* unixem_dlerror(void)
 } /* extern "C" */
 #endif /* __cplusplus */
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

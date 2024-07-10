@@ -55,6 +55,7 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_MMAP_EDIT     27
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -79,20 +80,22 @@
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
 
-#define PROT_READ       (UNIXEM_PROT_READ)          /*!< page can be read */
-#define PROT_WRITE      (UNIXEM_PROT_WRITE)         /*!< page can be written */
-#define PROT_EXEC       (UNIXEM_PROT_EXEC)          /*!< page can be executed */
-#define PROT_NONE       (UNIXEM_PROT_NONE)          /*!< page can not be accessed */
+#define PROT_READ                                           (UNIXEM_PROT_READ)      /*!< page can be read */
+#define PROT_WRITE                                          (UNIXEM_PROT_WRITE)     /*!< page can be written */
+#define PROT_EXEC                                           (UNIXEM_PROT_EXEC)      /*!< page can be executed */
+#define PROT_NONE                                           (UNIXEM_PROT_NONE)      /*!< page can not be accessed */
 
-#define MAP_PRIVATE     (UNIXEM_MAP_PRIVATE)        /*!< Changes are private */
-#define MAP_ANONYMOUS   (UNIXEM_MAP_ANONYMOUS)      /*!< Ignore fd and offset parameters */
-#define MAP_FIXED       (UNIXEM_MAP_FIXED)          /*!< Interpret addr exactly */
+#define MAP_PRIVATE                                         (UNIXEM_MAP_PRIVATE)    /*!< Changes are private */
+#define MAP_ANONYMOUS                                       (UNIXEM_MAP_ANONYMOUS)  /*!< Ignore fd and offset parameters */
+#define MAP_FIXED                                           (UNIXEM_MAP_FIXED)      /*!< Interpret addr exactly */
 
-#define MAP_FAILED      (UNIXEM_MAP_FAILED)         /*!< Returned from mmap() when the mapping fails */
+#define MAP_FAILED                                          (UNIXEM_MAP_FAILED)     /*!< Returned from mmap() when the mapping fails */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions

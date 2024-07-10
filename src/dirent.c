@@ -47,6 +47,7 @@
 # define _SYNSOFT_VER_C_DIRENT_EDIT       40
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -56,6 +57,7 @@
 #include <errno.h>
 #include <stdlib.h>
 #include <windows.h>
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * compiler differences
@@ -78,13 +80,15 @@
 # error The opendir() API is provided by this compiler, so should not be built here
 #endif /* !UNIXEM_opendir_PROVIDED_BY_COMPILER */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
 
 #ifndef FILE_ATTRIBUTE_ERROR
-# define FILE_ATTRIBUTE_ERROR           (0xFFFFFFFF)
+# define FILE_ATTRIBUTE_ERROR                               (0xFFFFFFFF)
 #endif /* FILE_ATTRIBUTE_ERROR */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
@@ -105,6 +109,7 @@ struct wdirent_dir
     HANDLE                  hFind;                      /* The Win32 FindFile handle. */
     struct unixem_wdirent   dirent;                     /* The handle's entry. */
 };
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * helper functions
@@ -159,6 +164,7 @@ static HANDLE unixem__dirent__wfindfile_directory(
     return FindFirstFileW(search_spec, data);
 }
 #endif /* 0 */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -216,8 +222,6 @@ unixem_DIR* unixem_opendir(char const* name)
 
     }
 #endif /* 0 */
-
-
 
     return result;
 }
@@ -301,4 +305,6 @@ struct unixem_dirent* unixem_readdir(unixem_DIR* dir)
     }
 }
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

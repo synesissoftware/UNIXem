@@ -47,6 +47,7 @@
 # define _SYNSOFT_VER_C_SETENV_EDIT     12
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -62,16 +63,20 @@
 #include <stdlib.h>
 #include <windows.h>
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * feature support
  */
 
 #if defined(__BORLANDC__) || \
     defined(__WATCOMC__)
-# define UNIXEM__putenv     putenv
+
+# define UNIXEM__putenv                                     putenv
 #else /* ? compiler */
-# define UNIXEM__putenv     _putenv
+
+# define UNIXEM__putenv                                     _putenv
 #endif /* compiler */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * helper functions
@@ -152,6 +157,7 @@ static int unixem__setenv__putenv(
     return unixem__setenv__putenv_(name, value);
 }
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
  */
@@ -190,6 +196,7 @@ void unixem_unsetenv(const char *name)
 
     (void)unixem__setenv__putenv(name, "");
 }
+
 
 /* ///////////////////////////// end of file //////////////////////////// */
 

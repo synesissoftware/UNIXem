@@ -79,6 +79,7 @@
 
 #include <unixem/glob.h>
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
@@ -111,6 +112,7 @@
 #define GLOB_NODOTSDIRS     (UNIXEM_GLOB_NODOTSDIRS)    /*!< Elide "." and ".." directories from wildcard searches. Supported from version 1.6 of UNIXem. */
 #define GLOB_LIMIT          (UNIXEM_GLOB_LIMIT)         /*!< Limits the search to the number specified by the caller in gl_matchc. Supported from version 1.6 of UNIXem. */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
@@ -120,6 +122,7 @@
  * This structure is used by glob() to return the results of the search.
  */
 typedef unixem_glob_t glob_t;
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions

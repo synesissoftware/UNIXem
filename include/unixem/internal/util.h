@@ -46,6 +46,7 @@
 #ifndef UNIXEM_INCL_UNIXEM_INTERNAL_H_UTIL
 #define UNIXEM_INCL_UNIXEM_INTERNAL_H_UTIL
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * version
  */
@@ -57,11 +58,13 @@
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_EDIT     13
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
 
 #include <unixem/unixem.h>
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * macros
@@ -87,6 +90,7 @@
 # endif /* compiler */
 #endif /* !NUM_ELEMENTS */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * linkage specifications
  */
@@ -110,6 +114,7 @@
 #else
 # define UNIXEM_STGCLS_IMP
 #endif /* compiler */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * function declarations
@@ -151,6 +156,7 @@ unixem_internal_yearIsLeap(
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

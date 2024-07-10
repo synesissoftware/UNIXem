@@ -47,6 +47,7 @@
 # define _SYNSOFT_VER_C_UNISTD_EDIT       38
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -59,6 +60,7 @@
 #include <errno.h>
 #include <limits.h>
 #include <windows.h>
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * feature support
@@ -82,17 +84,19 @@ _WCRTLINK extern long _get_osfhandle( int __posixhandle );
 # error Compiler not discriminated
 #endif /* compiler */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
 
 #ifndef FILE_ATTRIBUTE_ERROR
-# define FILE_ATTRIBUTE_ERROR           (0xFFFFFFFF)
+# define FILE_ATTRIBUTE_ERROR                               (0xFFFFFFFF)
 #endif /* FILE_ATTRIBUTE_ERROR */
 
 #ifdef __BORLANDC__
-# define CreateHardLinkA    __CreateHardLinkA
+# define CreateHardLinkA                                    __CreateHardLinkA
 #endif /* __BORLANDC__ */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * worker functions
@@ -167,6 +171,7 @@ static char *unixem__unistd__nextSlashDot(char *s)
     return NULL;
 }
 #endif /* 0 */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -480,4 +485,6 @@ unixem_pid_t unixem_getpid(void)
     return (unixem_pid_t)GetCurrentProcessId();
 }
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

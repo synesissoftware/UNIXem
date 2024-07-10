@@ -47,6 +47,7 @@
 # define _SYNSOFT_VER_C_HOSTNAME_EDIT       9
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -61,6 +62,7 @@
 #include <errno.h>
 #include <stdlib.h>
 #include <windows.h>
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -100,4 +102,6 @@ int __stdcall unixem_gethostname(
     return 0;
 }
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

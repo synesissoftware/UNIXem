@@ -55,6 +55,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_EDIT        47
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -80,6 +81,7 @@
 #ifndef _WIN32
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
@@ -124,12 +126,14 @@ enum
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 };
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
 
 /** Process-identifier type */
 typedef int         unixem_pid_t;
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -318,6 +322,7 @@ int __stdcall unixem_gethostname(
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

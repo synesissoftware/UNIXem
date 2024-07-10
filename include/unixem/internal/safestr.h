@@ -46,6 +46,7 @@
 #ifndef UNIXEM_INCL_UNIXEM_INTERNAL_H_SAFESTR
 #define UNIXEM_INCL_UNIXEM_INTERNAL_H_SAFESTR
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * version
  */
@@ -56,6 +57,7 @@
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_REVISION  1
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_EDIT      7
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -89,6 +91,7 @@
 # include <crtdefs.h>
 #endif /* UNIXEM_SAFE_STR_USE_crtdefs_h_ */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * feature detection
  */
@@ -99,6 +102,7 @@
 #  define UNIXEM_USING_SAFE_STR_FUNCTIONS
 # endif /* __STDC_WANT_SECURE_LIB__ == 1 */
 #endif /* __STDC_SECURE_LIB__ */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 
