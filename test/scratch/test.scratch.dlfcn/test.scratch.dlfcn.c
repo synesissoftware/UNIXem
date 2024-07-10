@@ -1,88 +1,113 @@
-/* /////////////////////////////////////////////////////////////////////////////
- * File:        test.scratch.dlfcn.c
+/* /////////////////////////////////////////////////////////////////////////
+ * File:    test.scratch.dlfcn.c
  *
- * Purpose:     Implementation file for the test.scratch.dlfcn project.
+ * Purpose: Unit-test of `dlopen()`, `dlsym()`, `dlclose()`.
  *
- * Created:     1st January 2004
- * Updated:     9th February 2008
+ * Created: 1st January 2004
+ * Updated: 10th July 2024
  *
- * Status:      Wizard-generated
- *
- * License:     (Licensed under the Synesis Software Open License)
- *
- *              Copyright (C) 1999-2008, Synesis Software Pty Ltd.
- *              All rights reserved.
- *
- *              www:        http://www.synesis.com.au/software
- *
- *              This source code is placed into the public domain 2004
- *              by Synesis Software Pty Ltd. There are no restrictions
- *              whatsoever to your use of the software. 
- *
- *              This source code is provided by Synesis Software Pty Ltd "as is"
- *              and any warranties, whether expressed or implied, including, but
- *              not limited to, the implied warranties of merchantability and
- *              fitness for a particular purpose are disclaimed. In no event
- *              shall the Synesis Software Pty Ltd be liable for any direct,
- *              indirect, incidental, special, exemplary, or consequential
- *              damages (including, but not limited to, procurement of
- *              substitute goods or services; loss of use, data, or profits; or
- *              business interruption) however caused and on any theory of
- *              liability, whether in contract, strict liability, or tort
- *              (including negligence or otherwise) arising in any way out of
- *              the use of this software, even if advised of the possibility of
- *              such damage. 
- *
- *              Neither the name of Synesis Software Pty Ltd nor the names of
- *              any subdivisions, employees or agents of Synesis Software Pty
- *              Ltd, nor the names of any other contributors to this software
- *              may be used to endorse or promote products derived from this
- *              software without specific prior written permission. 
- *
- * ////////////////////////////////////////////////////////////////////////// */
+ * ////////////////////////////////////////////////////////////////////// */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * includes
+ */
 
 #include <dlfcn.h>
 
-#include <stdio.h>
+#include <platformstl/filesystem/path_functions.h>
 
-/* ////////////////////////////////////////////////////////////////////////// */
+#include <stdio.h>
+#include <stdlib.h>
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * main()
+ */
 
 int main(int argc, char *argv[])
 {
-#if 0
-    ::Sleep(100000);
-#endif /* 0 */
+    char const* const   program_name    =   platformstl_C_get_executable_name_from_path(argv[0]).ptr;
+    char const*         module_name     =   "kernel32.dll";
+    char const*         symbol_name     =   "DllGetVersion";
 
-    char const  *moduleName =   
-//                          "MMCmnBas.dll"
-//                          "F:\\WINXP\\system32\\win32k.sys"
-//                          "F:\\WINXP\\system32\\ntdos.sys"
-                            "H:\\Publishing\\Books\\ImpC++\\Drafting\\Pt5_Resource_Management\\Ch5.4_Arrays.doc"
-                            ;
-
-    void    *module =   dlopen(moduleName, RTLD_NOW);
-
-    if(NULL == module)
+    { int i; for (i = 1; i != argc; ++i)
     {
-        printf("Failed to open module: %s\n", dlerror());
-    }
-    else
-    {
-        void *symbol = dlsym(module, "DllGetVersion");
-
-        if(NULL == symbol)
+        if (0 == strcmp("--help", argv[i]))
         {
-            printf("Failed to retrive symbol: %s\n", dlerror());
-        }
+            printf("USAGE: %s <module-name> <symbol-name>\n", program_name);
 
-        dlclose(module);
+            return EXIT_SUCCESS;
+        }
+    }}
+
+    switch (argc)
+    {
+    case 1:
+    case 2:
+
+        fprintf(stderr, "%s: missing arguments; use --help for usage\n", program_name);
+
+        return EXIT_FAILURE;
+    case 3:
+
+        module_name = argv[1];
+        symbol_name = argv[2];
+        break;
+    default:
+
+        fprintf(stderr, "%s: too many arguments; use --help for usage\n", program_name);
+
+        return EXIT_FAILURE;
     }
 
-    ((void)argc);
-    ((void)argv);
-    /* . */
+    {
+        void* const module = dlopen(module_name, RTLD_NOW);
 
-    return 0;
+        if (NULL == module)
+        {
+            fprintf(stderr
+            ,   "%s: failed to open module '%s': %s\n"
+            ,   program_name
+            ,   module_name
+            ,   dlerror()
+            );
+
+            return EXIT_FAILURE;
+        }
+        else
+        {
+            void* const symbol  =   dlsym(module, symbol_name);
+            int         r       =   EXIT_SUCCESS;
+
+            if (NULL == symbol)
+            {
+                fprintf(stderr
+                ,   "%s: failed to retrieve symbol '%s' in '%s': %s\n"
+                ,   program_name
+                ,   symbol_name
+                ,   module_name
+                ,   dlerror()
+                );
+
+                r = EXIT_FAILURE;
+            }
+            else
+            {
+                printf("found symbol '%s' at address %p in '%s'\n"
+                ,   symbol_name
+                ,   symbol
+                ,   module_name
+                );
+            }
+
+            dlclose(module);
+
+            return r;
+        }
+    }
 }
 
-/* ////////////////////////////////////////////////////////////////////////// */
+
+/* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose: Version header for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 17th December 2020
+ * Updated: 10th July 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *

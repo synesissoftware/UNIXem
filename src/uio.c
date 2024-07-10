@@ -4,11 +4,12 @@
  * Purpose: Vector file read/write.
  *
  * Created: 19th September 2005
- * Updated: 10th January 2017
+ * Updated: 10th July 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +44,7 @@
 # define _SYNSOFT_VER_C_UIO_MAJOR       2
 # define _SYNSOFT_VER_C_UIO_MINOR       0
 # define _SYNSOFT_VER_C_UIO_REVISION    1
-# define _SYNSOFT_VER_C_UIO_EDIT        13
+# define _SYNSOFT_VER_C_UIO_EDIT        14
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -81,7 +82,7 @@ unixem_ssize_t unixem_readv(
 
     pv = HeapAlloc(GetProcessHeap(), 0, total);
 
-    if(NULL == pv)
+    if (NULL == pv)
     {
         errno = unixem_internal_errno_from_Win32(GetLastError());
 
@@ -92,7 +93,7 @@ unixem_ssize_t unixem_readv(
         HANDLE  h = (HANDLE)unixem_internal_Windows_HANDLE_from_file_handle(fd);
         DWORD   dw;
 
-        if(!ReadFile(h, pv, (DWORD)total, &dw, NULL))
+        if (!ReadFile(h, pv, (DWORD)total, &dw, NULL))
         {
             errno = unixem_internal_errno_from_Win32(GetLastError());
 
@@ -136,7 +137,7 @@ unixem_ssize_t unixem_writev(
 
     pv = HeapAlloc(GetProcessHeap(), 0, total);
 
-    if(NULL == pv)
+    if (NULL == pv)
     {
         errno = unixem_internal_errno_from_Win32(GetLastError());
 
@@ -154,7 +155,7 @@ unixem_ssize_t unixem_writev(
             ret += (unixem_ssize_t)vector[i].iov_len;
         }
 
-        if(!WriteFile(h, pv, (DWORD)total, &dw, NULL))
+        if (!WriteFile(h, pv, (DWORD)total, &dw, NULL))
         {
             errno = unixem_internal_errno_from_Win32(GetLastError());
 

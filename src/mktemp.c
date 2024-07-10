@@ -4,10 +4,11 @@
  * Purpose: mkstemp()/mkdtemp() etc. for the Windows platform.
  *
  * Created: 4th October 2015
- * Updated: 14th October 2019
+ * Updated: 10th July 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2015-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -43,7 +44,7 @@
 # define _SYNSOFT_VER_C_MKTEMP_MAJOR        1
 # define _SYNSOFT_VER_C_MKTEMP_MINOR        0
 # define _SYNSOFT_VER_C_MKTEMP_REVISION     4
-# define _SYNSOFT_VER_C_MKTEMP_EDIT         5
+# define _SYNSOFT_VER_C_MKTEMP_EDIT         6
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -108,7 +109,7 @@ unixem_mkstemp(
     {
         char const ch = template_path[len - (1 + n)];
 
-        if('X' != ch)
+        if ('X' != ch)
         {
             break;
         }
@@ -144,7 +145,7 @@ unixem_mkstemp(
 #endif
 
 #if defined(UNIXEM_USING_SAFE_STR_FUNCTIONS)
-        if(0 != _sopen_s(&hFile, template_path, _O_WRONLY | _O_CREAT | _O_EXCL, _SH_DENYNO, _S_IREAD | _S_IWRITE))
+        if (0 != _sopen_s(&hFile, template_path, _O_WRONLY | _O_CREAT | _O_EXCL, _SH_DENYNO, _S_IREAD | _S_IWRITE))
         {
             hFile = -1;
         }
@@ -157,7 +158,7 @@ unixem_mkstemp(
 
 #endif
 
-        if(-1 != hFile)
+        if (-1 != hFile)
         {
             return hFile;
         }
@@ -165,11 +166,11 @@ unixem_mkstemp(
         {
             int const e = errno;
 
-            switch(e)
+            switch (e)
             {
             case EACCES:
             case EPERM:
-                if(100 == ++access_failures)
+                if (100 == ++access_failures)
                 {
             case ENOMEM:
                     return -1;
@@ -204,7 +205,7 @@ unixem_mkdtemp(
     {
         char const ch = template_path[len - (1 + n)];
 
-        if('X' != ch)
+        if ('X' != ch)
         {
             break;
         }
@@ -237,9 +238,9 @@ unixem_mkdtemp(
 #endif
 
 #if defined(UNIXEM_USING_SAFE_STR_FUNCTIONS)
-        if(-1 != _mkdir(template_path))
+        if (-1 != _mkdir(template_path))
 #else
-        if(-1 != mkdir(template_path))
+        if (-1 != mkdir(template_path))
 #endif
         {
             return template_path;

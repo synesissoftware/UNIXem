@@ -4,10 +4,11 @@
  * Purpose: gettimeofday() for the Win32 platform.
  *
  * Created: 1st November 2003
- * Updated: 14th October 2019
+ * Updated: 10th July 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -43,7 +44,7 @@
 # define _SYNSOFT_VER_C_TIME_MAJOR      3
 # define _SYNSOFT_VER_C_TIME_MINOR      1
 # define _SYNSOFT_VER_C_TIME_REVISION   2
-# define _SYNSOFT_VER_C_TIME_EDIT       29
+# define _SYNSOFT_VER_C_TIME_EDIT       30
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -85,26 +86,26 @@ unixem_impl_numberOfDaysInMonth(
     assert(year >= 1970);
     assert(month >= 0 && month < 12);
 
-    switch(month)
+    switch (month)
     {
-        case    3:  /* Apr */
-        case    5:  /* Jun */
-        case    8:  /* Sep */
-        case    10: /* Nov */
-            return 30;
+    case 3:  /* Apr */
+    case 5:  /* Jun */
+    case 8:  /* Sep */
+    case 10: /* Nov */
+        return 30;
 
-        case    1:  /* Feb */
-            if(unixem_internal_yearIsLeap(year))
-            {
-                return 29;
-            }
-            else
-            {
-                return 28;
-            }
+    case 1:  /* Feb */
+        if (unixem_internal_yearIsLeap(year))
+        {
+            return 29;
+        }
+        else
+        {
+            return 28;
+        }
 
-        default:
-            return 31;
+    default:
+        return 31;
     }
 }
 
@@ -142,7 +143,7 @@ unixem_internal_FILETIMEToUNIXTime(
 #else
     i -= 116444736000000000L;
 #endif /* compiler */
-    if(NULL != microseconds)
+    if (NULL != microseconds)
     {
         *microseconds = (long)((i % 10000000) / 10);
     }
@@ -156,17 +157,17 @@ unixem_internal_yearIsLeap(
     int year
 )
 {
-    if(0 != (year % 4))
+    if (0 != (year % 4))
     {
         return 0;
     }
     else
-    if(0 != (year % 100))
+    if (0 != (year % 100))
     {
         return 1;
     }
     else
-    if(0 == (year % 400))
+    if (0 == (year % 400))
     {
         return 1;
     }
@@ -193,7 +194,7 @@ unixem_gettimeofday(
 
     GetSystemTime(&st);
 
-    if(!SystemTimeToFileTime(&st, &ft))
+    if (!SystemTimeToFileTime(&st, &ft))
     {
         DWORD const e = GetLastError();
 
@@ -243,7 +244,7 @@ unixem_timegm(
     {
         t += 365;
 
-        if(unixem_internal_yearIsLeap(1900 + y))
+        if (unixem_internal_yearIsLeap(1900 + y))
         {
             ++t;
         }

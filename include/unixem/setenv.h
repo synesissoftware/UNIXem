@@ -4,10 +4,11 @@
  * Purpose: Definition of the setenv() and unsetenv() functions.
  *
  * Created: 9th December 2005
- * Updated: 9th October 2019
+ * Updated: 10th July 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *

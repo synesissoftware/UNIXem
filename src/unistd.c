@@ -4,11 +4,12 @@
  * Purpose: Definition of the chdir() and other API functions for the Win32 platform.
  *
  * Created: 1st November 2003
- * Updated: 10th January 2017
+ * Updated: 10th July 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +44,7 @@
 # define _SYNSOFT_VER_C_UNISTD_MAJOR      3
 # define _SYNSOFT_VER_C_UNISTD_MINOR      0
 # define _SYNSOFT_VER_C_UNISTD_REVISION   3
-# define _SYNSOFT_VER_C_UNISTD_EDIT       37
+# define _SYNSOFT_VER_C_UNISTD_EDIT       38
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -104,7 +105,7 @@ static long unixem__unistd__pathconf_diff(
 {
     size_t  len = (size_t)lstrlenA(s);
 
-    if(len > limit)
+    if (len > limit)
     {
         return -1;
     }
@@ -124,7 +125,7 @@ static long unixem__unistd__get_full_path(
 {
     DWORD   dw  =   GetFullPathNameA(s, cchBuff, buff, pFile);
 
-    if(0 == dw)
+    if (0 == dw)
     {
         errno = unixem_internal_errno_from_Win32(GetLastError());
 
@@ -140,10 +141,10 @@ static char *unixem__unistd__nextSlash(char *s)
 {
     for(; '\0' != *s; ++s)
     {
-        switch(*s)
+        switch (*s)
         {
-            case    '/':
-            case    '\\':
+        case '/':
+        case '\\':
                 return s;
         }
     }
@@ -153,11 +154,11 @@ static char *unixem__unistd__nextSlash(char *s)
 
 static char *unixem__unistd__nextSlashDot(char *s)
 {
-    char    *slash;
+    char* slash;
 
     for(slash = s; NULL != (slash = unixem__unistd__nextSlash(slash + 1)); )
     {
-        if('.' == slash[1])
+        if ('.' == slash[1])
         {
             return slash;
         }
@@ -183,19 +184,19 @@ int unixem_link(
     DWORD   srcAttr     =   GetFileAttributesA(originalFile);
     DWORD   linkAttr    =   GetFileAttributesA(linkName);
 
-    if(srcAttr == FILE_ATTRIBUTE_ERROR) /* Source exists? */
+    if (srcAttr == FILE_ATTRIBUTE_ERROR) /* Source exists? */
     {
         errno = ENOENT;
 
         return -1;
     }
-    else if(FILE_ATTRIBUTE_DIRECTORY & srcAttr) /* Source is a directory? */
+    else if (FILE_ATTRIBUTE_DIRECTORY & srcAttr) /* Source is a directory? */
     {
         errno = ENOTDIR;
 
         return -1;
     }
-    else if(FILE_ATTRIBUTE_ERROR != linkAttr) /* Link already exists? */
+    else if (FILE_ATTRIBUTE_ERROR != linkAttr) /* Link already exists? */
     {
         errno = EEXIST;
 
@@ -206,7 +207,7 @@ int unixem_link(
         char    originalDrive   =   (':' == originalFile[1]) ? originalFile[0] : unixem_internal_get_current_drive();
         char    linkDrive       =   (':' == linkName[1]) ? linkName[0] : unixem_internal_get_current_drive();
 
-        if(originalDrive != linkDrive)
+        if (originalDrive != linkDrive)
         {
             errno = EXDEV;
 
@@ -222,14 +223,14 @@ int unixem_link(
 
             SetLastError(ERROR_SUCCESS);
 
-            if( NULL == hinst ||
+            if (NULL == hinst ||
                 NULL == CreateHardLinkA)
             {
                 errno = unixem_internal_errno_from_Win32(ERROR_NOT_SUPPORTED);
             }
             else
             {
-                if(!CreateHardLinkA(linkName, originalFile, NULL))
+                if (!CreateHardLinkA(linkName, originalFile, NULL))
                 {
                     errno = unixem_internal_errno_from_Win32(GetLastError());
                 }
@@ -239,7 +240,7 @@ int unixem_link(
                 }
             }
 
-            if(NULL != hinst)
+            if (NULL != hinst)
             {
                 (void)FreeLibrary(hinst);
             }
@@ -253,22 +254,22 @@ int unixem_unlink(const char *path)
 {
     DWORD   attr    =   GetFileAttributesA(path);
 
-    if(FILE_ATTRIBUTE_ERROR == attr)
+    if (FILE_ATTRIBUTE_ERROR == attr)
     {
         errno = ENOENT;
 
         return -1;
     }
-    else if(FILE_ATTRIBUTE_DIRECTORY & attr)
+    else if (FILE_ATTRIBUTE_DIRECTORY & attr)
     {
-        if(RemoveDirectoryA(path))
+        if (RemoveDirectoryA(path))
         {
             return 0;
         }
     }
     else
     {
-        if(DeleteFileA(path))
+        if (DeleteFileA(path))
         {
             return 0;
         }
@@ -281,7 +282,7 @@ int unixem_unlink(const char *path)
 
 int unixem_chdir(char const *dirName)
 {
-    if(SetCurrentDirectoryA(dirName))
+    if (SetCurrentDirectoryA(dirName))
     {
         return 0;
     }
@@ -298,7 +299,7 @@ char* unixem_getcwd(
 ,   size_t  max_len
 )
 {
-    if(GetCurrentDirectoryA((DWORD)max_len, buffer))
+    if (GetCurrentDirectoryA((DWORD)max_len, buffer))
     {
         return buffer;
     }
@@ -317,7 +318,7 @@ int unixem_mkdir(
 {
     ((void)mode);
 
-    if(CreateDirectoryA(dirName, NULL))
+    if (CreateDirectoryA(dirName, NULL))
     {
         return 0;
     }
@@ -331,7 +332,7 @@ int unixem_mkdir(
 
 int unixem_rmdir(const char *dirName)
 {
-    if(RemoveDirectoryA(dirName))
+    if (RemoveDirectoryA(dirName))
     {
         return 0;
     }
@@ -358,7 +359,7 @@ int unixem_close(int handle)
 
 #else /* ? compiler */
 
-    if( 0 == handle || 
+    if (0 == handle ||
         1 == handle ||
         2 == handle)
     {
@@ -368,7 +369,7 @@ int unixem_close(int handle)
     {
         HANDLE  h   =   (HANDLE)_get_osfhandle(handle);
 
-        if(CloseHandle(h))
+        if (CloseHandle(h))
         {
             return 0;
         }
@@ -376,7 +377,7 @@ int unixem_close(int handle)
         {
             DWORD   err = GetLastError();
 
-            switch(err)
+            switch (err)
             {
                 default:
                     return EBADF;
@@ -410,23 +411,23 @@ long unixem_pathconf(
 ,   int         name
 )
 {
-    switch(name)
+    switch (name)
     {
-        default:
-            return -1;
-        case    UNIXEM_PC_LINK_MAX:           return LONG_MAX;
-        case    UNIXEM_PC_MAX_CANON:          return LONG_MAX;
-        case    UNIXEM_PC_MAX_INPUT:          return LONG_MAX;
-        case    UNIXEM_PC_NAME_MAX:           return unixem__unistd__pathconf_diff(path, _MAX_FNAME);
-        case    UNIXEM_PC_PATH_MAX:           return unixem__unistd__pathconf_diff(path, _MAX_PATH);
-        case    UNIXEM_PC_PIPE_BUF:           return -1;
-        case    UNIXEM_PC_CHOWN_RESTRICTED:   return -1;
-        case    UNIXEM_PC_NO_TRUNC:           return -1;
-        case    UNIXEM_PC_VDISABLE:           return -1;
-        case    UNIXEM_PC_AIX_DISK_PARTITION: return -1;
-        case    UNIXEM_PC_AIX_DISK_SIZE:      return -1;
-        case    UNIXEM_PC_FILESIZEBITS:       return -1;
-        case    UNIXEM_PC_SYNC_IO:            return -1;
+    default:
+        return -1;
+    case UNIXEM_PC_LINK_MAX:           return LONG_MAX;
+    case UNIXEM_PC_MAX_CANON:          return LONG_MAX;
+    case UNIXEM_PC_MAX_INPUT:          return LONG_MAX;
+    case UNIXEM_PC_NAME_MAX:           return unixem__unistd__pathconf_diff(path, _MAX_FNAME);
+    case UNIXEM_PC_PATH_MAX:           return unixem__unistd__pathconf_diff(path, _MAX_PATH);
+    case UNIXEM_PC_PIPE_BUF:           return -1;
+    case UNIXEM_PC_CHOWN_RESTRICTED:   return -1;
+    case UNIXEM_PC_NO_TRUNC:           return -1;
+    case UNIXEM_PC_VDISABLE:           return -1;
+    case UNIXEM_PC_AIX_DISK_PARTITION: return -1;
+    case UNIXEM_PC_AIX_DISK_SIZE:      return -1;
+    case UNIXEM_PC_FILESIZEBITS:       return -1;
+    case UNIXEM_PC_SYNC_IO:            return -1;
     }
 }
 
@@ -443,7 +444,7 @@ char* unixem_realpath(
      */
     DWORD   attr    =   GetFileAttributesA(path);
 
-    if(FILE_ATTRIBUTE_ERROR == attr)
+    if (FILE_ATTRIBUTE_ERROR == attr)
     {
         errno = ENOENT;
 
@@ -454,7 +455,7 @@ char* unixem_realpath(
         LPSTR   lpFile;
         DWORD   dw  =   GetFullPathNameA(path, 1 + _MAX_PATH, resolvedPath, &lpFile);
 
-        if(0 == dw)
+        if (0 == dw)
         {
             errno = unixem_internal_errno_from_Win32(GetLastError());
 
