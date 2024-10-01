@@ -3,7 +3,7 @@
 ScriptPath=$0
 Dir=$(cd $(dirname "$ScriptPath"); pwd)
 Basename=$(basename "$ScriptPath")
-CMakeDir=$Dir/_build
+CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
 
 
 CMakeVerboseMakefile=0
@@ -108,7 +108,9 @@ cmake \
   $CMakeSTLSoftVariable \
   -DCMAKE_BUILD_TYPE=$Configuration \
   -DCMAKE_VERBOSE_MAKEFILE:BOOL=$CMakeVerboseMakefileFlag \
-  .. || (cd ->/dev/null ; exit 1)
+  -S $Dir \
+  -B $CMakeDir \
+  || (cd ->/dev/null ; exit 1)
 
 status=0
 

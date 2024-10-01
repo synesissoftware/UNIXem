@@ -4,6 +4,7 @@ ScriptPath=$0
 Dir=$(cd $(dirname "$ScriptPath"); pwd)
 Basename=$(basename "$ScriptPath")
 CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
+
 RunMake=1
 
 
@@ -23,7 +24,7 @@ while [[ $# -gt 0 ]]; do
 UNIXem is a small and simple library that provides emulation of several popular Unix API functions on the Windows platform. Its primary purpose is to assist Windows programmers who are porting to Unix or are writing multi-platform code
 Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
 Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
-Runs all (matching) scratch-test programs
+Runs all example programs
 
 $ScriptPath [ ... flags/options ... ]
 
@@ -79,7 +80,7 @@ else
     >&2 echo "$ScriptPath: cannot run in '--no-make' mode without a previous successful build step"
   else
 
-    echo "Running all test programs"
+    echo "Running all example programs"
   fi
 
   cd $CMakeDir
@@ -87,20 +88,15 @@ fi
 
 if [ $status -eq 0 ]; then
 
-  for f in $(find $CMakeDir -type f '(' -name 'test_scratch*' -o -name 'test.scratch.*' -o -name 'test_performance*' -o -name 'test.performance.*' ')' -exec test -x {} \; -print)
-  do
+    for f in $(find $CMakeDir -type f '(' -name 'example.c.*' -o -name 'example.cpp.*' ')' -exec test -x {} \; -print)
+    do
 
-    echo
-    echo "executing $f:"
+        echo
+        echo "executing $f:"
 
-    if $f; then
-
-      :
-    else
-
-      status=$?
-    fi
-  done
+        # NOTE: we do not break on fail, because, this being a unit-testing library, the scratch-tests actually fail
+        $f
+    done
 fi
 
 cd ->/dev/null
