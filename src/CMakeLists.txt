@@ -43,7 +43,6 @@ endif(WIN32)
 # `install()` step
 set(CORE_PUBLIC_HEADERS
 	"${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME_LOWER}/${PROJECT_NAME_LOWER}.h"
-	"${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME_LOWER}/UNIXem.hpp"
 )
 
 set_target_properties(UNIXem PROPERTIES
@@ -78,15 +77,13 @@ install(TARGETS UNIXem
 	PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME_LOWER}
 )
 
-# additional headers into specific sub-directories
-#[====[
+# install the include/unixem/*/ subdirectories here, as do not (yet) know how to do so via PUBLIC_HEADER property
 install(
-	DIRECTORY ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME_LOWER}/internal
+	DIRECTORY ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME_LOWER}/
 	DESTINATION include/${PROJECT_NAME_LOWER}
 	FILES_MATCHING
 	PATTERN "*.h*"
 )
-]====]
 
 
 # ############################## end of file ############################# #

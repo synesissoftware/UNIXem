@@ -5,8 +5,9 @@ add_executable(test.scratch.setenv
 
 target_link_libraries(test.scratch.setenv
 	PRIVATE
-		xTests::xTests.core
+		xTests::core
 		UNIXem
+		$<$<STREQUAL:${STLSOFT_INCLUDE_DIR},>:STLSoft::STLSoft>
 )
 
 target_compile_options(test.scratch.setenv PRIVATE

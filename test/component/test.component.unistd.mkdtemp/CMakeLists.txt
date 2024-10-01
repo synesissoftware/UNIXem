@@ -5,8 +5,9 @@ add_executable(test.component.unistd.mkdtemp
 
 target_link_libraries(test.component.unistd.mkdtemp
 	PRIVATE
-		xTests::xTests.core
+		xTests::core
 		UNIXem
+		$<$<STREQUAL:${STLSOFT_INCLUDE_DIR},>:STLSoft::STLSoft>
 )
 
 target_compile_options(test.component.unistd.mkdtemp PRIVATE

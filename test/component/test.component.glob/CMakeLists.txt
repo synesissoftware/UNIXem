@@ -5,9 +5,9 @@ add_executable(test.component.glob
 
 target_link_libraries(test.component.glob
 	PRIVATE
-		xTests::xTests.core
-		# UNIXem
-		# $<$<STREQUAL:${STLSOFT_INCLUDE_DIR},>:STLSoft::STLSoft>
+		xTests::core
+		UNIXem
+		$<$<STREQUAL:${STLSOFT_INCLUDE_DIR},>:STLSoft::STLSoft>
 )
 
 target_compile_options(test.component.glob PRIVATE

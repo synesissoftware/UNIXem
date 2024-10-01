@@ -5,7 +5,7 @@
 # Purpose:  Top-level CMake lists file for UNIXem
 #
 # Created:  10th July 2024
-# Updated:  10th July 2024
+# Updated:  1st October 2024
 #
 # ######################################################################## #
 
@@ -125,7 +125,7 @@ include(CTest)
 
 if(BUILD_TESTING)
 
-	set(xTests_REQUIRED_VERSION_ 0.22)
+	set(xTests_REQUIRED_VERSION_ 0.24)
 
 	find_package(xTests ${xTests_REQUIRED_VERSION_} REQUIRED)
 

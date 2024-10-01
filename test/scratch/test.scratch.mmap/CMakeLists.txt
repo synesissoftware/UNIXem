@@ -5,8 +5,9 @@ add_executable(test.scratch.mmap
 
 target_link_libraries(test.scratch.mmap
 	PRIVATE
-		xTests::xTests.core
+		xTests::core
 		UNIXem
+		$<$<STREQUAL:${STLSOFT_INCLUDE_DIR},>:STLSoft::STLSoft>
 )
 
 target_compile_definitions(test.scratch.mmap

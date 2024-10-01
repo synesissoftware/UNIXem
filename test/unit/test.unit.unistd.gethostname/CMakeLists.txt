@@ -5,8 +5,9 @@ add_executable(test.unit.unistd.gethostname
 
 target_link_libraries(test.unit.unistd.gethostname
 	PRIVATE
-		xTests::xTests.core
+		xTests::core
 		UNIXem
+		$<$<STREQUAL:${STLSOFT_INCLUDE_DIR},>:STLSoft::STLSoft>
 )
 
 target_compile_options(test.unit.unistd.gethostname PRIVATE

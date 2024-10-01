@@ -5,8 +5,9 @@ add_executable(test.scratch.getrusage
 
 target_link_libraries(test.scratch.getrusage
 	PRIVATE
-		xTests::xTests.core
+		xTests::core
 		UNIXem
+		$<$<STREQUAL:${STLSOFT_INCLUDE_DIR},>:STLSoft::STLSoft>
 )
 
 target_compile_options(test.scratch.getrusage PRIVATE
