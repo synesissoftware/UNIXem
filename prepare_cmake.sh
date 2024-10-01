@@ -6,7 +6,7 @@ Basename=$(basename "$ScriptPath")
 CMakeDir=$Dir/_build
 
 
-CmakeVerboseMakefile=0
+CMakeVerboseMakefile=0
 Configuration=Release
 RunMake=0
 # STLSoftDirEnvVar=${STLSOFT}
@@ -19,6 +19,10 @@ STLSoftDirGiven=
 while [[ $# -gt 0 ]]; do
 
   case $1 in
+    -v|--cmake-verbose-makefile)
+
+      CMakeVerboseMakefile=1
+      ;;
     -d|--debug-configuration)
 
       Configuration=Debug
@@ -31,10 +35,6 @@ while [[ $# -gt 0 ]]; do
 
       shift
       STLSoftDirGiven=$1
-      ;;
-    -v|--cmake-verbose-makefile)
-
-      CmakeVerboseMakefile=1
       ;;
     --help)
 
@@ -50,24 +50,24 @@ Flags/options:
 
     behaviour:
 
+    -v
+    --cmake-verbose-makefile
+        configures CMake to run verbosely (by setting CMAKE_VERBOSE_MAKEFILE
+        to be ON)
+
     -d
     --debug-configuration
         uses Debug configuration. Default is to use Release
 
     -m
     --run-make
-        runs make after a successful running of CMake
+        executes make after a successful running of CMake
 
     -s <dir>
     --stlsoft-root-dir <dir>
         specifies the STLSoft root-directory, which will be passed to CMake
         as the variable STLSOFT, and which will override the environment
         variable STLSOFT (if present)
-
-    -v
-    --cmake-verbose-makefile
-        configures CMake to run verbosely (by setting CMAKE_VERBOSE_MAKEFILE
-        to be ON)
 
 
     standard flags:
@@ -100,13 +100,14 @@ cd $CMakeDir
 
 echo "Executing CMake"
 
-if [ $CmakeVerboseMakefile -eq 0 ]; then CmakeVerboseMakefileFlag="OFF" ; else CmakeVerboseMakefileFlag="ON" ; fi
-if [ -z $STLSoftDirGiven ]; then CmakeSTLSoftVariable="" ; else CmakeSTLSoftVariable="-DSTLSOFT=$STLSoftDirGiven/" ; fi
+if [ $CMakeVerboseMakefile -eq 0 ]; then CMakeVerboseMakefileFlag="OFF" ; else CMakeVerboseMakefileFlag="ON" ; fi
+
+if [ -z $STLSoftDirGiven ]; then CMakeSTLSoftVariable="" ; else CMakeSTLSoftVariable="-DSTLSOFT=$STLSoftDirGiven/" ; fi
 
 cmake \
-  $CmakeSTLSoftVariable \
+  $CMakeSTLSoftVariable \
   -DCMAKE_BUILD_TYPE=$Configuration \
-  -DCMAKE_VERBOSE_MAKEFILE:BOOL=$CmakeVerboseMakefileFlag \
+  -DCMAKE_VERBOSE_MAKEFILE:BOOL=$CMakeVerboseMakefileFlag \
   .. || (cd ->/dev/null ; exit 1)
 
 status=0
@@ -121,7 +122,7 @@ fi
 
 cd ->/dev/null
 
-if [ $CmakeVerboseMakefile -ne 0 ]; then
+if [ $CMakeVerboseMakefile -ne 0 ]; then
 
   echo -e "contents of $CMakeDir:"
   ls -al $CMakeDir

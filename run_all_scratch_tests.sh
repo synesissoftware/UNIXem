@@ -87,14 +87,19 @@ fi
 
 if [ $status -eq 0 ]; then
 
-  for f in $(find $Dir -type f '(' -name 'test_scratch*' -o -name 'test.scratch.*' -o -name 'test_performance*' -o -name 'test.performance.*' ')' -exec test -x {} \; -print)
+  for f in $(find $CMakeDir -type f '(' -name 'test_scratch*' -o -name 'test.scratch.*' -o -name 'test_performance*' -o -name 'test.performance.*' ')' -exec test -x {} \; -print)
   do
 
     echo
     echo "executing $f:"
 
-    # NOTE: we do not break on fail because these tests are not always intended to succeed
-    $f
+    if $f; then
+
+      :
+    else
+
+      status=$?
+    fi
   done
 fi
 

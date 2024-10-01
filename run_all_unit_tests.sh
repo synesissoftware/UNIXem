@@ -4,7 +4,9 @@ ScriptPath=$0
 Dir=$(cd $(dirname "$ScriptPath"); pwd)
 Basename=$(basename "$ScriptPath")
 CMakeDir=$Dir/_build
+
 RunMake=1
+Verbosity=3
 
 
 # ##########################################################
@@ -16,6 +18,11 @@ while [[ $# -gt 0 ]]; do
     -M|--no-make)
 
       RunMake=0
+      ;;
+    --verbosity)
+
+      shift
+      Verbosity=$1
       ;;
     --help)
 
@@ -34,6 +41,9 @@ Flags/options:
     -M
     --no-make
         does not execute CMake and make before running tests
+
+    --verbosity <verbosity>
+        specifies an explicit verbosity for the unit-test(s)
 
 
     standard flags:
@@ -87,13 +97,17 @@ fi
 
 if [ $status -eq 0 ]; then
 
-  for f in $(find $Dir -type f '(' -name 'test_unit*' -o -name 'test.unit.*' -o -name 'test_component*' -o -name 'test.component.*' ')' -exec test -x {} \; -print)
+  for f in $(find $CMakeDir -type f '(' -name 'test_unit*' -o -name 'test.unit.*' -o -name 'test_component*' -o -name 'test.component.*' ')' -exec test -x {} \; -print)
   do
 
-    echo
-    echo "executing $f:"
+    if [ $Verbosity -eq 3 ]; then
+      echo
+    fi
+    if [ $Verbosity -ne 0 ]; then
+      echo "executing $f:"
+    fi
 
-    if $f; then
+    if $f --verbosity=$Verbosity; then
 
       :
     else
