@@ -1,22 +1,3 @@
+list(APPEND X_MSVC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED 4996)
+define_automated_test_program(test.component.unistd.mkstemp test.component.unistd.mkstemp.c)
 
-add_executable(test.component.unistd.mkstemp
-	test.component.unistd.mkstemp.c
-)
-
-target_link_libraries(test.component.unistd.mkstemp
-	PRIVATE
-		xTests::core
-		UNIXem
-		$<$<STREQUAL:${STLSOFT_INCLUDE_DIR},>:STLSoft::STLSoft>
-)
-
-target_compile_options(test.component.unistd.mkstemp PRIVATE
-	$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
-		-Werror -Wall -Wextra -pedantic
-	>
-	$<$<CXX_COMPILER_ID:MSVC>:
-		/WX /W4
-
-		/wd4996
-	>
-)

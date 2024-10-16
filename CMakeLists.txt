@@ -114,6 +114,8 @@ endif()
 
 # load/default `CMAKE_BUILD_TYPE`
 include(BuildType)
+include(LanguageFullVersion)
+include(TargetMacros)
 
 add_subdirectory(src)
 

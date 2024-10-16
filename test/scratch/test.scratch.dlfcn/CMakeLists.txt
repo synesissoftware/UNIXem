@@ -1,22 +1,2 @@
-
-add_executable(test.scratch.dlfcn
-	test.scratch.dlfcn.c
-)
-
-target_link_libraries(test.scratch.dlfcn
-	PRIVATE
-		xTests::core
-		UNIXem
-		$<$<STREQUAL:${STLSOFT_INCLUDE_DIR},>:STLSoft::STLSoft>
-)
-
-target_compile_options(test.scratch.dlfcn PRIVATE
-	$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
-		-Werror -Wall -Wextra -pedantic
-	>
-	$<$<CXX_COMPILER_ID:MSVC>:
-		/WX /W4
-
-		/wd4996
-	>
-)
+list(APPEND X_MSVC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED 4996)
+define_example_program(test.scratch.dlfcn test.scratch.dlfcn.c)
