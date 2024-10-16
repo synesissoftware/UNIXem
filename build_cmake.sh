@@ -4,6 +4,7 @@ ScriptPath=$0
 Dir=$(cd $(dirname "$ScriptPath"); pwd)
 Basename=$(basename "$ScriptPath")
 CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
+MakeCmd=${SIS_CMAKE_COMMAND:-make}
 
 IgnoreRemainingFlagsAndOptions=0
 Targets=()
@@ -101,13 +102,13 @@ else
 
     if [ -z "$Targets" ]; then
 
-      echo "Executing build (via command \`make\`)"
+      echo "Executing build (via command \`$MakeCmd\`)"
     else
 
-      echo "Executing build (via command \`make\`) with specific target(s) $(join_by , "${Targets[@]}")"
+      echo "Executing build (via command \`$MakeCmd\`) with specific target(s) $(join_by , "${Targets[@]}")"
     fi
 
-    make ${Targets[*]}
+    $MakeCmd ${Targets[*]}
     status=$?
 
     cd ->/dev/null

@@ -4,7 +4,9 @@ ScriptPath=$0
 Dir=$(cd $(dirname "$ScriptPath"); pwd)
 Basename=$(basename "$ScriptPath")
 CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
+MakeCmd=${SIS_CMAKE_COMMAND:-make}
 
+ListOnly=0
 RunMake=1
 Verbosity=3
 
@@ -15,6 +17,10 @@ Verbosity=3
 while [[ $# -gt 0 ]]; do
 
   case $1 in
+    -l|--list-only)
+
+      ListOnly=1
+      ;;
     -M|--no-make)
 
       RunMake=0
@@ -37,6 +43,10 @@ $ScriptPath [ ... flags/options ... ]
 Flags/options:
 
     behaviour:
+
+    -l
+    --list-only
+        lists the target programs but does not execute them
 
     -M
     --no-make
@@ -74,22 +84,22 @@ status=0
 
 if [ $RunMake -ne 0 ]; then
 
-  echo "Executing make and then running all test programs"
+  if [ $ListOnly -eq 0 ]; then
 
-  mkdir -p $CMakeDir || exit 1
+    echo "Executing make and then running all component and unit test programs"
 
-  cd $CMakeDir
+    mkdir -p $CMakeDir || exit 1
 
-  make
-  status=$?
+    cd $CMakeDir
+
+    $MakeCmd
+    status=$?
+  fi
 else
 
   if [ ! -d "$CMakeDir" ] || [ ! -f "$CMakeDir/CMakeCache.txt" ] || [ ! -d "$CMakeDir/CMakeFiles" ]; then
 
     >&2 echo "$ScriptPath: cannot run in '--no-make' mode without a previous successful build step"
-  else
-
-    echo "Running all test programs"
   fi
 
   cd $CMakeDir
@@ -97,13 +107,30 @@ fi
 
 if [ $status -eq 0 ]; then
 
+  if [ $ListOnly -ne 0 ]; then
+
+    echo "Listing all component and unit test programs"
+  else
+
+    echo "Running all component and unit test programs"
+  fi
+
   for f in $(find $CMakeDir -type f '(' -name 'test_unit*' -o -name 'test.unit.*' -o -name 'test_component*' -o -name 'test.component.*' ')' -exec test -x {} \; -print)
   do
 
-    if [ $Verbosity -eq 3 ]; then
+    if [ $ListOnly -ne 0 ]; then
+
+      echo "would execute $f:"
+
+      continue
+    fi
+
+    if [ $Verbosity -ge 3 ]; then
+
       echo
     fi
-    if [ $Verbosity -ne 0 ]; then
+    if [ $Verbosity -ge 2 ]; then
+
       echo "executing $f:"
     fi
 

@@ -4,6 +4,7 @@ ScriptPath=$0
 Dir=$(cd $(dirname "$ScriptPath"); pwd)
 Basename=$(basename "$ScriptPath")
 CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
+MakeCmd=${SIS_CMAKE_COMMAND:-make}
 
 Directories=(
   CMakeFiles
@@ -22,8 +23,6 @@ Files=(
   cmake_install.cmake
   install_manifest.txt
 )
-
-OsIsWindows=0
 
 
 # ##########################################################
