@@ -4,7 +4,7 @@
  * Purpose: Unit-test of `setenv()`.
  *
  * Created: 9th December 2005
- * Updated: 10th July 2024
+ * Updated: 16th October 2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
     ((void)argv);
 
 #if 0
-    { for(size_t i = 0; i < 0xffffffff; ++i){} }
+    { for (size_t i = 0; i < 0xffffffff; ++i){} }
 #endif /* 0 */
 
     setenv("SOMETHING_VERY_UNLIKELY_2_B_SET", "bat", 0);

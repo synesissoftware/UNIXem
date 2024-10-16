@@ -4,7 +4,7 @@
  * Purpose: Unit-test of `link()`.
  *
  * Created: 2nd September 2005
- * Updated: 10th July 2024
+ * Updated: 16th October 2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -13,14 +13,13 @@
  * includes
  */
 
-/* UNIXem header files */
-#include <unixem/unixem.h>
+#include <unistd.h>
 
-/* Standard C header files */
+#include <platformstl/filesystem/path_functions.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
 
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -34,9 +33,39 @@
 
 int main(int argc, char *argv[])
 {
-#if 0
-    { for(size_t i = 0; i < 0xffffffff; ++i){} }
-#endif /* 0 */
+    char const* const   program_name    =   platformstl_C_get_executable_name_from_path(argv[0]).ptr;
+    char const*         module_name     =   "kernel32.dll";
+    char const*         symbol_name     =   "DllGetVersion";
+
+    { int i; for (i = 1; i != argc; ++i)
+    {
+        if (0 == strcmp("--help", argv[i]))
+        {
+            printf("USAGE: %s <source-path> <link-path>\n", program_name);
+
+            return EXIT_SUCCESS;
+        }
+    }}
+
+    switch (argc)
+    {
+    case 1:
+    case 2:
+
+        fprintf(stderr, "%s: missing arguments; use --help for usage\n", program_name);
+
+        return EXIT_FAILURE;
+    case 3:
+
+        module_name = argv[1];
+        symbol_name = argv[2];
+        break;
+    default:
+
+        fprintf(stderr, "%s: too many arguments; use --help for usage\n", program_name);
+
+        return EXIT_FAILURE;
+    }
 
     if (argc < 3)
     {
@@ -46,7 +75,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-        int res =   link(argv[1], argv[2]);
+        int const res = link(argv[1], argv[2]);
 
         if (0 == res)
         {

@@ -4,7 +4,7 @@
  * Purpose: Unit-test of `syslog()`.
  *
  * Created: 1st October 2006
- * Updated: 10th July 2024
+ * Updated: 16th October 2024
  *
  * /////////////////////////////////////////////////////////////////////// */
 
@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
 #endif /* debug */
 
 #if 0
-    { size_t i; for(i = 0; i < 0xffffffff; ++i){} }
+    { size_t i; for (i = 0; i < 0xffffffff; ++i){} }
 #endif /* 0 */
 
     ((void)argc);

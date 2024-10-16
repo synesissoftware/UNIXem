@@ -4,7 +4,7 @@
  * Purpose: Definition of the chdir() and other API functions for the Win32 platform.
  *
  * Created: 1st November 2003
- * Updated: 10th July 2024
+ * Updated: 16th October 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -143,7 +143,7 @@ static long unixem__unistd__get_full_path(
 
 static char *unixem__unistd__nextSlash(char *s)
 {
-    for(; '\0' != *s; ++s)
+    for (; '\0' != *s; ++s)
     {
         switch (*s)
         {
@@ -160,7 +160,7 @@ static char *unixem__unistd__nextSlashDot(char *s)
 {
     char* slash;
 
-    for(slash = s; NULL != (slash = unixem__unistd__nextSlash(slash + 1)); )
+    for (slash = s; NULL != (slash = unixem__unistd__nextSlash(slash + 1)); )
     {
         if ('.' == slash[1])
         {

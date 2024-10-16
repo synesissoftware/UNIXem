@@ -4,7 +4,7 @@
  * Purpose: Unit-test of `fnmatch()`.
  *
  * Created: 24th April 2006
- * Updated: 10th July 2024
+ * Updated: 16th October 2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -64,7 +64,7 @@ static void test_3(void);
 int main(int argc, char *argv[])
 {
 #if 0
-    { size_t i; for(i = 0; i < 0xffffffff; ++i){} }
+    { size_t i; for (i = 0; i < 0xffffffff; ++i){} }
 #endif /* 0 */
 
     ((void)argc);

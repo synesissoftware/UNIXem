@@ -4,7 +4,7 @@
  * Purpose: Unit-test of `dlopen()`, `dlsym()`, `dlclose()`.
  *
  * Created: 1st January 2004
- * Updated: 10th July 2024
+ * Updated: 16th October 2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -27,9 +27,7 @@
 
 int main(int argc, char *argv[])
 {
-    char const* const   program_name    =   platformstl_C_get_executable_name_from_path(argv[0]).ptr;
-    char const*         module_name     =   "kernel32.dll";
-    char const*         symbol_name     =   "DllGetVersion";
+    char const* const program_name = platformstl_C_get_executable_name_from_path(argv[0]).ptr;
 
     { int i; for (i = 1; i != argc; ++i)
     {
@@ -51,8 +49,6 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     case 3:
 
-        module_name = argv[1];
-        symbol_name = argv[2];
         break;
     default:
 
@@ -62,6 +58,9 @@ int main(int argc, char *argv[])
     }
 
     {
+        char const* const module_name = argv[1];
+        char const* const symbol_name = argv[2];
+
         void* const module = dlopen(module_name, RTLD_NOW);
 
         if (NULL == module)

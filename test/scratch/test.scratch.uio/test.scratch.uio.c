@@ -4,24 +4,20 @@
  * Purpose: Unit-test of `uio()`.
  *
  * Created: 19th September 2005
- * Updated: 10th July 2024
+ * Updated: 16th October  2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/* Standard C header files */
+#include <sys/uio.h>
+
+#include <platformstl/filesystem/path_functions.h>
+
 #include <fcntl.h>
 #include <io.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-//#include <sys/stat.h>
-#include <sys/uio.h>
-
-
-/* /////////////////////////////////////////////////////////////////////////
- * forward declarations
- */
 
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -30,12 +26,35 @@
 
 static int main_(int argc, char **argv)
 {
-    /* . */
-    if (argc < 2)
+    char const* const program_name = platformstl_C_get_executable_name_from_path(argv[0]).ptr;
+
+    { int i; for (i = 1; i != argc; ++i)
     {
-        fprintf(stderr, "Must specify file\n");
+        if (0 == strcmp("--help", argv[i]))
+        {
+            printf("USAGE: %s <file-name>\n", program_name);
+
+            return EXIT_SUCCESS;
+        }
+    }}
+
+    switch (argc)
+    {
+    case 1:
+
+        fprintf(stderr, "%s: missing argument; use --help for usage\n", program_name);
+
+        return EXIT_FAILURE;
+    case 2:
+
+        break;
+    default:
+
+        fprintf(stderr, "%s: too many arguments; use --help for usage\n", program_name);
+
+        return EXIT_FAILURE;
     }
-    else
+
     {
         char const*     fileName    =   argv[1];
         int             fd          =   _open(fileName, _O_RDONLY);

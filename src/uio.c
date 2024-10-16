@@ -4,7 +4,7 @@
  * Purpose: Vector file read/write.
  *
  * Created: 19th September 2005
- * Updated: 10th July 2024
+ * Updated: 16th October 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -77,7 +77,7 @@ unixem_ssize_t unixem_readv(
     unixem_ssize_t  ret;
 
     /* Determine the total size. */
-    for(i = 0, total = 0; i < count; ++i)
+    for (i = 0, total = 0; i < count; ++i)
     {
         total += vector[i].iov_len;
     }
@@ -103,7 +103,7 @@ unixem_ssize_t unixem_readv(
         }
         else
         {
-            for(i = 0, ret = 0; i < count && 0 != dw; ++i)
+            for (i = 0, ret = 0; i < count && 0 != dw; ++i)
             {
                 size_t n = (dw < vector[i].iov_len) ? dw : vector[i].iov_len;
 
@@ -132,7 +132,7 @@ unixem_ssize_t unixem_writev(
     unixem_ssize_t  ret;
 
     /* Determine the total size. */
-    for(i = 0, total = 0; i < count; ++i)
+    for (i = 0, total = 0; i < count; ++i)
     {
         total += vector[i].iov_len;
     }
@@ -150,7 +150,7 @@ unixem_ssize_t unixem_writev(
         HANDLE  h = (HANDLE)unixem_internal_Windows_HANDLE_from_file_handle(fd);
         DWORD   dw;
 
-        for(i = 0, ret = 0; i < count; ++i)
+        for (i = 0, ret = 0; i < count; ++i)
         {
             (void)memcpy((char*)pv + ret, vector[i].iov_base, vector[i].iov_len);
 

@@ -4,7 +4,7 @@
  * Purpose: mkstemp()/mkdtemp() etc. for the Windows platform.
  *
  * Created: 4th October 2015
- * Updated: 10th July 2024
+ * Updated: 16th October 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -109,7 +109,7 @@ unixem_mkstemp(
 
     len = strlen(template_path);
 
-    for(n = 0, nX = 0, limit = 1; n != len; ++n, ++nX, limit *= 10)
+    for (n = 0, nX = 0, limit = 1; n != len; ++n, ++nX, limit *= 10)
     {
         char const ch = template_path[len - (1 + n)];
 
@@ -133,7 +133,7 @@ unixem_mkstemp(
 
     pX = &template_path[0] + (len - nX);
 
-    for(n = 0; n != limit; ++n)
+    for (n = 0; n != limit; ++n)
     {
         int hFile;
 
@@ -205,7 +205,7 @@ unixem_mkdtemp(
 
     len = strlen(template_path);
 
-    for(n = 0, nX = 0, limit = 1; n != len; ++n, ++nX, limit *= 10)
+    for (n = 0, nX = 0, limit = 1; n != len; ++n, ++nX, limit *= 10)
     {
         char const ch = template_path[len - (1 + n)];
 
@@ -228,7 +228,7 @@ unixem_mkdtemp(
 
     pX = &template_path[0] + (len - nX);
 
-    for(n = 0; n != limit; ++n)
+    for (n = 0; n != limit; ++n)
     {
 #if defined(UNIXEM_USING_SAFE_STR_FUNCTIONS)
         _snprintf_s(pX, (1 + nX), (1 + nX), fmt, n);

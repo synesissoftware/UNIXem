@@ -4,7 +4,7 @@
  * Purpose: Definition of the glob() API functions for the Win32 platform.
  *
  * Created: 13th November 2002
- * Updated: 10th July 2024
+ * Updated: 16th October 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -76,7 +76,7 @@ static char const* unixem_strrpbrk_(
     char*       part = NULL;
     char const* pch;
 
-    for(pch = strCharSet; *pch; ++pch)
+    for (pch = strCharSet; *pch; ++pch)
     {
         char* p = strrchr(string, *pch);
 
@@ -375,7 +375,7 @@ int unixem_glob(
                 begin =   (char**)new_buffer;
                 end   =   begin + pglob->gl_offs;
 
-                for(; begin != end; ++begin)
+                for (; begin != end; ++begin)
                 {
                     *begin = NULL;
                 }
@@ -389,7 +389,7 @@ int unixem_glob(
                 {
                     /* The way we need in order to test the removal of dots in the findfile_sequence. */
                     *end = NULL;
-                    for(begin = pp, next_str = buffer + cbPointers; begin != end; --end)
+                    for (begin = pp, next_str = buffer + cbPointers; begin != end; --end)
                     {
                         *(end - 1) = next_str;
 
@@ -400,7 +400,7 @@ int unixem_glob(
                 else
                 {
                     /* The normal way. */
-                    for(begin = pp, next_str = buffer + cbPointers; begin != end; ++begin)
+                    for (begin = pp, next_str = buffer + cbPointers; begin != end; ++begin)
                     {
                         *begin = next_str;
 
@@ -454,7 +454,7 @@ int unixem_glob(
                 char**  end     =   pp + pglob->gl_offs;
                 char*   dest    =   (char*)(pp + 2 + pglob->gl_offs);
 
-                for(; begin != end; ++begin)
+                for (; begin != end; ++begin)
                 {
                     *begin = NULL;
                 }

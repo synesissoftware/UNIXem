@@ -4,7 +4,7 @@
  * Purpose: gettimeofday() for the Win32 platform.
  *
  * Created: 1st November 2003
- * Updated: 10th July 2024
+ * Updated: 16th October 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -244,7 +244,7 @@ unixem_timegm(
 
     /* days (from year, month, and day) */
 
-    { int y; for(y = 70; y != tm->tm_year; ++y)
+    { int y; for (y = 70; y != tm->tm_year; ++y)
     {
         t += 365;
 
@@ -254,7 +254,7 @@ unixem_timegm(
         }
     }}
 
-    { int m; for(m = 0; m != tm->tm_mon; ++m)
+    { int m; for (m = 0; m != tm->tm_mon; ++m)
     {
         t += unixem_impl_numberOfDaysInMonth(tm->tm_year + 1900, m);
     }}

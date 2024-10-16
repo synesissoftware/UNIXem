@@ -4,7 +4,7 @@
  * Purpose: Utility functions for UNIXem.
  *
  * Created: 2nd September 2005
- * Updated: 10th July 2024
+ * Updated: 16th October 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -357,7 +357,7 @@ int unixem_internal_errno_from_Win32(unsigned long w32Err)
 
     size_t  i;
 
-    for(i = 0; i < NUM_ELEMENTS(errmap); ++i)
+    for (i = 0; i < NUM_ELEMENTS(errmap); ++i)
     {
         if (w32Err == errmap[i].w32Err)
         {
