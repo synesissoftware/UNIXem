@@ -7,11 +7,14 @@ CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
 MakeCmd=${SIS_CMAKE_COMMAND:-make}
 
 
-CMakeVerboseMakefile=0
 Configuration=Release
+ExamplesDisabled=0
+MSVC_MT=0
+MinGW=0
 RunMake=0
-# STLSoftDirEnvVar=${STLSOFT}
 STLSoftDirGiven=
+TestingDisabled=0
+VerboseMakefile=0
 
 
 # ##########################################################
@@ -22,11 +25,27 @@ while [[ $# -gt 0 ]]; do
   case $1 in
     -v|--cmake-verbose-makefile)
 
-      CMakeVerboseMakefile=1
+      VerboseMakefile=1
       ;;
     -d|--debug-configuration)
 
       Configuration=Debug
+      ;;
+    -E|--disable-examples)
+
+      ExamplesDisabled=1
+      ;;
+    -T|--disable-testing)
+
+      TestingDisabled=1
+      ;;
+    --mingw)
+
+      MinGW=1
+      ;;
+    --msvc-mt)
+
+      MSVC_MT=1
       ;;
     -m|--run-make)
 
@@ -58,7 +77,25 @@ Flags/options:
 
     -d
     --debug-configuration
-        uses Debug configuration. Default is to use Release
+        use Debug configuration (by setting CMAKE_BUILD_TYPE=Debug). Default
+        is to use Release
+
+    -E
+    --disable-examples
+        disables building of examples (by setting BUILD_EXAMPLES=OFF)
+
+    -T
+    --disable-testing
+        disables building of tests (by setting BUILD_TESTING=OFF). Unless
+        testing is disabled the STLSoft and xTests libraries will be
+        required to be available to CMake
+
+    --mingw
+        uses explicitly the "MinGW Makefiles" generator
+
+    --msvc-mt
+        when using Visual C++ (MSVC), the static runtime library will be
+        selected; the default is the dynamic runtime library
 
     -m
     --run-make
@@ -99,25 +136,45 @@ mkdir -p $CMakeDir || exit 1
 
 cd $CMakeDir
 
-echo "Executing CMake"
+echo "Executing CMake (in ${CMakeDir})"
 
-if [ $CMakeVerboseMakefile -eq 0 ]; then CMakeVerboseMakefileFlag="OFF" ; else CMakeVerboseMakefileFlag="ON" ; fi
-
+if [ $ExamplesDisabled -eq 0 ]; then CMakeBuildExamplesFlag="ON" ; else CMakeBuildExamplesFlag="OFF" ; fi
+if [ $MSVC_MT -eq 0 ]; then CMakeMsvcMtFlag="OFF" ; else CMakeMsvcMtFlag="ON" ; fi
 if [ -z $STLSoftDirGiven ]; then CMakeSTLSoftVariable="" ; else CMakeSTLSoftVariable="-DSTLSOFT=$STLSoftDirGiven/" ; fi
+if [ $TestingDisabled -eq 0 ]; then CMakeBuildTestingFlag="ON" ; else CMakeBuildTestingFlag="OFF" ; fi
+if [ $VerboseMakefile -eq 0 ]; then CMakeVerboseMakefileFlag="OFF" ; else CMakeVerboseMakefileFlag="ON" ; fi
 
-cmake \
-  $CMakeSTLSoftVariable \
-  -DCMAKE_BUILD_TYPE=$Configuration \
-  -DCMAKE_VERBOSE_MAKEFILE:BOOL=$CMakeVerboseMakefileFlag \
-  -S $Dir \
-  -B $CMakeDir \
-  || (cd ->/dev/null ; exit 1)
+if [ $MinGW -ne 0 ]; then
+
+  cmake \
+    $CMakeSTLSoftVariable \
+    -DBUILD_EXAMPLES:BOOL=$CMakeBuildExamplesFlag \
+    -DBUILD_TESTING:BOOL=$CMakeBuildTestingFlag \
+    -DCMAKE_BUILD_TYPE=$Configuration \
+    -DMSVC_USE_MT:BOOL=$CMakeMsvcMtFlag \
+    -G "MinGW Makefiles" \
+    -S $Dir \
+    -B $CMakeDir \
+    || (cd ->/dev/null ; exit 1)
+else
+
+  cmake \
+    $CMakeSTLSoftVariable \
+    -DBUILD_EXAMPLES:BOOL=$CMakeBuildExamplesFlag \
+    -DBUILD_TESTING:BOOL=$CMakeBuildTestingFlag \
+    -DCMAKE_BUILD_TYPE=$Configuration \
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL=$CMakeVerboseMakefileFlag \
+    -DMSVC_USE_MT:BOOL=$CMakeMsvcMtFlag \
+    -S $Dir \
+    -B $CMakeDir \
+    || (cd ->/dev/null ; exit 1)
+fi
 
 status=0
 
 if [ $RunMake -ne 0 ]; then
 
-  echo "Executing make"
+  echo "Executing build (via command \`$MakeCmd\`)"
 
   $MakeCmd
   status=$?
@@ -125,7 +182,7 @@ fi
 
 cd ->/dev/null
 
-if [ $CMakeVerboseMakefile -ne 0 ]; then
+if [ $VerboseMakefile -ne 0 ]; then
 
   echo -e "contents of $CMakeDir:"
   ls -al $CMakeDir

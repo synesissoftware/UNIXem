@@ -86,7 +86,7 @@ if [ $RunMake -ne 0 ]; then
 
   if [ $ListOnly -eq 0 ]; then
 
-    echo "Executing make and then running all component and unit test programs"
+    echo "Executing build (via command \`$MakeCmd\`) and then running all component and unit test programs"
 
     mkdir -p $CMakeDir || exit 1
 
@@ -94,6 +94,8 @@ if [ $RunMake -ne 0 ]; then
 
     $MakeCmd
     status=$?
+
+    cd ->/dev/null
   fi
 else
 
@@ -101,8 +103,6 @@ else
 
     >&2 echo "$ScriptPath: cannot run in '--no-make' mode without a previous successful build step"
   fi
-
-  cd $CMakeDir
 fi
 
 if [ $status -eq 0 ]; then
@@ -145,8 +145,6 @@ if [ $status -eq 0 ]; then
     fi
   done
 fi
-
-cd ->/dev/null
 
 exit $status
 

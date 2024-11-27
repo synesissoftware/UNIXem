@@ -6,6 +6,7 @@ Basename=$(basename "$ScriptPath")
 CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
 MakeCmd=${SIS_CMAKE_COMMAND:-make}
 
+ListOnly=0
 RunMake=1
 
 
@@ -15,6 +16,10 @@ RunMake=1
 while [[ $# -gt 0 ]]; do
 
   case $1 in
+    -l|--list-only)
+
+      ListOnly=1
+      ;;
     -M|--no-make)
 
       RunMake=0
@@ -32,6 +37,10 @@ $ScriptPath [ ... flags/options ... ]
 Flags/options:
 
     behaviour:
+
+    -l
+    --list-only
+        lists the target programs but does not execute them
 
     -M
     --no-make
@@ -66,41 +75,54 @@ status=0
 
 if [ $RunMake -ne 0 ]; then
 
-  echo "Executing make and then running all test programs"
+  if [ $ListOnly -eq 0 ]; then
 
-  mkdir -p $CMakeDir || exit 1
+    echo "Executing build (via command \`$MakeCmd\`) and then running all example programs"
 
-  cd $CMakeDir
+    mkdir -p $CMakeDir || exit 1
 
-  $MakeCmd
-  status=$?
+    cd $CMakeDir
+
+    $MakeCmd
+    status=$?
+
+    cd ->/dev/null
+  fi
 else
 
   if [ ! -d "$CMakeDir" ] || [ ! -f "$CMakeDir/CMakeCache.txt" ] || [ ! -d "$CMakeDir/CMakeFiles" ]; then
 
     >&2 echo "$ScriptPath: cannot run in '--no-make' mode without a previous successful build step"
+  fi
+fi
+
+if [ $status -eq 0 ]; then
+
+  if [ $ListOnly -ne 0 ]; then
+
+    echo "Listing all example programs"
   else
 
     echo "Running all example programs"
   fi
 
-  cd $CMakeDir
-fi
-
-if [ $status -eq 0 ]; then
-
     for f in $(find $CMakeDir -type f '(' -name 'example.c.*' -o -name 'example.cpp.*' ')' -exec test -x {} \; -print)
     do
 
-        echo
-        echo "executing $f:"
+    if [ $ListOnly -ne 0 ]; then
 
-        # NOTE: we do not break on fail, because, this being a unit-testing library, the scratch-tests actually fail
-        $f
-    done
+      echo "would execute $f:"
+
+      continue
+    fi
+
+    echo
+    echo "executing $f:"
+
+    # NOTE: we do not break on fail, because, this being a unit-testing library, the scratch-tests actually fail
+    $f
+  done
 fi
-
-cd ->/dev/null
 
 exit $status
 
