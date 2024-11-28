@@ -87,7 +87,7 @@ extern "C"
 
 #ifndef _SSIZE_T_DEFINED
 /** Signed size type */
-typedef unixem_ssize_t  ssize_t;
+typedef unixem_ssize_t                                      ssize_t;
 # define _SSIZE_T_DEFINED
 #endif /* !_SSIZE_T_DEFINED */
 
@@ -109,6 +109,9 @@ typedef unixem_ssize_t  ssize_t;
  * \param count the number of elements in the vector
  *
  * \note This is a macro, which resolves to unixem_readv()
+ *
+ * \note This is implemented to read the total size in one call to the
+ *  kernel except in the case that the total is "very large"
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 ssize_t readv(
@@ -117,7 +120,7 @@ ssize_t readv(
 ,   int                 count
 );
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define readv      unixem_readv
+# define readv                                              unixem_readv
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /** Writes to a file from a set of memory blocks
@@ -135,7 +138,7 @@ ssize_t writev(
 ,   int                 count
 );
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define writev     unixem_writev
+# define writev                                             unixem_writev
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 #ifdef __cplusplus
