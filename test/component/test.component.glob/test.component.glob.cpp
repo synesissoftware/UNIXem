@@ -1,10 +1,10 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:     test.component.glob.cpp
+ * File:    test.component.glob.cpp
  *
- * Purpose:  Unit-test of `glob()`.
+ * Purpose: Unit-test of `glob()`.
  *
- * Created:  20th May 2012
- * Updated:  10th July 2024
+ * Created: 20th May 2012
+ * Updated: 28th November 2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -38,7 +38,7 @@
 #ifdef _WIN32
 # include <direct.h>
 # if __STDC__
-#  define chdir	_chdir
+#  define chdir                                             _chdir
 # endif /* __STDC__ */
 #endif /* _WIN32 */
 
@@ -75,7 +75,7 @@ namespace
     static int teardown(void*);
     struct locations
     {
-        char const*	pwd;
+        char const* pwd;
         char const* workdir;
     };
 } // anonymous namespace
@@ -92,10 +92,10 @@ int main(int argc, char **argv)
 
     XTESTS_COMMANDLINE_PARSEVERBOSITY(argc, argv, &verbosity);
 
-    platformstl::current_directory				cwd;
-    platformstl::temporary_directory			tempdir;
+    platformstl::current_directory              cwd;
+    platformstl::temporary_directory            tempdir;
 
-    platformstl::temporary_directory_contents	workdir(tempdir, "test.component.glob");
+    platformstl::temporary_directory_contents   workdir(tempdir, "test.component.glob");
 
     workdir
         .create_directory("dir0")
@@ -106,7 +106,7 @@ int main(int argc, char **argv)
         .create_file("file2", 10240)
         ;
 
-    locations	l = { cwd.c_str(), workdir.c_str() };
+    locations l = { cwd.c_str(), workdir.c_str() };
 
     if (XTESTS_START_RUNNER_WITH_SETUP_FNS("test.component.glob", verbosity, setup, teardown, &l))
     {
@@ -185,9 +185,9 @@ static int teardown(void* param)
 
 static void test_1_0()
 {
-    glob_t		gl;
-    int const	flags	=	0;
-    int const	r		=	glob("file0", flags, NULL, &gl);
+    glob_t      gl;
+    int const   flags   =   0;
+    int const   r       =   glob("file0", flags, NULL, &gl);
 
     XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(0, r));
 
@@ -202,9 +202,9 @@ static void test_1_0()
 
 static void test_1_1()
 {
-    glob_t		gl;
-    int const	flags	=	0;
-    int const	r		=	glob("file?", flags, NULL, &gl);
+    glob_t      gl;
+    int const   flags   =   0;
+    int const   r       =   glob("file?", flags, NULL, &gl);
 
     XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(0, r));
 
@@ -221,9 +221,9 @@ static void test_1_1()
 
 static void test_1_2()
 {
-    glob_t		gl; gl.gl_offs = 10;
-    int const	flags	=	0;
-    int const	r		=	glob("file0", flags, NULL, &gl);
+    glob_t      gl; gl.gl_offs = 10;
+    int const   flags   =   0;
+    int const   r       =   glob("file0", flags, NULL, &gl);
 
     XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(0, r));
 
@@ -239,9 +239,10 @@ static void test_1_2()
 static void test_1_3()
 {
 #ifdef GLOB_DOOFFS
-    glob_t		gl; gl.gl_offs = 10;
-    int const	flags	=	GLOB_DOOFFS;
-    int const	r		=	glob("file0", flags, NULL, &gl);
+
+    glob_t      gl; gl.gl_offs = 10;
+    int const   flags   =   GLOB_DOOFFS;
+    int const   r       =   glob("file0", flags, NULL, &gl);
 
     XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(0, r));
 
@@ -257,9 +258,9 @@ static void test_1_3()
 
 static void test_1_4()
 {
-    glob_t		gl;
-    int const	flags	=	0;
-    int const	r		=	glob("xxx", flags, NULL, &gl);
+    glob_t      gl;
+    int const   flags   =   0;
+    int const   r       =   glob("xxx", flags, NULL, &gl);
 
     XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(GLOB_NOMATCH, r));
 
@@ -268,9 +269,9 @@ static void test_1_4()
 
 static void test_1_5()
 {
-    glob_t		gl;
-    int const	flags	=	GLOB_NOCHECK;
-    int const	r		=	glob("xxx", flags, NULL, &gl);
+    glob_t      gl;
+    int const   flags   =   GLOB_NOCHECK;
+    int const   r       =   glob("xxx", flags, NULL, &gl);
 
     XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(0, r));
 
@@ -285,9 +286,9 @@ static void test_1_5()
 
 static void test_1_6()
 {
-    glob_t		gl;
-    int const	flags	=	GLOB_NOCHECK;
-    int const	r		=	glob("x*y", flags, NULL, &gl);
+    glob_t      gl;
+    int const   flags   =   GLOB_NOCHECK;
+    int const   r       =   glob("x*y", flags, NULL, &gl);
 
     XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(0, r));
 
@@ -303,9 +304,10 @@ static void test_1_6()
 static void test_1_7()
 {
 #ifdef GLOB_LIMIT
-    glob_t		gl; gl.gl_matchc = 2;
-    int const	flags	=	GLOB_LIMIT;
-    int const	r		=	glob("file?", flags, NULL, &gl);
+
+    glob_t      gl; gl.gl_matchc = 2;
+    int const   flags   =   GLOB_LIMIT;
+    int const   r       =   glob("file?", flags, NULL, &gl);
 
     XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(GLOB_NOSPACE, r));
 
@@ -322,9 +324,10 @@ static void test_1_8()
 {
 #if defined(GLOB_LIMIT) && \
     defined(GLOB_DOOFFS)
-    glob_t		gl; gl.gl_matchc = 2; gl.gl_offs = 10;
-    int const	flags	=	GLOB_LIMIT | GLOB_DOOFFS;
-    int const	r		=	glob("file?", flags, NULL, &gl);
+
+    glob_t      gl; gl.gl_matchc = 2; gl.gl_offs = 10;
+    int const   flags   =   GLOB_LIMIT | GLOB_DOOFFS;
+    int const   r       =   glob("file?", flags, NULL, &gl);
 
     XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(GLOB_NOSPACE, r));
 
@@ -343,9 +346,9 @@ static void test_1_9()
 
 static void test_1_10()
 {
-    glob_t		gl;
-    int const	flags	=	0;
-    int const	r		=	glob(".", flags, NULL, &gl);
+    glob_t      gl;
+    int const   flags   =   0;
+    int const   r       =   glob(".", flags, NULL, &gl);
 
     XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(0, r));
 
@@ -360,9 +363,9 @@ static void test_1_10()
 
 static void test_1_11()
 {
-    glob_t		gl;
-    int const	flags	=	0;
-    int const	r		=	glob("..", flags, NULL, &gl);
+    glob_t      gl;
+    int const   flags   =   0;
+    int const   r       =   glob("..", flags, NULL, &gl);
 
     XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(0, r));
 

@@ -5,7 +5,7 @@
  *          API functions.
  *
  * Created: 1st January 2004
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -45,7 +45,7 @@
 # define _SYNSOFT_VER_C_DLFCN_MAJOR     3
 # define _SYNSOFT_VER_C_DLFCN_MINOR     0
 # define _SYNSOFT_VER_C_DLFCN_REVISION  1
-# define _SYNSOFT_VER_C_DLFCN_EDIT      20
+# define _SYNSOFT_VER_C_DLFCN_EDIT      21
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -90,21 +90,27 @@ static void unixem_set_error_(DWORD dwErr)
     switch (dwErr)
     {
     case ERROR_SUCCESS:
+
         s_error = NULL;
         break;
     case ERROR_MOD_NOT_FOUND:
+
         s_error = "Module not found";
         break;
     case ERROR_PROC_NOT_FOUND:
+
         s_error = "Symbol not found";
         break;
     case ERROR_BAD_EXE_FORMAT:
+
         s_error = "Invalid image format";
         break;
     case ERROR_SHARING_VIOLATION:
+
         s_error = "Sharing violation";
         break;
     default:
+
         s_error = "Operation failed";
         break;
     }

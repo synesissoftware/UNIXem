@@ -4,7 +4,7 @@
  * Purpose: mkstemp()/mkdtemp() etc. for the Windows platform.
  *
  * Created: 4th October 2015
- * Updated: 16th October 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -44,7 +44,7 @@
 # define _SYNSOFT_VER_C_MKTEMP_MAJOR        1
 # define _SYNSOFT_VER_C_MKTEMP_MINOR        0
 # define _SYNSOFT_VER_C_MKTEMP_REVISION     4
-# define _SYNSOFT_VER_C_MKTEMP_EDIT         6
+# define _SYNSOFT_VER_C_MKTEMP_EDIT         7
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -174,13 +174,16 @@ unixem_mkstemp(
             {
             case EACCES:
             case EPERM:
+
                 if (100 == ++access_failures)
                 {
             case ENOMEM:
+
                     return -1;
                 }
                 break;
             default:
+
                 break;
             }
         }

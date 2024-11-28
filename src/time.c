@@ -4,7 +4,7 @@
  * Purpose: gettimeofday() for the Win32 platform.
  *
  * Created: 1st November 2003
- * Updated: 16th October 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -44,7 +44,7 @@
 # define _SYNSOFT_VER_C_TIME_MAJOR      3
 # define _SYNSOFT_VER_C_TIME_MINOR      1
 # define _SYNSOFT_VER_C_TIME_REVISION   2
-# define _SYNSOFT_VER_C_TIME_EDIT       30
+# define _SYNSOFT_VER_C_TIME_EDIT       31
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -94,9 +94,10 @@ unixem_impl_numberOfDaysInMonth(
     case 5:  /* Jun */
     case 8:  /* Sep */
     case 10: /* Nov */
-        return 30;
 
+        return 30;
     case 1:  /* Feb */
+
         if (unixem_internal_yearIsLeap(year))
         {
             return 29;
@@ -105,8 +106,8 @@ unixem_impl_numberOfDaysInMonth(
         {
             return 28;
         }
-
     default:
+
         return 31;
     }
 }
@@ -124,7 +125,7 @@ unixem_internal_FILETIMEToUNIXTime(
 ,   long*           microseconds
 )
 {
-	FILETIME const* const ft = (FILETIME const*)(pv);
+    FILETIME const* const ft = (FILETIME const*)(pv);
 
 #if defined(__COMO__)
     long long   i;

@@ -1,7 +1,7 @@
 
 /*
  * Created:
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  */
 
 #include <unistd.h>
@@ -22,8 +22,8 @@ int main(int argc, char** argv)
         /* Test-1 */
         if (XTESTS_CASE_BEGIN("Test-1", "testing mkstemp in local directory"))
         {
-            char		template_path[] =	"abc.XXX";
-            int const	r				=	mkstemp(template_path);
+            char        template_path[] =   "abc.XXX";
+            int const   r               =   mkstemp(template_path);
 
             if (-1 == r)
             {
@@ -33,7 +33,7 @@ int main(int argc, char** argv)
             }
             else
             {
-                size_t const	len = strlen(template_path);
+                size_t const len = strlen(template_path);
 
                 XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(7u, len));
                 XTESTS_TEST_MULTIBYTE_STRING_EQUAL_N("abc.", template_path, 4u);
@@ -48,8 +48,8 @@ int main(int argc, char** argv)
         /* Test-2 */
         if (XTESTS_CASE_BEGIN("Test-2", "testing mkstemp in specific directory"))
         {
-            char		template_path[] =	"C:\\temp\\abc.XXXX";
-            int const	r				=	mkstemp(template_path);
+            char        template_path[] =   "C:\\temp\\abc.XXXX";
+            int const   r               =   mkstemp(template_path);
 
             if (-1 == r)
             {
@@ -59,7 +59,7 @@ int main(int argc, char** argv)
             }
             else
             {
-                size_t const	len = strlen(template_path);
+                size_t const len = strlen(template_path);
 
                 XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(16u, len));
                 XTESTS_TEST_MULTIBYTE_STRING_EQUAL_N("C:\\temp\\abc.", template_path, 12u);

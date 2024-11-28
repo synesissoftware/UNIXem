@@ -4,7 +4,7 @@
  * Purpose: Definition of the glob() API functions for the Win32 platform.
  *
  * Created: 13th November 2002
- * Updated: 16th October 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -41,10 +41,10 @@
 
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_MAJOR      3
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_MINOR      1
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_REVISION   2
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT       57
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_MAJOR       3
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_MINOR       1
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_REVISION    2
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT        58
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -300,15 +300,15 @@ int unixem_glob(
                 }
             }
 
-			if (bLeafIsDots)
-			{
-				(void)lstrcpyA(find_data.cFileName, leafMost);
+            if (bLeafIsDots)
+            {
+                (void)lstrcpyA(find_data.cFileName, leafMost);
 
                 if (flags & UNIXEM_GLOB_MARK)
                 {
                     (void)lstrcatA(find_data.cFileName, "/");
                 }
-			}
+            }
 
             cch = lstrlenA(find_data.cFileName);
             if (NULL != file_part)

@@ -4,7 +4,7 @@
  * Purpose: Definition of the chdir() and other API functions for the Win32 platform.
  *
  * Created: 1st November 2003
- * Updated: 16th October 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -41,10 +41,10 @@
 
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define _SYNSOFT_VER_C_UNISTD_MAJOR      3
-# define _SYNSOFT_VER_C_UNISTD_MINOR      0
-# define _SYNSOFT_VER_C_UNISTD_REVISION   3
-# define _SYNSOFT_VER_C_UNISTD_EDIT       38
+# define _SYNSOFT_VER_C_UNISTD_MAJOR    3
+# define _SYNSOFT_VER_C_UNISTD_MINOR    0
+# define _SYNSOFT_VER_C_UNISTD_REVISION 3
+# define _SYNSOFT_VER_C_UNISTD_EDIT     39
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -361,7 +361,6 @@ int unixem_close(int handle)
 
     /* Use _close() */
     return _close(handle);
-
 #else /* ? compiler */
 
     if (0 == handle ||
@@ -372,7 +371,7 @@ int unixem_close(int handle)
     }
     else
     {
-        HANDLE  h   =   (HANDLE)_get_osfhandle(handle);
+        HANDLE h = (HANDLE)_get_osfhandle(handle);
 
         if (CloseHandle(h))
         {
@@ -380,7 +379,7 @@ int unixem_close(int handle)
         }
         else
         {
-            DWORD   err = GetLastError();
+            DWORD err = GetLastError();
 
             switch (err)
             {
@@ -389,7 +388,6 @@ int unixem_close(int handle)
             }
         }
     }
-
 #endif /* compiler */
 }
 
@@ -404,11 +402,11 @@ int unixem_getpagesize(void)
 
 
 #ifndef _MAX_FNAME
-# define _MAX_FNAME (256)
+# define _MAX_FNAME                                         (256)
 #endif /* !_MAX_FNAME */
 
 #ifndef _MAX_PATH
-# define _MAX_PATH  (260)
+# define _MAX_PATH                                          (260)
 #endif /* !_MAX_PATH */
 
 long unixem_pathconf(

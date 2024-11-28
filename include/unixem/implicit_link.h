@@ -4,7 +4,7 @@
  * Purpose: Implicit linking for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -56,7 +56,7 @@
 # define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_MAJOR    2
 # define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_MINOR    1
 # define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_REVISION 2
-# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_EDIT     22
+# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_EDIT     23
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -115,8 +115,8 @@
 
  /* architecture */
 # if !defined(UNIXEM_ARCH_IS_X86) && \
-	 !defined(UNIXEM_ARCH_IS_X64) && \
-	 !defined(UNIXEM_ARCH_IS_IA64)
+     !defined(UNIXEM_ARCH_IS_X64) && \
+     !defined(UNIXEM_ARCH_IS_IA64)
 
   /* see if using PlatformSTL */
 #  ifdef PLATFORMSTL_OS_IS_WINDOWS
