@@ -4,7 +4,7 @@
  * Purpose: Utility functions for UNIXem.
  *
  * Created: 2nd September 2005
- * Updated: 16th October 2024
+ * Updated: 29th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -43,22 +43,42 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_INTERNAL_C_UTIL_MAJOR     2
 # define _SYNSOFT_VER_INTERNAL_C_UTIL_MINOR     1
-# define _SYNSOFT_VER_INTERNAL_C_UTIL_REVISION  1
-# define _SYNSOFT_VER_INTERNAL_C_UTIL_EDIT      14
+# define _SYNSOFT_VER_INTERNAL_C_UTIL_REVISION  3
+# define _SYNSOFT_VER_INTERNAL_C_UTIL_EDIT      17
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * includes
+ * includes - 1
  */
 
 #include <unixem/internal/util.h>
 
 #include <unixem/unixem.h>
 
+/* /////////////////////////////////////////////////////////////////////////
+ * compatibility
+ */
+
+#if 0
+#elif __STDC_VERSION__ >= 199901L
+
+# define UNIXEM_HAS_h_stdint_
+#else
+
+#endif
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * includes - 2
+ */
+
 #include <assert.h>
 #include <errno.h>
 #include <limits.h>
+#ifdef UNIXEM_HAS_h_stdint_
+# include <stdint.h>
+#endif
 #include <windows.h>
 
 
@@ -88,18 +108,30 @@
  * feature support
  */
 
-#if defined(__BORLANDC__)
+#if 0
+#elif defined(__BORLANDC__)
+
 UNIXEM_STGCLS_IMP long _cdecl _get_osfhandle(int __handle);
 #elif defined(__DMC__) || \
       defined(__INTEL_COMPILER) || \
       defined(__MWERKS__) || \
       defined(_MSC_VER)
+
 UNIXEM_STGCLS_IMP long __cdecl _get_osfhandle(int __handle);
 #elif defined(__GNUC__)
+
+# if __GNUC__ > 4
+
+_CRTIMP intptr_t __cdecl _get_osfhandle(int _FileHandle);
+# else
+
 long __cdecl _get_osfhandle(int __handle);
+# endif
 #elif defined(__WATCOMC__)
+
 _WCRTLINK extern long _get_osfhandle( int __posixhandle );
 #else
+
 # error Compiler not discriminated
 #endif /* compiler */
 

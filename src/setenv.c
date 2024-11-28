@@ -4,7 +4,7 @@
  * Purpose: Implementation of the setenv() and unsetenv() functions.
  *
  * Created: 9th December 2005
- * Updated: 28th November 2024
+ * Updated: 29th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -44,7 +44,7 @@
 # define _SYNSOFT_VER_C_SETENV_MAJOR    1
 # define _SYNSOFT_VER_C_SETENV_MINOR    0
 # define _SYNSOFT_VER_C_SETENV_REVISION 9
-# define _SYNSOFT_VER_C_SETENV_EDIT     13
+# define _SYNSOFT_VER_C_SETENV_EDIT     14
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -68,8 +68,9 @@
  * feature support
  */
 
-#if defined(__BORLANDC__) || \
-    defined(__WATCOMC__)
+#if 0
+#elif defined(__BORLANDC__) || \
+      defined(__WATCOMC__)
 
 # define UNIXEM__putenv                                     putenv
 #else /* ? compiler */

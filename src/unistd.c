@@ -5,7 +5,7 @@
  *          Windows platform.
  *
  * Created: 1st November 2003
- * Updated: 28th November 2024
+ * Updated: 29th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -44,8 +44,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_UNISTD_MAJOR    3
 # define _SYNSOFT_VER_C_UNISTD_MINOR    0
-# define _SYNSOFT_VER_C_UNISTD_REVISION 4
-# define _SYNSOFT_VER_C_UNISTD_EDIT     40
+# define _SYNSOFT_VER_C_UNISTD_REVISION 5
+# define _SYNSOFT_VER_C_UNISTD_EDIT     42
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -67,21 +67,28 @@
  * feature support
  */
 
-#if defined(__BORLANDC__)
-UNIXEM_STGCLS_IMP long _cdecl _get_osfhandle(int __handle);
+#if 0
+#elif defined(__BORLANDC__)
+
 #elif defined(__DMC__) || \
       ( defined(__INTEL_COMPILER) && \
         defined(_WIN32)) || \
       ( defined(__MWERKS__) && \
         defined(_WIN32)) || \
       defined(_MSC_VER)
+
 UNIXEM_STGCLS_IMP int __cdecl _close(int);
-UNIXEM_STGCLS_IMP long __cdecl _get_osfhandle(int __handle);
 #elif defined(__GNUC__)
-long __cdecl _get_osfhandle(int __handle);
+
+# if __GNUC__ > 4
+
+# else
+
+# endif
 #elif defined(__WATCOMC__)
-_WCRTLINK extern long _get_osfhandle( int __posixhandle );
+
 #else
+
 # error Compiler not discriminated
 #endif /* compiler */
 
@@ -354,7 +361,7 @@ int unixem_rmdir(const char *dirName)
 }
 
 
-int unixem_close(int handle)
+int unixem_close(int fd)
 {
 #if defined(__DMC__) || \
     (   defined(__INTEL_COMPILER) && \
@@ -364,18 +371,18 @@ int unixem_close(int handle)
     defined(_MSC_VER)
 
     /* Use _close() */
-    return _close(handle);
+    return _close(fd);
 #else /* ? compiler */
 
-    if (0 == handle ||
-        1 == handle ||
-        2 == handle)
+    if (0 == fd ||
+        1 == fd ||
+        2 == fd)
     {
         return 0;
     }
     else
     {
-        HANDLE h = (HANDLE)(ssize_t)_get_osfhandle(handle);
+        HANDLE h = (HANDLE)unixem_internal_Windows_HANDLE_from_file_handle(fd);
 
         if (CloseHandle(h))
         {

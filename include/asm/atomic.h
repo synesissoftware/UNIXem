@@ -5,7 +5,7 @@
  *          Windows platform.
  *
  * Created: 21st November 2003
- * Updated: 28th November 2024
+ * Updated: 29th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -47,7 +47,7 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_MAJOR      3
 # define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_MINOR      0
 # define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_REVISION   1
-# define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_EDIT       21
+# define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_EDIT       22
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -69,7 +69,7 @@
  * typedefs
  */
 
-typedef unixem_atomic_t atomic_t;
+typedef unixem_atomic_t                                     atomic_t;
 
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -80,27 +80,28 @@ typedef unixem_atomic_t atomic_t;
 extern "C" {
 #endif /* __cplusplus */
 
-#define ATOMIC_INIT(i)          UNIXEM_ATOMIC_INIT(i)
+#define ATOMIC_INIT(i)                                      UNIXEM_ATOMIC_INIT(i)
 
-#define atomic_set              unixem_atomic_set
-#define atomic_write            unixem_atomic_write
-#define atomic_read             unixem_atomic_read
-#define atomic_add              unixem_atomic_add
-#define atomic_sub              unixem_atomic_sub
-#define atomic_inc              unixem_atomic_inc
-#define atomic_dec              unixem_atomic_dec
+#define atomic_set                                          unixem_atomic_set
+#define atomic_write                                        unixem_atomic_write
+#define atomic_read                                         unixem_atomic_read
+#define atomic_add                                          unixem_atomic_add
+#define atomic_sub                                          unixem_atomic_sub
+#define atomic_inc                                          unixem_atomic_inc
+#define atomic_dec                                          unixem_atomic_dec
 /** Returns the previous value */
-#define atomic_inc_and_test     unixem_atomic_inc_and_test
+#define atomic_inc_and_test                                 unixem_atomic_inc_and_test
 /** Returns the previous value */
-#define atomic_dec_and_test     unixem_atomic_dec_and_test
+#define atomic_dec_and_test                                 unixem_atomic_dec_and_test
 /** Returns the previous value */
-#define atomic_add_and_test     unixem_atomic_add_and_test
+#define atomic_add_and_test                                 unixem_atomic_add_and_test
 /** Returns the previous value */
-#define atomic_sub_and_test     unixem_atomic_sub_and_test
+#define atomic_sub_and_test                                 unixem_atomic_sub_and_test
 
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

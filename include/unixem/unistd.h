@@ -4,7 +4,7 @@
  * Purpose: Declaration of various UNIX standard functions.
  *
  * Created: 1st November 2003
- * Updated: 28th November 2024
+ * Updated: 29th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_MAJOR       3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_MINOR       1
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_REVISION    1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_EDIT        48
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_EDIT        49
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -110,19 +110,19 @@ enum
     ,   UNIXEM_PC_SYNC_IO                   /*!< Returns -1 if the file system does not support the Synchronized Input and Output option. Any value other than -1 is returned if the file system supports the option. */
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define UNIXEM_PC_LINK_MAX                 UNIXEM_PC_LINK_MAX
-# define UNIXEM_PC_MAX_CANON                UNIXEM_PC_MAX_CANON
-# define UNIXEM_PC_MAX_INPUT                UNIXEM_PC_MAX_INPUT
-# define UNIXEM_PC_NAME_MAX                 UNIXEM_PC_NAME_MAX
-# define UNIXEM_PC_PATH_MAX                 UNIXEM_PC_PATH_MAX
-# define UNIXEM_PC_PIPE_BUF                 UNIXEM_PC_PIPE_BUF
-# define UNIXEM_PC_CHOWN_RESTRICTED         UNIXEM_PC_CHOWN_RESTRICTED
-# define UNIXEM_PC_NO_TRUNC                 UNIXEM_PC_NO_TRUNC
-# define UNIXEM_PC_VDISABLE                 UNIXEM_PC_VDISABLE
-# define UNIXEM_PC_AIX_DISK_PARTITION       UNIXEM_PC_AIX_DISK_PARTITION
-# define UNIXEM_PC_AIX_DISK_SIZE            UNIXEM_PC_AIX_DISK_SIZE
-# define UNIXEM_PC_FILESIZEBITS             UNIXEM_PC_FILESIZEBITS
-# define UNIXEM_PC_SYNC_IO                  UNIXEM_PC_SYNC_IO
+# define UNIXEM_PC_LINK_MAX                                 UNIXEM_PC_LINK_MAX
+# define UNIXEM_PC_MAX_CANON                                UNIXEM_PC_MAX_CANON
+# define UNIXEM_PC_MAX_INPUT                                UNIXEM_PC_MAX_INPUT
+# define UNIXEM_PC_NAME_MAX                                 UNIXEM_PC_NAME_MAX
+# define UNIXEM_PC_PATH_MAX                                 UNIXEM_PC_PATH_MAX
+# define UNIXEM_PC_PIPE_BUF                                 UNIXEM_PC_PIPE_BUF
+# define UNIXEM_PC_CHOWN_RESTRICTED                         UNIXEM_PC_CHOWN_RESTRICTED
+# define UNIXEM_PC_NO_TRUNC                                 UNIXEM_PC_NO_TRUNC
+# define UNIXEM_PC_VDISABLE                                 UNIXEM_PC_VDISABLE
+# define UNIXEM_PC_AIX_DISK_PARTITION                       UNIXEM_PC_AIX_DISK_PARTITION
+# define UNIXEM_PC_AIX_DISK_SIZE                            UNIXEM_PC_AIX_DISK_SIZE
+# define UNIXEM_PC_FILESIZEBITS                             UNIXEM_PC_FILESIZEBITS
+# define UNIXEM_PC_SYNC_IO                                  UNIXEM_PC_SYNC_IO
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 };
 
@@ -132,7 +132,7 @@ enum
  */
 
 /** Process-identifier type */
-typedef int         unixem_pid_t;
+typedef int                                                 unixem_pid_t;
 
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -222,10 +222,10 @@ int unixem_rmdir(char const* dirName);
 
 /** Closes a file
  *
- * \param handle The handle of the file to be closed
+ * \param handle The descriptor of the file to be closed
  * \return 0 on success, or -1 if there is an error
  */
-int unixem_close(int handle);
+int unixem_close(int fd);
 
 
 /* * Creates a pipe

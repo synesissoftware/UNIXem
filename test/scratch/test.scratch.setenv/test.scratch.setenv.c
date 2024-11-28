@@ -4,7 +4,7 @@
  * Purpose: Unit-test of `setenv()`.
  *
  * Created: 9th December 2005
- * Updated: 16th October 2024
+ * Updated: 29th November 2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -19,10 +19,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#if defined(_MSC_VER) && \
-    defined(_DEBUG)
-# include <crtdbg.h>
-#endif /* _MSC_VER) && _DEBUG */
 
 /* /////////////////////////////////////////////////////////////////////////
  * compatibility
@@ -48,17 +44,8 @@
 
 int main(int argc, char *argv[])
 {
-#if defined(_DEBUG) || \
-    defined(__SYNSOFT_DBS_DEBUG)
-    puts("test.scratch.setenv: " STLSOFT_COMPILER_LABEL_STRING);
-#endif /* debug */
-
-    ((void)argc);
-    ((void)argv);
-
-#if 0
-    { for (size_t i = 0; i < 0xffffffff; ++i){} }
-#endif /* 0 */
+    ((void)&argc);
+    ((void)&argv);
 
     setenv("SOMETHING_VERY_UNLIKELY_2_B_SET", "bat", 0);
 
