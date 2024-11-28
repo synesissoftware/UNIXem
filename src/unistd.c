@@ -1,7 +1,8 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:    unistd.c
  *
- * Purpose: Definition of the chdir() and other API functions for the Win32 platform.
+ * Purpose: Definition of the chdir() and other API functions for the
+ *          Windows platform.
  *
  * Created: 1st November 2003
  * Updated: 28th November 2024

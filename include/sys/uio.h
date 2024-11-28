@@ -4,7 +4,7 @@
  * Purpose: Vector file read/write.
  *
  * Created: 19th September 2005
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -51,7 +51,7 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_UIO_MAJOR     2
 # define SYNSOFT_UNIXEM_VER_SYS_H_UIO_MINOR     0
 # define SYNSOFT_UNIXEM_VER_SYS_H_UIO_REVISION  1
-# define SYNSOFT_UNIXEM_VER_SYS_H_UIO_EDIT      14
+# define SYNSOFT_UNIXEM_VER_SYS_H_UIO_EDIT      15
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -63,7 +63,7 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 

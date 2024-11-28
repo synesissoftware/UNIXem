@@ -5,7 +5,7 @@
  *          functions.
  *
  * Created: 1st January 2004
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -53,7 +53,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_MAJOR    3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_MINOR    0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_REVISION 1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_EDIT     20
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_EDIT     21
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -66,7 +66,7 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 
@@ -103,10 +103,11 @@ extern "C"
 
 /** Loads the given module,
  *
- * \param moduleName The name of the module. The name is passed through to Win32's
- * LoadLibrary(), so the value of this parameter is interpreted according to Win32's
- * loading rules.
- * \param mode The loading mode. This is ignored on Win32 platforms, and the function
+ * \param moduleName The name of the module. The name is passed through to
+ *  Windows's LoadLibrary(), so the value of this parameter is interpreted
+ *  according to Windows's loading rules.
+ * \param mode The loading mode. This is ignored on Windows platforms, and
+ *  the function
  * always behaves as if RTLD_NOW was specified
  * \note
  */

@@ -4,7 +4,7 @@
  * Purpose: Declaration of various UNIX standard functions.
  *
  * Created: 1st November 2003
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_MAJOR       3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_MINOR       1
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_REVISION    1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_EDIT        47
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_EDIT        48
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -66,7 +66,7 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 

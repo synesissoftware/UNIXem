@@ -2,10 +2,10 @@
  * File:    sys/resource.h
  *
  * Purpose: Declaration of the getrusage() API function and supporting
- *          types for the Win32 platform.
+ *          types for the Windows platform.
  *
  * Created: 9th June 2006
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_RESOURCE_MAJOR    2
 # define SYNSOFT_UNIXEM_VER_SYS_H_RESOURCE_MINOR    0
 # define SYNSOFT_UNIXEM_VER_SYS_H_RESOURCE_REVISION 1
-# define SYNSOFT_UNIXEM_VER_SYS_H_RESOURCE_EDIT     10
+# define SYNSOFT_UNIXEM_VER_SYS_H_RESOURCE_EDIT     12
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -64,7 +64,7 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 
@@ -85,7 +85,7 @@ extern "C"
  *
  * Requests that rusage() provide information about the calling process.
  */
-#define RUSAGE_SELF         (UNIXEM_RUSAGE_SELF)
+#define RUSAGE_SELF                                         (UNIXEM_RUSAGE_SELF)
 /** \def RUSAGE_CHILDREN
  *
  * Requests that rusage() provide information about child processes
@@ -93,7 +93,7 @@ extern "C"
  *
  *  \note This flag is <b>not</b> supported
  */
-#define RUSAGE_CHILDREN     (UNIXEM_RUSAGE_CHILDREN)
+#define RUSAGE_CHILDREN                                     (UNIXEM_RUSAGE_CHILDREN)
 
 /** \def rusage
  *
@@ -101,7 +101,7 @@ extern "C"
  *
  * \see unixem_getrusage
  */
-#define rusage              unixem_rusage
+#define rusage                                              unixem_rusage
 
 /** Provide resource usage information.
  *
@@ -123,13 +123,13 @@ int getrusage(
 ,   struct rusage*  r_usage
 );
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define getrusage          unixem_getrusage
+# define getrusage                                          unixem_getrusage
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
-
 
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

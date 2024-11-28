@@ -1,7 +1,7 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:    glob.c
  *
- * Purpose: Definition of the glob() API functions for the Win32 platform.
+ * Purpose: Definition of the glob() API functions for the Windows platform.
  *
  * Created: 13th November 2002
  * Updated: 28th November 2024
@@ -128,8 +128,8 @@ unixem_glob_isdots_(
  * API functions
  */
 
-/* It gives you back the matched contents of your pattern, so for Win32, the
- * directories must be included
+/* It gives you back the matched contents of your pattern, so for Windows,
+ * the directories must be included
  */
 
 int unixem_glob(

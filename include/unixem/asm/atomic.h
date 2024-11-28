@@ -2,10 +2,10 @@
  * File:    unixem/asm/atomic.h
  *
  * Purpose: Declaration of Linux like atomic functions for the
- *          Win32 platform.
+ *          Windows platform.
  *
  * Created: 21st November 2003
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -48,7 +48,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_MAJOR       3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_MINOR       0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_REVISION    1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_EDIT        19
+# define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_EDIT        20
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* ////////////////////////////////////////////////////////////////////// */
@@ -82,29 +82,30 @@ extern "C" {
 
 #define UNIXEM_ATOMIC_INIT(i)      (i)
 
-void    unixem_atomic_set(unixem_atomic_t volatile *v, int i);
-int     unixem_atomic_write(unixem_atomic_t volatile *v, int i);
-int     unixem_atomic_read(unixem_atomic_t volatile *v);
+void    unixem_atomic_set(unixem_atomic_t volatile* v, int i);
+int     unixem_atomic_write(unixem_atomic_t volatile* v, int i);
+int     unixem_atomic_read(unixem_atomic_t volatile* v);
 
-void    unixem_atomic_add(int i, unixem_atomic_t volatile *v);
-void    unixem_atomic_sub(int i, unixem_atomic_t volatile *v);
+void    unixem_atomic_add(int i, unixem_atomic_t volatile* v);
+void    unixem_atomic_sub(int i, unixem_atomic_t volatile* v);
 
-void    unixem_atomic_inc(unixem_atomic_t volatile *v);
-void    unixem_atomic_dec(unixem_atomic_t volatile *v);
-
-/** Returns the previous value */
-int     unixem_atomic_inc_and_test(unixem_atomic_t volatile *v);
-/** Returns the previous value */
-int     unixem_atomic_dec_and_test(unixem_atomic_t volatile *v);
+void    unixem_atomic_inc(unixem_atomic_t volatile* v);
+void    unixem_atomic_dec(unixem_atomic_t volatile* v);
 
 /** Returns the previous value */
-int     unixem_atomic_add_and_test(int i, unixem_atomic_t volatile *v);
+int     unixem_atomic_inc_and_test(unixem_atomic_t volatile* v);
 /** Returns the previous value */
-int     unixem_atomic_sub_and_test(int i, unixem_atomic_t volatile *v);
+int     unixem_atomic_dec_and_test(unixem_atomic_t volatile* v);
+
+/** Returns the previous value */
+int     unixem_atomic_add_and_test(int i, unixem_atomic_t volatile* v);
+/** Returns the previous value */
+int     unixem_atomic_sub_and_test(int i, unixem_atomic_t volatile* v);
 
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

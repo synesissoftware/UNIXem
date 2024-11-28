@@ -1,10 +1,10 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:    mmap.c
  *
- * Purpose: mmap(), munmap() and msync() for the Win32 platform.
+ * Purpose: mmap(), munmap() and msync() for the Windows platform.
  *
  * Created: 18th December 2003
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *

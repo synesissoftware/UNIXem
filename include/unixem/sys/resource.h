@@ -2,10 +2,10 @@
  * File:    unixem/sys/resource.h
  *
  * Purpose: Declaration of the getrusage() API function and supporting
- *          types for the Win32 platform.
+ *          types for the Windows platform.
  *
  * Created: 9th June 2006
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -53,7 +53,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_MAJOR     2
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_MINOR     0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_REVISION  1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_EDIT      10
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_EDIT      11
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -65,7 +65,7 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 
@@ -86,7 +86,7 @@ extern "C"
  *
  * Requests that rusage() provide information about the calling process.
  */
-#define UNIXEM_RUSAGE_SELF      (0)
+#define UNIXEM_RUSAGE_SELF                                  (0)
 /** \def UNIXEM_RUSAGE_CHILDREN
  *
  * Requests that rusage() provide information about child processes
@@ -94,7 +94,7 @@ extern "C"
  *
  *  \note This flag is <b>not</b> supported
  */
-#define UNIXEM_RUSAGE_CHILDREN  (-1)
+#define UNIXEM_RUSAGE_CHILDREN                              (-1)
 
 /** Resource usage information structure.
  *

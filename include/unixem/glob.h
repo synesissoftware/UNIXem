@@ -2,7 +2,7 @@
  * File:    unixem/glob.h
  *
  * Purpose: Declaration of the glob() API functions and types for the
- *          Win32 platform.
+ *          Windows platform.
  *
  * Created: 13th November 2002
  * Updated: 28th November 2024
@@ -65,13 +65,14 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 
 /** \weakgroup unixem_glob glob() API
  * \ingroup UNIXem unixem
- * \brief This API provides facilities for enumerating the file-system contents
+ * \brief This API provides facilities for enumerating the file-system
+ *  contents
  * @{
  */
 

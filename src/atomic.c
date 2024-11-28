@@ -2,10 +2,10 @@
  * File:    atomic.c
  *
  * Purpose: Implementation of Linux like atomic functions for the
- *          Win32 platform.
+ *          Windows platform.
  *
  * Created: 21st November 2003
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -45,7 +45,7 @@
 # define _SYNSOFT_VER_C_ATOMIC_MAJOR    3
 # define _SYNSOFT_VER_C_ATOMIC_MINOR    0
 # define _SYNSOFT_VER_C_ATOMIC_REVISION 1
-# define _SYNSOFT_VER_C_ATOMIC_EDIT     20
+# define _SYNSOFT_VER_C_ATOMIC_EDIT     21
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -63,7 +63,7 @@
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifndef WIN32
-# error This file is only currently defined for Win32 compilation units
+# error This file is only currently defined for Windows compilation units
 #endif /* WIN32 */
 
 
