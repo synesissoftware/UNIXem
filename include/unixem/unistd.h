@@ -4,11 +4,12 @@
  * Purpose: Declaration of various UNIX standard functions.
  *
  * Created: 1st November 2003
- * Updated: 10th January 2017
+ * Updated: 10th July 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,6 +55,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_EDIT        47
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -79,6 +81,7 @@
 #ifndef _WIN32
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
@@ -123,12 +126,14 @@ enum
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 };
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
 
 /** Process-identifier type */
 typedef int         unixem_pid_t;
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -243,7 +248,7 @@ long unixem_pathconf(
 );
 
 
-/** Turns \c path into a fully qualified path, resolving all symbolic 
+/** Turns \c path into a fully qualified path, resolving all symbolic
  * links, multiple /, /./ and /../
  *
  * \param path The relative path to be converted into absolute form
@@ -317,6 +322,7 @@ int __stdcall unixem_gethostname(
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

@@ -4,11 +4,12 @@
  * Purpose: Definition of the glob() API functions for the Win32 platform.
  *
  * Created: 13th November 2002
- * Updated: 10th January 2017
+ * Updated: 28th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,11 +41,12 @@
 
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_MAJOR      3
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_MINOR      1
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_REVISION   2
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT       56
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_MAJOR       3
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_MINOR       1
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_REVISION    2
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT        58
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -61,6 +63,7 @@
 #include <stdlib.h>
 #include <windows.h>
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * helper functions
  */
@@ -73,19 +76,19 @@ static char const* unixem_strrpbrk_(
     char*       part = NULL;
     char const* pch;
 
-    for(pch = strCharSet; *pch; ++pch)
+    for (pch = strCharSet; *pch; ++pch)
     {
         char* p = strrchr(string, *pch);
 
-        if(NULL != p)
+        if (NULL != p)
         {
-            if(NULL == part)
+            if (NULL == part)
             {
                 part = p;
             }
             else
             {
-                if(part < p)
+                if (part < p)
                 {
                     part = p;
                 }
@@ -102,15 +105,15 @@ unixem_glob_isdots_(
     char const* s
 )
 {
-    if('.' == s[0])
+    if ('.' == s[0])
     {
-        if('\0' == s[1])
+        if ('\0' == s[1])
         {
             return 1;
         }
-        else if('.' == s[1])
+        else if ('.' == s[1])
         {
-            if('\0' == s[2])
+            if ('\0' == s[2])
             {
                 return 1;
             }
@@ -119,6 +122,7 @@ unixem_glob_isdots_(
 
     return 0;
 }
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -157,20 +161,20 @@ int unixem_glob(
 
     assert(NULL != pglob);
 
-    if(flags & UNIXEM_GLOB_NOMAGIC)
+    if (flags & UNIXEM_GLOB_NOMAGIC)
     {
         bNoMagic = !bMagic;
     }
 
-    if(flags & UNIXEM_GLOB_LIMIT)
+    if (flags & UNIXEM_GLOB_LIMIT)
     {
         maxMatches = (size_t)pglob->gl_matchc;
     }
 
-    if(flags & UNIXEM_GLOB_TILDE)
+    if (flags & UNIXEM_GLOB_TILDE)
     {
         /* Check that begins with "~/" */
-        if( '~' == pattern[0] &&
+        if ('~' == pattern[0] &&
             (   '\0' == pattern[1] ||
                 '/' == pattern[1] ||
                 '\\' == pattern[1]))
@@ -181,7 +185,7 @@ int unixem_glob(
 
             dw = ExpandEnvironmentStringsA(&szPattern2[0], &szPattern3[0], NUM_ELEMENTS(szPattern3) - 1);
 
-            if(0 != dw)
+            if (0 != dw)
             {
                 (void)lstrcpynA(&szPattern3[0] + dw - 1, &pattern[1], (int)(NUM_ELEMENTS(szPattern3) - dw));
                 szPattern3[NUM_ELEMENTS(szPattern3) - 1] = '\0';
@@ -193,7 +197,7 @@ int unixem_glob(
 
     file_part = unixem_strrpbrk_(effectivePattern, "\\/");
 
-    if(NULL != file_part)
+    if (NULL != file_part)
     {
         leafMost = ++file_part;
 
@@ -215,25 +219,25 @@ int unixem_glob(
     pglob->gl_pathc = 0;
     pglob->gl_pathv = NULL;
 
-    if(0 == (flags & UNIXEM_GLOB_DOOFFS))
+    if (0 == (flags & UNIXEM_GLOB_DOOFFS))
     {
         pglob->gl_offs = 0;
     }
 
-    if(hFind == INVALID_HANDLE_VALUE)
+    if (INVALID_HANDLE_VALUE == hFind)
     {
         /* If this was a pattern search, and the
          * directory exists, then we return 0
          * matches, rather than UNIXEM_GLOB_NOMATCH
          */
-        if( bMagic &&
+        if (bMagic &&
             NULL != file_part)
         {
             result = 0;
         }
         else
         {
-            if(NULL != errfunc)
+            if (NULL != errfunc)
             {
                 (void)errfunc(effectivePattern, (int)GetLastError());
             }
@@ -254,66 +258,66 @@ int unixem_glob(
             int     cch;
             size_t  new_cbAlloc;
 
-            if( bMagic0 &&
+            if (bMagic0 &&
                 0 == (flags & UNIXEM_GLOB_PERIOD))
             {
-                if('.' == find_data.cFileName[0])
+                if ('.' == find_data.cFileName[0])
                 {
                     continue;
                 }
             }
 
-            if(find_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+            if (find_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
             {
 #ifdef UNIXEM_GLOB_ONLYREG
-                if(flags & UNIXEM_GLOB_ONLYREG)
+                if (flags & UNIXEM_GLOB_ONLYREG)
                 {
                     continue;
                 }
 #endif /* UNIXEM_GLOB_ONLYREG */
 
-                if( bMagic0 &&
+                if (bMagic0 &&
                     UNIXEM_GLOB_NODOTSDIRS == (flags & UNIXEM_GLOB_NODOTSDIRS))
                 {
                     /* Pattern must begin with '.' to match either dots directory */
-                    if(unixem_glob_isdots_(find_data.cFileName))
+                    if (unixem_glob_isdots_(find_data.cFileName))
                     {
                         continue;
                     }
                 }
 
-                if(flags & UNIXEM_GLOB_MARK)
+                if (flags & UNIXEM_GLOB_MARK)
                 {
                     (void)lstrcatA(find_data.cFileName, "/");
                 }
             }
             else
             {
-                if(flags & UNIXEM_GLOB_ONLYDIR)
+                if (flags & UNIXEM_GLOB_ONLYDIR)
                 {
                     /* Skip all further actions, and get the next entry */
                     continue;
                 }
             }
 
-			if(bLeafIsDots)
-			{
-				(void)lstrcpyA(find_data.cFileName, leafMost);
+            if (bLeafIsDots)
+            {
+                (void)lstrcpyA(find_data.cFileName, leafMost);
 
-                if(flags & UNIXEM_GLOB_MARK)
+                if (flags & UNIXEM_GLOB_MARK)
                 {
                     (void)lstrcatA(find_data.cFileName, "/");
                 }
-			}
+            }
 
             cch = lstrlenA(find_data.cFileName);
-            if(NULL != file_part)
+            if (NULL != file_part)
             {
                 cch += (int)(file_part - effectivePattern);
             }
 
             new_cbAlloc = (size_t)cbCurr + cch + 1;
-            if(new_cbAlloc > cbAlloc)
+            if (new_cbAlloc > cbAlloc)
             {
                 char* new_buffer;
 
@@ -323,7 +327,7 @@ int unixem_glob(
 
                 new_buffer  = (char*)realloc(buffer, new_cbAlloc);
 
-                if(new_buffer == NULL)
+                if (NULL == new_buffer)
                 {
                     result = UNIXEM_GLOB_NOSPACE;
                     free(buffer);
@@ -345,13 +349,13 @@ int unixem_glob(
 
         (void)FindClose(hFind);
 
-        if(result == 0)
+        if (0 == result)
         {
             /* Now expand the buffer, to fit in all the pointers. */
             size_t  cbPointers  =   (1 + cMatches + pglob->gl_offs) * sizeof(char*);
             char*   new_buffer  =   (char*)realloc(buffer, cbAlloc + cbPointers);
 
-            if(new_buffer == NULL)
+            if (NULL == new_buffer)
             {
                 result = UNIXEM_GLOB_NOSPACE;
                 free(buffer);
@@ -371,7 +375,7 @@ int unixem_glob(
                 begin =   (char**)new_buffer;
                 end   =   begin + pglob->gl_offs;
 
-                for(; begin != end; ++begin)
+                for (; begin != end; ++begin)
                 {
                     *begin = NULL;
                 }
@@ -381,11 +385,11 @@ int unixem_glob(
                 begin =   pp;
                 end   =   begin + cMatches;
 
-                if(flags & UNIXEM_GLOB_NOSORT)
+                if (flags & UNIXEM_GLOB_NOSORT)
                 {
                     /* The way we need in order to test the removal of dots in the findfile_sequence. */
                     *end = NULL;
-                    for(begin = pp, next_str = buffer + cbPointers; begin != end; --end)
+                    for (begin = pp, next_str = buffer + cbPointers; begin != end; --end)
                     {
                         *(end - 1) = next_str;
 
@@ -396,7 +400,7 @@ int unixem_glob(
                 else
                 {
                     /* The normal way. */
-                    for(begin = pp, next_str = buffer + cbPointers; begin != end; ++begin)
+                    for (begin = pp, next_str = buffer + cbPointers; begin != end; ++begin)
                     {
                         *begin = next_str;
 
@@ -410,7 +414,7 @@ int unixem_glob(
                 pglob->gl_pathc =   (int)cMatches;
                 pglob->gl_matchc=   (int)cMatches;
                 pglob->gl_flags =   0;
-                if(bMagic)
+                if (bMagic)
                 {
                     pglob->gl_flags |= UNIXEM_GLOB_MAGCHAR;
                 }
@@ -418,27 +422,27 @@ int unixem_glob(
             }
         }
 
-        if(0 == cMatches)
+        if (0 == cMatches)
         {
             result = UNIXEM_GLOB_NOMATCH;
         }
     }
 
-    if(UNIXEM_GLOB_NOMATCH == result)
+    if (UNIXEM_GLOB_NOMATCH == result)
     {
-        if( (flags & UNIXEM_GLOB_TILDE_CHECK) &&
+        if ((flags & UNIXEM_GLOB_TILDE_CHECK) &&
             effectivePattern == szPattern3)
         {
             result = UNIXEM_GLOB_NOMATCH;
         }
-        else if(bNoMagic ||
+        else if (bNoMagic ||
                 (flags & UNIXEM_GLOB_NOCHECK))
         {
             const size_t    effPattLen  =   strlen(effectivePattern);
             const size_t    cbNeeded    =   ((2 + pglob->gl_offs) * sizeof(char*)) + (1 + effPattLen);
             char**          pp          =   (char**)realloc(buffer, cbNeeded);
 
-            if(NULL == pp)
+            if (NULL == pp)
             {
                 result = UNIXEM_GLOB_NOSPACE;
                 free(buffer);
@@ -450,7 +454,7 @@ int unixem_glob(
                 char**  end     =   pp + pglob->gl_offs;
                 char*   dest    =   (char*)(pp + 2 + pglob->gl_offs);
 
-                for(; begin != end; ++begin)
+                for (; begin != end; ++begin)
                 {
                     *begin = NULL;
                 }
@@ -467,7 +471,7 @@ int unixem_glob(
                 pglob->gl_pathc =   1;
                 pglob->gl_matchc=   1;
                 pglob->gl_flags =   0;
-                if(bMagic)
+                if (bMagic)
                 {
                     pglob->gl_flags |= UNIXEM_GLOB_MAGCHAR;
                 }
@@ -477,9 +481,9 @@ int unixem_glob(
             }
         }
     }
-    else if(0 == result)
+    else if (0 == result)
     {
-        if((size_t)pglob->gl_matchc == maxMatches)
+        if ((size_t)pglob->gl_matchc == maxMatches)
         {
             result = UNIXEM_GLOB_NOSPACE;
         }
@@ -490,7 +494,7 @@ int unixem_glob(
 
 void unixem_globfree(unixem_glob_t* pglob)
 {
-    if(pglob != NULL)
+    if (NULL != pglob)
     {
         free(pglob->gl_pathv);
         pglob->gl_pathc = 0;
@@ -498,4 +502,6 @@ void unixem_globfree(unixem_glob_t* pglob)
     }
 }
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

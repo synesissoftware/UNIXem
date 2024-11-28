@@ -4,11 +4,12 @@
  * Purpose: Declaration of various UNIX standard functions.
  *
  * Created: 1st November 2003
- * Updated: 10th January 2017
+ * Updated: 28th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +52,9 @@
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_MAJOR      3
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_MINOR      1
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_REVISION   1
-# define SYNSOFT_UNIXEM_VER_H_UNISTD_EDIT       46
+# define SYNSOFT_UNIXEM_VER_H_UNISTD_EDIT       47
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -65,19 +67,23 @@
  * and exclude definitions as appropriate.
  */
 
-#if defined(__BORLANDC__)
+#if 0
+#elif defined(__BORLANDC__)
+
 # include <dir.h>
 # define UNIXEM_chdir_PROVIDED_BY_COMPILER
 # define UNIXEM_getcwd_PROVIDED_BY_COMPILER
 # define UNIXEM_mkdir_PROVIDED_BY_COMPILER
 # define UNIXEM_rmdir_PROVIDED_BY_COMPILER
 #elif defined(__DMC__)
+
 # include <direct.h>
 # define UNIXEM_chdir_PROVIDED_BY_COMPILER
 # define UNIXEM_close_PROVIDED_BY_COMPILER
 # define UNIXEM_getcwd_PROVIDED_BY_COMPILER
 # define UNIXEM_pid_t_PROVIDED_BY_COMPILER
 #elif defined(__GNUC__)
+
 # include <io.h>
 # define UNIXEM_chdir_PROVIDED_BY_COMPILER
 # define UNIXEM_chmod_PROVIDED_BY_COMPILER
@@ -88,8 +94,10 @@
 # endif /* !_NO_OLDNAMES */
 # define UNIXEM_rmdir_PROVIDED_BY_COMPILER
 #elif defined(__INTEL_COMPILER)
+
 # if defined(_WIN32) && \
      !defined(__STDC__)
+
 #  include <direct.h>
 #  define UNIXEM_chdir_PROVIDED_BY_COMPILER
 #  define UNIXEM_getcwd_PROVIDED_BY_COMPILER
@@ -97,15 +105,19 @@
 #  define UNIXEM_rmdir_PROVIDED_BY_COMPILER
 # endif /* !__STDC__ */
 #elif defined(__MWERKS__)
+
 # define UNIXEM_mkdir_PROVIDED_BY_COMPILER
 #elif defined(__WATCOMC__)
+
 # define UNIXEM_chdir_PROVIDED_BY_COMPILER
 # define UNIXEM_getcwd_PROVIDED_BY_COMPILER
 # define UNIXEM_mkdir_PROVIDED_BY_COMPILER
 # define UNIXEM_pid_t_PROVIDED_BY_COMPILER
 # define UNIXEM_rmdir_PROVIDED_BY_COMPILER
 #elif defined(_MSC_VER)
+
 # if !defined(__STDC__)
+
 #  include <direct.h>
 #  define UNIXEM_chdir_PROVIDED_BY_COMPILER
 #  define UNIXEM_getcwd_PROVIDED_BY_COMPILER
@@ -116,14 +128,17 @@
 #  define UNIXEM_close_PROVIDED_BY_COMPILER
 # endif /* !__STDC__ */
 #else
+
 # error Compiler not discriminated
 #endif /* compiler */
 
 
 #if defined(_MSC_VER) && \
     !defined(__STDC__)
+
 # define UNIXEM_UNISTD_INCLUDING_MS_DIRECT_H
 #endif /* compiler */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 
@@ -137,16 +152,19 @@
  * @{
  */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * compatibility
+ */
 
 #ifndef _WIN32
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
-
 
 /*!< \def _PC_LINK_MAX
  *
@@ -201,19 +219,20 @@
  * Returns -1 if the file system does not support the Synchronized Input and Output option. Any value other than -1 is returned if the file system supports the option.
  */
 
-#define _PC_LINK_MAX            UNIXEM_PC_LINK_MAX
-#define _PC_MAX_CANON           UNIXEM_PC_MAX_CANON
-#define _PC_MAX_INPUT           UNIXEM_PC_MAX_INPUT
-#define _PC_NAME_MAX            UNIXEM_PC_NAME_MAX
-#define _PC_PATH_MAX            UNIXEM_PC_PATH_MAX
-#define _PC_PIPE_BUF            UNIXEM_PC_PIPE_BUF
-#define _PC_CHOWN_RESTRICTED    UNIXEM_PC_CHOWN_RESTRICTED
-#define _PC_NO_TRUNC            UNIXEM_PC_NO_TRUNC
-#define _PC_VDISABLE            UNIXEM_PC_VDISABLE
-#define _PC_AIX_DISK_PARTITION  UNIXEM_PC_AIX_DISK_PARTITION
-#define _PC_AIX_DISK_SIZE       UNIXEM_PC_AIX_DISK_SIZE
-#define _PC_FILESIZEBITS        UNIXEM_PC_FILESIZEBITS
-#define _PC_SYNC_IO             UNIXEM_PC_SYNC_IO
+#define _PC_LINK_MAX                                        UNIXEM_PC_LINK_MAX
+#define _PC_MAX_CANON                                       UNIXEM_PC_MAX_CANON
+#define _PC_MAX_INPUT                                       UNIXEM_PC_MAX_INPUT
+#define _PC_NAME_MAX                                        UNIXEM_PC_NAME_MAX
+#define _PC_PATH_MAX                                        UNIXEM_PC_PATH_MAX
+#define _PC_PIPE_BUF                                        UNIXEM_PC_PIPE_BUF
+#define _PC_CHOWN_RESTRICTED                                UNIXEM_PC_CHOWN_RESTRICTED
+#define _PC_NO_TRUNC                                        UNIXEM_PC_NO_TRUNC
+#define _PC_VDISABLE                                        UNIXEM_PC_VDISABLE
+#define _PC_AIX_DISK_PARTITION                              UNIXEM_PC_AIX_DISK_PARTITION
+#define _PC_AIX_DISK_SIZE                                   UNIXEM_PC_AIX_DISK_SIZE
+#define _PC_FILESIZEBITS                                    UNIXEM_PC_FILESIZEBITS
+#define _PC_SYNC_IO                                         UNIXEM_PC_SYNC_IO
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
@@ -223,12 +242,14 @@
     !defined(pid_t) && \
     !(  defined(_SCHED_H) && \
         defined(PTW32_DLLPORT))
+
 # ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 #  define UNIXEM_pid_t_DEFINED
 # endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 /** Process identifier type */
 typedef unixem_pid_t    pid_t;
 #endif /* !UNIXEM_pid_t_PROVIDED_BY_COMPILER && !pid_t */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -237,7 +258,6 @@ typedef unixem_pid_t    pid_t;
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
-
 
 /** Creates a hardlink.
  *
@@ -259,7 +279,7 @@ int link(
 ,   char const* linkName
 );
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define link       unixem_link
+# define link                                               unixem_link
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -275,7 +295,7 @@ int link(
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int unlink(char const* path);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-#  define unlink    unixem_unlink
+#  define unlink                                            unixem_unlink
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 #endif /* !UNIXEM_unlink_PROVIDED_BY_COMPILER */
 
@@ -294,7 +314,7 @@ int unlink(char const* path);
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int chdir(char const* dirName);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-#  define chdir     unixem_chdir
+#  define chdir                                             unixem_chdir
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 #endif /* !UNIXEM_chdir_PROVIDED_BY_COMPILER */
 
@@ -317,7 +337,7 @@ char* getcwd(
 ,   size_t  max_len
 );
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-#  define getcwd    unixem_getcwd
+#  define getcwd                                            unixem_getcwd
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 #endif /* !UNIXEM_getcwd_PROVIDED_BY_COMPILER */
 
@@ -340,7 +360,7 @@ int mkdir(
 ,   unsigned    mode
 );
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-#  define mkdir     unixem_mkdir
+#  define mkdir                                             unixem_mkdir
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 #endif /* !UNIXEM_mkdir_PROVIDED_BY_COMPILER */
 
@@ -358,7 +378,7 @@ int mkdir(
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int rmdir(char const* dirName);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-#  define rmdir     unixem_rmdir
+#  define rmdir                                             unixem_rmdir
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 #endif /* !UNIXEM_rmdir_PROVIDED_BY_COMPILER */
 
@@ -374,7 +394,7 @@ int rmdir(char const* dirName);
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int close(int handle);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-#  define close     unixem_close
+#  define close                                             unixem_close
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 #endif /* !UNIXEM_close_PROVIDED_BY_COMPILER */
 
@@ -396,7 +416,7 @@ int close(int handle);
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int getpagesize(void);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define getpagesize    unixem_getpagesize
+# define getpagesize                                        unixem_getpagesize
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -410,7 +430,7 @@ long pathconf(
 ,   int         name
 );
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define pathconf       unixem_pathconf
+# define pathconf                                           unixem_pathconf
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -429,7 +449,7 @@ char* realpath(
 ,   char        resolvedPath[]
 );
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define realpath       unixem_realpath
+# define realpath                                           unixem_realpath
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -442,7 +462,7 @@ char* realpath(
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int usleep(unsigned long microSeconds);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define usleep     unixem_usleep
+# define usleep                                             unixem_usleep
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -453,7 +473,7 @@ int usleep(unsigned long microSeconds);
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 pid_t getpid(void);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define getpid     unixem_getpid
+# define getpid                                             unixem_getpid
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -464,7 +484,7 @@ pid_t getpid(void);
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 char* mkdtemp(char*);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define mkdtemp    unixem_mkdtemp
+# define mkdtemp                                            unixem_mkdtemp
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -475,7 +495,7 @@ char* mkdtemp(char*);
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int mkstemp(char*);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define mkstemp    unixem_mkstemp
+# define mkstemp                                            unixem_mkstemp
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -516,7 +536,7 @@ extern "C++"
 } /* extern "C++" */
 # else /* ? __cplusplus */
 #  include <unixem/internal/winsock.h>
-#  define gethostname(name, cchName)        unixem_gethostname(name, cchName)
+#  define gethostname(name, cchName)                        unixem_gethostname(name, cchName)
 # endif /* __cplusplus */
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 

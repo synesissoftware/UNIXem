@@ -4,10 +4,11 @@
  * Purpose: Utility functions for UNIXem.
  *
  * Created: 2nd September 2005
- * Updated: 9th October 2019
+ * Updated: 16th October 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -43,8 +44,9 @@
 # define _SYNSOFT_VER_INTERNAL_C_UTIL_MAJOR     2
 # define _SYNSOFT_VER_INTERNAL_C_UTIL_MINOR     1
 # define _SYNSOFT_VER_INTERNAL_C_UTIL_REVISION  1
-# define _SYNSOFT_VER_INTERNAL_C_UTIL_EDIT      13
+# define _SYNSOFT_VER_INTERNAL_C_UTIL_EDIT      14
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -59,25 +61,26 @@
 #include <limits.h>
 #include <windows.h>
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
 
 #ifndef EZERO
-# define EZERO                                  (0)
+# define EZERO                                              (0)
 #endif
 #if !defined(ECURDIR)
-# define ECURDIR                                EACCES
+# define ECURDIR                                            EACCES
 #endif /* !ECURDIR */
 #if !defined(ENOSYS)
-# define ENOSYS                                 EPERM
+# define ENOSYS                                             EPERM
 #endif /* !ENOSYS */
 
 #ifndef ERROR_FILE_TOO_LARGE
-# define ERROR_FILE_TOO_LARGE                   (223)
+# define ERROR_FILE_TOO_LARGE                               (223)
 #endif
 #ifndef ERROR_DISK_TOO_FRAGMENTED
-# define ERROR_DISK_TOO_FRAGMENTED              (302)
+# define ERROR_DISK_TOO_FRAGMENTED                          (302)
 #endif
 
 
@@ -102,7 +105,7 @@ _WCRTLINK extern long _get_osfhandle( int __posixhandle );
 
 void* unixem_internal_Windows_HANDLE_from_file_handle(int fd)
 {
-    if(fd < 0)
+    if (fd < 0)
     {
         return INVALID_HANDLE_VALUE;
     }
@@ -354,9 +357,9 @@ int unixem_internal_errno_from_Win32(unsigned long w32Err)
 
     size_t  i;
 
-    for(i = 0; i < NUM_ELEMENTS(errmap); ++i)
+    for (i = 0; i < NUM_ELEMENTS(errmap); ++i)
     {
-        if(w32Err == errmap[i].w32Err)
+        if (w32Err == errmap[i].w32Err)
         {
             return errmap[i].eerrno;
         }
@@ -372,9 +375,9 @@ char unixem_internal_get_current_drive(void)
     char    szDrive[1 + _MAX_PATH] = "";
     DWORD   dw  =   GetCurrentDirectoryA(NUM_ELEMENTS(szDrive), &szDrive[0]);
 
-    if(dw < NUM_ELEMENTS(szDrive))
+    if (dw < NUM_ELEMENTS(szDrive))
     {
-        if( szDrive[0] < 'A' ||
+        if (szDrive[0] < 'A' ||
             szDrive[0] > 'Z')
         {
             szDrive[0] = (char)('A' + (szDrive[0] - 'a'));
@@ -390,4 +393,6 @@ char unixem_internal_get_current_drive(void)
     }
 }
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

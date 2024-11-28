@@ -12,10 +12,10 @@ int main(int argc, char** argv)
 
     XTESTS_COMMANDLINE_PARSEVERBOSITY(argc, argv, &verbosity);
 
-    if(XTESTS_START_RUNNER("test.component.dirent", verbosity))
+    if (XTESTS_START_RUNNER("test.component.dirent", verbosity))
     {
         /* Test-1 */
-        if(XTESTS_CASE_BEGIN("Test-1", ""))
+        if (XTESTS_CASE_BEGIN("Test-1", ""))
         {
 
             XTESTS_CASE_END("Test-1");
@@ -29,4 +29,6 @@ int main(int argc, char** argv)
     return retCode;
 }
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* ///////////////////////////// end of file //////////////////////////// */
+

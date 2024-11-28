@@ -5,11 +5,12 @@
  *          Win32 platform.
  *
  * Created: 13th November 2002
- * Updated: 10th January 2017
+ * Updated: 10th July 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -78,6 +79,7 @@
 
 #include <unixem/glob.h>
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
@@ -110,6 +112,7 @@
 #define GLOB_NODOTSDIRS     (UNIXEM_GLOB_NODOTSDIRS)    /*!< Elide "." and ".." directories from wildcard searches. Supported from version 1.6 of UNIXem. */
 #define GLOB_LIMIT          (UNIXEM_GLOB_LIMIT)         /*!< Limits the search to the number specified by the caller in gl_matchc. Supported from version 1.6 of UNIXem. */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
@@ -119,6 +122,7 @@
  * This structure is used by glob() to return the results of the search.
  */
 typedef unixem_glob_t glob_t;
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions

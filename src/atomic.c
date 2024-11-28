@@ -5,11 +5,12 @@
  *          Win32 platform.
  *
  * Created: 21st November 2003
- * Updated: 10th January 2017
+ * Updated: 10th July 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,6 +48,7 @@
 # define _SYNSOFT_VER_C_ATOMIC_EDIT     20
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -64,9 +66,11 @@
 # error This file is only currently defined for Win32 compilation units
 #endif /* WIN32 */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -116,4 +120,6 @@ int unixem_atomic_add_and_test(int i, unixem_atomic_t volatile* v);
 
 int unixem_atomic_sub_and_test(int i, unixem_atomic_t volatile* v);
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

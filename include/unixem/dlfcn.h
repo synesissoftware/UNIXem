@@ -5,11 +5,12 @@
  *          functions.
  *
  * Created: 1st January 2004
- * Updated: 10th January 2017
+ * Updated: 10th July 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,6 +56,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_EDIT     20
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -81,12 +83,14 @@
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
 
-#define UNIXEM_RTLD_LAZY        (0x00001)       /*!< Lazy function call binding. */
-#define UNIXEM_RTLD_NOW         (0x00002)       /*!< Immediate function call binding. */
+#define UNIXEM_RTLD_LAZY                                    (0x00001)   /*!< Lazy function call binding. */
+#define UNIXEM_RTLD_NOW                                     (0x00002)   /*!< Immediate function call binding. */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -97,14 +101,14 @@ extern "C"
 {
 #endif /* __cplusplus */
 
-/** Loads the given module, 
+/** Loads the given module,
  *
  * \param moduleName The name of the module. The name is passed through to Win32's
  * LoadLibrary(), so the value of this parameter is interpreted according to Win32's
  * loading rules.
  * \param mode The loading mode. This is ignored on Win32 platforms, and the function
  * always behaves as if RTLD_NOW was specified
- * \note 
+ * \note
  */
 void* unixem_dlopen(
     char const* moduleName
@@ -143,6 +147,7 @@ char const* unixem_dlerror(void);
 } /* extern "C" */
 #endif /* __cplusplus */
 
+
 /* ////////////////////////////////////////////////////////////////////// */
 
 /** @} // end of group unixem_dlopen */
@@ -152,3 +157,4 @@ char const* unixem_dlerror(void);
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_H_DLFCN */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

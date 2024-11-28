@@ -4,11 +4,12 @@
  * Purpose: Vector file read/write.
  *
  * Created: 19th September 2005
- * Updated: 10th January 2017
+ * Updated: 10th July 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,6 +55,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_EDIT       14
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -79,6 +81,7 @@ extern "C"
 {
 #endif /* __cplusplus */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
@@ -92,6 +95,7 @@ struct unixem_iovec
     void*   iov_base;  /*!< Base address */
     size_t  iov_len;    /*!< Number of bytes referenced */
 };
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * functions
@@ -124,6 +128,7 @@ unixem_ssize_t unixem_writev(
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

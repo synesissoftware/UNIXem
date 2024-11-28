@@ -15,10 +15,10 @@ int main(int argc, char** argv)
 
     XTESTS_COMMANDLINE_PARSEVERBOSITY(argc, argv, &verbosity);
 
-    if(XTESTS_START_RUNNER("test.component.unistd.pathconf", verbosity))
+    if (XTESTS_START_RUNNER("test.unit.unistd.pathconf", verbosity))
     {
         /* Test-1 */
-        if(XTESTS_CASE_BEGIN("Test-1", "testing pathconf"))
+        if (XTESTS_CASE_BEGIN("Test-1", "testing pathconf"))
         {
             XTESTS_TEST_INTEGER_EQUAL(LONG_MAX,       pathconf("",          _PC_LINK_MAX));
             XTESTS_TEST_INTEGER_EQUAL(LONG_MAX,       pathconf("",          _PC_MAX_CANON));
@@ -47,4 +47,6 @@ int main(int argc, char** argv)
     return retCode;
 }
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* ///////////////////////////// end of file //////////////////////////// */
+

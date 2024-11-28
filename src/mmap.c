@@ -4,10 +4,11 @@
  * Purpose: mmap(), munmap() and msync() for the Win32 platform.
  *
  * Created: 18th December 2003
- * Updated: 14th October 2019
+ * Updated: 10th July 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -43,8 +44,9 @@
 # define _SYNSOFT_VER_C_MMAP_MAJOR      3
 # define _SYNSOFT_VER_C_MMAP_MINOR      0
 # define _SYNSOFT_VER_C_MMAP_REVISION   3
-# define _SYNSOFT_VER_C_MMAP_EDIT       31
+# define _SYNSOFT_VER_C_MMAP_EDIT       32
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -86,6 +88,7 @@ _WCRTLINK extern long _get_osfhandle( int __posixhandle );
 # error Compiler not discriminated
 #endif /* compiler */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * helper functions
  */
@@ -100,16 +103,16 @@ static int unixem_win32_flags_from_mmap_(
     *cfmFlags   =   0;
     *mvofFlags  =   0;
 
-    if(UNIXEM_PROT_NONE == prot)
+    if (UNIXEM_PROT_NONE == prot)
     {
         *cfmFlags   =   PAGE_NOACCESS;
         *mvofFlags  =   0;
     }
     else
     {
-        if(prot & UNIXEM_PROT_WRITE)
+        if (prot & UNIXEM_PROT_WRITE)
         {
-            if((flags & UNIXEM_MAP_PRIVATE))
+            if ((flags & UNIXEM_MAP_PRIVATE))
             {
                 *mvofFlags |= FILE_MAP_COPY;
             }
@@ -123,11 +126,11 @@ static int unixem_win32_flags_from_mmap_(
             *mvofFlags |= FILE_MAP_READ;
         }
 
-        if(*mvofFlags & FILE_MAP_COPY)
+        if (*mvofFlags & FILE_MAP_COPY)
         {
             *cfmFlags = PAGE_WRITECOPY;
         }
-        else if(*mvofFlags & FILE_MAP_WRITE)
+        else if (*mvofFlags & FILE_MAP_WRITE)
         {
             *cfmFlags = PAGE_READWRITE;
         }
@@ -137,7 +140,7 @@ static int unixem_win32_flags_from_mmap_(
         }
     }
 
-    if(flags & UNIXEM_MAP_ANONYMOUS)
+    if (flags & UNIXEM_MAP_ANONYMOUS)
     {
 #if 0
         *cfmFlags |= SEC_RESERVE;
@@ -146,6 +149,7 @@ static int unixem_win32_flags_from_mmap_(
 
     return 0;
 }
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -164,46 +168,46 @@ void* unixem_mmap(
     int     errno_  =   0;
     HANDLE  fh      =   (HANDLE)unixem_internal_Windows_HANDLE_from_file_handle(fd);
 
-    if( NULL == addr && 
+    if (NULL == addr &&
         0 != (flags & UNIXEM_MAP_FIXED))
     {
         errno_ = ENOMEM;
     }
-    else if(UNIXEM_MAP_ANONYMOUS == (flags & UNIXEM_MAP_ANONYMOUS) &&
+    else if (UNIXEM_MAP_ANONYMOUS == (flags & UNIXEM_MAP_ANONYMOUS) &&
             -1 != fd)
     {
         errno_ = EINVAL;
     }
-    else if(UNIXEM_MAP_ANONYMOUS == (flags & UNIXEM_MAP_ANONYMOUS) &&
+    else if (UNIXEM_MAP_ANONYMOUS == (flags & UNIXEM_MAP_ANONYMOUS) &&
             (   0 == len ||
                 0 != offset))
     {
         errno_ = EINVAL;
     }
-    else if(offset < 0 ||
+    else if (offset < 0 ||
             (offset + (off_t)len) < 0)
     {
         errno_ = EINVAL;
     }
     else
     {
-        if(UNIXEM_MAP_ANONYMOUS != (flags & UNIXEM_MAP_ANONYMOUS))
+        if (UNIXEM_MAP_ANONYMOUS != (flags & UNIXEM_MAP_ANONYMOUS))
         {
             DWORD fileSize = GetFileSize(fh, NULL);
 
-            if( 0xFFFFFFFF == fileSize &&
+            if (0xFFFFFFFF == fileSize &&
                 ERROR_SUCCESS != GetLastError())
             {
                 errno_ = EBADF;
             }
-            else if(len + offset > fileSize)
+            else if (len + offset > fileSize)
             {
                 errno_ = EINVAL;
             }
         }
     }
 
-    if(0 != errno_)
+    if (0 != errno_)
     {
         errno = errno_;
         return UNIXEM_MAP_FAILED;
@@ -215,7 +219,7 @@ void* unixem_mmap(
 
         errno_ = unixem_win32_flags_from_mmap_(prot, flags, &cfmFlags, &mvofFlags);
 
-        if(0 != errno_)
+        if (0 != errno_)
         {
             return UNIXEM_MAP_FAILED;
         }
@@ -232,21 +236,21 @@ void* unixem_mmap(
             HANDLE      hMap        =   CreateFileMapping(fh, NULL, cfmFlags, maxSizeHi, maxSizeLo, NULL);
             DWORD       dwErr;
 
-            if(NULL == hMap)
+            if (NULL == hMap)
             {
                 dwErr = GetLastError();
 
 convert_error_and_return_failed:
 
-                if(dwErr == ERROR_ACCESS_DENIED)
+                if (ERROR_ACCESS_DENIED == dwErr)
                 {
                     errno = EACCES;
                 }
-                else if(dwErr == ERROR_INVALID_PARAMETER)
+                else if (ERROR_INVALID_PARAMETER == dwErr)
                 {
                     errno = EINVAL;
                 }
-                else if(dwErr == ERROR_FILE_INVALID)
+                else if (ERROR_FILE_INVALID == dwErr)
                 {
                     errno = EBADF;
                 }
@@ -265,7 +269,7 @@ convert_error_and_return_failed:
 
                 (void)CloseHandle(hMap);
 
-                if(NULL == pvMap)
+                if (NULL == pvMap)
                 {
                     goto convert_error_and_return_failed;
                 }
@@ -301,4 +305,6 @@ int unixem_msync(
     return FlushViewOfFile(addr, len) ? 0 : (errno = EINVAL, -1);
 }
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

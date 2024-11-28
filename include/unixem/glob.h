@@ -5,11 +5,12 @@
  *          Win32 platform.
  *
  * Created: 13th November 2002
- * Updated: 10th January 2017
+ * Updated: 10th July 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,6 +56,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_EDIT      41
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -78,6 +80,7 @@
 #ifndef _WIN32
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
@@ -112,6 +115,7 @@
 #define UNIXEM_GLOB_NODOTSDIRS      0x00010000          /*!< Elide "." and ".." directories from wildcard searches. Supported from version 1.6 of UNIXem. */
 #define UNIXEM_GLOB_LIMIT           0x00020000          /*!< Limits the search to the number specified by the caller in gl_matchc. Supported from version 1.6 of UNIXem. */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
@@ -129,6 +133,7 @@ typedef struct
   int       gl_flags;   /*!< returned flags */
   char**    gl_pathv;   /*!< list of paths matching pattern */
 } unixem_glob_t;
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -172,6 +177,7 @@ void unixem_globfree(unixem_glob_t* pglob);
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

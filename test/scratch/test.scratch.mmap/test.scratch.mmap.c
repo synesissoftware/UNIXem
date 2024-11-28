@@ -1,45 +1,17 @@
-/* /////////////////////////////////////////////////////////////////////////////
- * File:        test.scratch.mmap.cpp
+/* /////////////////////////////////////////////////////////////////////////
+ * File:    test.scratch.mmap.cpp
  *
- * Purpose:     Implementation file for the test.scratch.mmap project.
+ * Purpose: Unit-test of `mmap()`, `munmap()`.
  *
- * Created:     18th December 2003
- * Updated:     9th February 2008
+ * Created: 18th December 2003
+ * Updated: 10th July 2024
  *
- * Status:      Wizard-generated
- *
- * License:     (Licensed under the Synesis Software Open License)
- *
- *              Copyright (c) 1999-2008, Synesis Software Pty Ltd.
- *              All rights reserved.
- *
- *              www:        http://www.synesis.com.au/software
- *
- *              This source code is placed into the public domain 2003
- *              by Synesis Software Pty Ltd. There are no restrictions
- *              whatsoever to your use of the software. 
- *
- *              This source code is provided by Synesis Software Pty Ltd "as is"
- *              and any warranties, whether expressed or implied, including, but
- *              not limited to, the implied warranties of merchantability and
- *              fitness for a particular purpose are disclaimed. In no event
- *              shall the Synesis Software Pty Ltd be liable for any direct,
- *              indirect, incidental, special, exemplary, or consequential
- *              damages (including, but not limited to, procurement of
- *              substitute goods or services; loss of use, data, or profits; or
- *              business interruption) however caused and on any theory of
- *              liability, whether in contract, strict liability, or tort
- *              (including negligence or otherwise) arising in any way out of
- *              the use of this software, even if advised of the possibility of
- *              such damage. 
- *
- *              Neither the name of Synesis Software Pty Ltd nor the names of
- *              any subdivisions, employees or agents of Synesis Software Pty
- *              Ltd, nor the names of any other contributors to this software
- *              may be used to endorse or promote products derived from this
- *              software without specific prior written permission. 
- *
- * ////////////////////////////////////////////////////////////////////////// */
+ * ////////////////////////////////////////////////////////////////////// */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * includes
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -60,7 +32,7 @@
 //#define   TEST_READWRITE
 //#define   TEST_PAGING
 
-/* ////////////////////////////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////////////////////////// */
 
 #if (   defined(WIN32) || \
         defined(_WIN32)) && \
@@ -68,7 +40,7 @@
 extern "C" void __stdcall Sleep(unsigned long);
 #endif /* WIN32 */
 
-/* ////////////////////////////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////////////////////////// */
 
 /** \brief Maps a file
  *
@@ -77,7 +49,7 @@ extern "C" void __stdcall Sleep(unsigned long);
  * 1. Read-only.
  *
  *      fileName must refer to an existing file
- *      len can be 0, for all the file contents, or any size up to the length 
+ *      len can be 0, for all the file contents, or any size up to the length
  *          of the file. It is an error if the length exceeds the length of
  *          the file
  *      prot is PROT_READ
@@ -86,10 +58,10 @@ extern "C" void __stdcall Sleep(unsigned long);
  * 2. Read-write
  *
  *      fileName must refer to an existing file
- *      len can be 0, for all the file contents, or any size up to the length 
+ *      len can be 0, for all the file contents, or any size up to the length
  *          of the file. If it is longer than the current size of the file, the
  *          file is extended.
- *      prot contains PROT_WRITE, and is then assumed to be 
+ *      prot contains PROT_WRITE, and is then assumed to be
  *          (PROT_READ | PROT_WRITE). All other flags are ignored
  *      flags is ignored in the current implementation
  *
@@ -101,17 +73,25 @@ extern "C" void __stdcall Sleep(unsigned long);
  *      flags is ignored in the current implementation
  */
 
+#ifdef __cplusplus
 extern "C"
-void *mmap_file(char const  *fileName   /* = NULL */
-            ,   size_t      len
-            ,   size_t      offset
-            ,   int         prot
-            ,   int         flags
-            ,   size_t      *plen);
+#endif
+void*
+mmap_file(
+    char const* fileName   /* = NULL */
+,   size_t      len
+,   size_t      offset
+,   int         prot
+,   int         flags
+,   size_t*     plen
+);
 
-/* ////////////////////////////////////////////////////////////////////////// */
 
-int main(int /* argc */, char ** /*argv*/)
+/* /////////////////////////////////////////////////////////////////////////
+ * main()
+ */
+
+int main(int argc, char *argv[])
 {
 #if 0
     ::Sleep(100000);
@@ -119,19 +99,22 @@ int main(int /* argc */, char ** /*argv*/)
 
     /* . */
 #if defined(TEST_READONLY)
-    char const  *fileName   =   "h:\\dev\\bin\\mmcmnbas.dll";
-    void        *pv         =   mmap_file(fileName, 0, 1000, PROT_READ, 0, NULL);
+    char const* fileName   =   "h:\\dev\\bin\\mmcmnbas.dll";
+    void*       pv         =   mmap_file(fileName, 0, 1000, PROT_READ, 0, NULL);
 #elif defined(TEST_READWRITE)
-    char const  *fileName   =   "test-file.txt";
-    void        *pv         =   mmap_file(fileName, 1000, 0, PROT_WRITE, 0, NULL);
+    char const* fileName   =   "test-file.txt";
+    void*       pv         =   mmap_file(fileName, 1000, 0, PROT_WRITE, 0, NULL);
 #elif defined(TEST_PAGING)
-    char const  *fileName   =   "<page-file>";
-    void        *pv         =   mmap_file(NULL, 1000, 0, 0, 0, NULL);
+    char const* fileName   =   "<page-file>";
+    void*       pv         =   mmap_file(NULL, 1000, 0, 0, 0, NULL);
 #else
 # error Must define one only of TEST_READONLY, TEST_READWRITE or TEST_PAGING
 #endif
 
-    if(MAP_FAILED == pv)
+    ((void)&argc);
+    ((void)&argv);
+
+    if (MAP_FAILED == pv)
     {
         fprintf(stderr, "Failed to load \"%s\": %s\n", fileName, strerror(errno));
     }
@@ -152,4 +135,6 @@ int main(int /* argc */, char ** /*argv*/)
     return 0;
 }
 
-/* ////////////////////////////////////////////////////////////////////////// */
+
+/* ///////////////////////////// end of file //////////////////////////// */
+
