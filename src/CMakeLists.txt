@@ -1,4 +1,39 @@
 
+# ######################################################################## #
+# File:     /src/CMakeLists.txt
+#
+# Purpose:  CMake lists file for UNIXem library
+#
+# Created:  ...
+# Updated:  27th November 2024
+#
+# ######################################################################## #
+
+
+if(WIN32)
+
+	if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+
+		message(STATUS "Compiling for 64-bit Windows")
+
+		add_definitions(-DWIN64)
+	else()
+
+		message(STATUS "Compiling for 32-bit Windows")
+
+		add_definitions(-DWIN32)
+	endif()
+else(WIN32)
+
+	message(FATAL_ERROR "Not compatible with non-Windows operating system(s)")
+endif(WIN32)
+
+if((MSVC) AND (MSVC_VERSION GREATER_EQUAL 1914))
+
+	add_compile_options("/Zc:__cplusplus")
+endif()
+
+
 set(CORE_SRCS
 	./atomic.c
 	./dirent.c
@@ -18,22 +53,6 @@ set(CORE_SRCS
 add_library(UNIXem
 	${CORE_SRCS}
 )
-
-if(WIN32)
-
-	if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-
-		message (STATUS "Compiling for 64-bit Windows")
-
-		add_definitions(-DWIN64)
-	else()
-
-		message (STATUS "Compiling for 32-bit Windows")
-
-		add_definitions(-DWIN32)
-	endif()
-endif(WIN32)
-
 
 # specify the primary public headers for the library, which controls whether
 # they'll be installed
@@ -56,13 +75,14 @@ target_include_directories(UNIXem
 		$<INSTALL_INTERFACE:include>
 )
 
-target_compile_options(UNIXem PRIVATE
-	$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
-		-Werror -Wall -Wextra -pedantic
-	>
-	$<$<CXX_COMPILER_ID:MSVC>:
-		/WX /W4
-	>
+target_compile_options(UNIXem
+	PRIVATE
+		$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
+			-Werror -Wall -Wextra -pedantic
+		>
+		$<$<CXX_COMPILER_ID:MSVC>:
+			/WX /W4
+		>
 )
 
 
