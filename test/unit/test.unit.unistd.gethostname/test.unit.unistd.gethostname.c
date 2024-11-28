@@ -14,7 +14,7 @@ int main(int argc, char** argv)
 
     XTESTS_COMMANDLINE_PARSEVERBOSITY(argc, argv, &verbosity);
 
-    if (XTESTS_START_RUNNER("test.component.unistd.gethostname", verbosity))
+    if (XTESTS_START_RUNNER("test.unit.unistd.gethostname", verbosity))
     {
         /* Test-1 */
         if (XTESTS_CASE_BEGIN("Test-1", "testing gethostname"))
