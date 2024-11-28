@@ -99,8 +99,8 @@ install(TARGETS UNIXem
 
 # install the include/unixem/*/ subdirectories here, as do not (yet) know how to do so via PUBLIC_HEADER property
 install(
-	DIRECTORY ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME_LOWER}/
-	DESTINATION include/${PROJECT_NAME_LOWER}
+	DIRECTORY ${CMAKE_SOURCE_DIR}/include/
+	DESTINATION include/
 	FILES_MATCHING
 	PATTERN "*.h*"
 )
