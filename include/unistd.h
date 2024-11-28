@@ -386,13 +386,13 @@ int rmdir(char const* dirName);
 #ifndef UNIXEM_close_PROVIDED_BY_COMPILER
 /** Closes a file
  *
- * \param handle The handle of the file to be closed
+ * \param fd The descriptor of the file to be closed
  * \return 0 on success, or -1 if there is an error
  *
  * \note This is a macro, which resolves to unixem_close()
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
-int close(int handle);
+int close(int fd);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
 #  define close                                             unixem_close
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */

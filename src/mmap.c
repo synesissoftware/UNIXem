@@ -4,7 +4,7 @@
  * Purpose: mmap(), munmap() and msync() for the Windows platform.
  *
  * Created: 18th December 2003
- * Updated: 28th November 2024
+ * Updated: 29th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -44,7 +44,7 @@
 # define _SYNSOFT_VER_C_MMAP_MAJOR      3
 # define _SYNSOFT_VER_C_MMAP_MINOR      0
 # define _SYNSOFT_VER_C_MMAP_REVISION   3
-# define _SYNSOFT_VER_C_MMAP_EDIT       32
+# define _SYNSOFT_VER_C_MMAP_EDIT       33
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -60,33 +60,6 @@
 #include <assert.h>
 #include <errno.h>
 #include <windows.h>
-
-#if 0
-#elif defined(__BORLANDC__)
-
-UNIXEM_STGCLS_IMP long _cdecl _get_osfhandle(int __handle);
-#elif defined(__DMC__) || \
-      defined(__INTEL_COMPILER) || \
-      defined(__MWERKS__) || \
-      defined(_MSC_VER)
-
-UNIXEM_STGCLS_IMP long __cdecl _get_osfhandle(int __handle);
-#elif defined(__GNUC__)
-
-# if __GNUC__ > 4
-
-_CRTIMP intptr_t __cdecl _get_osfhandle(int _FileHandle);
-# else
-
-__cdecl long _get_osfhandle(int __handle);
-# endif
-#elif defined(__WATCOMC__)
-
-_WCRTLINK extern long _get_osfhandle( int __posixhandle );
-#else
-
-# error Compiler not discriminated
-#endif /* compiler */
 
 
 /* /////////////////////////////////////////////////////////////////////////

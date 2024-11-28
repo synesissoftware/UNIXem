@@ -1,7 +1,7 @@
 
 /*
  * Created:
- * Updated: 28th November 2024
+ * Updated: 29th November 2024
  */
 
 #include <unistd.h>
@@ -35,6 +35,8 @@ int main(int argc, char** argv)
             {
                 size_t const len = strlen(template_path);
 
+                rmdir(template_path);
+
                 XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(7u, len));
                 XTESTS_TEST_MULTIBYTE_STRING_EQUAL_N("abc.", template_path, 4u);
                 XTESTS_TEST_BOOLEAN_TRUE(isdigit(template_path[len - 3]));
@@ -60,6 +62,8 @@ int main(int argc, char** argv)
             else
             {
                 size_t const len = strlen(template_path);
+
+                rmdir(template_path);
 
                 XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(16u, len));
                 XTESTS_TEST_MULTIBYTE_STRING_EQUAL_N("C:\\temp\\abc.", template_path, 12u);

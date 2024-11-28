@@ -65,7 +65,8 @@
  * API functions
  */
 
-unixem_ssize_t unixem_readv(
+unixem_ssize_t
+unixem_readv(
     int                         fd
 ,   struct unixem_iovec const*  vector
 ,   int                         count
@@ -120,7 +121,8 @@ unixem_ssize_t unixem_readv(
     return ret;
 }
 
-unixem_ssize_t unixem_writev(
+unixem_ssize_t
+unixem_writev(
     int                         fd
 ,   struct unixem_iovec const*  vector
 ,   int                         count

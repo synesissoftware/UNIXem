@@ -4,7 +4,7 @@
  * Purpose: Definition of the opendir() API functions for the Windows platform.
  *
  * Created: 19th October 2002
- * Updated: 28th November 2024
+ * Updated: 29th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -44,7 +44,7 @@
 # define _SYNSOFT_VER_C_DIRENT_MAJOR    3
 # define _SYNSOFT_VER_C_DIRENT_MINOR    0
 # define _SYNSOFT_VER_C_DIRENT_REVISION 3
-# define _SYNSOFT_VER_C_DIRENT_EDIT     41
+# define _SYNSOFT_VER_C_DIRENT_EDIT     42
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -63,7 +63,8 @@
  * compiler differences
  */
 
-#if defined(__BORLANDC__)
+#if 0
+#elif defined(__BORLANDC__)
 #elif defined(__DMC__)
 #elif defined(__GNUC__)
 #elif defined(__INTEL_COMPILER)

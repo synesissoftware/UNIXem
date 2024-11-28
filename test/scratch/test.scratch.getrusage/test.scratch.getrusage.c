@@ -4,7 +4,7 @@
  * Purpose: Unit-test of `getrusage()`.
  *
  * Created: 9th June 2006
- * Updated: 16th October 2024
+ * Updated: 29th November 2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -31,9 +31,9 @@ int main(int argc, char *argv[])
     {
         struct rusage usage;
 
-        { size_t i; for (i = 0; i < 0xffffff; ++i){} }
+        { size_t i; for (i = 0; i < 0xfffffff; ++i){} }
 
-        { size_t i; for (i = 0; i < 10; ++i)
+        { size_t i; for (i = 0; i < 100; ++i)
         {
             FILE* f = fopen("abc", "w");
 
@@ -48,6 +48,8 @@ int main(int argc, char *argv[])
                 }
 
                 fclose(f);
+
+                unlink("abc");
             }
         }}
 

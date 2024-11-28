@@ -4,7 +4,7 @@
  * Purpose: Vector file read/write.
  *
  * Created: 19th September 2005
- * Updated: 28th November 2024
+ * Updated: 29th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -51,8 +51,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_MAJOR      2
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_MINOR      0
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_REVISION   1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_EDIT       15
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_REVISION   2
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_EDIT       16
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -60,7 +60,15 @@
  * includes
  */
 
+#include <unixem/internal/stdint.h>
+
 #include <stddef.h>
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * compatibility
+ */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 
@@ -86,9 +94,6 @@ extern "C"
  * typedefs
  */
 
-/** Signed size type */
-typedef signed long     unixem_ssize_t;
-
 /** Defines a memory vector */
 struct unixem_iovec
 {
@@ -107,7 +112,8 @@ struct unixem_iovec
  * \param vector pointer to the first element in the vector
  * \param count the number of elements in the vector
  */
-unixem_ssize_t unixem_readv(
+unixem_ssize_t
+unixem_readv(
     int                         fd
 ,   struct unixem_iovec const*  vector
 ,   int                         count
@@ -119,7 +125,8 @@ unixem_ssize_t unixem_readv(
  * \param vector pointer to the first element in the vector
  * \param count the number of elements in the vector
  */
-unixem_ssize_t unixem_writev(
+unixem_ssize_t
+unixem_writev(
     int                         fd
 ,   struct unixem_iovec const*  vector
 ,   int                         count

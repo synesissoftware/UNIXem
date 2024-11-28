@@ -5,7 +5,7 @@
  *          Windows platform.
  *
  * Created: 21st November 2003
- * Updated: 28th November 2024
+ * Updated: 29th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -48,8 +48,9 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_MAJOR       3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_MINOR       0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_REVISION    1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_EDIT        20
+# define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_EDIT        22
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 
@@ -69,7 +70,7 @@
  * typedefs
  */
 
-typedef signed long     unixem_atomic_t;
+typedef signed long                                         unixem_atomic_t;
 
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -80,7 +81,7 @@ typedef signed long     unixem_atomic_t;
 extern "C" {
 #endif /* __cplusplus */
 
-#define UNIXEM_ATOMIC_INIT(i)      (i)
+#define UNIXEM_ATOMIC_INIT(i)                               (i)
 
 void    unixem_atomic_set(unixem_atomic_t volatile* v, int i);
 int     unixem_atomic_write(unixem_atomic_t volatile* v, int i);

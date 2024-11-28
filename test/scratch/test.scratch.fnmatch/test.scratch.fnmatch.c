@@ -16,25 +16,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#if defined(_MSC_VER) && \
-    defined(_DEBUG)
-# include <crtdbg.h>
-#endif /* _MSC_VER) && _DEBUG */
-
-
-/* /////////////////////////////////////////////////////////////////////////
- * macros and definitions
- */
-
-#ifdef true
-# undef true
-#endif /* true */
-#ifdef false
-# undef false
-#endif /* false */
-#define true                                                (1)
-#define false                                               (0)
-
 
 /* /////////////////////////////////////////////////////////////////////////
  * globals

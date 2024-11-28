@@ -1,15 +1,14 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:    unixem/internal/safestr.h
+ * File:    unixem/internal/stdint.h
  *
- * Purpose: Internal utility header for the UNIXem API.
+ * Purpose: Discrimination of integers.
  *
- * Created: 28th December 2007
+ * Created: 29th November 2024
  * Updated: 29th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
- * Copyright (c) 2007-2019, Matthew Wilson and Synesis Software
+ * Copyright (c) 2024, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,11 +39,11 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file unixem/internal/safestr.h Internal utility header for the UNIXem API
+/** \file unixem/internal/stdint.h Discrimination of integers
  */
 
-#ifndef UNIXEM_INCL_UNIXEM_INTERNAL_H_SAFESTR
-#define UNIXEM_INCL_UNIXEM_INTERNAL_H_SAFESTR
+#ifndef UNIXEM_INCL_UNIXEM_internal_h_stdint
+#define UNIXEM_INCL_UNIXEM_internal_h_stdint
 
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -52,61 +51,90 @@
  */
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_MAJOR     1
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_MINOR     0
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_REVISION  1
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_EDIT      8
+# define UNIXEM_VER_UNIXEM_internal_h_stdint_MAJOR      1
+# define UNIXEM_VER_UNIXEM_internal_h_stdint_MINOR      0
+# define UNIXEM_VER_UNIXEM_internal_h_stdint_REVISION   0
+# define UNIXEM_VER_UNIXEM_internal_h_stdint_EDIT       1
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * includes
+ * includes - 1
  */
 
 #include <unixem/unixem.h>
 
-#ifdef UNIXEM_SAFE_STR_USE_crtdefs_h_
-# undef UNIXEM_SAFE_STR_USE_crtdefs_h_
-#endif /* UNIXEM_SAFE_STR_USE_crtdefs_h_ */
-
-#if 0
-#elif defined(__BORLANDC__)
-#elif defined(__DMC__)
-#elif defined(__GNUC__)
-#elif defined(__INTEL_COMPILER)
-# if defined(_MSC_VER) && \
-     _MSC_VER >= 1400
-#  define UNIXEM_SAFE_STR_USE_crtdefs_h_
-# endif /* _MSC_VER >= 1400 */
-#elif defined(__MWERKS__)
-#elif defined(__WATCOMC__)
-#elif defined(_MSC_VER)
-# if _MSC_VER >= 1400
-#  define UNIXEM_SAFE_STR_USE_crtdefs_h_
-# endif /* _MSC_VER >= 1400 */
-#elif defined(__COMO__)
-#else
-#endif /* compiler */
-
-#ifdef UNIXEM_SAFE_STR_USE_crtdefs_h_
-# include <crtdefs.h>
-#endif /* UNIXEM_SAFE_STR_USE_crtdefs_h_ */
+#include <stddef.h>
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * feature detection
+ * compatibility
  */
 
-#ifdef __STDC_SECURE_LIB__
-# if defined(__STDC_WANT_SECURE_LIB__) && \
-     __STDC_WANT_SECURE_LIB__ == 1
-#  define UNIXEM_USING_SAFE_STR_FUNCTIONS
-# endif /* __STDC_WANT_SECURE_LIB__ == 1 */
-#endif /* __STDC_SECURE_LIB__ */
+#if 0
+#elif __STDC_VERSION__ >= 199901L
+
+# define UNIXEM_HAS_h_stdint_
+#elif 0 ||\
+      (   defined(_MSC_VER) &&\
+          _MSC_VER >= 1310) ||\
+      0
+
+# define UNIXEM_HAS_h_stdint_
+#else
+
+#endif
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * includes - 2
+ */
+
+#ifdef UNIXEM_HAS_h_stdint_
+# include <stdint.h>
+#endif
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * macros
+ */
+
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * integer types
+ */
+
+#if 0
+#elif defined(UNIXEM_HAS_h_stdint_)
+
+typedef intptr_t                                            unixem_ssize_t;
+#elif defined(_WIN64)
+
+# if 0
+# elif defined(__LP64__)
+
+typedef signed long                                         unixem_ssize_t;
+# elif defined(__LLP64__)
+
+typedef signed long long                                    unixem_ssize_t;
+# else
+
+typedef signed __int64                                      unixem_ssize_t;
+# endif
+#else
+
+typedef signed long                                         unixem_ssize_t;
+#endif
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * function declarations
+ */
 
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* UNIXEM_INCL_UNIXEM_INTERNAL_H_SAFESTR */
+#endif /* UNIXEM_INCL_UNIXEM_internal_h_stdint */
 
 /* ///////////////////////////// end of file //////////////////////////// */
