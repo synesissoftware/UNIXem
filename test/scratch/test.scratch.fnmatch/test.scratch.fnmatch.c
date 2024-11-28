@@ -4,7 +4,7 @@
  * Purpose: Unit-test of `fnmatch()`.
  *
  * Created: 24th April 2006
- * Updated: 16th October 2024
+ * Updated: 28th November 2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -40,7 +40,6 @@
  * globals
  */
 
-static int  s_bDebugging    =   false;
 
 
 /* /////////////////////////////////////////////////////////////////////////
