@@ -4,7 +4,7 @@
  * Purpose: Unit-test of `link()`.
  *
  * Created: 2nd September 2005
- * Updated: 16th October 2024
+ * Updated: 28th November 2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -34,8 +34,8 @@
 int main(int argc, char *argv[])
 {
     char const* const   program_name    =   platformstl_C_get_executable_name_from_path(argv[0]).ptr;
-    char const*         module_name     =   "kernel32.dll";
-    char const*         symbol_name     =   "DllGetVersion";
+    char const*         module_name;
+    char const*         symbol_name;
 
     { int i; for (i = 1; i != argc; ++i)
     {
@@ -75,11 +75,11 @@ int main(int argc, char *argv[])
     }
     else
     {
-        int const res = link(argv[1], argv[2]);
+        int const res = link(module_name, symbol_name);
 
         if (0 == res)
         {
-            fprintf(stdout, "\"%s\" => \"%s\"\n", argv[1], argv[2]);
+            fprintf(stdout, "\"%s\" => \"%s\"\n", module_name, symbol_name);
 
             return EXIT_SUCCESS;
         }

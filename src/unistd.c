@@ -1,7 +1,8 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:    unistd.c
  *
- * Purpose: Definition of the chdir() and other API functions for the Win32 platform.
+ * Purpose: Definition of the chdir() and other API functions for the
+ *          Windows platform.
  *
  * Created: 1st November 2003
  * Updated: 28th November 2024
@@ -43,8 +44,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_UNISTD_MAJOR    3
 # define _SYNSOFT_VER_C_UNISTD_MINOR    0
-# define _SYNSOFT_VER_C_UNISTD_REVISION 3
-# define _SYNSOFT_VER_C_UNISTD_EDIT     39
+# define _SYNSOFT_VER_C_UNISTD_REVISION 4
+# define _SYNSOFT_VER_C_UNISTD_EDIT     40
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -92,10 +93,6 @@ _WCRTLINK extern long _get_osfhandle( int __posixhandle );
 #ifndef FILE_ATTRIBUTE_ERROR
 # define FILE_ATTRIBUTE_ERROR                               (0xFFFFFFFF)
 #endif /* FILE_ATTRIBUTE_ERROR */
-
-#ifdef __BORLANDC__
-# define CreateHardLinkA                                    __CreateHardLinkA
-#endif /* __BORLANDC__ */
 
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -222,20 +219,27 @@ int unixem_link(
         {
             typedef int (WINAPI *PFnCreateHardLink)(LPCTSTR , LPCTSTR , LPSECURITY_ATTRIBUTES );
 
+            union
+            {
+                PFnCreateHardLink   pfn;
+                FARPROC             pfp;
+            } u;
+
             HINSTANCE           hinst           =   LoadLibrary("Kernel32");
-            PFnCreateHardLink   CreateHardLinkA =   (PFnCreateHardLink)GetProcAddress(hinst, "CreateHardLinkA");
             int                 result          =   -1;
+
+            u.pfp = GetProcAddress(hinst, "CreateHardLinkA");
 
             SetLastError(ERROR_SUCCESS);
 
             if (NULL == hinst ||
-                NULL == CreateHardLinkA)
+                NULL == u.pfp)
             {
                 errno = unixem_internal_errno_from_Win32(ERROR_NOT_SUPPORTED);
             }
             else
             {
-                if (!CreateHardLinkA(linkName, originalFile, NULL))
+                if (!u.pfn(linkName, originalFile, NULL))
                 {
                     errno = unixem_internal_errno_from_Win32(GetLastError());
                 }
@@ -371,7 +375,7 @@ int unixem_close(int handle)
     }
     else
     {
-        HANDLE h = (HANDLE)_get_osfhandle(handle);
+        HANDLE h = (HANDLE)(ssize_t)_get_osfhandle(handle);
 
         if (CloseHandle(h))
         {

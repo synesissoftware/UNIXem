@@ -1,7 +1,7 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:    glob.c
  *
- * Purpose: Definition of the glob() API functions for the Win32 platform.
+ * Purpose: Definition of the glob() API functions for the Windows platform.
  *
  * Created: 13th November 2002
  * Updated: 28th November 2024
@@ -43,8 +43,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_UNIXEM_GLOB_MAJOR       3
 # define _SYNSOFT_VER_C_UNIXEM_GLOB_MINOR       1
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_REVISION    2
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT        58
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_REVISION    3
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT        59
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -128,18 +128,14 @@ unixem_glob_isdots_(
  * API functions
  */
 
-/* It gives you back the matched contents of your pattern, so for Win32, the
- * directories must be included
+/* It gives you back the matched contents of your pattern, so for Windows,
+ * the directories must be included
  */
 
 int unixem_glob(
     char const*     pattern
 ,   int             flags
-#if defined(__COMO__)
-, int             (*errfunc)(char const *, int)
-#else /* ? compiler */
-, const int       (*errfunc)(char const *, int)
-#endif /* compiler */
+,   int           (*errfunc)(char const *, int)
 ,   unixem_glob_t*  pglob
 )
 {
@@ -179,7 +175,7 @@ int unixem_glob(
                 '/' == pattern[1] ||
                 '\\' == pattern[1]))
         {
-            DWORD   dw;
+            DWORD dw;
 
             (void)lstrcpyA(&szPattern2[0], "%HOMEDRIVE%%HOMEPATH%");
 

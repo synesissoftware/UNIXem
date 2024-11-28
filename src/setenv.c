@@ -4,7 +4,7 @@
  * Purpose: Implementation of the setenv() and unsetenv() functions.
  *
  * Created: 9th December 2005
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -43,8 +43,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_SETENV_MAJOR    1
 # define _SYNSOFT_VER_C_SETENV_MINOR    0
-# define _SYNSOFT_VER_C_SETENV_REVISION 8
-# define _SYNSOFT_VER_C_SETENV_EDIT     12
+# define _SYNSOFT_VER_C_SETENV_REVISION 9
+# define _SYNSOFT_VER_C_SETENV_EDIT     13
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -115,23 +115,10 @@ static int unixem__setenv__putenv_(
         else
         {
             int r;
-#ifdef UNIXEM_USING_SAFE_STR_FUNCTIONS
-            size_t const cchBuffer = required;
 
-            (void)strncpy_s(&buffer[0], cchBuffer, name, nameLen);
-#else /* ? UNIXEM_USING_SAFE_STR_FUNCTIONS */
-
-            (void)strncpy(&buffer[0], name, nameLen);
-#endif /* UNIXEM_USING_SAFE_STR_FUNCTIONS */
+            memcpy(&buffer[0], name, nameLen * sizeof(buffer[0]));
             buffer[nameLen] = '=';
-            buffer[nameLen + 1] = '\0';
-#ifdef UNIXEM_USING_SAFE_STR_FUNCTIONS
-
-            (void)strncpy_s(&buffer[nameLen + 1], cchBuffer - (nameLen + 1), value, valueLen);
-#else /* ? UNIXEM_USING_SAFE_STR_FUNCTIONS */
-
-            (void)strncpy(&buffer[nameLen + 1], value, valueLen);
-#endif /* UNIXEM_USING_SAFE_STR_FUNCTIONS */
+            memcpy(&buffer[nameLen + 1], value, valueLen * sizeof(buffer[0]));
             buffer[nameLen + 1 + valueLen] = '\0';
 
             r = UNIXEM__putenv(&buffer[0]);

@@ -2,10 +2,10 @@
  * File:    sys/time.h
  *
  * Purpose: Declaration of the gettimeofday() API function and supporting
- *          types for the Win32 platform.
+ *          types for the Windows platform.
  *
  * Created: 8th December 2002
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_TIME_MAJOR    3
 # define SYNSOFT_UNIXEM_VER_SYS_H_TIME_MINOR    0
 # define SYNSOFT_UNIXEM_VER_SYS_H_TIME_REVISION 1
-# define SYNSOFT_UNIXEM_VER_SYS_H_TIME_EDIT     28
+# define SYNSOFT_UNIXEM_VER_SYS_H_TIME_EDIT     29
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -68,7 +68,7 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 

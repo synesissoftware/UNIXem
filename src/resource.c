@@ -1,11 +1,11 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:    resource.c
  *
- * Purpose: Implementation of the getrusage() API function for the Win32
+ * Purpose: Implementation of the getrusage() API function for the Windows
  *          platform.
  *
  * Created: 9th June 2006
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -45,7 +45,7 @@
 # define SYNSOFT_UNIXEM_VER_SYS_C_USAGE_MAJOR       2
 # define SYNSOFT_UNIXEM_VER_SYS_C_USAGE_MINOR       0
 # define SYNSOFT_UNIXEM_VER_SYS_C_USAGE_REVISION    1
-# define SYNSOFT_UNIXEM_VER_SYS_C_USAGE_EDIT        9
+# define SYNSOFT_UNIXEM_VER_SYS_C_USAGE_EDIT        10
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 

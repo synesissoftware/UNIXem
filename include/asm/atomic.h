@@ -2,10 +2,10 @@
  * File:    asm/atomic.h
  *
  * Purpose: Declaration of Linux like atomic functions for the
- *          Win32 platform.
+ *          Windows platform.
  *
  * Created: 21st November 2003
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -47,7 +47,7 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_MAJOR      3
 # define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_MINOR      0
 # define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_REVISION   1
-# define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_EDIT       20
+# define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_EDIT       21
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -56,6 +56,7 @@
  */
 
 #include <unixem/asm/atomic.h>
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

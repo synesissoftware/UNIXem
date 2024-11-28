@@ -2,10 +2,10 @@
  * File:    unixem/glob.h
  *
  * Purpose: Declaration of the glob() API functions and types for the
- *          Win32 platform.
+ *          Windows platform.
  *
  * Created: 13th November 2002
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,8 +52,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_MAJOR     3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_MINOR     0
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_REVISION  2
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_EDIT      41
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_REVISION  3
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_EDIT      42
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -65,13 +65,14 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 
 /** \weakgroup unixem_glob glob() API
  * \ingroup UNIXem unixem
- * \brief This API provides facilities for enumerating the file-system contents
+ * \brief This API provides facilities for enumerating the file-system
+ *  contents
  * @{
  */
 
@@ -157,11 +158,7 @@ extern "C" {
 int unixem_glob(
     char const*     pattern
 ,   int             flags
-#if defined(__COMO__)
 ,   int           (*errfunc)(char const*, int)
-#else /* ? compiler */
-,   const int     (*errfunc)(char const*, int)
-#endif /* compiler */
 ,   unixem_glob_t*  pglob
 );
 

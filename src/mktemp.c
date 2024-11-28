@@ -44,7 +44,7 @@
 # define _SYNSOFT_VER_C_MKTEMP_MAJOR        1
 # define _SYNSOFT_VER_C_MKTEMP_MINOR        0
 # define _SYNSOFT_VER_C_MKTEMP_REVISION     4
-# define _SYNSOFT_VER_C_MKTEMP_EDIT         7
+# define _SYNSOFT_VER_C_MKTEMP_EDIT         8
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -135,36 +135,38 @@ unixem_mkstemp(
 
     for (n = 0; n != limit; ++n)
     {
-        int hFile;
+        int fd;
 
-#if defined(UNIXEM_USING_SAFE_STR_FUNCTIONS)
+#if 0
+#elif defined(UNIXEM_USING_SAFE_STR_FUNCTIONS)
+
         _snprintf_s(pX, (1 + nX), (1 + nX), fmt, n);
-
 #elif defined(_MSC_VER)
+
         _snprintf(pX, (1 + nX), fmt, n);
-
 #else
+
         snprintf(pX, (1 + nX), fmt, n);
-
 #endif
 
-#if defined(UNIXEM_USING_SAFE_STR_FUNCTIONS)
-        if (0 != _sopen_s(&hFile, template_path, _O_WRONLY | _O_CREAT | _O_EXCL, _SH_DENYNO, _S_IREAD | _S_IWRITE))
+#if 0
+#elif defined(UNIXEM_USING_SAFE_STR_FUNCTIONS)
+
+        if (0 != _sopen_s(&fd, template_path, _O_WRONLY | _O_CREAT | _O_EXCL, _SH_DENYNO, _S_IREAD | _S_IWRITE))
         {
-            hFile = -1;
+            fd = -1;
         }
-
 #elif defined(_MSC_VER)
-        hFile = _open(template_path, O_WRONLY | O_CREAT | O_EXCL, S_IREAD | S_IWRITE);
 
+        fd = _open(template_path, O_WRONLY | O_CREAT | O_EXCL, S_IREAD | S_IWRITE);
 #else
-        hFile = open(template_path, O_WRONLY | O_CREAT | O_EXCL, S_IREAD | S_IWRITE);
 
+        fd = open(template_path, O_WRONLY | O_CREAT | O_EXCL, S_IREAD | S_IWRITE);
 #endif
 
-        if (-1 != hFile)
+        if (-1 != fd)
         {
-            return hFile;
+            return fd;
         }
         else
         {

@@ -1,10 +1,10 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:    dirent.c
  *
- * Purpose: Definition of the opendir() API functions for the Win32 platform.
+ * Purpose: Definition of the opendir() API functions for the Windows platform.
  *
  * Created: 19th October 2002
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -41,10 +41,10 @@
 
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define _SYNSOFT_VER_C_DIRENT_MAJOR      3
-# define _SYNSOFT_VER_C_DIRENT_MINOR      0
-# define _SYNSOFT_VER_C_DIRENT_REVISION   3
-# define _SYNSOFT_VER_C_DIRENT_EDIT       40
+# define _SYNSOFT_VER_C_DIRENT_MAJOR    3
+# define _SYNSOFT_VER_C_DIRENT_MINOR    0
+# define _SYNSOFT_VER_C_DIRENT_REVISION 3
+# define _SYNSOFT_VER_C_DIRENT_EDIT     41
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -97,16 +97,16 @@
 struct dirent_dir
 {
     char                    directory[_MAX_DIR + 1];    /* . */
-    WIN32_FIND_DATAA        find_data;                  /* The Win32 FindFile data. */
-    HANDLE                  hFind;                      /* The Win32 FindFile handle. */
+    WIN32_FIND_DATAA        find_data;                  /* The Windows FindFile data. */
+    HANDLE                  hFind;                      /* The Windows FindFile handle. */
     struct unixem_dirent    dirent;                     /* The handle's entry. */
 };
 
 struct wdirent_dir
 {
     wchar_t                 directory[_MAX_DIR + 1];    /* . */
-    WIN32_FIND_DATAW        find_data;                  /* The Win32 FindFile data. */
-    HANDLE                  hFind;                      /* The Win32 FindFile handle. */
+    WIN32_FIND_DATAW        find_data;                  /* The Windows FindFile data. */
+    HANDLE                  hFind;                      /* The Windows FindFile handle. */
     struct unixem_wdirent   dirent;                     /* The handle's entry. */
 };
 

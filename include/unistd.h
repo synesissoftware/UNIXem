@@ -63,7 +63,7 @@
 #include <unixem/unistd.h>
 
 /* Some of the functions declared here (and defined in unistd.c) may be
- * provided by some Win32 compilers. So we discriminate for support here,
+ * provided by some Windows compilers. So we discriminate for support here,
  * and exclude definitions as appropriate.
  */
 
@@ -142,7 +142,7 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 

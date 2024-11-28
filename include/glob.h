@@ -2,10 +2,10 @@
  * File:    glob.h
  *
  * Purpose: Declaration of the glob() API functions and types for the
- *          Win32 platform.
+ *          Windows platform.
  *
  * Created: 13th November 2002
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -51,13 +51,13 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define SYNSOFT_UNIXEM_VER_H_GLOB_MAJOR    3
 # define SYNSOFT_UNIXEM_VER_H_GLOB_MINOR    0
-# define SYNSOFT_UNIXEM_VER_H_GLOB_REVISION 3
-# define SYNSOFT_UNIXEM_VER_H_GLOB_EDIT     40
+# define SYNSOFT_UNIXEM_VER_H_GLOB_REVISION 4
+# define SYNSOFT_UNIXEM_VER_H_GLOB_EDIT     42
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 
@@ -149,15 +149,11 @@ extern "C" {
 int glob(
     char const*     pattern
 ,   int             flags
-#if defined(__COMO__)
 ,   int           (*errfunc)(char const*, int)
-#else /* ? compiler */
-,   const int     (*errfunc)(char const*, int)
-#endif /* compiler */
 ,   glob_t*         pglob
 );
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define glob       unixem_glob
+# define glob                                               unixem_glob
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /** Frees the results of a call to glob
@@ -172,16 +168,13 @@ int glob(
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 void globfree(glob_t* pglob);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define globfree   unixem_globfree
+# define globfree                                           unixem_globfree
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
-
-#ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-
-#endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

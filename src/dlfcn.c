@@ -45,7 +45,7 @@
 # define _SYNSOFT_VER_C_DLFCN_MAJOR     3
 # define _SYNSOFT_VER_C_DLFCN_MINOR     0
 # define _SYNSOFT_VER_C_DLFCN_REVISION  1
-# define _SYNSOFT_VER_C_DLFCN_EDIT      21
+# define _SYNSOFT_VER_C_DLFCN_EDIT      22
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -63,7 +63,7 @@
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifndef WIN32
-# error This file is only currently defined for Win32 compilation units
+# error This file is only currently defined for Windows compilation units
 #endif /* WIN32 */
 
 

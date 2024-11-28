@@ -2,10 +2,10 @@
  * File:    unixem/dirent.h
  *
  * Purpose: Declaration of the opendir() API functions and types for the
- *          Win32 platform.
+ *          Windows platform.
  *
  * Created: 19th October 2002
- * Updated: 10th July 2024
+ * Updated: 28th November 2024
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -53,12 +53,12 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_MAJOR       4
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_MINOR       0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_REVISION    1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_EDIT        36
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_EDIT        37
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 

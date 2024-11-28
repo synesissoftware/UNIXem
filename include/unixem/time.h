@@ -1,7 +1,7 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:    unixem/time.h
  *
- * Purpose: Time functions and types for the Win32 platform.
+ * Purpose: Time functions and types for the Windows platform.
  *
  * Created: 5th May 2014
  * Updated: 28th November 2024
@@ -42,7 +42,7 @@
 
 /** \file unixem/time.h
  *
- * Time functions and types for the Win32 platform.
+ * Time functions and types for the Windows platform.
  */
 
 #ifndef SYNSOFT_UNIXEM_INCL_UNIXEM_H_TIME
@@ -68,7 +68,7 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 

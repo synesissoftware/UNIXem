@@ -4,7 +4,7 @@
  * Purpose: Unit-test of `uio()`.
  *
  * Created: 19th September 2005
- * Updated: 16th October  2024
+ * Updated: 28th November 2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -62,7 +62,7 @@ static int main_(int argc, char **argv)
         char            sz1[10];
         char            sz2[2];
         char            sz3[21];
-        size_t          n;
+        ssize_t         n;
 
         vectors[0].iov_base =   &sz1[0];
         vectors[0].iov_len  =   sizeof(sz1);
@@ -72,6 +72,17 @@ static int main_(int argc, char **argv)
         vectors[2].iov_len  =   sizeof(sz3);
 
         n                   =   readv(fd, &vectors[0], 3);
+
+        if (n < 0)
+        {
+            fprintf(stderr, "%s: failed to invoke `readv()` on '%s': %lld\n", program_name, fileName, n);
+        }
+        else
+        {
+            printf("read following block sizes by `readv()` from '%s': %llu, %llu, %llu; total-read=%lld\n", fileName, vectors[0].iov_len, vectors[1].iov_len, vectors[2].iov_len, n);
+
+            close(fd);
+        }
     }
 
     return 0;
