@@ -1,3 +1,5 @@
+
+#[====[
 list(APPEND public_headers "${CMAKE_SOURCE_DIR}/include/arpa/inet.h")
 list(APPEND public_headers "${CMAKE_SOURCE_DIR}/include/asm/atomic.h")
 list(APPEND public_headers "${CMAKE_SOURCE_DIR}/include/netonet/in.h")
@@ -38,6 +40,7 @@ set_target_properties(UNIXem.core PROPERTIES
     PRIVATE_HEADER "${private_headers}"
     PUBLIC_HEADER "${public_headers}")
 
+#]====]
 
 # ######################################################################## #
 # File:     /src/CMakeLists.txt

@@ -458,6 +458,8 @@ char* realpath(
  * \param microSeconds The number of microseconds in the sleep interval
  *
  * \note This is a macro, which resolves to unixem_usleep()
+ *
+ * \note The function will attempt to wait for at least the period specified
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int usleep(unsigned long microSeconds);

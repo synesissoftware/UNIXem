@@ -4,7 +4,7 @@
  * Purpose: Unit-test of `mmap()`, `munmap()`.
  *
  * Created: 18th December 2003
- * Updated: 10th July 2024
+ * Updated: 1st May 2025
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -24,23 +24,10 @@
 #include <sys/mman.h>
 #include <sys/stat.h>
 
-#ifdef WIN32
-//# include <windows.h>
-#endif /* WIN32 */
 
-//#define   TEST_READONLY
-//#define   TEST_READWRITE
-//#define   TEST_PAGING
-
-/* ////////////////////////////////////////////////////////////////////// */
-
-#if (   defined(WIN32) || \
-        defined(_WIN32)) && \
-    !defined(_INC_WINDOWS)
-extern "C" void __stdcall Sleep(unsigned long);
-#endif /* WIN32 */
-
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * function declarations
+ */
 
 /** \brief Maps a file
  *
@@ -93,10 +80,6 @@ mmap_file(
 
 int main(int argc, char *argv[])
 {
-#if 0
-    ::Sleep(100000);
-#endif /* 0 */
-
     /* . */
 #if defined(TEST_READONLY)
     char const* fileName   =   "h:\\dev\\bin\\mmcmnbas.dll";

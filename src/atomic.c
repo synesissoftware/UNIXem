@@ -5,11 +5,11 @@
  *          Windows platform.
  *
  * Created: 21st November 2003
- * Updated: 28th November 2024
+ * Updated: 1st May 2025
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -60,7 +60,10 @@
 #include <errno.h>
 #include <windows.h>
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * compatibility
+ */
 
 #ifndef WIN32
 # error This file is only currently defined for Windows compilation units

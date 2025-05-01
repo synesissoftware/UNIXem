@@ -4,11 +4,11 @@
  * Purpose: Declaration of various UNIX standard functions.
  *
  * Created: 1st November 2003
- * Updated: 29th November 2024
+ * Updated: 1st May 2025
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_MAJOR       3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_MINOR       1
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_REVISION    1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_EDIT        49
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_EDIT        50
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -63,6 +63,7 @@
 #include <unixem/unixem.h>
 #include <stddef.h>     /* for size_t */
 #include <sys/types.h>  /* for mode_t */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 
@@ -76,7 +77,10 @@
  * @{
  */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * compatibility
+ */
 
 #ifndef _WIN32
 # error This file is only currently defined for compilation on Windows systems
