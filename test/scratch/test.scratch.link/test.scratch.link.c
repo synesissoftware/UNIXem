@@ -1,70 +1,73 @@
-/* /////////////////////////////////////////////////////////////////////////////
- * File:        test.scratch.link.c
+/* /////////////////////////////////////////////////////////////////////////
+ * File:    test.scratch.link.c
  *
- * Purpose:     Implementation file for the test.scratch.link project.
+ * Purpose: Unit-test of `link()`.
  *
- * Created:     2nd September 2005
- * Updated:     9th October 2019
+ * Created: 2nd September 2005
+ * Updated: 28th November 2024
  *
- * Status:      Wizard-generated
- *
- * License:     (Licensed under the Synesis Software Open License)
- *
- *              Copyright (c) 1999-2019, Synesis Software Pty Ltd.
- *              All rights reserved.
- *
- *              www:        http://www.synesis.com.au/software
- *
- *              This source code is placed into the public domain 2005
- *              by Synesis Software Pty Ltd. There are no restrictions
- *              whatsoever to your use of the software. 
- *
- *              This source code is provided by Synesis Software Pty Ltd "as is"
- *              and any warranties, whether expressed or implied, including, but
- *              not limited to, the implied warranties of merchantability and
- *              fitness for a particular purpose are disclaimed. In no event
- *              shall the Synesis Software Pty Ltd be liable for any direct,
- *              indirect, incidental, special, exemplary, or consequential
- *              damages (including, but not limited to, procurement of
- *              substitute goods or services; loss of use, data, or profits; or
- *              business interruption) however caused and on any theory of
- *              liability, whether in contract, strict liability, or tort
- *              (including negligence or otherwise) arising in any way out of
- *              the use of this software, even if advised of the possibility of
- *              such damage. 
- *
- *              Neither the name of Synesis Software Pty Ltd nor the names of
- *              any subdivisions, employees or agents of Synesis Software Pty
- *              Ltd, nor the names of any other contributors to this software
- *              may be used to endorse or promote products derived from this
- *              software without specific prior written permission. 
- *
- * ////////////////////////////////////////////////////////////////////////// */
+ * ////////////////////////////////////////////////////////////////////// */
 
 
-/* UNIXem header files */
-#include <unixem/unixem.h>
-#include <unixem/implicit_link.h>
+/* /////////////////////////////////////////////////////////////////////////
+ * includes
+ */
 
-/* Standard C header files */
+#include <unistd.h>
+
+#include <platformstl/filesystem/path_functions.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
 
-/* /////////////////////////////////////////////////////////////////////////////
+
+/* /////////////////////////////////////////////////////////////////////////
  * forward declarations
  */
 
-/* ////////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * main()
+ */
 
 int main(int argc, char *argv[])
 {
-#if 0
-    { for(size_t i = 0; i < 0xffffffff; ++i){} }
-#endif /* 0 */
+    char const* const   program_name    =   platformstl_C_get_executable_name_from_path(argv[0]).ptr;
+    char const*         module_name;
+    char const*         symbol_name;
 
-    if(argc < 3)
+    { int i; for (i = 1; i != argc; ++i)
+    {
+        if (0 == strcmp("--help", argv[i]))
+        {
+            printf("USAGE: %s <source-path> <link-path>\n", program_name);
+
+            return EXIT_SUCCESS;
+        }
+    }}
+
+    switch (argc)
+    {
+    case 1:
+    case 2:
+
+        fprintf(stderr, "%s: missing arguments; use --help for usage\n", program_name);
+
+        return EXIT_FAILURE;
+    case 3:
+
+        module_name = argv[1];
+        symbol_name = argv[2];
+        break;
+    default:
+
+        fprintf(stderr, "%s: too many arguments; use --help for usage\n", program_name);
+
+        return EXIT_FAILURE;
+    }
+
+    if (argc < 3)
     {
         fprintf(stderr, "USAGE: test.scratch.link <originalFile> <linkName>\n");
 
@@ -72,11 +75,11 @@ int main(int argc, char *argv[])
     }
     else
     {
-        int res =   link(argv[1], argv[2]);
+        int const res = link(module_name, symbol_name);
 
-        if(0 == res)
+        if (0 == res)
         {
-            fprintf(stdout, "\"%s\" => \"%s\"\n", argv[1], argv[2]);
+            fprintf(stdout, "\"%s\" => \"%s\"\n", module_name, symbol_name);
 
             return EXIT_SUCCESS;
         }
@@ -90,4 +93,5 @@ int main(int argc, char *argv[])
 }
 
 
-/* ////////////////////////////////////////////////////////////////////////// */
+/* ///////////////////////////// end of file //////////////////////////// */
+

@@ -14,12 +14,12 @@ int main(int argc, char** argv)
 
     XTESTS_COMMANDLINE_PARSEVERBOSITY(argc, argv, &verbosity);
 
-    if(XTESTS_START_RUNNER("test.component.unistd.gethostname", verbosity))
+    if (XTESTS_START_RUNNER("test.unit.unistd.gethostname", verbosity))
     {
         /* Test-1 */
-        if(XTESTS_CASE_BEGIN("Test-1", "testing gethostname"))
+        if (XTESTS_CASE_BEGIN("Test-1", "testing gethostname"))
         {
-            char    hostName[100];
+            char hostName[100];
 
             XTESTS_TEST_INTEGER_EQUAL((pid_t)GetCurrentProcessId(), getpid());
 
@@ -36,4 +36,6 @@ int main(int argc, char** argv)
     return retCode;
 }
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* ///////////////////////////// end of file //////////////////////////// */
+

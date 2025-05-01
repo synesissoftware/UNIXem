@@ -4,10 +4,11 @@
  * Purpose: Definition of the setenv() and unsetenv() functions.
  *
  * Created: 9th December 2005
- * Updated: 9th October 2019
+ * Updated: 28th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -49,8 +50,9 @@
 # define UNIXEM_VER_UNIXEM_H_SETENV_MAJOR       2
 # define UNIXEM_VER_UNIXEM_H_SETENV_MINOR       0
 # define UNIXEM_VER_UNIXEM_H_SETENV_REVISION    1
-# define UNIXEM_VER_UNIXEM_H_SETENV_EDIT        10
+# define UNIXEM_VER_UNIXEM_H_SETENV_EDIT        11
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -67,7 +69,7 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 
@@ -76,6 +78,7 @@
  * \brief setenv() and unsetenv() functions
  * @{
  */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -112,6 +115,7 @@ void unixem_unsetenv(char const* name);
 # ifdef __cplusplus
 } /* extern "C" */
 # endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

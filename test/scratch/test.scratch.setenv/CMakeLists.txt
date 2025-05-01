@@ -1,3 +1,2 @@
-add_executable(test.scratch.setenv test.scratch.setenv.c)
-target_link_libraries(test.scratch.setenv UNIXem.core xTests::xTests.core)
-add_test(NAME test.scratch.setenv COMMAND ./test.scratch.setenv)
+list(APPEND X_MSVC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED 4996)
+define_automated_test_program(test.scratch.setenv test.scratch.setenv.c)

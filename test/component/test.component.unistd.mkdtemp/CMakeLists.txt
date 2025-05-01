@@ -1,3 +1,2 @@
-add_executable(test.component.unistd.mkdtemp test.component.unistd.mkdtemp.c)
-target_link_libraries(test.component.unistd.mkdtemp UNIXem.core xTests::xTests.core)
-add_test(NAME test.component.unistd.mkdtemp COMMAND ./test.component.unistd.mkdtemp)
+list(APPEND X_MSVC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED 4996)
+define_automated_test_program(test.component.unistd.mkdtemp test.component.unistd.mkdtemp.c)

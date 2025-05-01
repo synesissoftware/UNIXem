@@ -4,10 +4,11 @@
  * Purpose: Implementation of the setenv() and unsetenv() functions.
  *
  * Created: 9th December 2005
- * Updated: 14th October 2019
+ * Updated: 29th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -42,9 +43,10 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_SETENV_MAJOR    1
 # define _SYNSOFT_VER_C_SETENV_MINOR    0
-# define _SYNSOFT_VER_C_SETENV_REVISION 8
-# define _SYNSOFT_VER_C_SETENV_EDIT     11
+# define _SYNSOFT_VER_C_SETENV_REVISION 9
+# define _SYNSOFT_VER_C_SETENV_EDIT     14
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -61,16 +63,21 @@
 #include <stdlib.h>
 #include <windows.h>
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * feature support
  */
 
-#if defined(__BORLANDC__) || \
-    defined(__WATCOMC__)
-# define UNIXEM__putenv     putenv
+#if 0
+#elif defined(__BORLANDC__) || \
+      defined(__WATCOMC__)
+
+# define UNIXEM__putenv                                     putenv
 #else /* ? compiler */
-# define UNIXEM__putenv     _putenv
+
+# define UNIXEM__putenv                                     _putenv
 #endif /* compiler */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * helper functions
@@ -84,7 +91,7 @@ static int unixem__setenv__putenv_(
     assert(NULL != name);
     assert(NULL != value);
 
-    if(NULL != strchr(name, '='))
+    if (NULL != strchr(name, '='))
     {
         errno = EINVAL;
 
@@ -100,7 +107,7 @@ static int unixem__setenv__putenv_(
                                     ? (char*)malloc(required * sizeof(char))
                                     : &buffer_[0];
 
-        if(NULL == buffer)
+        if (NULL == buffer)
         {
             errno = ENOMEM;
 
@@ -109,28 +116,15 @@ static int unixem__setenv__putenv_(
         else
         {
             int r;
-#ifdef UNIXEM_USING_SAFE_STR_FUNCTIONS
-            size_t const cchBuffer = required;
 
-            (void)strncpy_s(&buffer[0], cchBuffer, name, nameLen);
-#else /* ? UNIXEM_USING_SAFE_STR_FUNCTIONS */
-
-            (void)strncpy(&buffer[0], name, nameLen);
-#endif /* UNIXEM_USING_SAFE_STR_FUNCTIONS */
+            memcpy(&buffer[0], name, nameLen * sizeof(buffer[0]));
             buffer[nameLen] = '=';
-            buffer[nameLen + 1] = '\0';
-#ifdef UNIXEM_USING_SAFE_STR_FUNCTIONS
-
-            (void)strncpy_s(&buffer[nameLen + 1], cchBuffer - (nameLen + 1), value, valueLen);
-#else /* ? UNIXEM_USING_SAFE_STR_FUNCTIONS */
-
-            (void)strncpy(&buffer[nameLen + 1], value, valueLen);
-#endif /* UNIXEM_USING_SAFE_STR_FUNCTIONS */
+            memcpy(&buffer[nameLen + 1], value, valueLen * sizeof(buffer[0]));
             buffer[nameLen + 1 + valueLen] = '\0';
 
             r = UNIXEM__putenv(&buffer[0]);
 
-            if(buffer != &buffer_[0])
+            if (buffer != &buffer_[0])
             {
                 free(buffer);
             }
@@ -151,6 +145,7 @@ static int unixem__setenv__putenv(
     return unixem__setenv__putenv_(name, value);
 }
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
  */
@@ -164,16 +159,16 @@ int unixem_setenv(
     assert(NULL != name);
     assert(NULL != value);
 
-    if(!bOverwrite)
+    if (!bOverwrite)
     {
 #ifdef UNIXEM_USING_SAFE_STR_FUNCTIONS
         size_t  requiredSize;
 
         getenv_s(&requiredSize, NULL, 0, name);
 
-        if(0 != requiredSize)
+        if (0 != requiredSize)
 #else /* ? UNIXEM_USING_SAFE_STR_FUNCTIONS */
-        if(NULL != getenv(name))
+        if (NULL != getenv(name))
 #endif /* UNIXEM_USING_SAFE_STR_FUNCTIONS */
         {
            return 0;
@@ -189,6 +184,7 @@ void unixem_unsetenv(const char *name)
 
     (void)unixem__setenv__putenv(name, "");
 }
+
 
 /* ///////////////////////////// end of file //////////////////////////// */
 

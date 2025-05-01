@@ -4,11 +4,12 @@
  * Purpose: Vector file read/write.
  *
  * Created: 19th September 2005
- * Updated: 10th January 2017
+ * Updated: 29th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,19 +51,28 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_MAJOR      2
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_MINOR      0
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_REVISION   1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_EDIT       14
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_REVISION   2
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_EDIT       16
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
 
+#include <unixem/internal/stdint.h>
+
 #include <stddef.h>
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * compatibility
+ */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 
@@ -79,12 +89,10 @@ extern "C"
 {
 #endif /* __cplusplus */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
-
-/** Signed size type */
-typedef signed long     unixem_ssize_t;
 
 /** Defines a memory vector */
 struct unixem_iovec
@@ -92,6 +100,7 @@ struct unixem_iovec
     void*   iov_base;  /*!< Base address */
     size_t  iov_len;    /*!< Number of bytes referenced */
 };
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * functions
@@ -103,7 +112,8 @@ struct unixem_iovec
  * \param vector pointer to the first element in the vector
  * \param count the number of elements in the vector
  */
-unixem_ssize_t unixem_readv(
+unixem_ssize_t
+unixem_readv(
     int                         fd
 ,   struct unixem_iovec const*  vector
 ,   int                         count
@@ -115,7 +125,8 @@ unixem_ssize_t unixem_readv(
  * \param vector pointer to the first element in the vector
  * \param count the number of elements in the vector
  */
-unixem_ssize_t unixem_writev(
+unixem_ssize_t
+unixem_writev(
     int                         fd
 ,   struct unixem_iovec const*  vector
 ,   int                         count
@@ -124,6 +135,7 @@ unixem_ssize_t unixem_writev(
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

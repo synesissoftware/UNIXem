@@ -1,15 +1,16 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:    resource.c
  *
- * Purpose: Implementation of the getrusage() API function for the Win32
+ * Purpose: Implementation of the getrusage() API function for the Windows
  *          platform.
  *
  * Created: 9th June 2006
- * Updated: 10th January 2017
+ * Updated: 28th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2006-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,8 +45,9 @@
 # define SYNSOFT_UNIXEM_VER_SYS_C_USAGE_MAJOR       2
 # define SYNSOFT_UNIXEM_VER_SYS_C_USAGE_MINOR       0
 # define SYNSOFT_UNIXEM_VER_SYS_C_USAGE_REVISION    1
-# define SYNSOFT_UNIXEM_VER_SYS_C_USAGE_EDIT        8
+# define SYNSOFT_UNIXEM_VER_SYS_C_USAGE_EDIT        10
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -68,9 +70,11 @@
 #include <errno.h>
 #include <windows.h>
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * helper functions
  */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -83,7 +87,7 @@ int unixem_getrusage(
 {
     assert(NULL != r_usage);
 
-    if(UNIXEM_RUSAGE_SELF != who)
+    if (UNIXEM_RUSAGE_SELF != who)
     {
         errno = EINVAL;
 
@@ -95,7 +99,7 @@ int unixem_getrusage(
         ULARGE_INTEGER  userTime;
         FILETIME        dummy;
 
-        if(!GetProcessTimes(GetCurrentProcess(), &dummy, &dummy, (LPFILETIME)&kernelTime, (LPFILETIME)&userTime))
+        if (!GetProcessTimes(GetCurrentProcess(), &dummy, &dummy, (LPFILETIME)&kernelTime, (LPFILETIME)&userTime))
         {
             errno = unixem_internal_errno_from_Win32(GetLastError());
 
@@ -114,4 +118,6 @@ int unixem_getrusage(
     }
 }
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

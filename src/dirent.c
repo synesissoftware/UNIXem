@@ -1,14 +1,15 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:    dirent.c
  *
- * Purpose: Definition of the opendir() API functions for the Win32 platform.
+ * Purpose: Definition of the opendir() API functions for the Windows platform.
  *
  * Created: 19th October 2002
- * Updated: 10th January 2017
+ * Updated: 29th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,11 +41,12 @@
 
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define _SYNSOFT_VER_C_DIRENT_MAJOR      3
-# define _SYNSOFT_VER_C_DIRENT_MINOR      0
-# define _SYNSOFT_VER_C_DIRENT_REVISION   3
-# define _SYNSOFT_VER_C_DIRENT_EDIT       39
+# define _SYNSOFT_VER_C_DIRENT_MAJOR    3
+# define _SYNSOFT_VER_C_DIRENT_MINOR    0
+# define _SYNSOFT_VER_C_DIRENT_REVISION 3
+# define _SYNSOFT_VER_C_DIRENT_EDIT     42
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -56,11 +58,13 @@
 #include <stdlib.h>
 #include <windows.h>
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * compiler differences
  */
 
-#if defined(__BORLANDC__)
+#if 0
+#elif defined(__BORLANDC__)
 #elif defined(__DMC__)
 #elif defined(__GNUC__)
 #elif defined(__INTEL_COMPILER)
@@ -77,13 +81,15 @@
 # error The opendir() API is provided by this compiler, so should not be built here
 #endif /* !UNIXEM_opendir_PROVIDED_BY_COMPILER */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
 
 #ifndef FILE_ATTRIBUTE_ERROR
-# define FILE_ATTRIBUTE_ERROR           (0xFFFFFFFF)
+# define FILE_ATTRIBUTE_ERROR                               (0xFFFFFFFF)
 #endif /* FILE_ATTRIBUTE_ERROR */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
@@ -92,18 +98,19 @@
 struct dirent_dir
 {
     char                    directory[_MAX_DIR + 1];    /* . */
-    WIN32_FIND_DATAA        find_data;                  /* The Win32 FindFile data. */
-    HANDLE                  hFind;                      /* The Win32 FindFile handle. */
+    WIN32_FIND_DATAA        find_data;                  /* The Windows FindFile data. */
+    HANDLE                  hFind;                      /* The Windows FindFile handle. */
     struct unixem_dirent    dirent;                     /* The handle's entry. */
 };
 
 struct wdirent_dir
 {
     wchar_t                 directory[_MAX_DIR + 1];    /* . */
-    WIN32_FIND_DATAW        find_data;                  /* The Win32 FindFile data. */
-    HANDLE                  hFind;                      /* The Win32 FindFile handle. */
+    WIN32_FIND_DATAW        find_data;                  /* The Windows FindFile data. */
+    HANDLE                  hFind;                      /* The Windows FindFile handle. */
     struct unixem_wdirent   dirent;                     /* The handle's entry. */
 };
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * helper functions
@@ -120,7 +127,7 @@ static HANDLE unixem__dirent__findfile_directory(
      * included.
      */
     (void)lstrcpyA(search_spec, name);
-    if( '\\' != search_spec[lstrlenA(search_spec) - 1] &&
+    if ('\\' != search_spec[lstrlenA(search_spec) - 1] &&
         '/' != search_spec[lstrlenA(search_spec) - 1])
     {
         (void)lstrcatA(search_spec, "\\*.*");
@@ -145,7 +152,7 @@ static HANDLE unixem__dirent__wfindfile_directory(
      * included.
      */
     lstrcpyW(search_spec, name);
-    if( L'\\' != search_spec[lstrlenW(search_spec) - 1] &&
+    if (L'\\' != search_spec[lstrlenW(search_spec) - 1] &&
         L'/' != search_spec[lstrlenW(search_spec) - 1])
     {
         lstrcatW(search_spec, L"\\*.*");
@@ -159,6 +166,7 @@ static HANDLE unixem__dirent__wfindfile_directory(
 }
 #endif /* 0 */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
  */
@@ -169,14 +177,14 @@ unixem_DIR* unixem_opendir(char const* name)
     DWORD       dwAttr;
 
     /* Must be a valid name */
-    if( !name ||
+    if (!name ||
         !*name ||
         (dwAttr = GetFileAttributes(name)) == FILE_ATTRIBUTE_ERROR)
     {
         errno = ENOENT;
     }
     /* Must be a directory */
-    else if(!(dwAttr & FILE_ATTRIBUTE_DIRECTORY))
+    else if (!(dwAttr & FILE_ATTRIBUTE_DIRECTORY))
     {
         errno = ENOTDIR;
     }
@@ -184,7 +192,7 @@ unixem_DIR* unixem_opendir(char const* name)
     {
         result = (unixem_DIR*)malloc(sizeof(unixem_DIR));
 
-        if(result == NULL)
+        if (NULL == result)
         {
             errno = ENOMEM;
         }
@@ -192,7 +200,7 @@ unixem_DIR* unixem_opendir(char const* name)
         {
             result->hFind = unixem__dirent__findfile_directory(name, &result->find_data);
 
-            if(result->hFind == INVALID_HANDLE_VALUE)
+            if (INVALID_HANDLE_VALUE == result->hFind)
             {
                 free(result);
 
@@ -209,14 +217,12 @@ unixem_DIR* unixem_opendir(char const* name)
     }
 
 #if 0
-    if(NULL != dir)
+    if (NULL != dir)
     {
         struct dirent* readdir(DIR* dir)
 
     }
 #endif /* 0 */
-
-
 
     return result;
 }
@@ -225,7 +231,7 @@ int unixem_closedir(unixem_DIR* dir)
 {
     int ret;
 
-    if(dir == NULL)
+    if (NULL == dir)
     {
         errno = EBADF;
 
@@ -234,7 +240,7 @@ int unixem_closedir(unixem_DIR* dir)
     else
     {
         /* Close the search handle, if not already done. */
-        if(dir->hFind != INVALID_HANDLE_VALUE)
+        if (dir->hFind != INVALID_HANDLE_VALUE)
         {
             (void)FindClose(dir->hFind);
         }
@@ -250,14 +256,14 @@ int unixem_closedir(unixem_DIR* dir)
 void unixem_rewinddir(unixem_DIR* dir)
 {
     /* Close the search handle, if not already done. */
-    if(dir->hFind != INVALID_HANDLE_VALUE)
+    if (dir->hFind != INVALID_HANDLE_VALUE)
     {
         (void)FindClose(dir->hFind);
     }
 
     dir->hFind = unixem__dirent__findfile_directory(dir->directory, &dir->find_data);
 
-    if(dir->hFind != INVALID_HANDLE_VALUE)
+    if (dir->hFind != INVALID_HANDLE_VALUE)
     {
         (void)lstrcpyA(dir->dirent.d_name, dir->find_data.cFileName);
     }
@@ -266,9 +272,9 @@ void unixem_rewinddir(unixem_DIR* dir)
 struct unixem_dirent* unixem_readdir(unixem_DIR* dir)
 {
     /* The last find exhausted the matches, so return NULL. */
-    if(dir->hFind == INVALID_HANDLE_VALUE)
+    if (INVALID_HANDLE_VALUE == dir->hFind)
     {
-        if(FILE_ATTRIBUTE_ERROR == dir->find_data.dwFileAttributes)
+        if (FILE_ATTRIBUTE_ERROR == dir->find_data.dwFileAttributes)
         {
             errno = EBADF;
         }
@@ -287,7 +293,7 @@ struct unixem_dirent* unixem_readdir(unixem_DIR* dir)
         (void)lstrcpyA(dir->dirent.d_name, dir->find_data.cFileName);
 
         /* Attempt the next match. */
-        if(!FindNextFileA(dir->hFind, &dir->find_data))
+        if (!FindNextFileA(dir->hFind, &dir->find_data))
         {
             /* Exhausted all matches, so close and null the
              * handle.
@@ -300,4 +306,6 @@ struct unixem_dirent* unixem_readdir(unixem_DIR* dir)
     }
 }
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

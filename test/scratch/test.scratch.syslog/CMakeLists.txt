@@ -1,3 +1,5 @@
-add_executable(test.scratch.syslog test.scratch.syslog.c)
-target_link_libraries(test.scratch.syslog UNIXem.core xTests::xTests.core)
-add_test(NAME test.scratch.syslog COMMAND ./test.scratch.syslog)
+#[====[
+list(APPEND X_GCC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED unused-variable)
+#]====]
+list(APPEND X_MSVC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED 4996)
+define_example_program(test.scratch.syslog test.scratch.syslog.c)

@@ -4,11 +4,12 @@
  * Purpose: Vector file read/write.
  *
  * Created: 19th September 2005
- * Updated: 10th January 2017
+ * Updated: 28th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,8 +51,9 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_UIO_MAJOR     2
 # define SYNSOFT_UNIXEM_VER_SYS_H_UIO_MINOR     0
 # define SYNSOFT_UNIXEM_VER_SYS_H_UIO_REVISION  1
-# define SYNSOFT_UNIXEM_VER_SYS_H_UIO_EDIT      14
+# define SYNSOFT_UNIXEM_VER_SYS_H_UIO_EDIT      15
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -59,9 +61,10 @@
 
 #include <unixem/sys/uio.h>
 
+
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 
@@ -71,6 +74,7 @@
  * @{
  */
 
+
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifdef __cplusplus
@@ -78,21 +82,23 @@ extern "C"
 {
 #endif /* __cplusplus */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
 
 #ifndef _SSIZE_T_DEFINED
 /** Signed size type */
-typedef unixem_ssize_t  ssize_t;
+typedef unixem_ssize_t                                      ssize_t;
 # define _SSIZE_T_DEFINED
 #endif /* !_SSIZE_T_DEFINED */
 
 /** \def iovec
- * 
+ *
  * Defines a memory vector.
  */
-#define iovec       unixem_iovec
+#define iovec                                               unixem_iovec
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * functions
@@ -105,6 +111,9 @@ typedef unixem_ssize_t  ssize_t;
  * \param count the number of elements in the vector
  *
  * \note This is a macro, which resolves to unixem_readv()
+ *
+ * \note This is implemented to read the total size in one call to the
+ *  kernel except in the case that the total is "very large"
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 ssize_t readv(
@@ -113,7 +122,7 @@ ssize_t readv(
 ,   int                 count
 );
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define readv      unixem_readv
+# define readv                                              unixem_readv
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /** Writes to a file from a set of memory blocks
@@ -131,12 +140,13 @@ ssize_t writev(
 ,   int                 count
 );
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define writev     unixem_writev
+# define writev                                             unixem_writev
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

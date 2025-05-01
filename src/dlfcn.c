@@ -5,11 +5,12 @@
  *          API functions.
  *
  * Created: 1st January 2004
- * Updated: 10th January 2017
+ * Updated: 28th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,8 +45,9 @@
 # define _SYNSOFT_VER_C_DLFCN_MAJOR     3
 # define _SYNSOFT_VER_C_DLFCN_MINOR     0
 # define _SYNSOFT_VER_C_DLFCN_REVISION  1
-# define _SYNSOFT_VER_C_DLFCN_EDIT      18
+# define _SYNSOFT_VER_C_DLFCN_EDIT      22
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -57,17 +59,20 @@
 
 #include <windows.h>
 
+
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifndef WIN32
-# error This file is only currently defined for Win32 compilation units
+# error This file is only currently defined for Windows compilation units
 #endif /* WIN32 */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
 
-#define RTLD_BINDING_MASK   (0x00003)       /*!< Mask of binding time value. */
+#define RTLD_BINDING_MASK                                   (0x00003)       /*!< Mask of binding time value. */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * statics
@@ -75,34 +80,42 @@
 
 static const char* s_error;
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * internal functions
  */
 
 static void unixem_set_error_(DWORD dwErr)
 {
-    switch(dwErr)
+    switch (dwErr)
     {
-        case    ERROR_SUCCESS:
-            s_error = NULL;
-            break;
-        case    ERROR_MOD_NOT_FOUND:
-            s_error = "Module not found";
-            break;
-        case    ERROR_PROC_NOT_FOUND:
-            s_error = "Symbol not found";
-            break;
-        case    ERROR_BAD_EXE_FORMAT:
-            s_error = "Invalid image format";
-            break;
-        case    ERROR_SHARING_VIOLATION:
-            s_error = "Sharing violation";
-            break;
-        default:
-            s_error = "Operation failed";
-            break;
+    case ERROR_SUCCESS:
+
+        s_error = NULL;
+        break;
+    case ERROR_MOD_NOT_FOUND:
+
+        s_error = "Module not found";
+        break;
+    case ERROR_PROC_NOT_FOUND:
+
+        s_error = "Symbol not found";
+        break;
+    case ERROR_BAD_EXE_FORMAT:
+
+        s_error = "Invalid image format";
+        break;
+    case ERROR_SHARING_VIOLATION:
+
+        s_error = "Sharing violation";
+        break;
+    default:
+
+        s_error = "Operation failed";
+        break;
     }
 }
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -120,14 +133,14 @@ void* unixem_dlopen(
 {
     HMODULE hModule;
 
-    if(mode & UNIXEM_RTLD_LAZY)
+    if (mode & UNIXEM_RTLD_LAZY)
     {
         OutputDebugStringA("Library does not support RTLD_LAZY; using RTLD_NOW\n");
     }
 
     hModule = LoadLibraryA(moduleName);
 
-    if(NULL == hModule)
+    if (NULL == hModule)
     {
         unixem_set_error_(GetLastError());
     }
@@ -141,7 +154,7 @@ void* unixem_dlopen(
 
 int unixem_dlclose(void* hModule)
 {
-    if(!FreeLibrary((HMODULE)hModule))
+    if (!FreeLibrary((HMODULE)hModule))
     {
         unixem_set_error_(GetLastError());
 
@@ -160,13 +173,13 @@ void* unixem_dlsym(
 {
     union
     {
-        void    (*pfn)(void);
-        void    *pv;
+        void  (*pfn)(void);
+        void*   pv;
     } u;
 
     u.pfn = (void (*)(void))GetProcAddress((HMODULE)hModule, symbolName);
 
-    if(NULL == u.pfn)
+    if (NULL == u.pfn)
     {
         unixem_set_error_(GetLastError());
     }
@@ -191,4 +204,6 @@ char const* unixem_dlerror(void)
 } /* extern "C" */
 #endif /* __cplusplus */
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

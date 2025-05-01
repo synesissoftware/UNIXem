@@ -2,14 +2,15 @@
  * File:    unixem/dirent.h
  *
  * Purpose: Declaration of the opendir() API functions and types for the
- *          Win32 platform.
+ *          Windows platform.
  *
  * Created: 19th October 2002
- * Updated: 10th January 2017
+ * Updated: 28th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,12 +53,12 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_MAJOR       4
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_MINOR       0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_REVISION    1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_EDIT        36
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_EDIT        37
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 
@@ -73,12 +74,14 @@
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
 
 #include <unixem/unixem.h>
 #include <stddef.h>
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
@@ -87,6 +90,7 @@
 #ifndef NAME_MAX
 # define NAME_MAX   (260)   /*!< The maximum number of characters (including null terminator) in a directory entry name */
 #endif /* !NAME_MAX */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
@@ -100,7 +104,7 @@ typedef struct wdirent_dir  unixem_wDIR;    /*!< Handle type for wide string dir
 struct unixem_dirent
 {
     char    d_name[NAME_MAX + 1];   /*!< file name (null-terminated) */
-    int     d_mode;                 /*!< currently unused */    
+    int     d_mode;                 /*!< currently unused */
 };
 
 /** Results structure for wreaddir()
@@ -108,8 +112,9 @@ struct unixem_dirent
 struct unixem_wdirent
 {
     wchar_t d_name[NAME_MAX + 1];   /*!< file name (null-terminated) */
-    int     d_mode;                 /*!< currently unused */    
+    int     d_mode;                 /*!< currently unused */
 };
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -176,6 +181,7 @@ struct unixem_wdirent* unixem_wreaddir(unixem_wDIR* dir);
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

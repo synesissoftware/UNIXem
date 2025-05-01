@@ -4,11 +4,12 @@
  * Purpose: Internal utility header for the UNIXem API.
  *
  * Created: 2nd September 2005
- * Updated: 10th January 2017
+ * Updated: 29th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 1994-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,6 +46,7 @@
 #ifndef UNIXEM_INCL_UNIXEM_INTERNAL_H_UTIL
 #define UNIXEM_INCL_UNIXEM_INTERNAL_H_UTIL
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * version
  */
@@ -52,15 +54,17 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_MAJOR    1
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_MINOR    4
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_REVISION 1
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_EDIT     13
+# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_REVISION 2
+# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_EDIT     14
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
 
 #include <unixem/unixem.h>
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * macros
@@ -79,12 +83,16 @@
  */
 
 #ifndef NUM_ELEMENTS
-# ifdef __DMC__
-#  define NUM_ELEMENTS(ar)      (sizeof(ar) / sizeof(ar[0]))
+# if 0
+# elif defined(STLSOFT_NUM_ELEMENTS)
+#  defined NUM_ELEMENTS                                     STLSOFT_NUM_ELEMENTS
+# elif defined(__DMC__)
+#  define NUM_ELEMENTS(ar)                                  (sizeof(ar) / sizeof(ar[0]))
 # else /* ? compiler */
-#  define NUM_ELEMENTS(ar)      (sizeof(ar) / sizeof(0[ar]))
+#  define NUM_ELEMENTS(ar)                                  (sizeof(ar) / sizeof(0[ar]))
 # endif /* compiler */
 #endif /* !NUM_ELEMENTS */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * linkage specifications
@@ -95,20 +103,27 @@
  * Storage class specifier, defined as appropriate to the given compiler
  */
 
-#if defined(__BORLANDC__)
-# define UNIXEM_STGCLS_IMP      __declspec(dllimport)
+#if 0
+#elif defined(__BORLANDC__)
+
+# define UNIXEM_STGCLS_IMP                                  __declspec(dllimport)
 #elif defined(__DMC__) || \
       defined(__INTEL_COMPILER) || \
       defined(__MWERKS__) || \
       defined(_MSC_VER)
+
 # if defined(_MT)
-#  define UNIXEM_STGCLS_IMP     __declspec(dllimport)
+
+#  define UNIXEM_STGCLS_IMP                                 __declspec(dllimport)
 # else /* ? _MT */
+
 #  define UNIXEM_STGCLS_IMP
 # endif /* _MT */
 #else
+
 # define UNIXEM_STGCLS_IMP
 #endif /* compiler */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * function declarations
@@ -150,6 +165,7 @@ unixem_internal_yearIsLeap(
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

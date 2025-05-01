@@ -4,11 +4,12 @@
  * Purpose: Implementation of the gethostname() function.
  *
  * Created: 20th April 2008
- * Updated: 10th January 2017
+ * Updated: 10th July 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2008-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2008-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,8 +44,9 @@
 # define _SYNSOFT_VER_C_HOSTNAME_MAJOR      2
 # define _SYNSOFT_VER_C_HOSTNAME_MINOR      0
 # define _SYNSOFT_VER_C_HOSTNAME_REVISION   1
-# define _SYNSOFT_VER_C_HOSTNAME_EDIT       8
+# define _SYNSOFT_VER_C_HOSTNAME_EDIT       9
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -61,6 +63,7 @@
 #include <stdlib.h>
 #include <windows.h>
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
  */
@@ -76,9 +79,9 @@ int __stdcall unixem_gethostname(
 
     cchName_ = (DWORD)cchName;
 
-    if(!GetComputerNameA(name, &cchName_))
+    if (!GetComputerNameA(name, &cchName_))
     {
-        if(ERROR_BUFFER_OVERFLOW != GetLastError())
+        if (ERROR_BUFFER_OVERFLOW != GetLastError())
         {
             errno = unixem_internal_errno_from_Win32(GetLastError());
 
@@ -99,4 +102,6 @@ int __stdcall unixem_gethostname(
     return 0;
 }
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -2,14 +2,15 @@
  * File:    dirent.h
  *
  * Purpose: Declaration of the opendir() API functions and types for the
- *          Win32 platform.
+ *          Windows platform.
  *
  * Created: 19th October 2002
- * Updated: 10th January 2017
+ * Updated: 28th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,12 +52,12 @@
 # define SYNSOFT_UNIXEM_VER_H_DIRENT_MAJOR      4
 # define SYNSOFT_UNIXEM_VER_H_DIRENT_MINOR      0
 # define SYNSOFT_UNIXEM_VER_H_DIRENT_REVISION   1
-# define SYNSOFT_UNIXEM_VER_H_DIRENT_EDIT       37
+# define SYNSOFT_UNIXEM_VER_H_DIRENT_EDIT       38
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 
@@ -72,11 +73,13 @@
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
 
 #include <unixem/dirent.h>
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
@@ -88,7 +91,7 @@
  *
  * \see unixem_DIR
  */
-#define DIR     unixem_DIR
+#define DIR                                                 unixem_DIR
 
 /** \def wDIR
  *
@@ -96,7 +99,7 @@
  *
  * \see unixem_wDIR
  */
-#define wDIR    unixem_wDIR
+#define wDIR                                                unixem_wDIR
 
 /** \def dirent
  *
@@ -104,7 +107,7 @@
  *
  * \see unixem_dirent
  */
-#define dirent   unixem_dirent
+#define dirent                                              unixem_dirent
 
 /** \def wdirent
  *
@@ -112,7 +115,8 @@
  *
  * \see unixem_wdirent
  */
-#define wdirent  unixem_wdirent
+#define wdirent                                             unixem_wdirent
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -137,10 +141,10 @@ extern "C" {
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 DIR* opendir(char const* name);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define opendir    unixem_opendir
+# define opendir                                            unixem_opendir
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define wopendir   unixem_wopendir
+# define wopendir                                           unixem_wopendir
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /** Closes a directory handle
@@ -156,10 +160,10 @@ DIR* opendir(char const* name);
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int closedir(DIR* dir);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define closedir   unixem_closedir
+# define closedir                                           unixem_closedir
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define wclosedir  unixem_wclosedir
+# define wclosedir                                          unixem_wclosedir
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /** Resets a directory search position
@@ -174,10 +178,10 @@ int closedir(DIR* dir);
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 void rewinddir(DIR* dir);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define rewinddir   unixem_rewinddir
+# define rewinddir                                          unixem_rewinddir
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define wrewinddir unixem_wrewinddir
+# define wrewinddir                                         unixem_wrewinddir
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /** Returns a pointer to the next directory entry.
@@ -193,15 +197,16 @@ void rewinddir(DIR* dir);
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 struct dirent* readdir(DIR* dir);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define readdir    unixem_readdir
+# define readdir                                            unixem_readdir
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define wreaddir   unixem_wreaddir
+# define wreaddir                                           unixem_wreaddir
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

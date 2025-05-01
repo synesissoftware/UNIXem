@@ -4,11 +4,12 @@
  * Purpose: Declaration of the mmap() and munmap() API functions.
  *
  * Created: 18th December 2003
- * Updated: 10th January 2017
+ * Updated: 28th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +52,9 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_MAJOR     3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_MINOR     0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_REVISION  1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_EDIT      26
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_EDIT      27
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -64,7 +66,7 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 
@@ -79,6 +81,7 @@
 #ifndef _WIN32
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
@@ -105,6 +108,7 @@
 # define UNIXEM_MAP_FAILED      ((void*)~0)                /*!< Returned from mmap() when the mapping fails */
 #endif /* _WIN64 */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
  */
@@ -121,7 +125,8 @@ extern "C"
  *   len and offset must not exceed the length of the mapped file
  * \param prot Either PROT_NONE, or a combination of the other PROT_* flags
  * \param flags One of MAP_PRIVATE, MAP_ANONYMOUS or MAP_FIXED.
- * \param fd The file descriptor of the file to map, or -1 to allocate an anonymous map
+ * \param fd The file descriptor of the file to map, or -1 to allocate an
+ *  anonymous map
  * \param offset The offset within the file to start the mapped region
  *
  * \retval pointer to mapped region if successful
@@ -148,7 +153,8 @@ void* unixem_mmap(
  * generate invalid memory references.
  *
  * \param addr The base address of the mapped region to unmap
- * \param len The length of the mapped region. Ignore in the Win32 implementation
+ * \param len The length of the mapped region. Ignore in the Windows
+ *  implementation
  *
  * \retval 0 if successful
  * \retval -1 if failed
@@ -162,8 +168,8 @@ int unixem_munmap(
 /** Writes any dirty pages within the given range to disk
  *
  * \param addr The base address of the mapped region
- * \param len The length of the mapped region to flush to disk. Will be rounded up
- * to next page boundary.
+ * \param len The length of the mapped region to flush to disk. Will be
+ *  rounded up to next page boundary
  * \param flags Ignored
  */
 
@@ -176,6 +182,7 @@ int unixem_msync(
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

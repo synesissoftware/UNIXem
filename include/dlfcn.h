@@ -5,18 +5,19 @@
  *          functions.
  *
  * Created: 1st January 2004
- * Updated: 10th January 2017
+ * Updated: 28th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without 
+ * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *
  * - Redistributions of source code must retain the above copyright notice, this
- *   list of conditions and the following disclaimer. 
+ *   list of conditions and the following disclaimer.
  * - Redistributions in binary form must reproduce the above copyright notice,
  *   this list of conditions and the following disclaimer in the documentation
  *   and/or other materials provided with the distribution.
@@ -51,8 +52,9 @@
 # define SYNSOFT_UNIXEM_VER_H_DLFCN_MAJOR       3
 # define SYNSOFT_UNIXEM_VER_H_DLFCN_MINOR       0
 # define SYNSOFT_UNIXEM_VER_H_DLFCN_REVISION    1
-# define SYNSOFT_UNIXEM_VER_H_DLFCN_EDIT        20
+# define SYNSOFT_UNIXEM_VER_H_DLFCN_EDIT        21
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -60,9 +62,10 @@
 
 #include <unixem/dlfcn.h>
 
+
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 
@@ -79,12 +82,14 @@
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
 
-#define RTLD_LAZY           (UNIXEM_RTLD_LAZY)  /*!< Lazy function call binding. */
-#define RTLD_NOW            (UNIXEM_RTLD_NOW)   /*!< Immediate function call binding. */
+#define RTLD_LAZY                                           (UNIXEM_RTLD_LAZY)  /*!< Lazy function call binding. */
+#define RTLD_NOW                                            (UNIXEM_RTLD_NOW)   /*!< Immediate function call binding. */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -95,13 +100,13 @@ extern "C"
 {
 #endif /* __cplusplus */
 
-/** Loads the given module, 
+/** Loads the given module,
  *
- * \param moduleName The name of the module. The name is passed through to Win32's
- * LoadLibrary(), so the value of this parameter is interpreted according to Win32's
- * loading rules.
- * \param mode The loading mode. This is ignored on Win32 platforms, and the function
- * always behaves as if RTLD_NOW was specified
+ * \param moduleName The name of the module. The name is passed through to
+ *  Windows's LoadLibrary(), so the value of this parameter is interpreted
+ *  according to Windows's loading rules.
+ * \param mode The loading mode. This is ignored on Windows platforms, and
+ *  the function always behaves as if RTLD_NOW was specified
  *
  * \note This is a macro, which resolves to unixem_dlopen()
  */
@@ -111,7 +116,7 @@ void* dlopen(
 ,   int         mode
 );
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define dlopen         unixem_dlopen
+# define dlopen                                             unixem_dlopen
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /** Closes the given module
@@ -125,7 +130,7 @@ void* dlopen(
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 void dlclose(void* hModule);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define dlclose        unixem_dlclose
+# define dlclose                                            unixem_dlclose
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /** Looks up a symbol
@@ -143,7 +148,7 @@ void* dlsym(
 ,   char const* symbolName
 );
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define dlsym          unixem_dlsym
+# define dlsym                                              unixem_dlsym
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /** Returns a descriptive string for the last error
@@ -157,7 +162,7 @@ void* dlsym(
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 char const* dlerror(void);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define dlerror        unixem_dlerror
+# define dlerror                                            unixem_dlerror
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION

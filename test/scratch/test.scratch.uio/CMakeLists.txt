@@ -1,3 +1,2 @@
-add_executable(test.scratch.uio test.scratch.uio.c)
-target_link_libraries(test.scratch.uio UNIXem.core xTests::xTests.core)
-add_test(NAME test.scratch.uio COMMAND ./test.scratch.uio)
+list(APPEND X_MSVC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED 4996)
+define_example_program(test.scratch.uio test.scratch.uio.c)

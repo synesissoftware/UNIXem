@@ -1,14 +1,16 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:    unistd.c
  *
- * Purpose: Definition of the chdir() and other API functions for the Win32 platform.
+ * Purpose: Definition of the chdir() and other API functions for the
+ *          Windows platform.
  *
  * Created: 1st November 2003
- * Updated: 10th January 2017
+ * Updated: 29th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,11 +42,12 @@
 
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define _SYNSOFT_VER_C_UNISTD_MAJOR      3
-# define _SYNSOFT_VER_C_UNISTD_MINOR      0
-# define _SYNSOFT_VER_C_UNISTD_REVISION   3
-# define _SYNSOFT_VER_C_UNISTD_EDIT       37
+# define _SYNSOFT_VER_C_UNISTD_MAJOR    3
+# define _SYNSOFT_VER_C_UNISTD_MINOR    0
+# define _SYNSOFT_VER_C_UNISTD_REVISION 5
+# define _SYNSOFT_VER_C_UNISTD_EDIT     42
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -59,39 +62,45 @@
 #include <limits.h>
 #include <windows.h>
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * feature support
  */
 
-#if defined(__BORLANDC__)
-UNIXEM_STGCLS_IMP long _cdecl _get_osfhandle(int __handle);
+#if 0
+#elif defined(__BORLANDC__)
+
 #elif defined(__DMC__) || \
       ( defined(__INTEL_COMPILER) && \
         defined(_WIN32)) || \
       ( defined(__MWERKS__) && \
         defined(_WIN32)) || \
       defined(_MSC_VER)
+
 UNIXEM_STGCLS_IMP int __cdecl _close(int);
-UNIXEM_STGCLS_IMP long __cdecl _get_osfhandle(int __handle);
 #elif defined(__GNUC__)
-long __cdecl _get_osfhandle(int __handle);
+
+# if __GNUC__ > 4
+
+# else
+
+# endif
 #elif defined(__WATCOMC__)
-_WCRTLINK extern long _get_osfhandle( int __posixhandle );
+
 #else
+
 # error Compiler not discriminated
 #endif /* compiler */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
 
 #ifndef FILE_ATTRIBUTE_ERROR
-# define FILE_ATTRIBUTE_ERROR           (0xFFFFFFFF)
+# define FILE_ATTRIBUTE_ERROR                               (0xFFFFFFFF)
 #endif /* FILE_ATTRIBUTE_ERROR */
 
-#ifdef __BORLANDC__
-# define CreateHardLinkA    __CreateHardLinkA
-#endif /* __BORLANDC__ */
 
 /* /////////////////////////////////////////////////////////////////////////
  * worker functions
@@ -104,7 +113,7 @@ static long unixem__unistd__pathconf_diff(
 {
     size_t  len = (size_t)lstrlenA(s);
 
-    if(len > limit)
+    if (len > limit)
     {
         return -1;
     }
@@ -124,7 +133,7 @@ static long unixem__unistd__get_full_path(
 {
     DWORD   dw  =   GetFullPathNameA(s, cchBuff, buff, pFile);
 
-    if(0 == dw)
+    if (0 == dw)
     {
         errno = unixem_internal_errno_from_Win32(GetLastError());
 
@@ -138,12 +147,12 @@ static long unixem__unistd__get_full_path(
 
 static char *unixem__unistd__nextSlash(char *s)
 {
-    for(; '\0' != *s; ++s)
+    for (; '\0' != *s; ++s)
     {
-        switch(*s)
+        switch (*s)
         {
-            case    '/':
-            case    '\\':
+        case '/':
+        case '\\':
                 return s;
         }
     }
@@ -153,11 +162,11 @@ static char *unixem__unistd__nextSlash(char *s)
 
 static char *unixem__unistd__nextSlashDot(char *s)
 {
-    char    *slash;
+    char* slash;
 
-    for(slash = s; NULL != (slash = unixem__unistd__nextSlash(slash + 1)); )
+    for (slash = s; NULL != (slash = unixem__unistd__nextSlash(slash + 1)); )
     {
-        if('.' == slash[1])
+        if ('.' == slash[1])
         {
             return slash;
         }
@@ -166,6 +175,7 @@ static char *unixem__unistd__nextSlashDot(char *s)
     return NULL;
 }
 #endif /* 0 */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -183,19 +193,19 @@ int unixem_link(
     DWORD   srcAttr     =   GetFileAttributesA(originalFile);
     DWORD   linkAttr    =   GetFileAttributesA(linkName);
 
-    if(srcAttr == FILE_ATTRIBUTE_ERROR) /* Source exists? */
+    if (srcAttr == FILE_ATTRIBUTE_ERROR) /* Source exists? */
     {
         errno = ENOENT;
 
         return -1;
     }
-    else if(FILE_ATTRIBUTE_DIRECTORY & srcAttr) /* Source is a directory? */
+    else if (FILE_ATTRIBUTE_DIRECTORY & srcAttr) /* Source is a directory? */
     {
         errno = ENOTDIR;
 
         return -1;
     }
-    else if(FILE_ATTRIBUTE_ERROR != linkAttr) /* Link already exists? */
+    else if (FILE_ATTRIBUTE_ERROR != linkAttr) /* Link already exists? */
     {
         errno = EEXIST;
 
@@ -206,7 +216,7 @@ int unixem_link(
         char    originalDrive   =   (':' == originalFile[1]) ? originalFile[0] : unixem_internal_get_current_drive();
         char    linkDrive       =   (':' == linkName[1]) ? linkName[0] : unixem_internal_get_current_drive();
 
-        if(originalDrive != linkDrive)
+        if (originalDrive != linkDrive)
         {
             errno = EXDEV;
 
@@ -216,20 +226,27 @@ int unixem_link(
         {
             typedef int (WINAPI *PFnCreateHardLink)(LPCTSTR , LPCTSTR , LPSECURITY_ATTRIBUTES );
 
+            union
+            {
+                PFnCreateHardLink   pfn;
+                FARPROC             pfp;
+            } u;
+
             HINSTANCE           hinst           =   LoadLibrary("Kernel32");
-            PFnCreateHardLink   CreateHardLinkA =   (PFnCreateHardLink)GetProcAddress(hinst, "CreateHardLinkA");
             int                 result          =   -1;
+
+            u.pfp = GetProcAddress(hinst, "CreateHardLinkA");
 
             SetLastError(ERROR_SUCCESS);
 
-            if( NULL == hinst ||
-                NULL == CreateHardLinkA)
+            if (NULL == hinst ||
+                NULL == u.pfp)
             {
                 errno = unixem_internal_errno_from_Win32(ERROR_NOT_SUPPORTED);
             }
             else
             {
-                if(!CreateHardLinkA(linkName, originalFile, NULL))
+                if (!u.pfn(linkName, originalFile, NULL))
                 {
                     errno = unixem_internal_errno_from_Win32(GetLastError());
                 }
@@ -239,7 +256,7 @@ int unixem_link(
                 }
             }
 
-            if(NULL != hinst)
+            if (NULL != hinst)
             {
                 (void)FreeLibrary(hinst);
             }
@@ -253,22 +270,22 @@ int unixem_unlink(const char *path)
 {
     DWORD   attr    =   GetFileAttributesA(path);
 
-    if(FILE_ATTRIBUTE_ERROR == attr)
+    if (FILE_ATTRIBUTE_ERROR == attr)
     {
         errno = ENOENT;
 
         return -1;
     }
-    else if(FILE_ATTRIBUTE_DIRECTORY & attr)
+    else if (FILE_ATTRIBUTE_DIRECTORY & attr)
     {
-        if(RemoveDirectoryA(path))
+        if (RemoveDirectoryA(path))
         {
             return 0;
         }
     }
     else
     {
-        if(DeleteFileA(path))
+        if (DeleteFileA(path))
         {
             return 0;
         }
@@ -281,7 +298,7 @@ int unixem_unlink(const char *path)
 
 int unixem_chdir(char const *dirName)
 {
-    if(SetCurrentDirectoryA(dirName))
+    if (SetCurrentDirectoryA(dirName))
     {
         return 0;
     }
@@ -298,7 +315,7 @@ char* unixem_getcwd(
 ,   size_t  max_len
 )
 {
-    if(GetCurrentDirectoryA((DWORD)max_len, buffer))
+    if (GetCurrentDirectoryA((DWORD)max_len, buffer))
     {
         return buffer;
     }
@@ -317,7 +334,7 @@ int unixem_mkdir(
 {
     ((void)mode);
 
-    if(CreateDirectoryA(dirName, NULL))
+    if (CreateDirectoryA(dirName, NULL))
     {
         return 0;
     }
@@ -331,7 +348,7 @@ int unixem_mkdir(
 
 int unixem_rmdir(const char *dirName)
 {
-    if(RemoveDirectoryA(dirName))
+    if (RemoveDirectoryA(dirName))
     {
         return 0;
     }
@@ -344,7 +361,7 @@ int unixem_rmdir(const char *dirName)
 }
 
 
-int unixem_close(int handle)
+int unixem_close(int fd)
 {
 #if defined(__DMC__) || \
     (   defined(__INTEL_COMPILER) && \
@@ -354,36 +371,34 @@ int unixem_close(int handle)
     defined(_MSC_VER)
 
     /* Use _close() */
-    return _close(handle);
-
+    return _close(fd);
 #else /* ? compiler */
 
-    if( 0 == handle || 
-        1 == handle ||
-        2 == handle)
+    if (0 == fd ||
+        1 == fd ||
+        2 == fd)
     {
         return 0;
     }
     else
     {
-        HANDLE  h   =   (HANDLE)_get_osfhandle(handle);
+        HANDLE h = (HANDLE)unixem_internal_Windows_HANDLE_from_file_handle(fd);
 
-        if(CloseHandle(h))
+        if (CloseHandle(h))
         {
             return 0;
         }
         else
         {
-            DWORD   err = GetLastError();
+            DWORD err = GetLastError();
 
-            switch(err)
+            switch (err)
             {
                 default:
                     return EBADF;
             }
         }
     }
-
 #endif /* compiler */
 }
 
@@ -398,11 +413,11 @@ int unixem_getpagesize(void)
 
 
 #ifndef _MAX_FNAME
-# define _MAX_FNAME (256)
+# define _MAX_FNAME                                         (256)
 #endif /* !_MAX_FNAME */
 
 #ifndef _MAX_PATH
-# define _MAX_PATH  (260)
+# define _MAX_PATH                                          (260)
 #endif /* !_MAX_PATH */
 
 long unixem_pathconf(
@@ -410,23 +425,23 @@ long unixem_pathconf(
 ,   int         name
 )
 {
-    switch(name)
+    switch (name)
     {
-        default:
-            return -1;
-        case    UNIXEM_PC_LINK_MAX:           return LONG_MAX;
-        case    UNIXEM_PC_MAX_CANON:          return LONG_MAX;
-        case    UNIXEM_PC_MAX_INPUT:          return LONG_MAX;
-        case    UNIXEM_PC_NAME_MAX:           return unixem__unistd__pathconf_diff(path, _MAX_FNAME);
-        case    UNIXEM_PC_PATH_MAX:           return unixem__unistd__pathconf_diff(path, _MAX_PATH);
-        case    UNIXEM_PC_PIPE_BUF:           return -1;
-        case    UNIXEM_PC_CHOWN_RESTRICTED:   return -1;
-        case    UNIXEM_PC_NO_TRUNC:           return -1;
-        case    UNIXEM_PC_VDISABLE:           return -1;
-        case    UNIXEM_PC_AIX_DISK_PARTITION: return -1;
-        case    UNIXEM_PC_AIX_DISK_SIZE:      return -1;
-        case    UNIXEM_PC_FILESIZEBITS:       return -1;
-        case    UNIXEM_PC_SYNC_IO:            return -1;
+    default:
+        return -1;
+    case UNIXEM_PC_LINK_MAX:           return LONG_MAX;
+    case UNIXEM_PC_MAX_CANON:          return LONG_MAX;
+    case UNIXEM_PC_MAX_INPUT:          return LONG_MAX;
+    case UNIXEM_PC_NAME_MAX:           return unixem__unistd__pathconf_diff(path, _MAX_FNAME);
+    case UNIXEM_PC_PATH_MAX:           return unixem__unistd__pathconf_diff(path, _MAX_PATH);
+    case UNIXEM_PC_PIPE_BUF:           return -1;
+    case UNIXEM_PC_CHOWN_RESTRICTED:   return -1;
+    case UNIXEM_PC_NO_TRUNC:           return -1;
+    case UNIXEM_PC_VDISABLE:           return -1;
+    case UNIXEM_PC_AIX_DISK_PARTITION: return -1;
+    case UNIXEM_PC_AIX_DISK_SIZE:      return -1;
+    case UNIXEM_PC_FILESIZEBITS:       return -1;
+    case UNIXEM_PC_SYNC_IO:            return -1;
     }
 }
 
@@ -443,7 +458,7 @@ char* unixem_realpath(
      */
     DWORD   attr    =   GetFileAttributesA(path);
 
-    if(FILE_ATTRIBUTE_ERROR == attr)
+    if (FILE_ATTRIBUTE_ERROR == attr)
     {
         errno = ENOENT;
 
@@ -454,7 +469,7 @@ char* unixem_realpath(
         LPSTR   lpFile;
         DWORD   dw  =   GetFullPathNameA(path, 1 + _MAX_PATH, resolvedPath, &lpFile);
 
-        if(0 == dw)
+        if (0 == dw)
         {
             errno = unixem_internal_errno_from_Win32(GetLastError());
 
@@ -479,4 +494,6 @@ unixem_pid_t unixem_getpid(void)
     return (unixem_pid_t)GetCurrentProcessId();
 }
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

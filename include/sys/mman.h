@@ -4,11 +4,12 @@
  * Purpose: Declaration of the mmap() and munmap() API functions.
  *
  * Created: 18th December 2003
- * Updated: 10th January 2017
+ * Updated: 28th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +52,9 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_MMAP_MAJOR    3
 # define SYNSOFT_UNIXEM_VER_SYS_H_MMAP_MINOR    0
 # define SYNSOFT_UNIXEM_VER_SYS_H_MMAP_REVISION 1
-# define SYNSOFT_UNIXEM_VER_SYS_H_MMAP_EDIT     27
+# define SYNSOFT_UNIXEM_VER_SYS_H_MMAP_EDIT     28
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -62,7 +64,7 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 
@@ -78,20 +80,22 @@
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
 
-#define PROT_READ       (UNIXEM_PROT_READ)          /*!< page can be read */
-#define PROT_WRITE      (UNIXEM_PROT_WRITE)         /*!< page can be written */
-#define PROT_EXEC       (UNIXEM_PROT_EXEC)          /*!< page can be executed */
-#define PROT_NONE       (UNIXEM_PROT_NONE)          /*!< page can not be accessed */
+#define PROT_READ                                           (UNIXEM_PROT_READ)      /*!< page can be read */
+#define PROT_WRITE                                          (UNIXEM_PROT_WRITE)     /*!< page can be written */
+#define PROT_EXEC                                           (UNIXEM_PROT_EXEC)      /*!< page can be executed */
+#define PROT_NONE                                           (UNIXEM_PROT_NONE)      /*!< page can not be accessed */
 
-#define MAP_PRIVATE     (UNIXEM_MAP_PRIVATE)        /*!< Changes are private */
-#define MAP_ANONYMOUS   (UNIXEM_MAP_ANONYMOUS)      /*!< Ignore fd and offset parameters */
-#define MAP_FIXED       (UNIXEM_MAP_FIXED)          /*!< Interpret addr exactly */
+#define MAP_PRIVATE                                         (UNIXEM_MAP_PRIVATE)    /*!< Changes are private */
+#define MAP_ANONYMOUS                                       (UNIXEM_MAP_ANONYMOUS)  /*!< Ignore fd and offset parameters */
+#define MAP_FIXED                                           (UNIXEM_MAP_FIXED)      /*!< Interpret addr exactly */
 
-#define MAP_FAILED      (UNIXEM_MAP_FAILED)         /*!< Returned from mmap() when the mapping fails */
+#define MAP_FAILED                                          (UNIXEM_MAP_FAILED)     /*!< Returned from mmap() when the mapping fails */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -109,7 +113,8 @@ extern "C"
  * len and offset must not exceed the length of the mapped file
  * \param prot Either PROT_NONE, or a combination of the other PROT_* flags
  * \param flags One of MAP_PRIVATE, MAP_ANONYMOUS or MAP_FIXED.
- * \param fd The file descriptor of the file to map, or -1 to allocate an anonymous map
+ * \param fd The file descriptor of the file to map, or -1 to allocate an
+ *  anonymous map
  * \param offset The offset within the file to start the mapped region
  *
  * \retval pointer to mapped region if successful
@@ -141,7 +146,8 @@ void* mmap(
  * generate invalid memory references.
  *
  * \param addr The base address of the mapped region to unmap
- * \param len The length of the mapped region. Ignore in the Win32 implementation
+ * \param len The length of the mapped region. Ignore in the Windows
+ *  implementation
  *
  * \retval 0 if successful
  * \retval -1 if failed
@@ -154,14 +160,14 @@ int munmap(
 ,   size_t  len
 );
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define munmap     unixem_munmap
+# define munmap                                             unixem_munmap
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /** Writes any dirty pages within the given range to disk
  *
  * \param addr The base address of the mapped region
- * \param len The length of the mapped region to flush to disk. Will be rounded up
- * to next page boundary.
+ * \param len The length of the mapped region to flush to disk. Will be
+ *  rounded up to next page boundary
  * \param flags Ignored
  *
  * \note This is a macro, which resolves to unixem_msync()
@@ -173,13 +179,13 @@ int msync(
 ,   int     flags
 );
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define msync      unixem_msync
+# define msync                                              unixem_msync
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
-
 
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

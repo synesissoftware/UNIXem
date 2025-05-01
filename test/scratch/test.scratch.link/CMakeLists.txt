@@ -1,3 +1,2 @@
-add_executable(test.scratch.link test.scratch.link.c)
-target_link_libraries(test.scratch.link UNIXem.core xTests::xTests.core)
-add_test(NAME test.scratch.link COMMAND ./test.scratch.link)
+list(APPEND X_MSVC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED 4996)
+define_automated_test_program(test.scratch.link test.scratch.link.c)

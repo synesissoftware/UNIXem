@@ -2,14 +2,15 @@
  * File:    unixem/sys/time.h
  *
  * Purpose: Declaration of the gettimeofday() API function and supporting
- *          types for the Win32 platform.
+ *          types for the Windows platform.
  *
  * Created: 8th December 2002
- * Updated: 10th January 2017
+ * Updated: 28th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +53,9 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_MAJOR     3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_MINOR     0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_REVISION  2
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_EDIT      28
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_EDIT      29
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -67,7 +69,7 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 
@@ -121,6 +123,7 @@ extern int unixem_gettimeofday(
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

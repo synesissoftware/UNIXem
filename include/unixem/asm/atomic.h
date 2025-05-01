@@ -2,14 +2,15 @@
  * File:    unixem/asm/atomic.h
  *
  * Purpose: Declaration of Linux like atomic functions for the
- *          Win32 platform.
+ *          Windows platform.
  *
  * Created: 21st November 2003
- * Updated: 10th January 2017
+ * Updated: 29th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,8 +48,9 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_MAJOR       3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_MINOR       0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_REVISION    1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_EDIT        19
+# define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_EDIT        22
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 
@@ -56,17 +58,20 @@
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
  */
 
 #include <unixem/unixem.h>
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
 
-typedef signed long     unixem_atomic_t;
+typedef signed long                                         unixem_atomic_t;
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -76,31 +81,32 @@ typedef signed long     unixem_atomic_t;
 extern "C" {
 #endif /* __cplusplus */
 
-#define UNIXEM_ATOMIC_INIT(i)      (i)
+#define UNIXEM_ATOMIC_INIT(i)                               (i)
 
-void    unixem_atomic_set(unixem_atomic_t volatile *v, int i);
-int     unixem_atomic_write(unixem_atomic_t volatile *v, int i);
-int     unixem_atomic_read(unixem_atomic_t volatile *v);
+void    unixem_atomic_set(unixem_atomic_t volatile* v, int i);
+int     unixem_atomic_write(unixem_atomic_t volatile* v, int i);
+int     unixem_atomic_read(unixem_atomic_t volatile* v);
 
-void    unixem_atomic_add(int i, unixem_atomic_t volatile *v);
-void    unixem_atomic_sub(int i, unixem_atomic_t volatile *v);
+void    unixem_atomic_add(int i, unixem_atomic_t volatile* v);
+void    unixem_atomic_sub(int i, unixem_atomic_t volatile* v);
 
-void    unixem_atomic_inc(unixem_atomic_t volatile *v);
-void    unixem_atomic_dec(unixem_atomic_t volatile *v);
-
-/** Returns the previous value */
-int     unixem_atomic_inc_and_test(unixem_atomic_t volatile *v);
-/** Returns the previous value */
-int     unixem_atomic_dec_and_test(unixem_atomic_t volatile *v);
+void    unixem_atomic_inc(unixem_atomic_t volatile* v);
+void    unixem_atomic_dec(unixem_atomic_t volatile* v);
 
 /** Returns the previous value */
-int     unixem_atomic_add_and_test(int i, unixem_atomic_t volatile *v);
+int     unixem_atomic_inc_and_test(unixem_atomic_t volatile* v);
 /** Returns the previous value */
-int     unixem_atomic_sub_and_test(int i, unixem_atomic_t volatile *v);
+int     unixem_atomic_dec_and_test(unixem_atomic_t volatile* v);
+
+/** Returns the previous value */
+int     unixem_atomic_add_and_test(int i, unixem_atomic_t volatile* v);
+/** Returns the previous value */
+int     unixem_atomic_sub_and_test(int i, unixem_atomic_t volatile* v);
 
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

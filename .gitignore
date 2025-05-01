@@ -1,6 +1,8 @@
 
 # directories (by name)
 
+/_build/
+
 include/b64/
 include/shwild/
 include/xcontract/
@@ -46,7 +48,9 @@ DebugUnix/
 ReleaseMTUnix/
 ReleaseUnix/
 
+
 # directories (by pattern)
+
 
 # files (by name)
 
@@ -58,6 +62,7 @@ build/makefile.tools.xml
 include/fastformat/internal/dos2unix.has.been.performed
 
 test/tests-plan.txt
+
 
 # files (by pattern)
 

@@ -1,3 +1,3 @@
-add_executable(test.component.unistd.mkstemp test.component.unistd.mkstemp.c)
-target_link_libraries(test.component.unistd.mkstemp UNIXem.core xTests::xTests.core)
-add_test(NAME test.component.unistd.mkstemp COMMAND ./test.component.unistd.mkstemp)
+list(APPEND X_MSVC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED 4996)
+define_automated_test_program(test.component.unistd.mkstemp test.component.unistd.mkstemp.c)
+

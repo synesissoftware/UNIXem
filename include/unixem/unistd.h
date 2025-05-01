@@ -4,11 +4,12 @@
  * Purpose: Declaration of various UNIX standard functions.
  *
  * Created: 1st November 2003
- * Updated: 10th January 2017
+ * Updated: 29th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +52,9 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_MAJOR       3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_MINOR       1
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_REVISION    1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_EDIT        47
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_EDIT        49
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -64,7 +66,7 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 
@@ -79,6 +81,7 @@
 #ifndef _WIN32
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
@@ -107,28 +110,30 @@ enum
     ,   UNIXEM_PC_SYNC_IO                   /*!< Returns -1 if the file system does not support the Synchronized Input and Output option. Any value other than -1 is returned if the file system supports the option. */
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define UNIXEM_PC_LINK_MAX                 UNIXEM_PC_LINK_MAX
-# define UNIXEM_PC_MAX_CANON                UNIXEM_PC_MAX_CANON
-# define UNIXEM_PC_MAX_INPUT                UNIXEM_PC_MAX_INPUT
-# define UNIXEM_PC_NAME_MAX                 UNIXEM_PC_NAME_MAX
-# define UNIXEM_PC_PATH_MAX                 UNIXEM_PC_PATH_MAX
-# define UNIXEM_PC_PIPE_BUF                 UNIXEM_PC_PIPE_BUF
-# define UNIXEM_PC_CHOWN_RESTRICTED         UNIXEM_PC_CHOWN_RESTRICTED
-# define UNIXEM_PC_NO_TRUNC                 UNIXEM_PC_NO_TRUNC
-# define UNIXEM_PC_VDISABLE                 UNIXEM_PC_VDISABLE
-# define UNIXEM_PC_AIX_DISK_PARTITION       UNIXEM_PC_AIX_DISK_PARTITION
-# define UNIXEM_PC_AIX_DISK_SIZE            UNIXEM_PC_AIX_DISK_SIZE
-# define UNIXEM_PC_FILESIZEBITS             UNIXEM_PC_FILESIZEBITS
-# define UNIXEM_PC_SYNC_IO                  UNIXEM_PC_SYNC_IO
+# define UNIXEM_PC_LINK_MAX                                 UNIXEM_PC_LINK_MAX
+# define UNIXEM_PC_MAX_CANON                                UNIXEM_PC_MAX_CANON
+# define UNIXEM_PC_MAX_INPUT                                UNIXEM_PC_MAX_INPUT
+# define UNIXEM_PC_NAME_MAX                                 UNIXEM_PC_NAME_MAX
+# define UNIXEM_PC_PATH_MAX                                 UNIXEM_PC_PATH_MAX
+# define UNIXEM_PC_PIPE_BUF                                 UNIXEM_PC_PIPE_BUF
+# define UNIXEM_PC_CHOWN_RESTRICTED                         UNIXEM_PC_CHOWN_RESTRICTED
+# define UNIXEM_PC_NO_TRUNC                                 UNIXEM_PC_NO_TRUNC
+# define UNIXEM_PC_VDISABLE                                 UNIXEM_PC_VDISABLE
+# define UNIXEM_PC_AIX_DISK_PARTITION                       UNIXEM_PC_AIX_DISK_PARTITION
+# define UNIXEM_PC_AIX_DISK_SIZE                            UNIXEM_PC_AIX_DISK_SIZE
+# define UNIXEM_PC_FILESIZEBITS                             UNIXEM_PC_FILESIZEBITS
+# define UNIXEM_PC_SYNC_IO                                  UNIXEM_PC_SYNC_IO
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 };
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
 
 /** Process-identifier type */
-typedef int         unixem_pid_t;
+typedef int                                                 unixem_pid_t;
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -217,10 +222,10 @@ int unixem_rmdir(char const* dirName);
 
 /** Closes a file
  *
- * \param handle The handle of the file to be closed
+ * \param handle The descriptor of the file to be closed
  * \return 0 on success, or -1 if there is an error
  */
-int unixem_close(int handle);
+int unixem_close(int fd);
 
 
 /* * Creates a pipe
@@ -243,7 +248,7 @@ long unixem_pathconf(
 );
 
 
-/** Turns \c path into a fully qualified path, resolving all symbolic 
+/** Turns \c path into a fully qualified path, resolving all symbolic
  * links, multiple /, /./ and /../
  *
  * \param path The relative path to be converted into absolute form
@@ -317,6 +322,7 @@ int __stdcall unixem_gethostname(
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

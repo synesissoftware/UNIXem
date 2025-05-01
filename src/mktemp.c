@@ -4,10 +4,11 @@
  * Purpose: mkstemp()/mkdtemp() etc. for the Windows platform.
  *
  * Created: 4th October 2015
- * Updated: 14th October 2019
+ * Updated: 28th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2015-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -43,8 +44,9 @@
 # define _SYNSOFT_VER_C_MKTEMP_MAJOR        1
 # define _SYNSOFT_VER_C_MKTEMP_MINOR        0
 # define _SYNSOFT_VER_C_MKTEMP_REVISION     4
-# define _SYNSOFT_VER_C_MKTEMP_EDIT         5
+# define _SYNSOFT_VER_C_MKTEMP_EDIT         8
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -75,13 +77,16 @@
 # include <share.h>
 #endif
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * internal helper functions
  */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * helper functions
  */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -104,11 +109,11 @@ unixem_mkstemp(
 
     len = strlen(template_path);
 
-    for(n = 0, nX = 0, limit = 1; n != len; ++n, ++nX, limit *= 10)
+    for (n = 0, nX = 0, limit = 1; n != len; ++n, ++nX, limit *= 10)
     {
         char const ch = template_path[len - (1 + n)];
 
-        if('X' != ch)
+        if ('X' != ch)
         {
             break;
         }
@@ -128,54 +133,59 @@ unixem_mkstemp(
 
     pX = &template_path[0] + (len - nX);
 
-    for(n = 0; n != limit; ++n)
+    for (n = 0; n != limit; ++n)
     {
-        int hFile;
+        int fd;
 
-#if defined(UNIXEM_USING_SAFE_STR_FUNCTIONS)
+#if 0
+#elif defined(UNIXEM_USING_SAFE_STR_FUNCTIONS)
+
         _snprintf_s(pX, (1 + nX), (1 + nX), fmt, n);
-
 #elif defined(_MSC_VER)
+
         _snprintf(pX, (1 + nX), fmt, n);
-
 #else
+
         snprintf(pX, (1 + nX), fmt, n);
-
 #endif
 
-#if defined(UNIXEM_USING_SAFE_STR_FUNCTIONS)
-        if(0 != _sopen_s(&hFile, template_path, _O_WRONLY | _O_CREAT | _O_EXCL, _SH_DENYNO, _S_IREAD | _S_IWRITE))
+#if 0
+#elif defined(UNIXEM_USING_SAFE_STR_FUNCTIONS)
+
+        if (0 != _sopen_s(&fd, template_path, _O_WRONLY | _O_CREAT | _O_EXCL, _SH_DENYNO, _S_IREAD | _S_IWRITE))
         {
-            hFile = -1;
+            fd = -1;
         }
-
 #elif defined(_MSC_VER)
-        hFile = _open(template_path, O_WRONLY | O_CREAT | O_EXCL, S_IREAD | S_IWRITE);
 
+        fd = _open(template_path, O_WRONLY | O_CREAT | O_EXCL, S_IREAD | S_IWRITE);
 #else
-        hFile = open(template_path, O_WRONLY | O_CREAT | O_EXCL, S_IREAD | S_IWRITE);
 
+        fd = open(template_path, O_WRONLY | O_CREAT | O_EXCL, S_IREAD | S_IWRITE);
 #endif
 
-        if(-1 != hFile)
+        if (-1 != fd)
         {
-            return hFile;
+            return fd;
         }
         else
         {
             int const e = errno;
 
-            switch(e)
+            switch (e)
             {
             case EACCES:
             case EPERM:
-                if(100 == ++access_failures)
+
+                if (100 == ++access_failures)
                 {
             case ENOMEM:
+
                     return -1;
                 }
                 break;
             default:
+
                 break;
             }
         }
@@ -200,11 +210,11 @@ unixem_mkdtemp(
 
     len = strlen(template_path);
 
-    for(n = 0, nX = 0, limit = 1; n != len; ++n, ++nX, limit *= 10)
+    for (n = 0, nX = 0, limit = 1; n != len; ++n, ++nX, limit *= 10)
     {
         char const ch = template_path[len - (1 + n)];
 
-        if('X' != ch)
+        if ('X' != ch)
         {
             break;
         }
@@ -223,7 +233,7 @@ unixem_mkdtemp(
 
     pX = &template_path[0] + (len - nX);
 
-    for(n = 0; n != limit; ++n)
+    for (n = 0; n != limit; ++n)
     {
 #if defined(UNIXEM_USING_SAFE_STR_FUNCTIONS)
         _snprintf_s(pX, (1 + nX), (1 + nX), fmt, n);
@@ -237,9 +247,9 @@ unixem_mkdtemp(
 #endif
 
 #if defined(UNIXEM_USING_SAFE_STR_FUNCTIONS)
-        if(-1 != _mkdir(template_path))
+        if (-1 != _mkdir(template_path))
 #else
-        if(-1 != mkdir(template_path))
+        if (-1 != mkdir(template_path))
 #endif
         {
             return template_path;
@@ -249,4 +259,6 @@ unixem_mkdtemp(
     return NULL;
 }
 
+
 /* ///////////////////////////// end of file //////////////////////////// */
+

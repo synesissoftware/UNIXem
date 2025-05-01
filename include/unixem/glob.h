@@ -2,14 +2,15 @@
  * File:    unixem/glob.h
  *
  * Purpose: Declaration of the glob() API functions and types for the
- *          Win32 platform.
+ *          Windows platform.
  *
  * Created: 13th November 2002
- * Updated: 10th January 2017
+ * Updated: 28th November 2024
  *
- * Home:    http://synesis.com.au/software/
+ * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,9 +52,10 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_MAJOR     3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_MINOR     0
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_REVISION  2
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_EDIT      41
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_REVISION  3
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_EDIT      42
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -63,13 +65,14 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** \weakgroup unixem Synesis Software UNIX Emulation for Win32
+/** \weakgroup unixem Synesis Software UNIX Emulation for Windows
  * \brief The UNIX emulation library
  */
 
 /** \weakgroup unixem_glob glob() API
  * \ingroup UNIXem unixem
- * \brief This API provides facilities for enumerating the file-system contents
+ * \brief This API provides facilities for enumerating the file-system
+ *  contents
  * @{
  */
 
@@ -78,6 +81,7 @@
 #ifndef _WIN32
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * constants and definitions
@@ -112,6 +116,7 @@
 #define UNIXEM_GLOB_NODOTSDIRS      0x00010000          /*!< Elide "." and ".." directories from wildcard searches. Supported from version 1.6 of UNIXem. */
 #define UNIXEM_GLOB_LIMIT           0x00020000          /*!< Limits the search to the number specified by the caller in gl_matchc. Supported from version 1.6 of UNIXem. */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs
  */
@@ -129,6 +134,7 @@ typedef struct
   int       gl_flags;   /*!< returned flags */
   char**    gl_pathv;   /*!< list of paths matching pattern */
 } unixem_glob_t;
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -152,11 +158,7 @@ extern "C" {
 int unixem_glob(
     char const*     pattern
 ,   int             flags
-#if defined(__COMO__)
 ,   int           (*errfunc)(char const*, int)
-#else /* ? compiler */
-,   const int     (*errfunc)(char const*, int)
-#endif /* compiler */
 ,   unixem_glob_t*  pglob
 );
 
@@ -172,6 +174,7 @@ void unixem_globfree(unixem_glob_t* pglob);
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 
