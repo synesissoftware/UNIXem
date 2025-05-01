@@ -5,11 +5,11 @@
  *          Windows platform.
  *
  * Created: 13th November 2002
- * Updated: 28th November 2024
+ * Updated: 1st May 2025
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,7 +53,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_MAJOR     3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_MINOR     0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_REVISION  3
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_EDIT      42
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_EDIT      43
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -76,7 +76,10 @@
  * @{
  */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * compatibility
+ */
 
 #ifndef _WIN32
 # error This file is only currently defined for compilation on Windows systems

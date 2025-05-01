@@ -4,11 +4,11 @@
  * Purpose: Implicit linking for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 28th November 2024
+ * Updated: 1st May 2025
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,8 +55,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_MAJOR    2
 # define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_MINOR    1
-# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_REVISION 2
-# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_EDIT     23
+# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_REVISION 3
+# define UNIXEM_VER_UNIXEM_H_IMPLICIT_LINK_EDIT     24
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -263,10 +263,12 @@
 #    if 0
 #    elif _MSC_VER < 1920
 #     define UNIXEM_IMPL_LINK_COMPILER_NAME                 "vc15"
-#    elif _MSC_VER <= 1928
+#    elif _MSC_VER <= 1929
 #     define UNIXEM_IMPL_LINK_COMPILER_NAME                 "vc16"
+#    elif _MSC_VER <= 1943
+#     define UNIXEM_IMPL_LINK_COMPILER_NAME                 "vc17"
 #    else
-#     error Visual C++ version that is >= vc16 is not recognised
+#     error Visual C++ version that is >= vc17 is not recognised
 #    endif
 #   else /* ? _MSC_VER */
 #    error Visual C++ version not supported

@@ -4,7 +4,7 @@
  * Purpose: Unit-test of `fnmatch()`.
  *
  * Created: 24th April 2006
- * Updated: 28th November 2024
+ * Updated: 1st May 2025
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -85,12 +85,18 @@ static void test_1(void)
 
 static void test_2(void)
 {
-//  int fnmatch(char const *pattern, char const *string, int flags);
+#if 0
+
+    int fnmatch(char const *pattern, char const *string, int flags);
+#endif
 }
 
 static void test_3(void)
 {
-//  int fnmatch(char const *pattern, char const *string, int flags);
+#if 0
+
+    int fnmatch(char const *pattern, char const *string, int flags);
+#endif
 }
 
 

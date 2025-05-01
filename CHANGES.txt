@@ -1,7 +1,7 @@
 UNIXem - Changes
 ================
 
-Updated:    17th December 2020
+Updated:    1st May 2025
 
 
     ************************************
@@ -13,6 +13,36 @@ Updated:    17th December 2020
     *  *  means a general bullet-point *
     *                                  *
     ************************************
+
+
+1st May 2025 - 1.12.7
+=====================
+
+Summary:
+--------
+
+ * CMake support;
+ * MinGW support;
+ * `usleep()` now sleeps for (at least) 1ms when given sleep time in range 1-999 nanoseconds;
+ * Simplying `glob()` API;
+ * Simplified implementation of `unixem__setenv__putenv_()` (and avoided warnings w MinGW);
+ * Refactored discrimination of integer types;
+ * Refactored in terms of `unixem_internal_Windows_HANDLE_from_file_handle()`
+ * Added **test.component.unistd.usleep**;
+ * **test.component.unistd.mkdtemp** ensures created temporary directories and temporary files are removed;
+ * **test.scratch.getrusage** ensures created temporary files are removed;
+ * Visual C++ warnings;
+ * VS Code settings;
+ * Removed support for Comeau compiler;
+ * Miscellaneous tidying and consistency fixes;
+ * Added .gitattributes;
+
+Details:
+--------
+
+Depends on:
+ * STLSoft v1.11.1-beta7 or later (testing only);
+ * xTests v0.26.2 or later (testing only);
 
 
 17th December 2020 - 1.12.6
@@ -1054,7 +1084,7 @@ Summary:
 --------
 
  * the distribution is now rooted at unixem-1.7.5/
- * makefiles for VC++ 8 & 9 
+ * makefiles for VC++ 8 & 9
  * implicit linking for Borland C/C++ 5.82
  * implicit linking for VC++ 9
  * bundles shwild 0.9.13

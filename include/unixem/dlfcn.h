@@ -5,11 +5,11 @@
  *          functions.
  *
  * Created: 1st January 2004
- * Updated: 28th November 2024
+ * Updated: 1st May 2025
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,7 +53,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_MAJOR    3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_MINOR    0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_REVISION 1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_EDIT     21
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_EDIT     22
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -63,6 +63,7 @@
 
 #include <unixem/unixem.h>
 #include <sys/types.h>
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 
@@ -77,7 +78,10 @@
  * @{
  */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * compatibility
+ */
 
 #ifndef _WIN32
 # error This file is only currently defined for compilation on Windows systems

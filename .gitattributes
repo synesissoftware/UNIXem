@@ -3,5 +3,6 @@
 *.cpp linguist-language=C++
 *.hpp linguist-language=C++
 *.html linguist-detectable=false
+*.sh linguist-detectable=false
 makefile linguist-detectable=false
 
