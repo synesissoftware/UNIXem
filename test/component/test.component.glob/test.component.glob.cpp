@@ -4,13 +4,13 @@
  * Purpose: Unit-test of `glob()`.
  *
  * Created: 20th May 2012
- * Updated: 28th November 2024
+ * Updated: 29th November 2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * Test component header file include(s)
+ * test component header file include(s)
  */
 
 #include <glob.h>
