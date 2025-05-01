@@ -44,8 +44,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_UNISTD_MAJOR    3
 # define _SYNSOFT_VER_C_UNISTD_MINOR    0
-# define _SYNSOFT_VER_C_UNISTD_REVISION 5
-# define _SYNSOFT_VER_C_UNISTD_EDIT     42
+# define _SYNSOFT_VER_C_UNISTD_REVISION 6
+# define _SYNSOFT_VER_C_UNISTD_EDIT     43
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -484,7 +484,19 @@ char* unixem_realpath(
 
 int unixem_usleep(unsigned long microSeconds)
 {
-    Sleep(microSeconds / 1000);
+    DWORD milliSeconds = microSeconds / 1000;
+
+    if (0 == milliSeconds &&
+        0 != microSeconds)
+    {
+        /* if we're waiting for less than 1ms, but more than 0, then we must
+         * wait for (at least) 1ms
+         */
+
+        milliSeconds = 1;
+    }
+
+    Sleep(milliSeconds);
 
     return 0;
 }
