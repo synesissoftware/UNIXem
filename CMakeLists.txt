@@ -5,7 +5,7 @@
 # Purpose:  Top-level CMake lists file for UNIXem
 #
 # Created:  10th July 2024
-# Updated:  27th November 2024
+# Updated:  5th May 2025
 #
 # ######################################################################## #
 
@@ -110,6 +110,7 @@ option(BUILD_EXAMPLES "Build examples" ON)
 # optional:
 # - STLSoft - required unless NO_B64_CPP_API is specified, and by xTests
 #    (for testing);
+# - shwild - for enhanced match constructs
 # - xTests - required for testing
 
 
@@ -142,6 +143,22 @@ if(BUILD_TESTING OR NOT NO_B64_CPP_API)
 	endif()
 endif()
 
+# ############################
+# shwild (optional)
+
+if(NOT (CMAKE_NO_SHWILD))
+	if(BUILD_TESTING)
+
+		find_package(shwild QUIET)
+
+		if(shwild_FOUND)
+
+			message("-- CMake package shwild found (version ${shwild_VERSION})")
+
+			add_compile_definitions(XTESTS_HAS_SHWILD)
+		endif(shwild_FOUND)
+	endif(BUILD_TESTING)
+endif()
 
 # ############################
 # xTests
@@ -174,6 +191,7 @@ include(GNUInstallDirs)
 # main library
 
 add_subdirectory(src)
+
 
 # ################################################
 # examples
