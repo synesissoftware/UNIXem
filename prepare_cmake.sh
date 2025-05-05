@@ -11,6 +11,7 @@ Configuration=Release
 ExamplesDisabled=0
 MSVC_MT=0
 MinGW=0
+NO_shwild=0
 RunMake=0
 STLSoftDirGiven=
 TestingDisabled=0
@@ -46,6 +47,10 @@ while [[ $# -gt 0 ]]; do
     --msvc-mt)
 
       MSVC_MT=1
+      ;;
+    --no-shwild)
+
+      NO_shwild=1
       ;;
     -m|--run-make)
 
@@ -97,6 +102,9 @@ Flags/options:
         when using Visual C++ (MSVC), the static runtime library will be
         selected; the default is the dynamic runtime library
 
+    --no-shwild
+        prevents recognising shwild library
+
     -m
     --run-make
         executes make after a successful running of CMake
@@ -140,6 +148,7 @@ echo "Executing CMake (in ${CMakeDir})"
 
 if [ $ExamplesDisabled -eq 0 ]; then CMakeBuildExamplesFlag="ON" ; else CMakeBuildExamplesFlag="OFF" ; fi
 if [ $MSVC_MT -eq 0 ]; then CMakeMsvcMtFlag="OFF" ; else CMakeMsvcMtFlag="ON" ; fi
+if [ $NO_shwild -eq 0 ]; then CMakeNoShwild="OFF" ; else CMakeNoShwild="ON" ; fi
 if [ -z $STLSoftDirGiven ]; then CMakeSTLSoftVariable="" ; else CMakeSTLSoftVariable="-DSTLSOFT=$STLSoftDirGiven/" ; fi
 if [ $TestingDisabled -eq 0 ]; then CMakeBuildTestingFlag="ON" ; else CMakeBuildTestingFlag="OFF" ; fi
 if [ $VerboseMakefile -eq 0 ]; then CMakeVerboseMakefileFlag="OFF" ; else CMakeVerboseMakefileFlag="ON" ; fi
@@ -151,6 +160,7 @@ if [ $MinGW -ne 0 ]; then
     -DBUILD_EXAMPLES:BOOL=$CMakeBuildExamplesFlag \
     -DBUILD_TESTING:BOOL=$CMakeBuildTestingFlag \
     -DCMAKE_BUILD_TYPE=$Configuration \
+    -DCMAKE_NO_SHWILD:BOOL=$CMakeNoShwild \
     -DMSVC_USE_MT:BOOL=$CMakeMsvcMtFlag \
     -G "MinGW Makefiles" \
     -S $Dir \
@@ -163,6 +173,7 @@ else
     -DBUILD_EXAMPLES:BOOL=$CMakeBuildExamplesFlag \
     -DBUILD_TESTING:BOOL=$CMakeBuildTestingFlag \
     -DCMAKE_BUILD_TYPE=$Configuration \
+    -DCMAKE_NO_SHWILD:BOOL=$CMakeNoShwild \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=$CMakeVerboseMakefileFlag \
     -DMSVC_USE_MT:BOOL=$CMakeMsvcMtFlag \
     -S $Dir \
