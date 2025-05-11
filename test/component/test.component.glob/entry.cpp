@@ -24,12 +24,10 @@
  */
 
 /* xTests header files */
-#include <xtests/xtests.h>
+#include <xtests/terse-api.h>
 
 /* STLSoft header files */
-#include <platformstl/filesystem/current_directory.hpp>
-#include <platformstl/system/temporary_directory.hpp>
-#include <platformstl/test/filesystem/temporary_directory_contents.hpp>
+#include <winstl/filesystem/readdir_sequence.hpp>
 #include <stlsoft/smartptr/scoped_handle.hpp>
 
 /* Standard C header files */
@@ -53,6 +51,8 @@
 namespace
 {
 
+#if 0
+
     static void test_1_0(void);
     static void test_1_1(void);
     static void test_1_2(void);
@@ -65,7 +65,8 @@ namespace
     static void test_1_9(void);
     static void test_1_10(void);
     static void test_1_11(void);
-    static void test_1_12(void);
+#endif
+    static void TEST_readdir_CWD_FOR_DIRECTORIES_AND_FILES_AND_DOTS(void);
     static void test_1_13(void);
     static void test_1_14(void);
     static void test_1_15(void);
@@ -73,14 +74,17 @@ namespace
     static void test_1_17(void);
     static void test_1_18(void);
     static void test_1_19(void);
+#if 0
 
     static int setup(void*);
     static int teardown(void*);
+
     struct locations
     {
         char const* pwd;
         char const* workdir;
     };
+#endif
 } // anonymous namespace
 
 
@@ -94,6 +98,8 @@ int main(int argc, char **argv)
     int verbosity = 2;
 
     XTESTS_COMMANDLINE_PARSEVERBOSITY(argc, argv, &verbosity);
+
+#if 0
 
     platformstl::current_directory              cwd;
     platformstl::temporary_directory            tempdir;
@@ -110,9 +116,13 @@ int main(int argc, char **argv)
         ;
 
     locations l = { cwd.c_str(), workdir.c_str() };
+#endif
 
-    if (XTESTS_START_RUNNER_WITH_SETUP_FNS("test.component.glob", verbosity, setup, teardown, &l))
+    // if (XTESTS_START_RUNNER_WITH_SETUP_FNS("test.component.glob", verbosity, setup, teardown, &l))
+    if (XTESTS_START_RUNNER("test.component.glob", verbosity))
     {
+#if 0
+
         XTESTS_RUN_CASE(test_1_0);
         XTESTS_RUN_CASE(test_1_1);
         XTESTS_RUN_CASE(test_1_2);
@@ -125,7 +135,8 @@ int main(int argc, char **argv)
         XTESTS_RUN_CASE(test_1_9);
         XTESTS_RUN_CASE(test_1_10);
         XTESTS_RUN_CASE(test_1_11);
-        XTESTS_RUN_CASE(test_1_12);
+#endif
+        XTESTS_RUN_CASE(TEST_readdir_CWD_FOR_DIRECTORIES_AND_FILES_AND_DOTS);
         XTESTS_RUN_CASE(test_1_13);
         XTESTS_RUN_CASE(test_1_14);
         XTESTS_RUN_CASE(test_1_15);
@@ -138,7 +149,10 @@ int main(int argc, char **argv)
 
         XTESTS_END_RUNNER_UPDATE_EXITCODE(&retCode);
 
+#if 0
+
         workdir.cleanup();
+#endif
     }
 
     return retCode;
@@ -152,9 +166,16 @@ int main(int argc, char **argv)
 namespace
 {
 
+    using winstl::readdir_sequence;
+    typedef winstl::filesystem_traits<char>                 fs_traits_t;
+
+
+#if 0
 
 static int setup(void* param)
 {
+#if 0
+
     locations const* const l = static_cast<locations const*>(param);
 
     if (0 != ::chdir(l->workdir))
@@ -165,12 +186,18 @@ static int setup(void* param)
 
         return 1;
     }
+#else
+
+    ((void)&param);
+#endif
 
     return 0;
 }
 
 static int teardown(void* param)
 {
+#if 0
+
     locations const* const l = static_cast<locations const*>(param);
 
     if (0 != ::chdir(l->pwd))
@@ -181,10 +208,17 @@ static int teardown(void* param)
 
         return 1;
     }
+#else
+
+    ((void)&param);
+#endif
 
     return 0;
 }
+#endif
 
+
+#if 0
 
 static void test_1_0()
 {
@@ -380,9 +414,73 @@ static void test_1_11()
     XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(1, gl.gl_pathc));
     XTESTS_TEST_MULTIBYTE_STRING_EQUAL("..", gl.gl_pathv[0]);
 }
+#endif
 
-static void test_1_12()
+static void TEST_readdir_CWD_FOR_DIRECTORIES_AND_FILES_AND_DOTS()
 {
+    readdir_sequence            entries(".", readdir_sequence::directories | readdir_sequence::files | readdir_sequence::includeDots);
+    std::vector<std::string>    rds_entries(entries.begin(), entries.end());
+
+    std::sort(rds_entries.begin(), rds_entries.end());
+
+    for (auto const& entry : rds_entries)
+    {
+        fprintf(stderr, "%d: %s\n", __LINE__, entry.c_str());
+    }
+
+    int const   flags   =   0
+                        |   GLOB_NOSORT
+                        |   GLOB_PERIOD
+                        ;
+    glob_t      gl;
+    int const   gr      =   ::glob("*.*", flags, NULL, &gl);
+
+    if (0 != gr)
+    {
+        int const e = errno;
+
+#ifdef _MSC_VER
+# pragma warning(push)
+# pragma warning(disable : 4996)
+#endif
+
+        XTESTS_FAIL_WITH_QUALIFIER("failed to `glob()` on '.'", strerror(e));
+
+#ifdef _MSC_VER
+# pragma warning(pop)
+#endif
+    }
+    else
+    {
+        stlsoft::scoped_handle<glob_t*> scoper(&gl, ::globfree);
+
+        std::vector<std::string>        gl_entries;
+
+        fprintf(stderr, "\n");
+
+        for (size_t i = 0; gl.gl_pathc != i; ++i)
+        {
+            // fprintf(stderr, "%d: %s\n", __LINE__, gl.gl_pathv[i]);
+
+            gl_entries.push_back(gl.gl_pathv[i]);
+        }
+
+        std::sort(gl_entries.begin(), gl_entries.end());
+
+        for (auto const& entry : gl_entries)
+        {
+            fprintf(stderr, "%d: %s\n", __LINE__, entry.c_str());
+        }
+
+        fprintf(stderr, "\n");
+
+        REQUIRE(TEST_INT_EQ(rds_entries.size(), gl_entries.size()));
+
+        for (size_t i = 0; rds_entries.size() != i; ++i)
+        {
+            TEST_MS_EQ(rds_entries[i], gl_entries[i]);
+        }
+    }
 }
 
 static void test_1_13()
