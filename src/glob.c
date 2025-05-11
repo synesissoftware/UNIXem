@@ -149,7 +149,7 @@ int unixem_glob(
     char                szPattern3[1 + _MAX_PATH];
     char const*         effectivePattern   =   pattern;
     char const*         leafMost;
-    const int           bMagic              =   (NULL != strpbrk(pattern, "?*"));
+    int const           bMagic              =   (NULL != strpbrk(pattern, "?*"));
     int                 bNoMagic            =   0;
     int                 bMagic0;
     int                 bLeafIsDots;
@@ -434,8 +434,8 @@ int unixem_glob(
         else if (bNoMagic ||
                 (flags & UNIXEM_GLOB_NOCHECK))
         {
-            const size_t    effPattLen  =   strlen(effectivePattern);
-            const size_t    cbNeeded    =   ((2 + pglob->gl_offs) * sizeof(char*)) + (1 + effPattLen);
+            size_t const    effPattLen  =   strlen(effectivePattern);
+            size_t const    cbNeeded    =   ((2 + pglob->gl_offs) * sizeof(char*)) + (1 + effPattLen);
             char**          pp          =   (char**)realloc(buffer, cbNeeded);
 
             if (NULL == pp)
