@@ -68,6 +68,7 @@ namespace
     static void test_1_11(void);
 #endif
     static void TEST_readdir_CWD_FOR_DIRECTORIES_AND_FILES_AND_DOTS(void);
+    static void TEST_readdir_CWD_FOR_DIRECTORIES_AND_DOTS(void);
     static void TEST_readdir_HOMEDIR_FOR_DIRECTORIES_AND_FILES_AND_DOTS(void);
     static void test_1_14(void);
     static void test_1_15(void);
@@ -138,6 +139,7 @@ int main(int argc, char **argv)
         XTESTS_RUN_CASE(test_1_11);
 #endif
         XTESTS_RUN_CASE(TEST_readdir_CWD_FOR_DIRECTORIES_AND_FILES_AND_DOTS);
+        XTESTS_RUN_CASE(TEST_readdir_CWD_FOR_DIRECTORIES_AND_DOTS);
         XTESTS_RUN_CASE(TEST_readdir_HOMEDIR_FOR_DIRECTORIES_AND_FILES_AND_DOTS);
         XTESTS_RUN_CASE(test_1_14);
         XTESTS_RUN_CASE(test_1_15);
@@ -459,6 +461,61 @@ static void TEST_readdir_CWD_FOR_DIRECTORIES_AND_FILES_AND_DOTS()
         {
             // fprintf(stderr, "%d: %s\n", __LINE__, gl.gl_pathv[i]);
 
+            gl_entries.push_back(gl.gl_pathv[i]);
+        }
+
+        std::sort(gl_entries.begin(), gl_entries.end());
+
+
+
+        REQUIRE(TEST_INT_EQ(rds_entries.size(), gl_entries.size()));
+
+        for (size_t i = 0; rds_entries.size() != i; ++i)
+        {
+            TEST_MS_EQ(rds_entries[i], gl_entries[i]);
+        }
+    }
+}
+
+static void TEST_readdir_CWD_FOR_DIRECTORIES_AND_DOTS()
+{
+    readdir_sequence            entries(".", readdir_sequence::directories | readdir_sequence::includeDots);
+    std::vector<std::string>    rds_entries(entries.begin(), entries.end());
+
+    std::sort(rds_entries.begin(), rds_entries.end());
+
+    int const   flags   =   0
+                        |   GLOB_NOSORT
+                        |   GLOB_PERIOD
+                        |   GLOB_ONLYDIR
+                        ;
+    glob_t      gl;
+    int const   gr      =   ::glob("*.*", flags, NULL, &gl);
+
+    if (0 != gr)
+    {
+        int const e = errno;
+
+#ifdef _MSC_VER
+# pragma warning(push)
+# pragma warning(disable : 4996)
+#endif
+
+        XTESTS_FAIL_WITH_QUALIFIER("failed to `glob()` on '.'", strerror(e));
+
+#ifdef _MSC_VER
+# pragma warning(pop)
+#endif
+    }
+    else
+    {
+        stlsoft::scoped_handle<glob_t*> scoper(&gl, ::globfree);
+
+        std::vector<std::string>        gl_entries;
+
+
+        for (size_t i = 0; gl.gl_pathc != i; ++i)
+        {
             gl_entries.push_back(gl.gl_pathv[i]);
         }
 
