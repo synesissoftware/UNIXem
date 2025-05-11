@@ -151,11 +151,9 @@ static char *unixem__unistd__nextSlash(char *s)
 {
     for (; '\0' != *s; ++s)
     {
-        switch (*s)
+        if (unixem_util_fs_char_is_path_sep(*s))
         {
-        case '/':
-        case '\\':
-                return s;
+            return s;
         }
     }
 

@@ -174,8 +174,7 @@ int unixem_glob(
         /* Check that begins with "~/" */
         if ('~' == pattern[0] &&
             (   '\0' == pattern[1] ||
-                '/' == pattern[1] ||
-                '\\' == pattern[1]))
+                unixem_util_fs_char_is_path_sep(pattern[1])))
         {
             DWORD dw;
 

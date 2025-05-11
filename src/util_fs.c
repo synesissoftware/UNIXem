@@ -9,6 +9,21 @@
  * API functions
  */
 
+int
+unixem_util_fs_char_is_path_sep(char ch)
+{
+    switch (ch)
+    {
+    case '/':
+    case '\\':
+
+        return 1;
+    default:
+
+        return 0;
+    }
+}
+
 
 /* ///////////////////////////// end of file //////////////////////////// */
 
