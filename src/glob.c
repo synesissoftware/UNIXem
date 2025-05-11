@@ -4,11 +4,11 @@
  * Purpose: Definition of the glob() API functions for the Windows platform.
  *
  * Created: 13th November 2002
- * Updated: 28th November 2024
+ * Updated: 11th May 2025
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -43,8 +43,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_UNIXEM_GLOB_MAJOR       3
 # define _SYNSOFT_VER_C_UNIXEM_GLOB_MINOR       1
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_REVISION    3
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT        59
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_REVISION    4
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT        60
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -62,6 +62,8 @@
 #include <errno.h>
 #include <stdlib.h>
 #include <windows.h>
+
+#include <unixem/util/fs.h>
 
 
 /* /////////////////////////////////////////////////////////////////////////

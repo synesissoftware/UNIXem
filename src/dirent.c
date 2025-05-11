@@ -4,11 +4,11 @@
  * Purpose: Definition of the opendir() API functions for the Windows platform.
  *
  * Created: 19th October 2002
- * Updated: 29th November 2024
+ * Updated: 11th May 2025
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -43,8 +43,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_DIRENT_MAJOR    3
 # define _SYNSOFT_VER_C_DIRENT_MINOR    0
-# define _SYNSOFT_VER_C_DIRENT_REVISION 3
-# define _SYNSOFT_VER_C_DIRENT_EDIT     42
+# define _SYNSOFT_VER_C_DIRENT_REVISION 4
+# define _SYNSOFT_VER_C_DIRENT_EDIT     43
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -57,6 +57,8 @@
 #include <errno.h>
 #include <stdlib.h>
 #include <windows.h>
+
+#include <unixem/util/fs.h>
 
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -139,8 +141,8 @@ static HANDLE unixem__dirent__findfile_directory(
 
     return FindFirstFileA(search_spec, data);
 }
-
 #if 0
+
 static HANDLE unixem__dirent__wfindfile_directory(
     wchar_t const*      name
 ,   LPWIN32_FIND_DATAW  data
