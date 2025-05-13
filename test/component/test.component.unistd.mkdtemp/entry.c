@@ -1,7 +1,7 @@
 
 /*
- * Created:
- * Updated: 29th November 2024
+ * Created: ...
+ * Updated: 13th May 2025
  */
 
 #include <unistd.h>
@@ -29,7 +29,7 @@ int main(int argc, char** argv)
             {
                 int const e = errno;
 
-                fprintf(stderr, "mkdtemp() failed: %s (%d)\n", strerror(e), e);
+                fprintf(stderr, "mkdtemp() failed to create '%s': %s (%d)\n", template_path, strerror(e), e);
             }
             else
             {
@@ -57,7 +57,7 @@ int main(int argc, char** argv)
             {
                 int const e = errno;
 
-                fprintf(stderr, "mkdtemp() failed: %s (%d)\n", strerror(e), e);
+                fprintf(stderr, "mkdtemp() failed to create '%s': %s (%d)\n", template_path, strerror(e), e);
             }
             else
             {
