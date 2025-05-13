@@ -175,12 +175,7 @@ int unixem_glob(
             (   '\0' == pattern[1] ||
                 unixem_util_fs_char_is_path_sep(pattern[1])))
         {
-            char    szPattern2[1 + _MAX_PATH];
-            DWORD   dw;
-
-            (void)lstrcpyA(&szPattern2[0], "%HOMEDRIVE%%HOMEPATH%");
-
-            dw = ExpandEnvironmentStringsA(&szPattern2[0], &szPattern3[0], NUM_ELEMENTS(szPattern3) - 1);
+            DWORD const dw = ExpandEnvironmentStringsA("%HOMEDRIVE%%HOMEPATH%", &szPattern3[0], NUM_ELEMENTS(szPattern3) - 1);
 
             if (0 != dw)
             {
