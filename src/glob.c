@@ -147,7 +147,6 @@ int unixem_glob(
     WIN32_FIND_DATAA    find_data;
     HANDLE              hFind;
     char*               buffer;
-    char                szPattern2[1 + _MAX_PATH];
     char                szPattern3[1 + _MAX_PATH];
     char const*         effectivePattern   =   pattern;
     char const*         leafMost;
@@ -176,7 +175,8 @@ int unixem_glob(
             (   '\0' == pattern[1] ||
                 unixem_util_fs_char_is_path_sep(pattern[1])))
         {
-            DWORD dw;
+            char    szPattern2[1 + _MAX_PATH];
+            DWORD   dw;
 
             (void)lstrcpyA(&szPattern2[0], "%HOMEDRIVE%%HOMEPATH%");
 
