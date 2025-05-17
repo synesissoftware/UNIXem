@@ -4,11 +4,11 @@
  * Purpose: Utility functions for UNIXem.
  *
  * Created: 2nd September 2005
- * Updated: 29th November 2024
+ * Updated: 17th May 2025
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -44,7 +44,7 @@
 # define _SYNSOFT_VER_INTERNAL_C_UTIL_MAJOR     2
 # define _SYNSOFT_VER_INTERNAL_C_UTIL_MINOR     1
 # define _SYNSOFT_VER_INTERNAL_C_UTIL_REVISION  3
-# define _SYNSOFT_VER_INTERNAL_C_UTIL_EDIT      17
+# define _SYNSOFT_VER_INTERNAL_C_UTIL_EDIT      18
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -112,10 +112,12 @@
 #elif defined(__BORLANDC__)
 
 UNIXEM_STGCLS_IMP long _cdecl _get_osfhandle(int __handle);
-#elif defined(__DMC__) || \
-      defined(__INTEL_COMPILER) || \
-      defined(__MWERKS__) || \
-      defined(_MSC_VER)
+#elif 0 ||\
+      defined(__DMC__) ||\
+      defined(__INTEL_COMPILER) ||\
+      defined(__MWERKS__) ||\
+      defined(_MSC_VER) ||\
+      0
 
 UNIXEM_STGCLS_IMP long __cdecl _get_osfhandle(int __handle);
 #elif defined(__GNUC__)

@@ -4,11 +4,11 @@
  * Purpose: gettimeofday() for the Windows platform.
  *
  * Created: 1st November 2003
- * Updated: 28th November 2024
+ * Updated: 17th May 2025
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -44,7 +44,7 @@
 # define _SYNSOFT_VER_C_TIME_MAJOR      3
 # define _SYNSOFT_VER_C_TIME_MINOR      1
 # define _SYNSOFT_VER_C_TIME_REVISION   2
-# define _SYNSOFT_VER_C_TIME_EDIT       31
+# define _SYNSOFT_VER_C_TIME_EDIT       32
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -137,20 +137,27 @@ unixem_internal_FILETIMEToUNIXTime(
     i <<= 32;
     i |= ft->dwLowDateTime;
 
-#if (   (   defined(__BORLANDC__) && \
-            __BORLANDC__ >= 0x0582) || \
-        defined(__DMC__) || \
-        defined(__COMO__) || \
-        defined(__GNUC__) || \
-        defined(__MWERKS__))
+#if 0
+#elif 0 ||\
+      ( defined(__BORLANDC__) &&\
+        __BORLANDC__ >= 0x0582) ||\
+      defined(__DMC__) ||\
+      defined(__COMO__) ||\
+      defined(__GNUC__) ||\
+      defined(__MWERKS__) ||\
+      0
+
     i -= 116444736000000000LL;
 #else
+
     i -= 116444736000000000L;
 #endif /* compiler */
+
     if (NULL != microseconds)
     {
         *microseconds = (long)((i % 10000000) / 10);
     }
+
     i /= 10000000;
 
     return (long)i;
