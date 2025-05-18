@@ -132,6 +132,45 @@ unixem_util_str_stpncpy(
     return target;
 }
 
+wchar_t*
+unixem_util_str_wcpcpy(
+    wchar_t*        target
+,   wchar_t const*  source
+)
+{
+    for (;; ++target, ++source)
+    {
+        *target = *source;
+
+        if ('\0' == *target)
+        {
+            break;
+        }
+    }
+
+    return target;
+}
+
+wchar_t*
+unixem_util_str_wcpncpy(
+    wchar_t*        target
+,   wchar_t const*  source
+,   size_t          n
+)
+{
+    for (; 0 != n; --n, ++target)
+    {
+        *target = *source;
+
+        if ('\0' != *source)
+        {
+            ++source;
+        }
+    }
+
+    return target;
+}
+
 
 /* ///////////////////////////// end of file //////////////////////////// */
 

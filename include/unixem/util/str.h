@@ -52,6 +52,7 @@
  */
 
 #include <stddef.h>
+#include <wchar.h>
 
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -86,6 +87,19 @@ unixem_util_str_stpncpy(
     char*       target
 ,   char const* source
 ,   size_t      n
+);
+
+wchar_t*
+unixem_util_str_wcpcpy(
+    wchar_t*        target
+,   wchar_t const*  source
+);
+
+wchar_t*
+unixem_util_str_wcpncpy(
+    wchar_t*        target
+,   wchar_t const*  source
+,   size_t          n
 );
 
 
