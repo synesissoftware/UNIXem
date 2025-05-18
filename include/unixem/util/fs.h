@@ -71,6 +71,16 @@ extern "C" {
 int
 unixem_util_fs_char_is_path_sep(char ch);
 
+/** Indicates whether the given path refers to an existing file-system entry
+ * that is a directory.
+ *
+ * \retval 0 `path` does not name a directory, or names a file-sytem entry
+ *  that is not a directory;
+ * \retval 1 `path` names an existing directory;
+ */
+int
+unixem_util_fs_directory_exists(char const* path);
+
 /** Attempts to obtain the home directory.
  *
  * \param ar Pointer to an array of `char` of size 260 (=== _MAX_PATH);

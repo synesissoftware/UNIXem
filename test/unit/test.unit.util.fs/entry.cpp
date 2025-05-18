@@ -29,6 +29,7 @@ namespace {
 namespace {
 
     void TEST_char_is_path_sep();
+    void TEST_directory_exists();
     void TEST_get_home_directory_REAL();
     void TEST_get_home_directory_SYNTHETIC_NOT_FOUND();
     void TEST_get_home_directory_SYNTHETIC_userprofile();
@@ -48,6 +49,7 @@ int main(int argc, char* argv[])
     if (XTESTS_START_RUNNER("test.unit.util.fs", verbosity))
     {
         XTESTS_RUN_CASE(TEST_char_is_path_sep);
+        XTESTS_RUN_CASE(TEST_directory_exists);
         XTESTS_RUN_CASE(TEST_get_home_directory_REAL);
         XTESTS_RUN_CASE(TEST_get_home_directory_SYNTHETIC_NOT_FOUND);
         XTESTS_RUN_CASE(TEST_get_home_directory_SYNTHETIC_userprofile);
@@ -76,6 +78,23 @@ void TEST_char_is_path_sep()
     TEST_BOOLEAN_FALSE(unixem_util_fs_char_is_path_sep('Z'));
     TEST_BOOLEAN_FALSE(unixem_util_fs_char_is_path_sep(':'));
     TEST_BOOLEAN_FALSE(unixem_util_fs_char_is_path_sep('|'));
+}
+
+void TEST_directory_exists()
+{
+    TEST_BOOLEAN_TRUE(unixem_util_fs_directory_exists("."));
+    TEST_BOOLEAN_TRUE(unixem_util_fs_directory_exists("/"));
+    TEST_BOOLEAN_TRUE(unixem_util_fs_directory_exists("C:\\"));
+#if 0
+
+    TEST_BOOLEAN_TRUE(unixem_util_fs_directory_exists("\\\\?\\C:\\"));
+#endif
+
+    TEST_BOOLEAN_FALSE(unixem_util_fs_directory_exists(""));
+    TEST_BOOLEAN_FALSE(unixem_util_fs_directory_exists("|"));
+    TEST_BOOLEAN_FALSE(unixem_util_fs_directory_exists("|/"));
+    TEST_BOOLEAN_FALSE(unixem_util_fs_directory_exists("|C:\\"));
+    TEST_BOOLEAN_FALSE(unixem_util_fs_directory_exists("X:/-does-not-exist-/-does-not-exist-/-does-not-exist-/-does-not-exist-"));
 }
 
 void TEST_get_home_directory_REAL()
