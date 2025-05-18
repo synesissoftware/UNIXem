@@ -8,9 +8,10 @@ function(define_automated_test_program program_name entry_point_source_name)
 
 	target_link_libraries(${program_name}
 		PRIVATE
-			xTests::core
-			UNIXem
+			$<$<BOOL:${shwild_FOUND}>:shwild::core>
 			$<$<STREQUAL:${STLSOFT_INCLUDE_DIR},>:STLSoft::STLSoft>
+			UNIXem
+			xTests::core
 	)
 
 	set(X_GCC_CUSTOM_WARNINGS_ "")
@@ -25,10 +26,11 @@ function(define_automated_test_program program_name entry_point_source_name)
 	set(X_MSVC_CUSTOM_WARNINGS_ "")
 
 	if(X_MSVC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED)
-			foreach(warning ${X_MSVC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED})
 
-					list(APPEND X_MSVC_CUSTOM_WARNINGS_ "/wd${warning}")
-			endforeach()
+		foreach(warning ${X_MSVC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED})
+
+			list(APPEND X_MSVC_CUSTOM_WARNINGS_ "/wd${warning}")
+		endforeach()
 	endif()
 
 	target_compile_options(${program_name} PRIVATE
@@ -57,13 +59,15 @@ function(define_example_program program_name entry_point_source_name)
 
 	target_link_libraries(${program_name}
 		PRIVATE
-			UNIXem
+			$<$<BOOL:${shwild_FOUND}>:shwild::core>
 			$<$<STREQUAL:${STLSOFT_INCLUDE_DIR},>:STLSoft::STLSoft>
+			UNIXem
 	)
 
 	set(X_GCC_CUSTOM_WARNINGS_ "")
 
 	if(X_GCC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED)
+
 		foreach(warning ${X_GCC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED})
 
 			list(APPEND X_GCC_CUSTOM_WARNINGS_ "-Wno-${warning}")
@@ -73,10 +77,11 @@ function(define_example_program program_name entry_point_source_name)
 	set(X_MSVC_CUSTOM_WARNINGS_ "")
 
 	if(X_MSVC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED)
-			foreach(warning ${X_MSVC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED})
 
-					list(APPEND X_MSVC_CUSTOM_WARNINGS_ "/wd${warning}")
-			endforeach()
+		foreach(warning ${X_MSVC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED})
+
+			list(APPEND X_MSVC_CUSTOM_WARNINGS_ "/wd${warning}")
+		endforeach()
 	endif()
 
 	target_compile_options(${program_name} PRIVATE
