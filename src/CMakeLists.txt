@@ -92,6 +92,7 @@ set(CORE_SRCS
 	unistd.c
 	internal/util.c
 	util_fs.c
+	util_str.c
 )
 
 add_library(UNIXem
