@@ -44,3 +44,42 @@ unixem_util_str_ends_with(
         }
     }
 }
+
+char*
+unixem_util_str_stpcpy(
+    char*       target
+,   char const* source
+)
+{
+    for (;; ++target, ++source)
+    {
+        *target = *source;
+
+        if ('\0' == *target)
+        {
+            break;
+        }
+    }
+
+    return target;
+}
+
+char*
+unixem_util_str_stpncpy(
+    char*       target
+,   char const* source
+,   size_t      n
+)
+{
+    for (; 0 != n; --n, ++target)
+    {
+        *target = *source;
+
+        if ('\0' != *source)
+        {
+            ++source;
+        }
+    }
+
+    return target;
+}
