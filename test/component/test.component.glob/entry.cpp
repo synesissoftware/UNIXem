@@ -485,9 +485,8 @@ static void TEST_readdir_CWD_FOR_DIRECTORIES_AND_DOTS()
     std::sort(rds_entries.begin(), rds_entries.end());
 
     int const   flags   =   0
-                        |   GLOB_NOSORT
-                        |   GLOB_PERIOD
                         |   GLOB_ONLYDIR
+                        |   GLOB_PERIOD
                         ;
     glob_t      gl;
     int const   gr      =   ::glob("*.*", flags, NULL, &gl);
