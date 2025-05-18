@@ -71,6 +71,21 @@ extern "C" {
 int
 unixem_util_fs_char_is_path_sep(char ch);
 
+/** Attempts to obtain the home directory.
+ *
+ * \param ar Pointer to an array of `char` of size 260 (=== _MAX_PATH);
+ * \param pnumWritten Optional pointer to a variable to receive the number
+ *  of characters written (excluding the NUL terminator);
+ *
+ * \retval 0 The character is not a separator;
+ * \retval 1 The character is a separator;
+ */
+int
+unixem_util_fs_get_home_directory(
+    char  (*ar)[260]
+,   size_t* pnumWritten
+);
+
 
 
 
@@ -86,5 +101,4 @@ unixem_util_fs_char_is_path_sep(char ch);
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_UTIL_H_FS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
-
 
