@@ -5,7 +5,7 @@
  *          functions.
  *
  * Created: 1st January 2004
- * Updated: 1st May 2025
+ * Updated: 18th May 2025
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_H_DLFCN_MAJOR       3
 # define SYNSOFT_UNIXEM_VER_H_DLFCN_MINOR       0
 # define SYNSOFT_UNIXEM_VER_H_DLFCN_REVISION    1
-# define SYNSOFT_UNIXEM_VER_H_DLFCN_EDIT        22
+# define SYNSOFT_UNIXEM_VER_H_DLFCN_EDIT        23
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -175,6 +175,7 @@ char const* dlerror(void);
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 

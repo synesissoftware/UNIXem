@@ -129,8 +129,7 @@ static HANDLE unixem__dirent__findfile_directory(
      * included.
      */
     (void)lstrcpyA(search_spec, name);
-    if ('\\' != search_spec[lstrlenA(search_spec) - 1] &&
-        '/' != search_spec[lstrlenA(search_spec) - 1])
+    if (!unixem_util_fs_char_is_path_sep(search_spec[lstrlenA(search_spec) - 1]))
     {
         (void)lstrcatA(search_spec, "\\*.*");
     }
@@ -154,8 +153,7 @@ static HANDLE unixem__dirent__wfindfile_directory(
      * included.
      */
     lstrcpyW(search_spec, name);
-    if (L'\\' != search_spec[lstrlenW(search_spec) - 1] &&
-        L'/' != search_spec[lstrlenW(search_spec) - 1])
+    if (!unixem_util_wchar_is_path_sep(search_spec[lstrlenW(search_spec) - 1]))
     {
         lstrcatW(search_spec, L"\\*.*");
     }

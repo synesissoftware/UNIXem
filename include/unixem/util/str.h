@@ -1,10 +1,10 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:    unixem/util/fs.h
+ * File:    unixem/util/str.h
  *
- * Purpose: UNIXem.Util.FS header.
+ * Purpose: UNIXem.Util.Str header.
  *
- * Created: 11th May 2025
- * Updated: 12th May 2025
+ * Created: 18th May 2025
+ * Updated: 18th May 2025
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -39,13 +39,13 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file unixem/util/fs.h
+/** \file unixem/util/str.h
  *
- * UNIXem.Util.FS header.
+ * UNIXem.Util.Str header.
  */
 
-#ifndef SYNSOFT_UNIXEM_INCL_UNIXEM_UTIL_H_FS
-#define SYNSOFT_UNIXEM_INCL_UNIXEM_UTIL_H_FS
+#ifndef SYNSOFT_UNIXEM_INCL_UNIXEM_UTIL_H_STR
+#define SYNSOFT_UNIXEM_INCL_UNIXEM_UTIL_H_STR
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -61,39 +61,16 @@ extern "C" {
 #endif /* __cplusplus */
 
 
-
-/** Indicates whether the given character is a path separator (i.e. `'/'` or
- * `'\'`)
- *
- * \retval 0 The character is not a separator;
- * \retval 1 The character is a separator;
- */
 int
-unixem_util_fs_char_is_path_sep(char ch);
+unixem_util_str_begins_with(
+    char const* s
+,   char const* prefix
+);
 
-/** Indicates whether the given path refers to an existing file-system entry
- * that is a directory.
- *
- * \retval 0 `path` does not name a directory, or names a file-sytem entry
- *  that is not a directory;
- * \retval 1 `path` names an existing directory;
- */
 int
-unixem_util_fs_directory_exists(char const* path);
-
-/** Attempts to obtain the home directory.
- *
- * \param ar Pointer to an array of `char` of size 260 (=== _MAX_PATH);
- * \param pnumWritten Optional pointer to a variable to receive the number
- *  of characters written (excluding the NUL terminator);
- *
- * \retval 0 The character is not a separator;
- * \retval 1 The character is a separator;
- */
-int
-unixem_util_fs_get_home_directory(
-    char  (*ar)[260]
-,   size_t* pnumWritten
+unixem_util_str_ends_with(
+    char const* s
+,   char const* suffix
 );
 
 
@@ -106,7 +83,7 @@ unixem_util_fs_get_home_directory(
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_UTIL_H_FS */
+#endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_UTIL_H_STR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
 
