@@ -4,11 +4,11 @@
  * Purpose: Definition of the glob() API functions for the Windows platform.
  *
  * Created: 13th November 2002
- * Updated: 28th November 2024
+ * Updated: 18th May 2025
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -43,8 +43,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_UNIXEM_GLOB_MAJOR       3
 # define _SYNSOFT_VER_C_UNIXEM_GLOB_MINOR       1
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_REVISION    3
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT        59
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_REVISION    7
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT        63
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -62,6 +62,8 @@
 #include <errno.h>
 #include <stdlib.h>
 #include <windows.h>
+
+#include <unixem/util/fs.h>
 
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -123,6 +125,19 @@ unixem_glob_isdots_(
     return 0;
 }
 
+static
+int
+unixem_glob_sort_random_order_(
+    void const* p1
+,   void const* p2
+)
+{
+    ((void)&p1);
+    ((void)&p2);
+
+    return (rand() % 3) - 1;
+}
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -145,11 +160,11 @@ int unixem_glob(
     WIN32_FIND_DATAA    find_data;
     HANDLE              hFind;
     char*               buffer;
-    char                szPattern2[1 + _MAX_PATH];
-    char                szPattern3[1 + _MAX_PATH];
-    char const*         effectivePattern   =   pattern;
+    char                szHomePrefixedPath[1 + _MAX_PATH];
+    size_t const        cchPattern          =   strlen(pattern);
+    char const*         effectivePattern    =   pattern;
     char const*         leafMost;
-    const int           bMagic              =   (NULL != strpbrk(pattern, "?*"));
+    int const           bMagic              =   (NULL != strpbrk(pattern, "?*"));
     int                 bNoMagic            =   0;
     int                 bMagic0;
     int                 bLeafIsDots;
@@ -172,21 +187,34 @@ int unixem_glob(
         /* Check that begins with "~/" */
         if ('~' == pattern[0] &&
             (   '\0' == pattern[1] ||
-                '/' == pattern[1] ||
-                '\\' == pattern[1]))
+                unixem_util_fs_char_is_path_sep(pattern[1])))
         {
-            DWORD dw;
+            char    szHomeDir[_MAX_PATH];
+            size_t  n;
 
-            (void)lstrcpyA(&szPattern2[0], "%HOMEDRIVE%%HOMEPATH%");
-
-            dw = ExpandEnvironmentStringsA(&szPattern2[0], &szPattern3[0], NUM_ELEMENTS(szPattern3) - 1);
-
-            if (0 != dw)
+            if (!unixem_util_fs_get_home_directory(&szHomeDir, &n))
             {
-                (void)lstrcpynA(&szPattern3[0] + dw - 1, &pattern[1], (int)(NUM_ELEMENTS(szPattern3) - dw));
-                szPattern3[NUM_ELEMENTS(szPattern3) - 1] = '\0';
+                DWORD const le = GetLastError();
 
-                effectivePattern = szPattern3;
+                errno = unixem_internal_errno_from_Win32(le);
+
+                return UNIXEM_GLOB_ABEND;
+            }
+            else
+            if (cchPattern + n + 1 > _MAX_PATH - 1)
+            {
+                DWORD const le = ERROR_INVALID_PARAMETER;
+
+                errno = unixem_internal_errno_from_Win32(le);
+
+                return UNIXEM_GLOB_ABEND;
+            }
+            else
+            {
+                CopyMemory(&szHomePrefixedPath[0] + 0, &szHomeDir[0], (1 + n) * sizeof(szHomePrefixedPath[0]));
+                CopyMemory(&szHomePrefixedPath[0] + n, &pattern[1], (cchPattern - 1 + 1) * sizeof(szHomePrefixedPath[0]));
+
+                effectivePattern = szHomePrefixedPath;
             }
         }
     }
@@ -392,6 +420,13 @@ int unixem_glob(
                         /* Find the next string. */
                         next_str += 1 + lstrlenA(next_str);
                     }
+
+                    qsort(
+                        pp
+                    ,   cMatches
+                    ,   sizeof(char const*)
+                    ,   unixem_glob_sort_random_order_
+                    );
                 }
                 else
                 {
@@ -427,15 +462,15 @@ int unixem_glob(
     if (UNIXEM_GLOB_NOMATCH == result)
     {
         if ((flags & UNIXEM_GLOB_TILDE_CHECK) &&
-            effectivePattern == szPattern3)
+            effectivePattern == szHomePrefixedPath)
         {
             result = UNIXEM_GLOB_NOMATCH;
         }
         else if (bNoMagic ||
                 (flags & UNIXEM_GLOB_NOCHECK))
         {
-            const size_t    effPattLen  =   strlen(effectivePattern);
-            const size_t    cbNeeded    =   ((2 + pglob->gl_offs) * sizeof(char*)) + (1 + effPattLen);
+            size_t const    effPattLen  =   strlen(effectivePattern);
+            size_t const    cbNeeded    =   ((2 + pglob->gl_offs) * sizeof(char*)) + (1 + effPattLen);
             char**          pp          =   (char**)realloc(buffer, cbNeeded);
 
             if (NULL == pp)

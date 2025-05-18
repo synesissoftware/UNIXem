@@ -1,15 +1,14 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:    unixem/unixem.h
+ * File:    unixem/util/str.h
  *
- * Purpose: Version header for the UNIXem API.
+ * Purpose: UNIXem.Util.Str header.
  *
- * Created: 29th August 2005
- * Updated: 19th May 2025
+ * Created: 18th May 2025
+ * Updated: 18th May 2025
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
- * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
+ * Copyright (c) 2025, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -21,10 +20,9 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
- *   nor the names of any contributors may be used to endorse or promote
- *   products derived from this software without specific prior written
- *   permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
+ *   names of any contributors may be used to endorse or promote products
+ *   derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -41,59 +39,51 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file unixem/unixem.h Version header for the UNIXem API
+/** \file unixem/util/str.h
+ *
+ * UNIXem.Util.Str header.
  */
 
-#ifndef UNIXEM_INCL_UNIXEM_H_UNIXEM
-#define UNIXEM_INCL_UNIXEM_H_UNIXEM
+#ifndef SYNSOFT_UNIXEM_INCL_UNIXEM_UTIL_H_STR
+#define SYNSOFT_UNIXEM_INCL_UNIXEM_UTIL_H_STR
+
+/* /////////////////////////////////////////////////////////////////////////
+ * includes
+ */
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * version
+ * API functions
  */
 
-#ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_MAJOR       1
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_MINOR       7
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_REVISION    7
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        31
-#endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
 
-/** \def UNIXEM_VER_MAJOR
- * The major version number of UNIXem
- */
 
-/** \def UNIXEM_VER_MINOR
- * The minor version number of UNIXem
- */
+int
+unixem_util_str_begins_with(
+    char const* s
+,   char const* prefix
+);
 
-/** \def UNIXEM_VER_PATCH
- * The patch (aka revision) version number of UNIXem
- */
-
-/** \def UNIXEM_VER
- * The current composite version number of UNIXem
- */
-
-#define UNIXEM_VER_MAJOR        1
-#define UNIXEM_VER_MINOR        12
-#define UNIXEM_VER_PATCH        8
-#define UNIXEM_VER_ALPHABETA    0x42
-
-#define UNIXEM_VER \
-    (0\
-        |   (   UNIXEM_VER_MAJOR       << 24   ) \
-        |   (   UNIXEM_VER_MINOR       << 16   ) \
-        |   (   UNIXEM_VER_PATCH       <<  8   ) \
-        |   (   UNIXEM_VER_ALPHABETA   <<  0   ) \
-    )
-
-#define UNIXEM_VER_REVISION     UNIXEM_VER_PATCH
+int
+unixem_util_str_ends_with(
+    char const* s
+,   char const* suffix
+);
 
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* UNIXEM_INCL_UNIXEM_H_UNIXEM */
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
+
+
+/* ////////////////////////////////////////////////////////////////////// */
+
+#endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_UTIL_H_STR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
 

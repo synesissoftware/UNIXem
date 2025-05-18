@@ -5,11 +5,11 @@
  *          Windows platform.
  *
  * Created: 1st November 2003
- * Updated: 29th November 2024
+ * Updated: 17th May 2025
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -44,8 +44,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_UNISTD_MAJOR    3
 # define _SYNSOFT_VER_C_UNISTD_MINOR    0
-# define _SYNSOFT_VER_C_UNISTD_REVISION 6
-# define _SYNSOFT_VER_C_UNISTD_EDIT     43
+# define _SYNSOFT_VER_C_UNISTD_REVISION 7
+# define _SYNSOFT_VER_C_UNISTD_EDIT     45
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -62,6 +62,8 @@
 #include <limits.h>
 #include <windows.h>
 
+#include <unixem/util/fs.h>
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * feature support
@@ -70,12 +72,14 @@
 #if 0
 #elif defined(__BORLANDC__)
 
-#elif defined(__DMC__) || \
-      ( defined(__INTEL_COMPILER) && \
-        defined(_WIN32)) || \
-      ( defined(__MWERKS__) && \
-        defined(_WIN32)) || \
-      defined(_MSC_VER)
+#elif 0 ||\
+      defined(__DMC__) ||\
+      ( defined(__INTEL_COMPILER) &&\
+        defined(_WIN32)) ||\
+      ( defined(__MWERKS__) &&\
+        defined(_WIN32)) ||\
+      defined(_MSC_VER) ||\
+      0
 
 UNIXEM_STGCLS_IMP int __cdecl _close(int);
 #elif defined(__GNUC__)
@@ -149,11 +153,9 @@ static char *unixem__unistd__nextSlash(char *s)
 {
     for (; '\0' != *s; ++s)
     {
-        switch (*s)
+        if (unixem_util_fs_char_is_path_sep(*s))
         {
-        case '/':
-        case '\\':
-                return s;
+            return s;
         }
     }
 
@@ -363,12 +365,14 @@ int unixem_rmdir(const char *dirName)
 
 int unixem_close(int fd)
 {
-#if defined(__DMC__) || \
-    (   defined(__INTEL_COMPILER) && \
-        defined(_WIN32)) || \
-    (   defined(__MWERKS__) && \
-        defined(_WIN32)) || \
-    defined(_MSC_VER)
+#if 0
+#elif defined(__DMC__) ||\
+      ( defined(__INTEL_COMPILER) &&\
+        defined(_WIN32)) ||\
+      ( defined(__MWERKS__) &&\
+        defined(_WIN32)) ||\
+      defined(_MSC_VER) ||\
+      0
 
     /* Use _close() */
     return _close(fd);
