@@ -1,7 +1,40 @@
 UNIXem - History
 ================
 
-Updated:    17th December 2020
+Updated:    19th May 2025
+
+
+19th May 2025 - 0.12.8
+----------------------
+
+ * `glob()` now provides a pseudo-random order when `GLOB_NOSORT` flag is specified;
+ * Added **UNIXem.Util.FS** API, and applied in refactoring some API functions;
+ * Added **UNIXem.Util.Str** API, and applied in refactoring some API functions;
+ * Expanded **test.component.dirent**;
+ * Expanded **test.component.glob**;
+ * Miscellaneous consistency improvements;
+ * CMake optional dependency on **shwild**;
+ * Standard names of implementation files of unit/component tests;
+
+
+1st May 2025 - 0.12.7
+---------------------------
+
+ * CMake support;
+ * MinGW support;
+ * `usleep()` now sleeps for (at least) 1ms when given sleep time in range 1-999 nanoseconds;
+ * Simplying `glob()` API;
+ * Simplified implementation of `unixem__setenv__putenv_()` (and avoided warnings w MinGW);
+ * Refactored discrimination of integer types;
+ * Refactored in terms of `unixem_internal_Windows_HANDLE_from_file_handle()`
+ * Added **test.component.unistd.usleep**;
+ * **test.component.unistd.mkdtemp** ensures created temporary directories and temporary files are removed;
+ * **test.scratch.getrusage** ensures created temporary files are removed;
+ * Visual C++ warnings;
+ * VS Code settings;
+ * Removed support for Comeau compiler;
+ * Miscellaneous tidying and consistency fixes;
+ * Added .gitattributes;
 
 
 17th December 2020 - 0.12.6
@@ -142,7 +175,7 @@ Updated:    17th December 2020
 -----------------------
 
  * the distribution is now rooted at unixem-1.7.5/
- * makefiles for Visual C++ 8 & 9 
+ * makefiles for Visual C++ 8 & 9
  * implicit linking for Borland C/C++ 5.82
  * implicit linking for VC++ 9
  * bundles shwild 0.9.13

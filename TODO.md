@@ -9,7 +9,10 @@ Updated:    12th May 2025
  * [ ] Refactor file-system utilities into separate API functions;
  * [ ] Greater unit-testing coverage;
  * [ ] Ensure unit-tests (and scratch-tests) do memory checking;
- * ;
+ * [ ] Remove Visual Studio project/solution files;
+ * [ ] Component test(s) for link;
+ * [ ] Standardise project boilerplate files (to .md);
+ * [ ] CMake optional dependencies all marked OFF in CMakeListst.txt;
 
 
 ## UNIXem 1.13 TODOs:
