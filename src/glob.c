@@ -43,8 +43,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_UNIXEM_GLOB_MAJOR       3
 # define _SYNSOFT_VER_C_UNIXEM_GLOB_MINOR       1
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_REVISION    5
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT        61
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_REVISION    6
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT        62
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -148,6 +148,7 @@ int unixem_glob(
     HANDLE              hFind;
     char*               buffer;
     char                szHomePrefixedPath[1 + _MAX_PATH];
+    size_t const        cchPattern          =   strlen(pattern);
     char const*         effectivePattern    =   pattern;
     char const*         leafMost;
     int const           bMagic              =   (NULL != strpbrk(pattern, "?*"));
@@ -175,13 +176,30 @@ int unixem_glob(
             (   '\0' == pattern[1] ||
                 unixem_util_fs_char_is_path_sep(pattern[1])))
         {
+            char    szHomeDir[_MAX_PATH];
+            size_t  n;
 
-            DWORD const dw = ExpandEnvironmentStringsA("%HOMEDRIVE%%HOMEPATH%", &szHomePrefixedPath[0], NUM_ELEMENTS(szHomePrefixedPath) - 1);
-
-            if (0 != dw)
+            if (!unixem_util_fs_get_home_directory(&szHomeDir, &n))
             {
-                (void)lstrcpynA(&szHomePrefixedPath[0] + dw - 1, &pattern[1], (int)(NUM_ELEMENTS(szHomePrefixedPath) - dw));
-                szHomePrefixedPath[NUM_ELEMENTS(szHomePrefixedPath) - 1] = '\0';
+                DWORD const le = GetLastError();
+
+                errno = unixem_internal_errno_from_Win32(le);
+
+                return UNIXEM_GLOB_ABEND;
+            }
+            else
+            if (cchPattern + n + 1 > _MAX_PATH - 1)
+            {
+                DWORD const le = ERROR_INVALID_PARAMETER;
+
+                errno = unixem_internal_errno_from_Win32(le);
+
+                return UNIXEM_GLOB_ABEND;
+            }
+            else
+            {
+                CopyMemory(&szHomePrefixedPath[0] + 0, &szHomeDir[0], (1 + n) * sizeof(szHomePrefixedPath[0]));
+                CopyMemory(&szHomePrefixedPath[0] + n, &pattern[1], (cchPattern - 1 + 1) * sizeof(szHomePrefixedPath[0]));
 
                 effectivePattern = szHomePrefixedPath;
             }

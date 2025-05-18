@@ -138,7 +138,7 @@ insufficient_buffer:
                 }
                 else
                 {
-                    CopyMemory(&(*ar)[0], &ar2[0], _MAX_PATH);
+                    CopyMemory(&(*ar)[0], &ar2[0], _MAX_PATH * sizeof(ar2[0]));
 
                     *pnumWritten = dw_ees2 - 1;
                 }
