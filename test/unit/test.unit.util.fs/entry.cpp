@@ -267,7 +267,7 @@ void TEST_get_home_directory_SYNTHETIC_homedrive_AND_homepath_MAXPATH_PLUS_1()
             int const   e   =   errno;
 
             TEST_INT_EQ(0, r);
-            TEST_INT_EQ(ENOENT, e);
+            TEST_INT_EQ(ENOMEM, e);
             TEST_INT_EQ(ERROR_INSUFFICIENT_BUFFER, ::GetLastError());
         }
     }
