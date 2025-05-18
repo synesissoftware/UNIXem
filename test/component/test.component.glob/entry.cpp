@@ -457,7 +457,7 @@ static void TEST_readdir_CWD_FOR_DIRECTORIES_AND_FILES_AND_DOTS()
         std::vector<std::string>        gl_entries;
 
 
-        for (size_t i = 0; gl.gl_pathc != i; ++i)
+        for (int i = 0; gl.gl_pathc != i; ++i)
         {
             // fprintf(stderr, "%d: %s\n", __LINE__, gl.gl_pathv[i]);
 
@@ -513,7 +513,7 @@ static void TEST_readdir_CWD_FOR_DIRECTORIES_AND_DOTS()
         std::vector<std::string>        gl_entries;
 
 
-        for (size_t i = 0; gl.gl_pathc != i; ++i)
+        for (int i = 0; gl.gl_pathc != i; ++i)
         {
             gl_entries.push_back(gl.gl_pathv[i]);
         }
@@ -568,7 +568,7 @@ static void TEST_readdir_HOMEDIR_FOR_DIRECTORIES_AND_FILES_AND_DOTS()
 
         std::vector<std::string>        gl_entries;
 
-        for (size_t i = 0; gl.gl_pathc != i; ++i)
+        for (int i = 0; gl.gl_pathc != i; ++i)
         {
             char const* path = gl.gl_pathv[i];
 
