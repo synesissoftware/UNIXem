@@ -4,11 +4,11 @@
  * Purpose: Version header for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 10th July 2024
+ * Updated: 18th May 2025
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,8 +55,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MAJOR       1
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MINOR       7
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_REVISION    6
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        30
+# define UNIXEM_VER_UNIXEM_H_UNIXEM_REVISION    7
+# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        31
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /** \def UNIXEM_VER_MAJOR
@@ -67,19 +67,28 @@
  * The minor version number of UNIXem
  */
 
-/** \def UNIXEM_VER_REVISION
- * The revision version number of UNIXem
+/** \def UNIXEM_VER_PATCH
+ * The patch (aka revision) version number of UNIXem
  */
 
 /** \def UNIXEM_VER
  * The current composite version number of UNIXem
  */
 
-#define UNIXEM_VER_MAJOR       1
-#define UNIXEM_VER_MINOR       12
-#define UNIXEM_VER_REVISION    7
+#define UNIXEM_VER_MAJOR        1
+#define UNIXEM_VER_MINOR        12
+#define UNIXEM_VER_PATCH        8
+#define UNIXEM_VER_ALPHABETA    0x42
 
-#define UNIXEM_VER             0x010c0741
+#define UNIXEM_VER \
+    (0\
+        |   (   UNIXEM_VER_MAJOR       << 24   ) \
+        |   (   UNIXEM_VER_MINOR       << 16   ) \
+        |   (   UNIXEM_VER_PATCH       <<  8   ) \
+        |   (   UNIXEM_VER_ALPHABETA   <<  0   ) \
+    )
+
+#define UNIXEM_VER_REVISION     UNIXEM_VER_PATCH
 
 
 /* ////////////////////////////////////////////////////////////////////// */
