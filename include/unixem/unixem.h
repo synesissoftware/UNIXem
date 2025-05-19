@@ -76,9 +76,9 @@
  */
 
 #define UNIXEM_VER_MAJOR        1
-#define UNIXEM_VER_MINOR        12
-#define UNIXEM_VER_PATCH        8
-#define UNIXEM_VER_ALPHABETA    0x42
+#define UNIXEM_VER_MINOR        13
+#define UNIXEM_VER_PATCH        0
+#define UNIXEM_VER_ALPHABETA    0x41
 
 #define UNIXEM_VER \
     (0\

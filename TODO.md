@@ -17,7 +17,7 @@ Updated:    12th May 2025
 
 ## UNIXem 1.13 TODOs:
 
- * [ ] `stpcpy()`, etc.;
+ * [x] `stpcpy()`, etc.;
  * [ ] `glob()` - expand functionality and flags coverage:
   * [ ] Proper handling of `errfunc` + `GLOB_ERR`;
   * [ ] Support `GLOB_APPEND`;
