@@ -24,7 +24,7 @@
 
 ## Installation
 
-T.B.C.
+As of **1.12.8**, **CMake** support is provided, and this is the recommended means of installation. Detailed instructions are provided in [INSTALL.md](./INSTALL.md).
 
 
 ## Components

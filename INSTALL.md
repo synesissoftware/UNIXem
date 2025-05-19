@@ -1,12 +1,13 @@
-UNIXem - Install
-================
+# UNIXem - Install <!-- omit in toc -->
 
-Updated:    17th December 2020
-
+## Table of Contents <!-- omit in toc -->
 
 
-UNIXem requires manual installation, by copying files after building,
-as described in the accompanying doc/html/1.12.6/index.html file.
+## Installing with CMake
 
-=============================== end of file ================================
+T.B.C.
+
+
+
+<!-- ########################### end of file ########################### -->
 
