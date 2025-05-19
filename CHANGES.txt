@@ -15,6 +15,32 @@ Updated:    1st May 2025
     ************************************
 
 
+19th May 2025 - 1.12.8
+======================
+
+Summary:
+--------
+
+ * `glob()` now provides a pseudo-random order when `GLOB_NOSORT` flag is specified;
+ * Added **UNIXem.Util.FS** API, and applied in refactoring some API functions;
+ * Added **UNIXem.Util.Str** API, and applied in refactoring some API functions;
+ * Expanded **test.component.dirent**;
+ * Expanded **test.component.glob**;
+ * Miscellaneous consistency improvements;
+ * CMake optional dependency on **shwild**;
+ * Standard names of implementation files of unit/component tests;
+
+Details:
+--------
+
+
+
+Depends on:
+ * STLSoft v1.11.1-rc1 or later (testing only);
+ * shwild v0.12.6 or later (optional, testing only);
+ * xTests v0.26.4 or later (testing only);
+
+
 1st May 2025 - 1.12.7
 =====================
 

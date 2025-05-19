@@ -9,7 +9,10 @@ Updated:    12th May 2025
  * [ ] Refactor file-system utilities into separate API functions;
  * [ ] Greater unit-testing coverage;
  * [ ] Ensure unit-tests (and scratch-tests) do memory checking;
- * ;
+ * [ ] Remove Visual Studio project/solution files;
+ * [ ] Component test(s) for link;
+ * [ ] Standardise project boilerplate files (to .md);
+ * [ ] CMake optional dependencies all marked OFF in CMakeListst.txt;
 
 
 ## UNIXem 1.13 TODOs:
@@ -19,7 +22,7 @@ Updated:    12th May 2025
   * [ ] Proper handling of `errfunc` + `GLOB_ERR`;
   * [ ] Support `GLOB_APPEND`;
   * [ ] Unit-test `GLOB_MARK`;
-  * [ ] Cause order to be random when `GLOB_NOSORT`;
+  * [x] Cause order to be random when `GLOB_NOSORT`;
   * [ ] Reimplement in terms of `stpcpy()` (etc.);
   * [ ] Verify `GLOB_DOOFFS` handled correctly (esp. wrt `gl_matchc` and `gl_pathc`);
   * [ ] Implement escaping (and `UNIXEM_GLOB_NOESCAPE`);

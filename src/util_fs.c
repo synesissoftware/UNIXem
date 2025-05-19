@@ -133,13 +133,14 @@ unixem_util_fs_get_home_directory(
         {
 env_var_not_found:
 
-            DWORD const le = ERROR_ENVVAR_NOT_FOUND;
+            {
+                DWORD const le = ERROR_ENVVAR_NOT_FOUND;
 
-            SetLastError(le);
+                SetLastError(le);
 
-            errno = unixem_internal_errno_from_Win32(le);
+                errno = unixem_internal_errno_from_Win32(le);
 
-            return 0;
+                return 0;            }
         }
         else
         {
@@ -147,13 +148,15 @@ env_var_not_found:
             {
 insufficient_buffer:
 
-                DWORD const le = ERROR_INSUFFICIENT_BUFFER;
+                {
+                    DWORD const le = ERROR_INSUFFICIENT_BUFFER;
 
-                SetLastError(le);
+                    SetLastError(le);
 
-                errno = unixem_internal_errno_from_Win32(le);
+                    errno = unixem_internal_errno_from_Win32(le);
 
-                return 0;
+                    return 0;
+                }
             }
             else
             if (dw_ees == _MAX_PATH + 1)

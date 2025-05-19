@@ -43,8 +43,8 @@
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define _SYNSOFT_VER_C_UNIXEM_GLOB_MAJOR       3
 # define _SYNSOFT_VER_C_UNIXEM_GLOB_MINOR       1
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_REVISION    6
-# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT        62
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_REVISION    7
+# define _SYNSOFT_VER_C_UNIXEM_GLOB_EDIT        63
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -123,6 +123,19 @@ unixem_glob_isdots_(
     }
 
     return 0;
+}
+
+static
+int
+unixem_glob_sort_random_order_(
+    void const* p1
+,   void const* p2
+)
+{
+    ((void)&p1);
+    ((void)&p2);
+
+    return (rand() % 3) - 1;
 }
 
 
@@ -407,6 +420,13 @@ int unixem_glob(
                         /* Find the next string. */
                         next_str += 1 + lstrlenA(next_str);
                     }
+
+                    qsort(
+                        pp
+                    ,   cMatches
+                    ,   sizeof(char const*)
+                    ,   unixem_glob_sort_random_order_
+                    );
                 }
                 else
                 {
