@@ -140,7 +140,8 @@ env_var_not_found:
 
                 errno = unixem_internal_errno_from_Win32(le);
 
-                return 0;            }
+                return 0;
+            }
         }
         else
         {
