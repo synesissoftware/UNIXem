@@ -1,7 +1,7 @@
 UNIXem - Changes
 ================
 
-Updated:    1st May 2025
+Updated:    20th May 2025
 
 
     ************************************
@@ -13,6 +13,24 @@ Updated:    1st May 2025
     *  *  means a general bullet-point *
     *                                  *
     ************************************
+
+
+20th May 2025 - 1.13.0-alpha1
+=============================
+
+Summary:
+--------
+
+ * Added `unixem_util_str_stpcpy()` / `unixem_util_str_wcpcpy()`;
+ * Added `unixem_util_str_stpncpy()` / `unixem_util_str_wcpncpy()`;
+
+Details:
+--------
+
+Depends on:
+ * STLSoft v1.11.1-rc1 or later (testing only);
+ * shwild v0.12.6 or later (optional, testing only);
+ * xTests v0.26.4 or later (testing only);
 
 
 19th May 2025 - 1.12.8
@@ -32,8 +50,6 @@ Summary:
 
 Details:
 --------
-
-
 
 Depends on:
  * STLSoft v1.11.1-rc1 or later (testing only);
