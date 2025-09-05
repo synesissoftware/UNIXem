@@ -5,6 +5,7 @@ Updated:    12th May 2025
 
 ## UNIXem 1.12 TODOs:
 
+ * [ ] Badges;
  * [x] CMake
  * [ ] Refactor file-system utilities into separate API functions;
  * [ ] Greater unit-testing coverage;
