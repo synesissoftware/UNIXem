@@ -49,7 +49,13 @@ function(define_automated_test_program program_name entry_point_source_name)
 			${X_MSVC_CUSTOM_WARNINGS_}
 		>
 	)
+
+	add_test(
+		NAME ${program_name}
+		COMMAND ${program_name}
+	)
 endfunction(define_automated_test_program)
+
 
 function(define_example_program program_name entry_point_source_name)
 
