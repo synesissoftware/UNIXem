@@ -54,6 +54,8 @@ ReleaseUnix/
 
 # files (by name)
 
+.DS_Store
+
 list_changes.cmd
 
 build/makefile.tmpl
