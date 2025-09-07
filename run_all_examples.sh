@@ -4,7 +4,8 @@ ScriptPath=$0
 Dir=$(cd $(dirname "$ScriptPath"); pwd)
 Basename=$(basename "$ScriptPath")
 CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
-MakeCmd=${SIS_CMAKE_COMMAND:-make}
+[[ -n "$MSYSTEM" ]] && DefaultMakeCmd=mingw32-make.exe || DefaultMakeCmd=make
+MakeCmd=${SIS_CMAKE_MAKE_COMMAND:-${SIS_CMAKE_COMMAND:-$DefaultMakeCmd}}
 
 ListOnly=0
 RunMake=1
@@ -16,11 +17,11 @@ RunMake=1
 while [[ $# -gt 0 ]]; do
 
   case $1 in
-    -l|--list-only)
+    --list-only|-l)
 
       ListOnly=1
       ;;
-    -M|--no-make)
+    --no-make|-M)
 
       RunMake=0
       ;;
@@ -104,8 +105,8 @@ if [ $status -eq 0 ]; then
     echo "Running all example programs"
   fi
 
-    for f in $(find $CMakeDir -type f '(' -name 'example.c.*' -o -name 'example.cpp.*' ')' -exec test -x {} \; -print)
-    do
+  for f in $(find $CMakeDir/examples -type f -exec test -x {} \; -print)
+  do
 
     if [ $ListOnly -ne 0 ]; then
 
@@ -117,7 +118,6 @@ if [ $status -eq 0 ]; then
     echo
     echo "executing $f:"
 
-    # NOTE: we do not break on fail, because, this being a unit-testing library, the scratch-tests actually fail
     $f
   done
 fi
