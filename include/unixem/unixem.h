@@ -4,7 +4,7 @@
  * Purpose: Version header for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 5th September 2025
+ * Updated: 7th September 2025
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
