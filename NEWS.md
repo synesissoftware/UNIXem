@@ -3,7 +3,7 @@
 
 | Date                  | News Item               |
 | --------------------- | ----------------------- |
-| 5th Sep 2025          | Release of [UNIXem 1.13.0](https://github.com/synesissoftware/UNIXem/releases/tag/1.13.0) |
+| 7th Sep 2025          | Release of [UNIXem 1.13.0](https://github.com/synesissoftware/UNIXem/releases/tag/1.13.0) |
 | 19th May 2025         | UNIXem 1.12.8 released  |
 | 1st May 2025          | UNIXem 1.12.7 released  |
 | 17th Dec 2020         | UNIXem 1.12.6 released  |
