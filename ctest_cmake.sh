@@ -7,6 +7,9 @@ CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
 [[ -n "$MSYSTEM" ]] && DefaultMakeCmd=mingw32-make.exe || DefaultMakeCmd=make
 MakeCmd=${SIS_CMAKE_MAKE_COMMAND:-${SIS_CMAKE_COMMAND:-$DefaultMakeCmd}}
 
+CMakeVerbose=
+RunMake=1
+
 
 # ##########################################################
 # command-line handling
@@ -14,17 +17,33 @@ MakeCmd=${SIS_CMAKE_MAKE_COMMAND:-${SIS_CMAKE_COMMAND:-$DefaultMakeCmd}}
 while [[ $# -gt 0 ]]; do
 
   case $1 in
+    --no-make|-M)
+
+      RunMake=0
+      ;;
+    --verbose|-V)
+
+      CMakeVerbose=--verbose
+      ;;
     --help)
 
       [ -f "$Dir/.sis/script_info_lines.txt" ] && cat "$Dir/.sis/script_info_lines.txt"
       cat << EOF
-Executes CMake-generated artefacts to clean project
+Runs CMake's CTest test program(s)
 
 $ScriptPath [ ... flags/options ... ]
 
 Flags/options:
 
     behaviour:
+
+    -M
+    --no-make
+        does not execute CMake and make before running tests
+
+    -V
+    --verbose
+        verbose test output
 
 
     standard flags:
@@ -51,34 +70,37 @@ done
 # ##########################################################
 # main()
 
-if [ ! -d "$CMakeDir" ]; then
+status=0
 
-  >&2 echo "$ScriptPath: CMake build directory '$CMakeDir' not found so nothing to do; use script 'prepare_cmake.sh' if you wish to prepare CMake artefacts"
+if [ $RunMake -ne 0 ]; then
 
-  exit 1
-else
+  echo "Executing build (via command \`$MakeCmd\`) and then running all component and unit test programs"
+
+  mkdir -p $CMakeDir || exit 1
 
   cd $CMakeDir
 
-  if [ ! -f "$CMakeDir/Makefile" ]; then
+  $MakeCmd
+  status=$?
 
-    >&2 echo "$ScriptPath: CMake build directory '$CMakeDir' does not contain expected file 'Makefile', so a clean cannot be performed. It is recommended that you remove all CMake artefacts using script 'remove_cmake_artefacts.sh' followed by regeneration via 'prepare_cmake.sh'"
+  cd ->/dev/null
+else
 
-    cd ->/dev/null
+  if [ ! -d "$CMakeDir" ] || [ ! -f "$CMakeDir/CMakeCache.txt" ] || [ ! -d "$CMakeDir/CMakeFiles" ]; then
 
-    exit 1
-  else
-
-    echo "Cleaning build (via command \`$MakeCmd clean\`)"
-
-    $MakeCmd clean
-    status=$?
-
-    cd ->/dev/null
-
-    exit $status
+    >&2 echo "$ScriptPath: cannot run in '--no-make' mode without a previous successful build step"
   fi
 fi
+
+if [ $status -eq 0 ]; then
+
+  echo "Running CMake tests"
+
+  ctest --test-dir $CMakeDir $CMakeVerbose
+  status=$?
+fi
+
+exit $status
 
 
 # ############################## end of file ############################# #

@@ -1,7 +1,7 @@
-UNIXem - History
-================
+# UNIXem - History
 
-Updated:    19th May 2025
+
+----
 
 
 19th May 2025 - 0.12.8
@@ -199,5 +199,6 @@ Updated:    19th May 2025
  * fixed gettimeofday() - was returning local and not system time
  * library now compatible with Secure Library string functions
 
-=============================== end of file ================================
+
+<!-- ########################### end of file ########################### -->
 
