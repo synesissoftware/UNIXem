@@ -26,6 +26,12 @@
 		"editor.insertSpaces": true,
 		"editor.tabSize": 2,
 	},
+	"[python]": {
+		"diffEditor.ignoreTrimWhitespace": false,
+		"editor.insertSpaces": true,
+		"editor.rulers": [ 51, 60, 61, 76 ],
+		"editor.tabSize": 4,
+	},
 	"[ruby]": {
 		"editor.insertSpaces": true,
 		"editor.tabSize": 2,
@@ -33,6 +39,14 @@
 	"[shellscript]": {
 		"editor.insertSpaces": true,
 		"editor.rulers": [ 60, 76 ],
+		"editor.tabSize": 2,
+	},
+	"[toml]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 2,
+	},
+	"[yaml]": {
+		"editor.insertSpaces": true,
 		"editor.tabSize": 2,
 	},
 	"cmake.configureOnOpen": false,
