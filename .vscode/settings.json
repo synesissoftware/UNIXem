@@ -6,16 +6,16 @@
 	},
 	"[c]": {
 		"editor.insertSpaces": true,
-		"editor.rulers": [ 60, 76 ],
-		"editor.tabSize": 4,
-	},
-	"[cpp]": {
-		"editor.insertSpaces": true,
-		"editor.rulers": [ 60, 64, 68, 76 ],
+		"editor.rulers": [ 60, 64, 68, 72, 76 ],
 		"editor.tabSize": 4,
 	},
 	"[cmake]": {
 		"editor.insertSpaces": false,
+		"editor.tabSize": 4,
+	},
+	"[cpp]": {
+		"editor.insertSpaces": true,
+		"editor.rulers": [ 60, 64, 68, 72, 76 ],
 		"editor.tabSize": 4,
 	},
 	"[json]": {
@@ -38,7 +38,7 @@
 	"cmake.configureOnOpen": false,
 	"editor.detectIndentation": false,
 	"editor.insertSpaces": false,
-	"editor.renderWhitespace" : "all",
+	"editor.renderWhitespace": "all",
 	"editor.rulers": [ 76 ],
 	"editor.tabSize": 2,
 	"files.associations": {
