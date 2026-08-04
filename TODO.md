@@ -14,7 +14,7 @@ Updated: 4th August 2026
   * [ ] Proper handling of `errfunc` + `GLOB_ERR`;
   * [ ] Support `GLOB_APPEND`;
   * [ ] Unit-test `GLOB_MARK`;
-  * [x] Cause order to be random when `GLOB_NOSORT`;
+  * [x] ~~~Cause order to be random when `GLOB_NOSORT`~~~ - ✅;
   * [ ] Reimplement in terms of `stpcpy()` (etc.);
   * [ ] Verify `GLOB_DOOFFS` handled correctly (esp. wrt `gl_matchc` and `gl_pathc`);
   * [ ] Implement escaping (and `UNIXEM_GLOB_NOESCAPE`);
