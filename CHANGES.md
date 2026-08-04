@@ -1,6 +1,11 @@
 # UNIXem - CHANGES <!-- omit in toc -->
 
 
+## 1.14.0-beta1 - 9th August 2026
+
+* added `stpcpy()`;
+
+
 ## 1.13.0-beta1 - 4th August 2026
 
 * added modular GitHub Actions CI (**ci.yml** / **ci-cell.yml**) for Windows (MSVC + MinGW) with install-smoke coverage;
