@@ -1,7 +1,8 @@
-# UNIXem
+# UNIXem <!-- omit in toc -->
+
 **Unix**-**em**ulation, for Windows
 
-## Table of Contents
+## Table of Contents <!-- omit in toc -->
 
 1. [Introduction](#introduction)
 2. [Installation](#installation)
