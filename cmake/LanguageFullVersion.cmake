@@ -1,10 +1,10 @@
-
 # ################################################
 # X_CMAKE_C_FULLSTANDARD
 
 set(X_CMAKE_C_FULLSTANDARD 0)
 
 if(FALSE)
+
 elseif(CMAKE_C_STANDARD EQUAL 99)
 
        set(X_CMAKE_C_FULLSTANDARD 1999)
@@ -32,6 +32,7 @@ endif()
 set(X_CMAKE_CXX_FULLSTANDARD 0)
 
 if(FALSE)
+
 elseif(CMAKE_CXX_STANDARD EQUAL 98)
 
 	set(X_CMAKE_CXX_FULLSTANDARD 1998)
@@ -60,4 +61,3 @@ endif()
 
 
 # ############################## end of file ############################# #
-

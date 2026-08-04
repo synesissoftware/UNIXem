@@ -1,11 +1,10 @@
-
 # ######################################################################## #
 # File:     /CMakeLists.txt
 #
 # Purpose:  Top-level CMake lists file for UNIXem
 #
 # Created:  10th July 2024
-# Updated:  7th September 2025
+# Updated:  4th August 2026
 #
 # ######################################################################## #
 
@@ -89,6 +88,7 @@ endif(MSVC)
 # ##########################################################
 # dependencies, includes, options
 
+
 # ################################################
 # includes - 1
 
@@ -101,23 +101,36 @@ include(TargetMacros)
 # dependencies and options
 
 option(BUILD_EXAMPLES "Build examples" ON)
+option(BUILD_TESTING "Build tests" ON)
+
+
+# ######################################
+# features
+
+# This library targets Windows only.
+if(NOT WIN32)
+
+	message(FATAL_ERROR "${PROJECT_NAME} targets Windows only")
+endif()
+
 
 # ######################################
 # dependencies
 #
 # required:
+# - (none for library use)
 #
-# optional:
-# - STLSoft - required unless NO_B64_CPP_API is specified, and by xTests
-#    (for testing);
-# - shwild - for enhanced match constructs
+# optional / testing:
+# - STLSoft - required by xTests (for testing);
+# - shwild - for enhanced match constructs (testing);
 # - xTests - required for testing
 
 
 # ############################
 # STLSoft
 
-if(BUILD_TESTING OR NOT NO_B64_CPP_API)
+if(BUILD_TESTING)
+
 	if(NOT DEFINED STLSOFT AND NOT DEFINED ENV{STLSOFT})
 
 		set(STLSoft_REQUIRED_VERSION_ 1.11)
@@ -143,10 +156,12 @@ if(BUILD_TESTING OR NOT NO_B64_CPP_API)
 	endif()
 endif()
 
+
 # ############################
 # shwild (optional)
 
 if(NOT (CMAKE_NO_SHWILD))
+
 	if(BUILD_TESTING)
 
 		find_package(shwild QUIET)
@@ -159,6 +174,7 @@ if(NOT (CMAKE_NO_SHWILD))
 		endif(shwild_FOUND)
 	endif(BUILD_TESTING)
 endif()
+
 
 # ############################
 # xTests
@@ -186,6 +202,7 @@ include(GNUInstallDirs)
 
 # ##########################################################
 # targets
+
 
 # ################################################
 # main library
@@ -267,4 +284,3 @@ message(NOTICE "Generating CMake build scripts for ${PROJECT_NAME} ${PROJECT_VER
 
 
 # ############################## end of file ############################# #
-
