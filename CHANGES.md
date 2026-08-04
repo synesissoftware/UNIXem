@@ -13,6 +13,7 @@
 * CMake helper-script enhancements (**ProjectName** from **.sis/project_name.txt**; modernised **run_all_unit_tests.sh** / **run_all_unit_tests.cmd** with `--unit-only` / `--component-only`);
 * added **LanguageFullVersion.cmake** and related CMake tidy;
 * added **ctest_cmake.sh**;
+* scratch programs **test.scratch.dlfcn**, **test.scratch.link**, and **test.scratch.uio** now smoke successfully with no arguments (defaults / self-path);
 
 
 ## 1.13.0-alpha1 - 7th September 2025
