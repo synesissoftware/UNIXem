@@ -17,12 +17,12 @@ set fixeol
 set list
 set listchars=tab:->,trail:-,extends:>,precedes:<,nbsp:+
 
-" editor.detectIndentation: false — global defaults (editor.tabSize: 2, insertSpaces: false)
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set noexpandtab
+" editor.detectIndentation: false — global defaults (editor.tabSize: 4, insertSpaces: true)
 set colorcolumn=76
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 
 " colorcolumn draws a full-column tint in Vim (not a VS Code-style 1px line).
 " Keep it subtle via the ColorColumn highlight group; reapply after colorscheme changes.
@@ -45,6 +45,9 @@ augroup sis_c_cxx
 
   " [c] / [cpp]
   autocmd FileType c,cpp setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 colorcolumn=60,64,68,72,76
+
+  " [rust]
+  autocmd FileType rs setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 colorcolumn=76
 
   " [cmake]
   autocmd FileType cmake setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
