@@ -55,16 +55,16 @@ perf_test/
 
 scripts/internal/
 
-include/b64/
-include/shwild/
-include/xcontract/
-include/xcover/
-include/xtests/
-src/b64/
-src/shwild/
-src/xcontract/
-src/xcover/
-src/xtests/
+/include/b64/
+/include/shwild/
+/include/xcontract/
+/include/xcover/
+/include/xtests/
+/src/b64/
+/src/shwild/
+/src/xcontract/
+/src/xcover/
+/src/xtests/
 
 Debug Multithreaded DLL/
 Debug Multithreaded Dll/
