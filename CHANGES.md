@@ -1,19 +1,24 @@
 # UNIXem - CHANGES <!-- omit in toc -->
 
 
-## 1.13.0 - 7th September 2025
+## 1.13.0-beta1 - 4th August 2026
 
-* version bump to **1.13.0**;
 * added modular GitHub Actions CI (**ci.yml** / **ci-cell.yml**) for Windows (MSVC + MinGW) with install-smoke coverage;
 * converted **CHANGES.txt** to **CHANGES.md** and removed **HISTORY.md**;
-* expanded **FAQ.md**, **INSTALL.md**, and **README.md** (incl. CI badges);
+* expanded **FAQ.md**, **INSTALL.md**, and **README.md** (incl. CI badges and Components tables);
 * fixed **CMakeLists.txt** so **STLSoft** is required only when **BUILD_TESTING** is enabled (removed erroneous **NO_B64_CPP_API** guard);
 * **CMake** now fails early on non-Windows hosts (`${PROJECT_NAME} targets Windows only`);
 * removed Visual Studio project/solution/workspace files (**unixem.vc10.sln**, **unixem.vc6.dsw**, **projects/**, per-test **vc6**/**vc10** trees);
-* project boilerplate canonicalisation (**AUTHORS.md**, **NEWS.md**, **TODO.md**, **LICENSE**, **.sis/**);
-* CMake helper-script enhancements (**ProjectName** from **.sis/project_name.txt**; modernised **run_all_unit_tests.cmd**);
+* project boilerplate canonicalisation (**AUTHORS.md**, **NEWS.md**, **TODO.md**, **.sis/**, **.vimrc**);
+* CMake helper-script enhancements (**ProjectName** from **.sis/project_name.txt**; modernised **run_all_unit_tests.sh** / **run_all_unit_tests.cmd** with `--unit-only` / `--component-only`);
 * added **LanguageFullVersion.cmake** and related CMake tidy;
 * added **ctest_cmake.sh**;
+
+
+## 1.13.0-alpha1 - 7th September 2025
+
+* version bump to **1.13.0**;
+* project boilerplate canonicalisation begun (markdown docs, helper scripts, **LICENSE**);
 
 
 ## 1.12.8 - 19th May 2025
