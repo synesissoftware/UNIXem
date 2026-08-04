@@ -1,11 +1,10 @@
-
 # ######################################################################## #
 # File:     /CMakeLists.txt
 #
 # Purpose:  Top-level CMake lists file for UNIXem
 #
 # Created:  10th July 2024
-# Updated:  5th May 2025
+# Updated:  4th August 2026
 #
 # ######################################################################## #
 
@@ -46,8 +45,8 @@ string(REGEX MATCH "#${RX_WS}*define${RX_WS}+_?${RX_PROJ_TAG}_VER_MAJOR${RX_WS}+
 set(_VERSION_MAJOR ${CMAKE_MATCH_1})
 string(REGEX MATCH "#${RX_WS}*define${RX_WS}+_?${RX_PROJ_TAG}_VER_MINOR${RX_WS}+([0-9]+)" MINOR_DUMMY ${_header_file})
 set(_VERSION_MINOR ${CMAKE_MATCH_1})
-string(REGEX MATCH "#${RX_WS}*define${RX_WS}+_?${RX_PROJ_TAG}_VER_REVISION${RX_WS}+([0-9]+)" PATCH_DUMMY ${_header_file})
-set(_VERSION_PATCH ${CMAKE_MATCH_1})
+string(REGEX MATCH "#${RX_WS}*define${RX_WS}+_?${RX_PROJ_TAG}_VER_(PATCH|REVISION)${RX_WS}+([0-9]+)" PATCH_DUMMY ${_header_file})
+set(_VERSION_PATCH ${CMAKE_MATCH_2})
 
 # set project version number here
 set(PROJECT_VERSION_MAJOR ${_VERSION_MAJOR})
@@ -89,6 +88,7 @@ endif(MSVC)
 # ##########################################################
 # dependencies, includes, options
 
+
 # ################################################
 # includes - 1
 
@@ -101,23 +101,38 @@ include(TargetMacros)
 # dependencies and options
 
 option(BUILD_EXAMPLES "Build examples" ON)
+option(BUILD_TESTING "Build tests" ON)
+
+
+# ######################################
+# features
+
+# This library targets Windows only.
+if(NOT WIN32)
+
+	message(FATAL_ERROR "${PROJECT_NAME} targets Windows only")
+endif()
+
+option(BUILD_TESTING "Build tests" ON)
+
 
 # ######################################
 # dependencies
 #
 # required:
+# - (none for library use)
 #
-# optional:
-# - STLSoft - required unless NO_B64_CPP_API is specified, and by xTests
-#    (for testing);
-# - shwild - for enhanced match constructs
+# optional / testing:
+# - STLSoft - required by xTests (for testing);
+# - shwild - for enhanced match constructs (testing);
 # - xTests - required for testing
 
 
 # ############################
 # STLSoft
 
-if(BUILD_TESTING OR NOT NO_B64_CPP_API)
+if(BUILD_TESTING)
+
 	if(NOT DEFINED STLSOFT AND NOT DEFINED ENV{STLSOFT})
 
 		set(STLSoft_REQUIRED_VERSION_ 1.11)
@@ -143,10 +158,12 @@ if(BUILD_TESTING OR NOT NO_B64_CPP_API)
 	endif()
 endif()
 
+
 # ############################
 # shwild (optional)
 
 if(NOT (CMAKE_NO_SHWILD))
+
 	if(BUILD_TESTING)
 
 		find_package(shwild QUIET)
@@ -159,6 +176,7 @@ if(NOT (CMAKE_NO_SHWILD))
 		endif(shwild_FOUND)
 	endif(BUILD_TESTING)
 endif()
+
 
 # ############################
 # xTests
@@ -186,6 +204,7 @@ include(GNUInstallDirs)
 
 # ##########################################################
 # targets
+
 
 # ################################################
 # main library
@@ -253,7 +272,7 @@ install(EXPORT project-targets
 	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${EXPORT_NAME}
 )
 
-install( FILES
+install(FILES
 	"${CMAKE_CURRENT_BINARY_DIR}/cmake/${EXPORT_NAME}-config.cmake"
 	"${CMAKE_CURRENT_BINARY_DIR}/cmake/${EXPORT_NAME}-config-version.cmake"
 	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${EXPORT_NAME}
@@ -263,8 +282,7 @@ install( FILES
 # ##########################################################
 # completion
 
-message(NOTICE "Generating CMake build scripts for ${PROJECT_NAME} ${PROJECT_VERSION}, for C${CMAKE_C_STANDARD} C++${CMAKE_CXX_STANDARD}")
+message(NOTICE "Generating CMake build scripts for ${PROJECT_NAME} ${PROJECT_VERSION}, for C${CMAKE_C_STANDARD} C++${CMAKE_CXX_STANDARD}, with build type ${CMAKE_BUILD_TYPE}")
 
 
 # ############################## end of file ############################# #
-

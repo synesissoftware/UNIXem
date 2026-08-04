@@ -1,15 +1,4 @@
 
-# ######################################################################## #
-# File:     /cmake/BuildType.cmake
-#
-# Purpose:  CMake module file (for BuildType)
-#
-# Created:  16th October 2019
-# Updated:  21st January 2024
-#
-# ######################################################################## #
-
-
 # Including this module sets the `CMAKE_BUILD_TYPE` value as follows:
 #
 #  1. If user specifies on the command line, then `CMAKE_BUILD_TYPE` already
@@ -36,8 +25,10 @@ include(BuildType)
 
 
 if(EXISTS "${CMAKE_SOURCE_DIR}/.git")
+
 	set(default_build_type "Debug")
 else()
+
 	set(default_build_type "Release")
 endif()
 
@@ -55,5 +46,5 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 	)
 endif()
 
-# ############################## end of file ############################# #
 
+# ############################## end of file ############################# #

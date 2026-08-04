@@ -369,7 +369,7 @@ int unixem_glob(
 
             ++cMatches;
         }
-        while(FindNextFile(hFind, &find_data) && cMatches != maxMatches);
+        while (FindNextFile(hFind, &find_data) && cMatches != maxMatches);
 
         (void)FindClose(hFind);
 

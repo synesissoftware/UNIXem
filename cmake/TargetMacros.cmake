@@ -17,6 +17,7 @@ function(define_automated_test_program program_name entry_point_source_name)
 	set(X_GCC_CUSTOM_WARNINGS_ "")
 
 	if(X_GCC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED)
+
 		foreach(warning ${X_GCC_CUSTOM_WARNINGS_TO_BE_SUPPRESSED})
 
 			list(APPEND X_GCC_CUSTOM_WARNINGS_ "-Wno-${warning}")
@@ -49,7 +50,13 @@ function(define_automated_test_program program_name entry_point_source_name)
 			${X_MSVC_CUSTOM_WARNINGS_}
 		>
 	)
+
+	add_test(
+		NAME ${program_name}
+		COMMAND ${program_name}
+	)
 endfunction(define_automated_test_program)
+
 
 function(define_example_program program_name entry_point_source_name)
 
@@ -103,6 +110,4 @@ function(define_example_program program_name entry_point_source_name)
 endfunction(define_example_program)
 
 
-
 # ############################## end of file ############################# #
-
