@@ -113,8 +113,8 @@ if(NOT WIN32)
 	message(FATAL_ERROR "${PROJECT_NAME} targets Windows only")
 endif()
 
-
 option(BUILD_TESTING "Build tests" ON)
+
 
 # ######################################
 # dependencies
