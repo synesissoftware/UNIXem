@@ -105,8 +105,8 @@ if [ $status -eq 0 ]; then
     echo "Running all example programs"
   fi
 
-    for f in $(find $CMakeDir -type f '(' -name 'example.c.*' -o -name 'example.cpp.*' ')' -exec test -x {} \; -print)
-    do
+  for f in $(find $CMakeDir/examples -type f -exec test -x {} \; -print)
+  do
 
     if [ $ListOnly -ne 0 ]; then
 
