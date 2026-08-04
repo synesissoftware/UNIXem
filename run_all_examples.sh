@@ -118,7 +118,6 @@ if [ $status -eq 0 ]; then
     echo
     echo "executing $f:"
 
-    # NOTE: we do not break on fail, because, this being a unit-testing library, the scratch-tests actually fail
     $f
   done
 fi

@@ -11,7 +11,7 @@ MakeCmd=${SIS_CMAKE_MAKE_COMMAND:-${SIS_CMAKE_COMMAND:-$DefaultMakeCmd}}
 Configuration=Release
 ExamplesDisabled=0
 MSVC_MT=0
-MinGW=0
+MinGW="${MinGW:=0}"
 NO_shwild=0
 RunMake=0
 STLSoftDirGiven=
