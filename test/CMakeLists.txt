@@ -20,10 +20,13 @@ if(WIN32)
 endif(WIN32)
 
 
-add_subdirectory(component)
-add_subdirectory(scratch)
-add_subdirectory(unit)
+foreach(d component performance scratch unit)
+
+	if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${d}")
+
+		add_subdirectory(${d})
+	endif()
+endforeach()
 
 
 # ############################## end of file ############################# #
-

@@ -1,0 +1,45 @@
+# UNIXem - News <!-- omit in toc -->
+
+
+| Date          | News Item              |
+| ------------- | ---------------------- |
+| 4th Aug 2026  | Release of [UNIXem 1.13.0-beta1](https://github.com/synesissoftware/UNIXem/releases/tag/1.13.0-beta1) |
+| 7th Sep 2025  | Release of [UNIXem 1.13.0-alpha1](https://github.com/synesissoftware/UNIXem/releases/tag/1.13.0-alpha1) |
+| 19th May 2025 | UNIXem 1.12.8 released |
+| 1st May 2025  | UNIXem 1.12.7 released |
+| 17th Dec 2020 | UNIXem 1.12.6 released |
+| 19th Jul 2020 | UNIXem 1.12.5 released |
+| 19th Jul 2020 | UNIXem 1.12.4 released |
+| 14th Oct 2019 | UNIXem 1.12.3 released |
+| 14th Oct 2019 | UNIXem 1.12.2 released |
+| 9th Oct 2019  | UNIXem 1.11.4 released |
+| 2nd Jan 2017  | UNIXem 1.11.2 released |
+| 7th Oct 2015  | UNIXem 1.11.1 released |
+| 25th Sep 2015 | UNIXem 1.10.2 released |
+| 30th Jul 2015 | UNIXem 1.10.1 released |
+| 16th Jun 2012 | UNIXem 1.9.3 released  |
+| 4th Feb 2011  | UNIXem 1.9.2 released  |
+| 13th Aug 2010 | UNIXem 1.9.1 released  |
+| 13th Aug 2010 | UNIXem 1.8.5 released  |
+| 4th Apr 2010  | UNIXem 1.8.4 released  |
+| 6th Feb 2010  | UNIXem 1.8.3 released  |
+| 13th May 2008 | UNIXem 1.8.2 released  |
+| 22nd Apr 2008 | UNIXem 1.8.1 released  |
+| 20th Apr 2008 | UNIXem 1.7.5 released  |
+| 24th Feb 2008 | UNIXem 1.7.4 released  |
+| 12th Mar 2007 | UNIXem 1.7.3 released  |
+| 12th Sep 2006 | UNIXem 1.7.2 released  |
+| 3rd Sep 2006  | UNIXem 1.7.1 released  |
+| 12th Aug 2006 | UNIXem 1.5.2 released  |
+| 21st Sep 2005 | UNIXem 1.5.1 released  |
+| 19th Jun 2005 | UNIXem 1.5.3 released  |
+| 23rd May 2005 | UNIXem 1.5.2 released  |
+| 17th Feb 2005 | UNIXem 1.5.1 released  |
+| 29th Jun 2004 | UNIXem 1.4 released    |
+| 16th Jun 2004 | UNIXem 1.3 released    |
+| 3rd Jan 2004  | UNIXem 1.2 released    |
+| 2nd Nov 2003  | UNIXem 1.1 released    |
+| 2nd Feb 2003  | UNIXem 1.0 released    |
+
+
+<!-- ########################### end of file ########################### -->

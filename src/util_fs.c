@@ -157,13 +157,6 @@ insufficient_buffer:
             {
                 *pnumWritten = dw_ees - 1;
             }
-
-            // if (ERROR_ENVVAR_NOT_FOUND == GetLastError() &&
-            //     ERROR_ENVVAR_NOT_FOUND == le_up)
-            // {
-            //     SetLastError(0);
-            // }
-
         }
     }
     else
