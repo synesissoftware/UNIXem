@@ -1,5 +1,5 @@
 *.c linguist-language=C
-*.cmake linguist-language=CMake
+*.cmake linguist-detectable=false
 *.cmd linguist-detectable=false
 *.cpp linguist-language=C++
 *.cxx linguist-language=C++
