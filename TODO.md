@@ -9,7 +9,7 @@ Updated: 4th August 2026
 * [ ] Greater unit-testing coverage;
 * [ ] Ensure unit-tests (and scratch-tests) do memory checking;
 * [ ] Component test(s) for `link`;
-* [ ] `stpcpy()`, etc.;
+* [x] ~~~`stpcpy()`, etc.~~~ - ✅;
 * [ ] `glob()` - expand functionality and flags coverage:
   * [ ] Proper handling of `errfunc` + `GLOB_ERR`;
   * [ ] Support `GLOB_APPEND`;
@@ -33,7 +33,7 @@ Updated: 4th August 2026
 * [x] ~~~CMake~~~;
 * [x] ~~~Standardise project boilerplate files (to .md)~~~;
 * [x] ~~~Remove Visual Studio project/solution/workspace files~~~;
-* [ ] Remove custom makefiles under **build/** (retained for now);
+* [ ] ~~~Remove custom makefiles under **build/** (retained for now)~~~;
 * [ ] CMake optional dependencies all marked OFF in **CMakeLists.txt**;
 * [ ] Add example programs under **examples/**;
 * [ ] Add to Windows-capable package managers:
