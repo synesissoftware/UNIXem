@@ -41,10 +41,10 @@ The primary choice for installation is by use of **CMake**.
    ```
 
    **NOTE**: if you intend only to build the library then you can eschew
-   building of tests (via flag `-T`) and use the command:
+   building of examples (`-E`) and tests (`-T`) and use the command:
 
    ```bash
-   $ ./prepare_cmake.sh -T
+   $ ./prepare_cmake.sh -E -T
    ```
 
    In this case, you do not need to have installed **STLSoft**, **shwild**,
@@ -61,8 +61,8 @@ The primary choice for installation is by use of **CMake**.
    (**NOTE**: if you provide the flag `--run-make` (=== `-m`) in step 2 then
    you do not need this step.)
 
-4. As a check, execute the built test programs via **run_all_unit_tests.sh**,
-   as in:
+4. As a check, execute the built test programs via **run_all_unit_tests.sh**
+   (or **ctest_cmake.sh**), as in:
 
    ```bash
    $ ./run_all_unit_tests.sh

@@ -169,7 +169,7 @@ if [ $MinGW -ne 0 ]; then
     -DBUILD_EXAMPLES:BOOL=$CMakeBuildExamplesFlag \
     -DBUILD_TESTING:BOOL=$CMakeBuildTestingFlag \
     -DCMAKE_BUILD_TYPE=$Configuration \
-    -DCMAKE_NO_SHWILD:BOOL=$CMakeNoShwild \
+    -DNO_SHWILD:BOOL=$CMakeNoShwild \
     -DMSVC_USE_MT:BOOL=$CMakeMsvcMtFlag \
     -G "MinGW Makefiles" \
     -S $Dir \
@@ -182,7 +182,7 @@ else
     -DBUILD_EXAMPLES:BOOL=$CMakeBuildExamplesFlag \
     -DBUILD_TESTING:BOOL=$CMakeBuildTestingFlag \
     -DCMAKE_BUILD_TYPE=$Configuration \
-    -DCMAKE_NO_SHWILD:BOOL=$CMakeNoShwild \
+    -DNO_SHWILD:BOOL=$CMakeNoShwild \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=$CMakeVerboseMakefileFlag \
     -DMSVC_USE_MT:BOOL=$CMakeMsvcMtFlag \
     -S $Dir \

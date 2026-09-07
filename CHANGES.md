@@ -1,6 +1,16 @@
 # UNIXem - Changes <!-- omit in toc -->
 
 
+## 1.14.0-rc1 - 10th September 2026
+
+* Canonicalised CMake exclusion variable from reserved `CMAKE_NO_SHWILD` to canonical `NO_SHWILD` in **CMakeLists.txt** and **prepare_cmake.sh**;
+* Added backwards-compatibility mapping with obsolete-variable warning for legacy `CMAKE_NO_SHWILD` in **CMakeLists.txt**;
+* Updated `UNIXEM_VER_MINOR` to 14, `UNIXEM_VER_AB` to `0xC1`, wired `UNIXEM_VER` to `UNIXEM_VER_AB` directly, and provided legacy `UNIXEM_VER_ALPHABETA` and `UNIXEM_VER_REVISION` compatibility aliases in **include/unixem/unixem.h**;
+* Added third **Details** column to **NEWS.md** table;
+* Updated installation instructions in **INSTALL.md**;
+* Documented `stpcpy`, `stpncpy`, `wcpcpy`, and `wcpncpy` in **README.md**;
+
+
 ## 1.14.0-beta1 - 9th August 2026
 
 * added `stpcpy()`;
