@@ -4,7 +4,7 @@
  * Purpose: Version header for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 4th August 2026
+ * Updated: 10th September 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -56,7 +56,7 @@
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MAJOR       1
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MINOR       7
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_REVISION    9
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        33
+# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        34
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /** \def UNIXEM_VER_MAJOR
@@ -71,24 +71,31 @@
  * The patch (aka revision) version number of UNIXem
  */
 
+/** \def UNIXEM_VER_AB
+ * The alpha/beta/rc number of UNIXem
+ */
+
 /** \def UNIXEM_VER
  * The current composite version number of UNIXem
  */
 
 #define UNIXEM_VER_MAJOR        1
-#define UNIXEM_VER_MINOR        13
+#define UNIXEM_VER_MINOR        14
 #define UNIXEM_VER_PATCH        0
-#define UNIXEM_VER_ALPHABETA    0x81
+#define UNIXEM_VER_AB           0xC1
 
 #define UNIXEM_VER \
     (0\
         |   (   UNIXEM_VER_MAJOR       << 24   ) \
         |   (   UNIXEM_VER_MINOR       << 16   ) \
         |   (   UNIXEM_VER_PATCH       <<  8   ) \
-        |   (   UNIXEM_VER_ALPHABETA   <<  0   ) \
+        |   (   UNIXEM_VER_AB          <<  0   ) \
     )
 
-#define UNIXEM_VER_REVISION     UNIXEM_VER_PATCH
+#ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
+# define UNIXEM_VER_ALPHABETA          UNIXEM_VER_AB
+# define UNIXEM_VER_REVISION           UNIXEM_VER_PATCH
+#endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
 /* ////////////////////////////////////////////////////////////////////// */

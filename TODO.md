@@ -1,6 +1,6 @@
 # UNIXem - TODO <!-- omit in toc -->
 
-Updated: 4th August 2026
+Updated: 10th September 2026
 
 
 ## Functional improvements
