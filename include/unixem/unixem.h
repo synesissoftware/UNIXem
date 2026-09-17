@@ -4,7 +4,7 @@
  * Purpose: Version header for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 4th August 2026
+ * Updated: 17th September 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -88,7 +88,9 @@
         |   (   UNIXEM_VER_ALPHABETA   <<  0   ) \
     )
 
-#define UNIXEM_VER_REVISION     UNIXEM_VER_PATCH
+#ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
+# define UNIXEM_VER_REVISION                                UNIXEM_VER_PATCH
+#endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
 /* ////////////////////////////////////////////////////////////////////// */
