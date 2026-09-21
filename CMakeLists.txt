@@ -4,7 +4,7 @@
 # Purpose:  Top-level CMake lists file for UNIXem
 #
 # Created:  10th July 2024
-# Updated:  4th August 2026
+# Updated:  10th September 2026
 #
 # ######################################################################## #
 
@@ -162,7 +162,14 @@ endif()
 # ############################
 # shwild (optional)
 
-if(NOT (CMAKE_NO_SHWILD))
+if(DEFINED CMAKE_NO_SHWILD AND NOT DEFINED NO_SHWILD)
+
+	message(WARNING "variable 'CMAKE_NO_SHWILD' is obsolete and will not be supported in a future version; use 'NO_SHWILD' instead")
+
+	set(NO_SHWILD ${CMAKE_NO_SHWILD})
+endif()
+
+if(NOT NO_SHWILD)
 
 	if(BUILD_TESTING)
 

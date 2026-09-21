@@ -74,10 +74,10 @@ Top-level compatibility headers (e.g. [`dirent.h`](./include/dirent.h), [`unistd
 
 ### Utility APIs
 
-| API(s)                                                       | Header                                             | Purpose                            | Restrictions               |
-| ------------------------------------------------------------ | -------------------------------------------------- | ---------------------------------- | -------------------------- |
-| `begins_with`, `ends_with`                                   | [`unixem/util/str.h`](./include/unixem/util/str.h) | **UNIXem.Util.Str** string helpers | Helper API (also internal) |
-| `char_is_path_sep`, `directory_exists`, `get_home_directory` | [`unixem/util/fs.h`](./include/unixem/util/fs.h)   | **UNIXem.Util.FS** path/FS helpers | Helper API (also internal) |
+| API(s)                                                               | Header                                             | Purpose                            | Restrictions               |
+| -------------------------------------------------------------------- | -------------------------------------------------- | ---------------------------------- | -------------------------- |
+| `begins_with`, `ends_with`, `stpcpy`, `stpncpy`, `wcpcpy`, `wcpncpy` | [`unixem/util/str.h`](./include/unixem/util/str.h) | **UNIXem.Util.Str** string helpers | Helper API (also internal) |
+| `char_is_path_sep`, `directory_exists`, `get_home_directory`         | [`unixem/util/fs.h`](./include/unixem/util/fs.h)   | **UNIXem.Util.FS** path/FS helpers | Helper API (also internal) |
 
 
 ### Compatibility placeholders
