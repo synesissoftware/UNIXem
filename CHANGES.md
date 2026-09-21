@@ -1,7 +1,7 @@
 # UNIXem - Changes <!-- omit in toc -->
 
 
-## 1.14.0-rc1 - 10th September 2026
+## 1.14.0-rc1 - 21st September 2026
 
 * Canonicalised CMake exclusion variable from reserved `CMAKE_NO_SHWILD` to canonical `NO_SHWILD` in **CMakeLists.txt** and **prepare_cmake.sh**;
 * Added backwards-compatibility mapping with obsolete-variable warning for legacy `CMAKE_NO_SHWILD` in **CMakeLists.txt**;
@@ -9,6 +9,8 @@
 * Added third **Details** column to **NEWS.md** table;
 * Updated installation instructions in **INSTALL.md**;
 * Documented `stpcpy`, `stpncpy`, `wcpcpy`, and `wcpncpy` in **README.md**;
+* Applied **misc-dev-scripts** **0.6.0** editor/Git/`.sis` drop-in templates on **boilerplate**;
+* Restored historical **.gitignore** patterns as a sorted union with **misc-dev-scripts** gold section layout;
 
 
 ## 1.14.0-beta1 - 9th August 2026

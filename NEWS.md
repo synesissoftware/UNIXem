@@ -3,7 +3,7 @@
 
 | Date                | News Item              | Details |
 | ------------------- | ---------------------- | ------- |
-| 10th September 2026 | Release of [UNIXem 1.14.0-rc1](https://github.com/synesissoftware/UNIXem/releases/tag/1.14.0-rc1)    | |
+| 21st September 2026 | Release of [UNIXem 1.14.0-rc1](https://github.com/synesissoftware/UNIXem/releases/tag/1.14.0-rc1)    | |
 | 9th August 2026     | Release of [UNIXem 1.14.0-beta1](https://github.com/synesissoftware/UNIXem/releases/tag/1.14.0-beta1) | |
 | 4th August 2026     | Release of [UNIXem 1.13.0-beta1](https://github.com/synesissoftware/UNIXem/releases/tag/1.13.0-beta1) | |
 | 7th September 2025  | Release of [UNIXem 1.13.0-alpha1](https://github.com/synesissoftware/UNIXem/releases/tag/1.13.0-alpha1) | |
