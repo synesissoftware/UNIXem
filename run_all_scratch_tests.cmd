@@ -23,7 +23,7 @@ FOR %%a IN (%*) DO (
 		)
 		ECHO ^
 
-Runs all ^(matching^) unit-test programs ^
+Runs all ^(matching^) scratch-test programs ^
 
 ^
 
@@ -37,12 +37,6 @@ Flags/options: ^
 
 ^
 
-    --unit-only ^
-
-        accepted for compatibility; this script always runs unit tests only ^
-
-^
-
     standard flags: ^
 
 ^
@@ -53,9 +47,6 @@ Flags/options: ^
 
 
 		EXIT /B 0
-	) ELSE IF /I {--unit-only}=={%%a} (
-
-		REM Benign: this script is already unit-only
 	) ELSE (
 
 		ECHO "%SCRIPT_DIRECTORY%: unrecognised argument '%%a'; use --help for usage" 1>&2
@@ -81,9 +72,9 @@ IF NOT DEFINED ProjectName (
     EXIT /B 1
 )
 
-ECHO Running all %ProjectName% unit-test programs
+ECHO Running all %ProjectName% scratch-test programs
 
-FOR /F "usebackq" %%f IN (`DIR /A:-D /B /S "%CMAKE_DIR%" ^| FINDSTR /I test.*unit.*\.exe$`) DO (
+FOR /F "usebackq" %%f IN (`DIR /A:-D /B /S "%CMAKE_DIR%" ^| FINDSTR /I test.*scratch.*\.exe$`) DO (
 
 	ECHO .
 	ECHO executing %%f

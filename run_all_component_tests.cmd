@@ -23,7 +23,7 @@ FOR %%a IN (%*) DO (
 		)
 		ECHO ^
 
-Runs all ^(matching^) unit-test programs ^
+Runs all ^(matching^) component-test programs ^
 
 ^
 
@@ -37,9 +37,9 @@ Flags/options: ^
 
 ^
 
-    --unit-only ^
+    --component-only ^
 
-        accepted for compatibility; this script always runs unit tests only ^
+        accepted for compatibility; this script always runs component tests only ^
 
 ^
 
@@ -53,9 +53,9 @@ Flags/options: ^
 
 
 		EXIT /B 0
-	) ELSE IF /I {--unit-only}=={%%a} (
+	) ELSE IF /I {--component-only}=={%%a} (
 
-		REM Benign: this script is already unit-only
+		REM Benign: this script is already component-only
 	) ELSE (
 
 		ECHO "%SCRIPT_DIRECTORY%: unrecognised argument '%%a'; use --help for usage" 1>&2
@@ -81,9 +81,9 @@ IF NOT DEFINED ProjectName (
     EXIT /B 1
 )
 
-ECHO Running all %ProjectName% unit-test programs
+ECHO Running all %ProjectName% component-test programs
 
-FOR /F "usebackq" %%f IN (`DIR /A:-D /B /S "%CMAKE_DIR%" ^| FINDSTR /I test.*unit.*\.exe$`) DO (
+FOR /F "usebackq" %%f IN (`DIR /A:-D /B /S "%CMAKE_DIR%" ^| FINDSTR /I test.*component.*\.exe$`) DO (
 
 	ECHO .
 	ECHO executing %%f

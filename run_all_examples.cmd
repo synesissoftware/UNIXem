@@ -23,7 +23,7 @@ FOR %%a IN (%*) DO (
 		)
 		ECHO ^
 
-Runs all ^(matching^) unit-test programs ^
+Runs all ^(matching^) example programs ^
 
 ^
 
@@ -37,12 +37,6 @@ Flags/options: ^
 
 ^
 
-    --unit-only ^
-
-        accepted for compatibility; this script always runs unit tests only ^
-
-^
-
     standard flags: ^
 
 ^
@@ -53,9 +47,6 @@ Flags/options: ^
 
 
 		EXIT /B 0
-	) ELSE IF /I {--unit-only}=={%%a} (
-
-		REM Benign: this script is already unit-only
 	) ELSE (
 
 		ECHO "%SCRIPT_DIRECTORY%: unrecognised argument '%%a'; use --help for usage" 1>&2
@@ -81,9 +72,13 @@ IF NOT DEFINED ProjectName (
     EXIT /B 1
 )
 
-ECHO Running all %ProjectName% unit-test programs
+REM Examples that require human input may honour SIS_EXAMPLE_SMOKE for a
+REM no-arg built-in tmpfile demo (see example.c.cstring_vector).
+SET SIS_EXAMPLE_SMOKE=1
 
-FOR /F "usebackq" %%f IN (`DIR /A:-D /B /S "%CMAKE_DIR%" ^| FINDSTR /I test.*unit.*\.exe$`) DO (
+ECHO Running all %ProjectName% example programs
+
+FOR /F "usebackq" %%f IN (`DIR /A:-D /B /S "%CMAKE_DIR%" ^| FINDSTR /I example.*\.exe$`) DO (
 
 	ECHO .
 	ECHO executing %%f

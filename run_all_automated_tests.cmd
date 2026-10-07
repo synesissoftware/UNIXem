@@ -5,13 +5,8 @@ SETLOCAL
 SET SCRIPT_DIRECTORY=%~dp0
 SET SCRIPT_PATH_DOC=%~n0[%~x0]
 
-IF DEFINED SIS_CMAKE_BUILD_DIR (
-
-    SET CMAKE_DIR=%SIS_CMAKE_BUILD_DIR%
-) ELSE (
-
-    SET CMAKE_DIR=%SCRIPT_DIRECTORY%_build
-)
+SET UnitOnly=0
+SET ComponentOnly=0
 
 FOR %%a IN (%*) DO (
 
@@ -23,7 +18,7 @@ FOR %%a IN (%*) DO (
 		)
 		ECHO ^
 
-Runs all ^(matching^) unit-test programs ^
+Runs all ^(matching^) automated test programs ^(unit and component^) ^
 
 ^
 
@@ -39,7 +34,13 @@ Flags/options: ^
 
     --unit-only ^
 
-        accepted for compatibility; this script always runs unit tests only ^
+        runs only unit-test programs ^
+
+^
+
+    --component-only ^
+
+        runs only component-test programs ^
 
 ^
 
@@ -55,7 +56,10 @@ Flags/options: ^
 		EXIT /B 0
 	) ELSE IF /I {--unit-only}=={%%a} (
 
-		REM Benign: this script is already unit-only
+		SET UnitOnly=1
+	) ELSE IF /I {--component-only}=={%%a} (
+
+		SET ComponentOnly=1
 	) ELSE (
 
 		ECHO "%SCRIPT_DIRECTORY%: unrecognised argument '%%a'; use --help for usage" 1>&2
@@ -64,11 +68,21 @@ Flags/options: ^
 	)
 )
 
-if NOT EXIST "%CMAKE_DIR%" (
+IF %UnitOnly% NEQ 0 IF %ComponentOnly% NEQ 0 (
 
-    ECHO "CMake build directory '%CMAKE_DIR%' does not exist"
+	ECHO %SCRIPT_PATH_DOC%: --unit-only and --component-only are mutually exclusive 1>&2
 
-    EXIT /B 1
+	EXIT /B 1
+)
+
+IF %UnitOnly% NEQ 0 (
+	CALL "%SCRIPT_DIRECTORY%run_all_unit_tests.cmd"
+	EXIT /B %ERRORLEVEL%
+)
+
+IF %ComponentOnly% NEQ 0 (
+	CALL "%SCRIPT_DIRECTORY%run_all_component_tests.cmd"
+	EXIT /B %ERRORLEVEL%
 )
 
 SET "ProjectName="
@@ -81,14 +95,12 @@ IF NOT DEFINED ProjectName (
     EXIT /B 1
 )
 
-ECHO Running all %ProjectName% unit-test programs
+ECHO Running all %ProjectName% automated test programs ^(unit and component^)
 
-FOR /F "usebackq" %%f IN (`DIR /A:-D /B /S "%CMAKE_DIR%" ^| FINDSTR /I test.*unit.*\.exe$`) DO (
+CALL "%SCRIPT_DIRECTORY%run_all_unit_tests.cmd"
+IF ERRORLEVEL 1 EXIT /B %ERRORLEVEL%
 
-	ECHO .
-	ECHO executing %%f
-	%%f
-	IF ERRORLEVEL 1 EXIT /B %ERRORLEVEL%
-)
+CALL "%SCRIPT_DIRECTORY%run_all_component_tests.cmd"
+EXIT /B %ERRORLEVEL%
 
 ENDLOCAL
