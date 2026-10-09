@@ -5,6 +5,7 @@
 | ------------------- | ------------------------- | ----------------------------------------------------------------- |
 | 21st September 2026 | Release of [**UNIXem** 1.14.0-rc1](https://github.com/synesissoftware/UNIXem/releases/tag/1.14.0-rc1) | `NO_SHWILD`; computed `UNIXEM_VER`; **misc-dev-scripts** drop-ins |
 | 9th August 2026     | Release of [**UNIXem** 1.14.0-beta1](https://github.com/synesissoftware/UNIXem/releases/tag/1.14.0-beta1) | `stpcpy()` |
+| 9th August 2026     | Release of [UNIXem 1.13.0](https://github.com/synesissoftware/UNIXem/releases/tag/1.13.0) |
 | 4th August 2026     | Release of [**UNIXem** 1.13.0-beta1](https://github.com/synesissoftware/UNIXem/releases/tag/1.13.0-beta1) | modular CI; **CHANGES.md**; Windows-only CMake guard |
 | 7th September 2025  | Release of [**UNIXem** 1.13.0-alpha1](https://github.com/synesissoftware/UNIXem/releases/tag/1.13.0-alpha1) | boilerplate canonicalisation begun |
 | 19th May 2025       | UNIXem 1.12.8 released    | `GLOB_NOSORT` order; **UNIXem.Util.FS**; **UNIXem.Util.Str**      |

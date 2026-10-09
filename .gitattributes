@@ -105,7 +105,8 @@ TODO text
 
 # Classification (C-primary / C API with C++ tests; *.cmake as CMake scripts)
 *.c linguist-language=C
-*.cmake linguist-language=CMake
+*.cmake linguist-detectable=false
+*.cmd linguist-detectable=false
 *.cpp linguist-language=C++
 *.cxx linguist-language=C++
 *.h linguist-language=C
