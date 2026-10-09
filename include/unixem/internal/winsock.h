@@ -5,11 +5,11 @@
  *          support timeval and gethostname()).
  *
  * Created: 28th December 2007
- * Updated: 10th July 2024
+ * Updated: 9th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2007-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -57,7 +57,7 @@
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_MAJOR     1
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_MINOR     0
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_REVISION  3
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_EDIT      8
+# define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_EDIT      9
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -111,3 +111,4 @@
 #endif /* UNIXEM_INCL_UNIXEM_INTERNAL_H_WINSOCK */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

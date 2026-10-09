@@ -5,11 +5,11 @@
  *          Windows platform.
  *
  * Created: 21st November 2003
- * Updated: 29th November 2024
+ * Updated: 9th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -48,7 +48,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_MAJOR       3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_MINOR       0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_REVISION    1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_EDIT        22
+# define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_EDIT        23
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -113,3 +113,4 @@ int     unixem_atomic_sub_and_test(int i, unixem_atomic_t volatile* v);
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_ASM_H_ATOMIC */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

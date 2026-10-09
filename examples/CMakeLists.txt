@@ -22,7 +22,7 @@ if(WIN32)
 	endif()
 
 	# suppress implicit-link file
-	add_definitions(-DCSTRING_INCL_CSTRING_H_IMPLICIT_LINK)
+	add_definitions(-DUNIXEM_INCL_UNIXEM_H_IMPLICIT_LINK)
 endif(WIN32)
 
 if((MSVC) AND (MSVC_VERSION GREATER_EQUAL 1914))

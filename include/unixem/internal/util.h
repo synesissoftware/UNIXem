@@ -4,11 +4,11 @@
  * Purpose: Internal utility header for the UNIXem API.
  *
  * Created: 2nd September 2005
- * Updated: 17th May 2025
+ * Updated: 9th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_MAJOR    1
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_MINOR    4
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_REVISION 2
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_EDIT     15
+# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_EDIT     16
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -174,3 +174,4 @@ unixem_internal_yearIsLeap(
 #endif /* UNIXEM_INCL_UNIXEM_INTERNAL_H_UTIL */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

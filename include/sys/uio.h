@@ -4,11 +4,11 @@
  * Purpose: Vector file read/write.
  *
  * Created: 19th September 2005
- * Updated: 28th November 2024
+ * Updated: 9th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -51,7 +51,7 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_UIO_MAJOR     2
 # define SYNSOFT_UNIXEM_VER_SYS_H_UIO_MINOR     0
 # define SYNSOFT_UNIXEM_VER_SYS_H_UIO_REVISION  1
-# define SYNSOFT_UNIXEM_VER_SYS_H_UIO_EDIT      15
+# define SYNSOFT_UNIXEM_VER_SYS_H_UIO_EDIT      16
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -157,3 +157,4 @@ ssize_t writev(
 #endif /* SYNSOFT_UNIXEM_INCL_SYS_H_UIO */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

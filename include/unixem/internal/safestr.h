@@ -4,11 +4,11 @@
  * Purpose: Internal utility header for the UNIXem API.
  *
  * Created: 28th December 2007
- * Updated: 29th November 2024
+ * Updated: 9th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2007-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_MAJOR     1
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_MINOR     0
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_REVISION  1
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_EDIT      8
+# define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_EDIT      9
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -110,3 +110,4 @@
 #endif /* UNIXEM_INCL_UNIXEM_INTERNAL_H_SAFESTR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

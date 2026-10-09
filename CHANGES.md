@@ -1,14 +1,26 @@
 # UNIXem - Changes <!-- omit in toc -->
 
 
-## 1.14.0-rc1 - 10th September 2026
+## 1.14.0-rc1 - 21st September 2026
 
 * Canonicalised CMake exclusion variable from reserved `CMAKE_NO_SHWILD` to canonical `NO_SHWILD` in **CMakeLists.txt** and **prepare_cmake.sh**;
 * Added backwards-compatibility mapping with obsolete-variable warning for legacy `CMAKE_NO_SHWILD` in **CMakeLists.txt**;
-* Updated `UNIXEM_VER_MINOR` to 14, `UNIXEM_VER_AB` to `0xC1`, wired `UNIXEM_VER` to `UNIXEM_VER_AB` directly, and provided legacy `UNIXEM_VER_ALPHABETA` and `UNIXEM_VER_REVISION` compatibility aliases in **include/unixem/unixem.h**;
+* Updated `UNIXEM_VER_MINOR` to 14 and `UNIXEM_VER_ALPHABETA` to `0xC1`, computed `UNIXEM_VER` from `UNIXEM_VER_ALPHABETA`, and provided `UNIXEM_VER_AB` and `UNIXEM_VER_REVISION` compatibility aliases in **include/unixem/unixem.h**;
 * Added third **Details** column to **NEWS.md** table;
 * Updated installation instructions in **INSTALL.md**;
 * Documented `stpcpy`, `stpncpy`, `wcpcpy`, and `wcpncpy` in **README.md**;
+* Applied **misc-dev-scripts** **0.6.0** editor/Git/`.sis` drop-in templates on **boilerplate**;
+* Restored historical **.gitignore** patterns as a sorted union with **misc-dev-scripts** gold section layout;
+* Synchronised **run_all_examples.sh**, **run_all_examples.cmd**, **run_all_scratch_tests.sh**, and **run_all_scratch_tests.cmd** with **misc-dev-scripts** gold (optional **.sis/ci_examples_allowed_to_fail.txt** and **.sis/ci_scratch_tests_allowed_to_fail.txt** lists);
+* Corrected `INSTALL_DESTINATION` of the package configuration in **CMakeLists.txt** (formerly the undefined `LIB_INSTALL_DIR`) and removed a duplicate `BUILD_TESTING` option;
+* Corrected the implicit-link suppression definition in **examples/CMakeLists.txt** (which carried the **cstring** name);
+* Canonicalised the `SIS:AUTO_GENERATED` eyecatcher of stock **CMakeLists.txt** files, renamed the scratch-program sources to **main.c**, and shortened the scratch, unit, and component test directories (e.g. **test/scratch/dlfcn/**, **test/component/unistd/mkdtemp/**) while retaining the `test.<kind>.*` executable names;
+* Windows steps of **ci-cell.yml** now pass `SIS_CMAKE_BUILD_DIR` and the MSYS2 location via `env:`, and propagate the `.cmd` runners' exit status;
+* Documented the `mmap()` return value in Doxygen as `\return` rather than as a `\retval` with a prose value;
+* Documented **MinGW** selection (`--mingw`) and the native `.cmd` runners in **INSTALL.md**;
+* Corrected completed-item form in **TODO.md**;
+* Removed the empty (and therefore vacuously passing) `test_1_14()` to `test_1_19()` cases from **test.component.glob**;
+* Added the blank line after the end-of-file marker of source files, wrapped over-length comments in scratch programs, and used the `char* argv[]` form of `main()` in the unit and component tests;
 
 
 ## 1.14.0-beta1 - 9th August 2026
