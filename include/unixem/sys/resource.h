@@ -5,11 +5,11 @@
  *          types for the Windows platform.
  *
  * Created: 9th June 2006
- * Updated: 28th November 2024
+ * Updated: 9th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,7 +53,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_MAJOR     2
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_MINOR     0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_REVISION  1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_EDIT      11
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_EDIT      12
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -139,3 +139,4 @@ extern int unixem_getrusage(
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_SYS_H_RESOURCE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

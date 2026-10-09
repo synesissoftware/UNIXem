@@ -41,15 +41,20 @@ The primary choice for installation is by use of **CMake**.
    ```
 
    **NOTE**: if you intend only to build the library then you can eschew
-   building of tests (via flag `-T`) and use the command:
+   building of examples (`-E`) and tests (`-T`) and use the command:
 
    ```bash
-   $ ./prepare_cmake.sh -T
+   $ ./prepare_cmake.sh -E -T
    ```
 
    In this case, you do not need to have installed **STLSoft**, **shwild**,
    or **xTests**; otherwise, you will need those test-only dependencies to
    be discoverable by **CMake**.
+
+   **NOTE**: **CMake** selects the generator. To build with **MinGW**
+   rather than **MSVC**, provide the flag `--mingw`, which selects the
+   "MinGW Makefiles" generator (and is the only means by which **MinGW** is
+   selected).
 
 3. Run a build of the generated **CMake**-derived build files via the
    **build_cmake.sh** script, as in:
@@ -61,11 +66,19 @@ The primary choice for installation is by use of **CMake**.
    (**NOTE**: if you provide the flag `--run-make` (=== `-m`) in step 2 then
    you do not need this step.)
 
-4. As a check, execute the built test programs via **run_all_unit_tests.sh**,
-   as in:
+4. As a check, execute the built test programs via **run_all_unit_tests.sh**
+   (or **ctest_cmake.sh**), as in:
 
    ```bash
    $ ./run_all_unit_tests.sh
+   ```
+
+   From a native Windows command prompt, use **run_all_unit_tests.cmd**
+   (and, likewise, **run_all_component_tests.cmd**,
+   **run_all_examples.cmd**, and **run_all_scratch_tests.cmd**), as in:
+
+   ```cmd
+   > run_all_unit_tests.cmd
    ```
 
 5. Install the library on the host, via `cmake`, as in:

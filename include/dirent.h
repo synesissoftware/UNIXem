@@ -5,11 +5,11 @@
  *          Windows platform.
  *
  * Created: 19th October 2002
- * Updated: 1st May 2025
+ * Updated: 9th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_H_DIRENT_MAJOR      4
 # define SYNSOFT_UNIXEM_VER_H_DIRENT_MINOR      0
 # define SYNSOFT_UNIXEM_VER_H_DIRENT_REVISION   1
-# define SYNSOFT_UNIXEM_VER_H_DIRENT_EDIT       39
+# define SYNSOFT_UNIXEM_VER_H_DIRENT_EDIT       40
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -221,3 +221,4 @@ struct dirent* readdir(DIR* dir);
 #endif /* SYNSOFT_UNIXEM_INCL_H_DIRENT */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,7 +4,7 @@
  * Purpose: Discrimination of integers.
  *
  * Created: 29th November 2024
- * Updated: 29th November 2024
+ * Updated: 9th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -54,7 +54,7 @@
 # define UNIXEM_VER_UNIXEM_internal_h_stdint_MAJOR      1
 # define UNIXEM_VER_UNIXEM_internal_h_stdint_MINOR      0
 # define UNIXEM_VER_UNIXEM_internal_h_stdint_REVISION   0
-# define UNIXEM_VER_UNIXEM_internal_h_stdint_EDIT       1
+# define UNIXEM_VER_UNIXEM_internal_h_stdint_EDIT       2
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -138,3 +138,4 @@ typedef signed long                                         unixem_ssize_t;
 #endif /* UNIXEM_INCL_UNIXEM_internal_h_stdint */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

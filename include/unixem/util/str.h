@@ -51,6 +51,9 @@
  * includes
  */
 
+#include <stddef.h>
+#include <wchar.h>
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
@@ -71,6 +74,32 @@ int
 unixem_util_str_ends_with(
     char const* s
 ,   char const* suffix
+);
+
+char*
+unixem_util_str_stpcpy(
+    char*       target
+,   char const* source
+);
+
+char*
+unixem_util_str_stpncpy(
+    char*       target
+,   char const* source
+,   size_t      n
+);
+
+wchar_t*
+unixem_util_str_wcpcpy(
+    wchar_t*        target
+,   wchar_t const*  source
+);
+
+wchar_t*
+unixem_util_str_wcpncpy(
+    wchar_t*        target
+,   wchar_t const*  source
+,   size_t          n
 );
 
 

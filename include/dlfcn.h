@@ -5,11 +5,11 @@
  *          functions.
  *
  * Created: 1st January 2004
- * Updated: 18th May 2025
+ * Updated: 9th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_H_DLFCN_MAJOR       3
 # define SYNSOFT_UNIXEM_VER_H_DLFCN_MINOR       0
 # define SYNSOFT_UNIXEM_VER_H_DLFCN_REVISION    1
-# define SYNSOFT_UNIXEM_VER_H_DLFCN_EDIT        23
+# define SYNSOFT_UNIXEM_VER_H_DLFCN_EDIT        24
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -186,3 +186,4 @@ char const* dlerror(void);
 #endif /* SYNSOFT_UNIXEM_INCL_H_DLFCN */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

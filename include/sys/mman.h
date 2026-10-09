@@ -4,11 +4,11 @@
  * Purpose: Declaration of the mmap() and munmap() API functions.
  *
  * Created: 18th December 2003
- * Updated: 1st May 2025
+ * Updated: 9th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_MMAP_MAJOR    3
 # define SYNSOFT_UNIXEM_VER_SYS_H_MMAP_MINOR    0
 # define SYNSOFT_UNIXEM_VER_SYS_H_MMAP_REVISION 1
-# define SYNSOFT_UNIXEM_VER_SYS_H_MMAP_EDIT     29
+# define SYNSOFT_UNIXEM_VER_SYS_H_MMAP_EDIT     30
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -121,8 +121,8 @@ extern "C"
  *  anonymous map
  * \param offset The offset within the file to start the mapped region
  *
- * \retval pointer to mapped region if successful
- * \retval MAP_FAILED if failed
+ * \return A pointer to the mapped region if successful; otherwise
+ *   \c MAP_FAILED
  *
  * \note The current implementation supports the following three modes:
  * 1. Read-only file; 2. Read-write file; 3. Anonymous Read-write block of
@@ -200,3 +200,4 @@ int msync(
 #endif /* SYNSOFT_UNIXEM_INCL_SYS_H_MMAP */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

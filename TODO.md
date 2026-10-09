@@ -1,6 +1,6 @@
 # UNIXem - TODO <!-- omit in toc -->
 
-Updated: 4th August 2026
+Updated: 9th October 2026
 
 
 ## Functional improvements
@@ -9,7 +9,7 @@ Updated: 4th August 2026
 * [ ] Greater unit-testing coverage;
 * [ ] Ensure unit-tests (and scratch-tests) do memory checking;
 * [ ] Component test(s) for `link`;
-* [ ] `stpcpy()`, etc.;
+* [x] ~~~`stpcpy()`, etc.~~~ - ✅;
 * [ ] `glob()` - expand functionality and flags coverage:
   * [ ] Proper handling of `errfunc` + `GLOB_ERR`;
   * [ ] Support `GLOB_APPEND`;
@@ -29,11 +29,11 @@ Updated: 4th August 2026
 
 ## Packaging improvements
 
-* [x] ~~~Badges~~~;
-* [x] ~~~CMake~~~;
-* [x] ~~~Standardise project boilerplate files (to .md)~~~;
-* [x] ~~~Remove Visual Studio project/solution/workspace files~~~;
-* [ ] Remove custom makefiles under **build/** (retained for now);
+* [x] ~~~Badges~~~ - ✅;
+* [x] ~~~CMake~~~ - ✅;
+* [x] ~~~Standardise project boilerplate files (to .md)~~~ - ✅;
+* [x] ~~~Remove Visual Studio project/solution/workspace files~~~ - ✅;
+* [x] ~~~Remove custom makefiles under **build/**~~~ - ✅;
 * [ ] CMake optional dependencies all marked OFF in **CMakeLists.txt**;
 * [ ] Add example programs under **examples/**;
 * [ ] Add to Windows-capable package managers:

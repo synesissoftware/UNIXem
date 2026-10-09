@@ -4,7 +4,7 @@
  * Purpose: UNIXem.Util.FS header.
  *
  * Created: 11th May 2025
- * Updated: 12th May 2025
+ * Updated: 18th May 2025
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
