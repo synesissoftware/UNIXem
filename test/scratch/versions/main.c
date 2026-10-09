@@ -4,7 +4,7 @@
  * Purpose: Prints UNIXem composite version.
  *
  * Created: 17th September 2026
- * Updated: 17th September 2026
+ * Updated: 9th October 2026
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -58,3 +58,4 @@ int main(int argc, char* argv[])
 
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

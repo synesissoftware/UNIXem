@@ -104,29 +104,41 @@ jobs:
 
       - name: Run examples
         shell: cmd
+        env:
+          MSYS2_LOCATION: ${{ steps.msys2.outputs.msys2-location }}
+          SIS_CMAKE_BUILD_DIR: ${{ github.workspace }}\build
         run: |
-          set SIS_CMAKE_BUILD_DIR=%GITHUB_WORKSPACE%\build
-          if /I "${{ inputs.toolchain }}"=="mingw" set "PATH=${{ steps.msys2.outputs.msys2-location }}\mingw64\bin;%PATH%"
+          if /I "${{ inputs.toolchain }}"=="mingw" set "PATH=%MSYS2_LOCATION%\mingw64\bin;%PATH%"
           call run_all_examples.cmd
+          if errorlevel 1 exit /b 1
 
       - name: Run unit tests
         shell: cmd
+        env:
+          MSYS2_LOCATION: ${{ steps.msys2.outputs.msys2-location }}
+          SIS_CMAKE_BUILD_DIR: ${{ github.workspace }}\build
         run: |
-          set SIS_CMAKE_BUILD_DIR=%GITHUB_WORKSPACE%\build
-          if /I "${{ inputs.toolchain }}"=="mingw" set "PATH=${{ steps.msys2.outputs.msys2-location }}\mingw64\bin;%PATH%"
+          if /I "${{ inputs.toolchain }}"=="mingw" set "PATH=%MSYS2_LOCATION%\mingw64\bin;%PATH%"
           call run_all_unit_tests.cmd
+          if errorlevel 1 exit /b 1
 
       - name: Run component tests
         shell: cmd
+        env:
+          MSYS2_LOCATION: ${{ steps.msys2.outputs.msys2-location }}
+          SIS_CMAKE_BUILD_DIR: ${{ github.workspace }}\build
         run: |
-          set SIS_CMAKE_BUILD_DIR=%GITHUB_WORKSPACE%\build
-          if /I "${{ inputs.toolchain }}"=="mingw" set "PATH=${{ steps.msys2.outputs.msys2-location }}\mingw64\bin;%PATH%"
+          if /I "${{ inputs.toolchain }}"=="mingw" set "PATH=%MSYS2_LOCATION%\mingw64\bin;%PATH%"
           call run_all_component_tests.cmd
+          if errorlevel 1 exit /b 1
 
       - name: Run scratch tests
         continue-on-error: true
         shell: cmd
+        env:
+          MSYS2_LOCATION: ${{ steps.msys2.outputs.msys2-location }}
+          SIS_CMAKE_BUILD_DIR: ${{ github.workspace }}\build
         run: |
-          set SIS_CMAKE_BUILD_DIR=%GITHUB_WORKSPACE%\build
-          if /I "${{ inputs.toolchain }}"=="mingw" set "PATH=${{ steps.msys2.outputs.msys2-location }}\mingw64\bin;%PATH%"
+          if /I "${{ inputs.toolchain }}"=="mingw" set "PATH=%MSYS2_LOCATION%\mingw64\bin;%PATH%"
           call run_all_scratch_tests.cmd
+          if errorlevel 1 exit /b 1

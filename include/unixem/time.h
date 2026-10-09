@@ -4,11 +4,11 @@
  * Purpose: Time functions and types for the Windows platform.
  *
  * Created: 5th May 2014
- * Updated: 1st May 2025
+ * Updated: 9th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_MAJOR      1
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_MINOR      0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_REVISION   1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_EDIT       5
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_EDIT       6
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -131,3 +131,4 @@ timegm(
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_H_TIME */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

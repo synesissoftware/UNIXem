@@ -4,7 +4,7 @@
  * Purpose: Version header for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 21st September 2026
+ * Updated: 9th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -71,7 +71,7 @@
  * The patch (aka revision) version number of UNIXem
  */
 
-/** \def UNIXEM_VER_AB
+/** \def UNIXEM_VER_ALPHABETA
  * The alpha/beta/rc number of UNIXem
  */
 
@@ -82,19 +82,19 @@
 #define UNIXEM_VER_MAJOR        1
 #define UNIXEM_VER_MINOR        14
 #define UNIXEM_VER_PATCH        0
-#define UNIXEM_VER_AB           0xC1
+#define UNIXEM_VER_ALPHABETA    0xC1
 
 #define UNIXEM_VER \
     (0\
         |   (   UNIXEM_VER_MAJOR       << 24   ) \
         |   (   UNIXEM_VER_MINOR       << 16   ) \
         |   (   UNIXEM_VER_PATCH       <<  8   ) \
-        |   (   UNIXEM_VER_AB          <<  0   ) \
+        |   (   UNIXEM_VER_ALPHABETA   <<  0   ) \
     )
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define UNIXEM_VER_REVISION                               UNIXEM_VER_PATCH
-# define UNIXEM_VER_ALPHABETA                              UNIXEM_VER_AB
+# define UNIXEM_VER_AB                                      UNIXEM_VER_ALPHABETA
+# define UNIXEM_VER_REVISION                                UNIXEM_VER_PATCH
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 

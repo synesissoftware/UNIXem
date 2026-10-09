@@ -4,7 +4,7 @@
 # Purpose:  Top-level CMake lists file for UNIXem
 #
 # Created:  10th July 2024
-# Updated:  10th September 2026
+# Updated:  9th October 2026
 #
 # ######################################################################## #
 
@@ -112,8 +112,6 @@ if(NOT WIN32)
 
 	message(FATAL_ERROR "${PROJECT_NAME} targets Windows only")
 endif()
-
-option(BUILD_TESTING "Build tests" ON)
 
 
 # ######################################
@@ -259,7 +257,7 @@ set(EXPORT_NAME ${PROJECT_NAME_LOWER})
 configure_package_config_file(
 	${CMAKE_CURRENT_SOURCE_DIR}/cmake/${EXPORT_NAME}-config.cmake.in
 	${CMAKE_CURRENT_BINARY_DIR}/cmake/${EXPORT_NAME}-config.cmake
-	INSTALL_DESTINATION ${LIB_INSTALL_DIR}/${EXPORT_NAME}/cmake
+	INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${EXPORT_NAME}
 )
 
 write_basic_package_version_file(

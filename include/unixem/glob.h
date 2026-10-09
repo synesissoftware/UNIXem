@@ -5,11 +5,11 @@
  *          Windows platform.
  *
  * Created: 13th November 2002
- * Updated: 1st May 2025
+ * Updated: 9th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,7 +53,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_MAJOR     3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_MINOR     0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_REVISION  3
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_EDIT      43
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_GLOB_EDIT      44
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -188,3 +188,4 @@ void unixem_globfree(unixem_glob_t* pglob);
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_H_GLOB */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

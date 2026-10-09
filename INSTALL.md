@@ -51,6 +51,11 @@ The primary choice for installation is by use of **CMake**.
    or **xTests**; otherwise, you will need those test-only dependencies to
    be discoverable by **CMake**.
 
+   **NOTE**: **CMake** selects the generator. To build with **MinGW**
+   rather than **MSVC**, provide the flag `--mingw`, which selects the
+   "MinGW Makefiles" generator (and is the only means by which **MinGW** is
+   selected).
+
 3. Run a build of the generated **CMake**-derived build files via the
    **build_cmake.sh** script, as in:
 
@@ -66,6 +71,14 @@ The primary choice for installation is by use of **CMake**.
 
    ```bash
    $ ./run_all_unit_tests.sh
+   ```
+
+   From a native Windows command prompt, use **run_all_unit_tests.cmd**
+   (and, likewise, **run_all_component_tests.cmd**,
+   **run_all_examples.cmd**, and **run_all_scratch_tests.cmd**), as in:
+
+   ```cmd
+   > run_all_unit_tests.cmd
    ```
 
 5. Install the library on the host, via `cmake`, as in:

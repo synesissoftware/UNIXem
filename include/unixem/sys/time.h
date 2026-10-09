@@ -5,11 +5,11 @@
  *          types for the Windows platform.
  *
  * Created: 8th December 2002
- * Updated: 28th November 2024
+ * Updated: 9th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,7 +53,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_MAJOR     3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_MINOR     0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_REVISION  2
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_EDIT      29
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_EDIT      30
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -134,3 +134,4 @@ extern int unixem_gettimeofday(
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_SYS_H_TIME */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+
