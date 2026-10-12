@@ -5,7 +5,7 @@
  *          functions.
  *
  * Created: 1st January 2004
- * Updated: 12th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -112,11 +112,11 @@ extern "C"
  *
  * \param moduleName The name of the module. The name is passed through to
  *  Windows's LoadLibrary(), so the value of this parameter is interpreted
- *  according to Windows's loading rules.
+ *  according to Windows's loading rules;
  * \param mode The loading mode. This is ignored on Windows platforms, and
- *  the function always behaves as if RTLD_NOW was specified
+ *  the function always behaves as if RTLD_NOW was specified;
  *
- * \note This is a macro, which resolves to unixem_dlopen()
+ * \note This is a macro, which resolves to unixem_dlopen().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 void* dlopen(
@@ -127,13 +127,14 @@ void* dlopen(
 # define dlopen                                             unixem_dlopen
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
-/** Closes the given module
+/** Closes the given module.
  *
- * \param hModule The handle of the executable module to close
- * \retval 0 success
- * \retval !0 failure. dlerror() will return an error string
+ * \param hModule The handle of the executable module to close;
  *
- * \note This is a macro, which resolves to unixem_dlclose()
+ * \retval 0 success;
+ * \retval !0 failure. dlerror() will return an error string;
+ *
+ * \note This is a macro, which resolves to unixem_dlclose().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 void dlclose(void* hModule);
@@ -141,14 +142,16 @@ void dlclose(void* hModule);
 # define dlclose                                            unixem_dlclose
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
-/** Looks up a symbol
+/** Looks up a symbol.
  *
- * \param hModule The handle of the executable module in which to search for the symbol
- * \param symbolName The name of the symbol
- * \return The pointer to the symbol, or NULL if no matching symbol was found
- * \retval NULL The symbol was not found
+ * \param hModule The handle of the executable module in which to search for the symbol;
+ * \param symbolName The name of the symbol;
  *
- * \note This is a macro, which resolves to unixem_dlsym()
+ * \return The pointer to the symbol, or nullptr if no matching symbol was
+ *   found.
+ * \retval nullptr The symbol was not found;
+ *
+ * \note This is a macro, which resolves to unixem_dlsym().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 void* dlsym(
@@ -159,13 +162,15 @@ void* dlsym(
 # define dlsym                                              unixem_dlsym
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
-/** Returns a descriptive string for the last error
+/** Returns a descriptive string for the last error.
  *
- * \return A pointer to a string describing the last error, or NULL.
- * \retval NULL No error occured, or dlerror() already called
- * \note Each call to this function resets it, so that a second call will always return NULL
+ * \return A pointer to a string describing the last error, or nullptr.
+ * \retval nullptr No error occured, or dlerror() already called;
  *
- * \note This is a macro, which resolves to unixem_dlerror()
+ * \note Each call to this function resets it, so that a second call will
+ *   always return nullptr.
+ *
+ * \note This is a macro, which resolves to unixem_dlerror().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 char const* dlerror(void);
@@ -176,6 +181,7 @@ char const* dlerror(void);
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
 
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * language

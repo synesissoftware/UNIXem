@@ -5,7 +5,7 @@
  *          types for the Windows platform.
  *
  * Created: 9th June 2006
- * Updated: 12th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -75,30 +75,29 @@
  * @{
  */
 
-/* ////////////////////////////////////////////////////////////////////// */
 
 /* /////////////////////////////////////////////////////////////////////////
- * language
+ * constants and definitions
  */
-
-#ifdef __cplusplus
-extern "C"
-{
-#endif /* __cplusplus */
 
 /** \def UNIXEM_RUSAGE_SELF
  *
  * Requests that rusage() provide information about the calling process.
  */
-#define UNIXEM_RUSAGE_SELF                                  (0)
-/** \def UNIXEM_RUSAGE_CHILDREN
- *
- * Requests that rusage() provide information about child processes
- *  of the calling process.
- *
- *  \note This flag is <b>not</b> supported
+ #define UNIXEM_RUSAGE_SELF                                  (0)
+ /** \def UNIXEM_RUSAGE_CHILDREN
+  *
+  * Requests that rusage() provide information about child processes
+  *  of the calling process.
+  *
+  * \note This flag is <b>not</b> supported.
+  */
+ #define UNIXEM_RUSAGE_CHILDREN                              (-1)
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * types
  */
-#define UNIXEM_RUSAGE_CHILDREN                              (-1)
 
 /** Resource usage information structure.
  *
@@ -112,22 +111,38 @@ struct unixem_rusage
     char            reserved[56];   /*!< [RESERVED] Reserved for future use. */
 };
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
+
 /** Provide resource usage information.
  *
  * Retrieves resource usage information about the given process(es).
  *
  * \param who The process(es) about which the usage information is to be
- *  retrieved. One of UNIXEM_RUSAGE_SELF or UNIXEM_RUSAGE_CHILDREN.
+ *  retrieved. One of UNIXEM_RUSAGE_SELF or UNIXEM_RUSAGE_CHILDREN;
  * \param r_usage Pointer to a unixem_rusage structure to receive the rusage
- *  information.
+ *  information;
  *
  * \note This implementation only supports the RUSAGE_SELF flag for the
- *  <code>who</code> parameter.
+ *   <code>who</code> parameter.
  */
 extern int unixem_getrusage(
     int                     who
 ,   struct unixem_rusage*   r_usage
 );
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * language

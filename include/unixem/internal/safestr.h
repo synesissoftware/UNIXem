@@ -4,7 +4,7 @@
  * Purpose: Internal utility header for the UNIXem API.
  *
  * Created: 28th December 2007
- * Updated: 9th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -55,7 +55,7 @@
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_MAJOR     1
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_MINOR     0
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_REVISION  1
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_EDIT      9
+# define UNIXEM_VER_UNIXEM_INTERNAL_H_SAFESTR_EDIT      10
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -105,7 +105,13 @@
 #endif /* __STDC_SECURE_LIB__ */
 
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* UNIXEM_INCL_UNIXEM_INTERNAL_H_SAFESTR */
 

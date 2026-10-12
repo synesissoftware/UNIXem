@@ -5,11 +5,11 @@
  *          functions.
  *
  * Created: 1st January 2004
- * Updated: 12th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -114,44 +114,49 @@ extern "C"
  *
  * \param moduleName The name of the module. The name is passed through to
  *  Windows's LoadLibrary(), so the value of this parameter is interpreted
- *  according to Windows's loading rules.
+ *  according to Windows's loading rules;
  * \param mode The loading mode. This is ignored on Windows platforms, and
- *  the function
- * always behaves as if RTLD_NOW was specified
- * \note
+ *  the function always behaves as if RTLD_NOW was specified;
  */
 void* unixem_dlopen(
     char const* moduleName
 ,   int         mode
 );
 
-/** Closes the given module
+/** Closes the given module.
  *
- * \param hModule The handle of the executable module to close
- * \retval 0 success
- * \retval !0 failure. dlerror() will return an error string
+ * \param hModule The handle of the executable module to close;
+ *
+ * \retval 0 success;
+ * \retval !0 failure. dlerror() will return an error string;
  */
 int unixem_dlclose(void* hModule);
 
-/** Looks up a symbol
+/** Looks up a symbol.
  *
- * \param hModule The handle of the executable module in which to search for the symbol
- * \param symbolName The name of the symbol
- * \return The pointer to the symbol, or NULL if no matching symbol was found
- * \retval NULL The symbol was not found
+ * \param hModule The handle of the executable module in which to search
+ *   for the symbol;
+ * \param symbolName The name of the symbol;
+ *
+ * \return The pointer to the symbol, or nullptr if no matching symbol was
+ *  found.
+ * \retval nullptr The symbol was not found;
  */
 void* unixem_dlsym(
     void*       hModule
 ,   char const* symbolName
 );
 
-/** Returns a descriptive string for the last error
+/** Returns a descriptive string for the last error.
  *
- * \return A pointer to a string describing the last error, or NULL.
- * \retval NULL No error occured, or dlerror() already called
- * \note Each call to this function resets it, so that a second call will always return NULL
+ * \return A pointer to a string describing the last error, or nullptr.
+ * \retval nullptr No error occured, or dlerror() already called;
+ *
+ * \note Each call to this function resets it, so that a second call will
+ *   always return nullptr.
  */
 char const* unixem_dlerror(void);
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * language

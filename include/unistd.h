@@ -4,7 +4,7 @@
  * Purpose: Declaration of various UNIX standard functions.
  *
  * Created: 1st November 2003
- * Updated: 12th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -235,7 +235,7 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * typedefs
+ * types
  */
 
 #if !defined(UNIXEM_pid_t_PROVIDED_BY_COMPILER) && \
@@ -256,7 +256,8 @@ typedef unixem_pid_t    pid_t;
  */
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif /* __cplusplus */
 
 
@@ -268,15 +269,15 @@ extern "C" {
  *
  * This function creates a link from \c originalFile to \c linkName.
  *
- * \param originalFile Path of the original file
- * \param linkName Path of the link
+ * \param originalFile Path of the original file;
+ * \param linkName Path of the link;
  *
- * \return O on success, or -1 if there is an error
+ * \return O on success, or -1 if there is an error.
  *
  * \note Hardlink support is only available on Windows 2000 and later, and only
  *        works within a single drive.
  *
- * \note This is a macro, which resolves to unixem_link()
+ * \note This is a macro, which resolves to unixem_link().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int link(
@@ -291,11 +292,11 @@ int link(
 #ifndef UNIXEM_unlink_PROVIDED_BY_COMPILER
 /** Unlinks a file or directory
  *
- * \param path The path of the file or directory to unlink
+ * \param path The path of the file or directory to unlink;
  *
- * \return O on success, or -1 if there is an error
+ * \return O on success, or -1 if there is an error.
  *
- * \note This is a macro, which resolves to unixem_unlink()
+ * \note This is a macro, which resolves to unixem_unlink().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int unlink(char const* path);
@@ -311,10 +312,11 @@ int unlink(char const* path);
  * This function changes the current working directory to the directory
  * specified by dirName. dirName must refer to an existing directory.
  *
- * \param dirName Path of new working directory
- * \return O on success, or -1 if there is an error
+ * \param dirName Path of new working directory;
  *
- * \note This is a macro, which resolves to unixem_chdir()
+ * \return O on success, or -1 if there is an error.
+ *
+ * \note This is a macro, which resolves to unixem_chdir().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int chdir(char const* dirName);
@@ -330,11 +332,12 @@ int chdir(char const* dirName);
  * This function gets the full path of the current working directory
  * and stores it in buffer.
  *
- * \param buffer Storage location for the current working directory
- * \param max_len Maximum length of path (in characters)
- * \return buffer on success, or NULL to indicate error.
+ * \param buffer Storage location for the current working directory;
+ * \param max_len Maximum length of path (in characters);
  *
- * \note This is a macro, which resolves to unixem_getcwd()
+ * \return buffer on success, or nullptr to indicate error.
+ *
+ * \note This is a macro, which resolves to unixem_getcwd().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 char* getcwd(
@@ -352,12 +355,12 @@ char* getcwd(
  *
  * This function creates the named directory.
  *
- * \param dirName Path of directory to remove
- * \param mode The access permissions of the directory
+ * \param dirName Path of directory to remove;
+ * \param mode The access permissions of the directory;
  *
- * \return O on success, or -1 if there is an error
+ * \return O on success, or -1 if there is an error.
  *
- * \note This is a macro, which resolves to unixem_mkdir()
+ * \note This is a macro, which resolves to unixem_mkdir().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int mkdir(
@@ -375,10 +378,11 @@ int mkdir(
  *
  * This function removes the named directory.
  *
- * \param dirName Path of directory to remove
- * \return O on success, or -1 if there is an error
+ * \param dirName Path of directory to remove;;
  *
- * \note This is a macro, which resolves to unixem_rmdir()
+ * \return O on success, or -1 if there is an error.
+ *
+ * \note This is a macro, which resolves to unixem_rmdir().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int rmdir(char const* dirName);
@@ -391,10 +395,11 @@ int rmdir(char const* dirName);
 #ifndef UNIXEM_close_PROVIDED_BY_COMPILER
 /** Closes a file
  *
- * \param fd The descriptor of the file to be closed
- * \return 0 on success, or -1 if there is an error
+ * \param fd The descriptor of the file to be closed;
  *
- * \note This is a macro, which resolves to unixem_close()
+ * \return 0 on success, or -1 if there is an error.
+ *
+ * \note This is a macro, which resolves to unixem_close().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int close(int fd);
@@ -409,14 +414,15 @@ int close(int fd);
  * Creates a pipe
  *
  * \param handles An array of two handles. handles[0] will be set to the
- * read stream. handles[1] will be set to the write stream
- * \return 0 on success, or -1 if there is an error
+ *  read stream. handles[1] will be set to the write stream;
+ *
+ * \return 0 on success, or -1 if there is an error.
  */
 /* int pipe(int handles[2]); */
 
 /** Returns the size, in bytes, of the page size
  *
- * \note This is a macro, which resolves to unixem_getpagesize()
+ * \note This is a macro, which resolves to unixem_getpagesize().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int getpagesize(void);
@@ -427,7 +433,7 @@ int getpagesize(void);
 
 /** Provides access to various system limits not available at compile time
  *
- * \note This is a macro, which resolves to unixem_pathconf()
+ * \note This is a macro, which resolves to unixem_pathconf().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 long pathconf(
@@ -446,7 +452,7 @@ long pathconf(
  * \param resolvedPath Pointer to a buffer to receive the path. This must contain
  *  sufficient storage for a valid path
  *
- * \note This is a macro, which resolves to unixem_realpath()
+ * \note This is a macro, which resolves to unixem_realpath().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 char* realpath(
@@ -462,9 +468,10 @@ char* realpath(
  *
  * \param microSeconds The number of microseconds in the sleep interval
  *
- * \note This is a macro, which resolves to unixem_usleep()
+ * \note This is a macro, which resolves to unixem_usleep().
  *
- * \note The function will attempt to wait for at least the period specified
+ * \note The function will attempt to wait for at least the period
+ *   specified.
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int usleep(unsigned long microSeconds);
@@ -475,7 +482,7 @@ int usleep(unsigned long microSeconds);
 
 /** Returns the current process identifier
  *
- * \note This is a macro, which resolves to unixem_getpid()
+ * \note This is a macro, which resolves to unixem_getpid().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 pid_t getpid(void);
@@ -486,7 +493,7 @@ pid_t getpid(void);
 
 /** Obtains a temporary directory name
  *
- * \note This is a macro, which resolves to unixem_mkdtemp()
+ * \note This is a macro, which resolves to unixem_mkdtemp().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 char* mkdtemp(char*);
@@ -497,7 +504,7 @@ char* mkdtemp(char*);
 
 /** Obtains a temporary directory name
  *
- * \note This is a macro, which resolves to unixem_mkstemp()
+ * \note This is a macro, which resolves to unixem_mkstemp().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int mkstemp(char*);
@@ -512,11 +519,11 @@ int mkstemp(char*);
  * \param name Pointer to an array of characters to receive the results
  * \param cchName Number of characters available in the buffer
  *
- * \retval 0 the operation completed successfully
- * \retval -1 the operation failed
+ * \retval 0 the operation completed successfully;
+ * \retval -1 the operation failed;
  *
  * \note This function's calling convention is stdcall, to ensure
- * compatibility if it is loaded (from ws2_32l.dll) dynamically.
+ *   compatibility if it is loaded (from ws2_32l.dll) dynamically.
  */
 int gethostname(char* name, size_t cchName);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
@@ -546,6 +553,7 @@ extern "C++"
 #  define gethostname(name, cchName)                        unixem_gethostname(name, cchName)
 # endif /* __cplusplus */
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * language

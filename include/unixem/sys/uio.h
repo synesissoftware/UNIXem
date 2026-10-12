@@ -4,7 +4,7 @@
  * Purpose: Vector file read/write.
  *
  * Created: 19th September 2005
- * Updated: 12th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -82,7 +82,18 @@
  * @{
  */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * types
+ */
+
+/** Defines a memory vector */
+struct unixem_iovec
+{
+    void*   iov_base;  /*!< Base address */
+    size_t  iov_len;    /*!< Number of bytes referenced */
+};
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * language
@@ -95,26 +106,14 @@ extern "C"
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * typedefs
+ * API functions
  */
 
-/** Defines a memory vector */
-struct unixem_iovec
-{
-    void*   iov_base;  /*!< Base address */
-    size_t  iov_len;    /*!< Number of bytes referenced */
-};
-
-
-/* /////////////////////////////////////////////////////////////////////////
- * functions
- */
-
-/** Reads from a file into a set of memory blocks
+/** Reads from a file into a set of memory blocks.
  *
- * \param fd The file from which to read
- * \param vector pointer to the first element in the vector
- * \param count the number of elements in the vector
+ * \param fd The file from which to read;
+ * \param vector pointer to the first element in the vector;
+ * \param count the number of elements in the vector;
  */
 unixem_ssize_t
 unixem_readv(
@@ -123,11 +122,11 @@ unixem_readv(
 ,   int                         count
 );
 
-/** Writes to a file from a set of memory blocks
+/** Writes to a file from a set of memory blocks.
  *
- * \param fd The file to which to write
- * \param vector pointer to the first element in the vector
- * \param count the number of elements in the vector
+ * \param fd The file to which to write;
+ * \param vector pointer to the first element in the vector;
+ * \param count the number of elements in the vector;
  */
 unixem_ssize_t
 unixem_writev(
@@ -135,6 +134,7 @@ unixem_writev(
 ,   struct unixem_iovec const*  vector
 ,   int                         count
 );
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * language
@@ -147,7 +147,7 @@ unixem_writev(
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** @} // end of group unixem_time */
+/** @} // end of group unixem_uio */
 
 
 /* /////////////////////////////////////////////////////////////////////////

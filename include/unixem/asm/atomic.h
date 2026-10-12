@@ -5,7 +5,7 @@
  *          Windows platform.
  *
  * Created: 21st November 2003
- * Updated: 12th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,9 @@
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * compatibility
+ */
 
 #ifndef _WIN32
 # error This file is only currently defined for compilation on Windows systems
@@ -60,17 +62,24 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * constants and definitions
+ * includes
  */
 
 #include <unixem/unixem.h>
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * typedefs
+ * types
  */
 
 typedef signed long                                         unixem_atomic_t;
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * constants and definitions
+ */
+
+#define UNIXEM_ATOMIC_INIT(i)                               (i)
 
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -78,15 +87,14 @@ typedef signed long                                         unixem_atomic_t;
  */
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif /* __cplusplus */
 
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
  */
-
-#define UNIXEM_ATOMIC_INIT(i)                               (i)
 
 void    unixem_atomic_set(unixem_atomic_t volatile* v, int i);
 int     unixem_atomic_write(unixem_atomic_t volatile* v, int i);
@@ -107,6 +115,7 @@ int     unixem_atomic_dec_and_test(unixem_atomic_t volatile* v);
 int     unixem_atomic_add_and_test(int i, unixem_atomic_t volatile* v);
 /** Returns the previous value */
 int     unixem_atomic_sub_and_test(int i, unixem_atomic_t volatile* v);
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * language

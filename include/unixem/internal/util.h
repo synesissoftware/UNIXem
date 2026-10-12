@@ -4,7 +4,7 @@
  * Purpose: Internal utility header for the UNIXem API.
  *
  * Created: 2nd September 2005
- * Updated: 12th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -74,7 +74,7 @@
  *
  * Evaluates the size of an array.
  *
- * \param ar The array.
+ * \param ar The array;
  *
  * \warning This produces unintended behaviour if used with a pointer, and
  *  undefined behaviour if used, in C++, with a user-defined type that
@@ -128,7 +128,7 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * function declarations
+ * language
  */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -139,6 +139,11 @@
 extern "C"
 {
 #endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
 
 /** Converts a standard file handle to a Windows HANDLE
  */
@@ -167,6 +172,7 @@ int
 unixem_internal_yearIsLeap(
     int year
 );
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * language

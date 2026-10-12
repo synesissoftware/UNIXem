@@ -4,7 +4,7 @@
  * Purpose: Time functions and types for the Windows platform.
  *
  * Created: 5th May 2014
- * Updated: 12th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -79,7 +79,10 @@
  * @{
  */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
 
 /* /////////////////////////////////////////////////////////////////////////
  * language
@@ -90,9 +93,14 @@ extern "C"
 {
 #endif /* __cplusplus */
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
+
 /** Converts a <code>struct tm</code> value into a <code>time_t</code> value.
  *
- * \param tm Pointer to a tm structure to receive the time information
+ * \param tm Pointer to a tm structure to receive the time information;
  *
  * \return The converted value.
  */
@@ -104,11 +112,11 @@ unixem_timegm(
 
 /** Converts a <code>struct tm</code> value into a <code>time_t</code> value.
  *
- * \param tm Pointer to a tm structure to receive the time information
+ * \param tm Pointer to a tm structure to receive the time information;
  *
  * \return The converted value.
  *
- * \note This is a macro, which resolves to unixem_timegm()
+ * \note This is a macro, which resolves to unixem_timegm().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 time_t
@@ -120,6 +128,7 @@ timegm(
 #  define timegm                                            unixem_timegm
 # endif /* !timegm */
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * language

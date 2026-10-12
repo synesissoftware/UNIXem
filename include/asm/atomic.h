@@ -5,7 +5,7 @@
  *          Windows platform.
  *
  * Created: 21st November 2003
- * Updated: 12th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -68,7 +68,7 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * typedefs
+ * types
  */
 
 typedef unixem_atomic_t                                     atomic_t;
@@ -79,7 +79,8 @@ typedef unixem_atomic_t                                     atomic_t;
  */
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif /* __cplusplus */
 
 
@@ -104,6 +105,7 @@ extern "C" {
 #define atomic_add_and_test                                 unixem_atomic_add_and_test
 /** Returns the previous value */
 #define atomic_sub_and_test                                 unixem_atomic_sub_and_test
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * language

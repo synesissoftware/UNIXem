@@ -5,7 +5,7 @@
  *          Windows platform.
  *
  * Created: 13th November 2002
- * Updated: 12th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -70,19 +70,19 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
+ * includes
+ */
+
+#include <unixem/glob.h>
+
+
+/* /////////////////////////////////////////////////////////////////////////
  * compatibility
  */
 
 #ifndef _WIN32
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
-
-
-/* /////////////////////////////////////////////////////////////////////////
- * includes
- */
-
-#include <unixem/glob.h>
 
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -119,7 +119,7 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * typedefs
+ * types
  */
 
 /** Result structure for glob()
@@ -134,7 +134,8 @@ typedef unixem_glob_t glob_t;
  */
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif /* __cplusplus */
 
 
@@ -142,18 +143,20 @@ extern "C" {
  * API functions
  */
 
-/** Generates pathnames matching a pattern
+/** Generates pathnames matching a pattern.
  *
  * This function is a pathname generator that implements the rules for
  * file name pattern matching used by the UNIX shell.
  *
- * \param pattern The pattern controlling the search
- * \param flags A combination of the <b>GLOB_*</b> flags
- * \param errfunc A function that is called each time part of the search processing fails
- * \param pglob Pointer to a glob_t structure to receive the search results
- * \return 0 on success, otherwise one of the <b>GLOB_*</b> error codes
+ * \param pattern The pattern controlling the search;
+ * \param flags A combination of the <b>GLOB_*</b> flags;
+ * \param errfunc A function that is called each time part of the search
+ *   processing fails;
+ * \param pglob Pointer to a glob_t structure to receive the search results;
  *
- * \note This is a macro, which resolves to unixem_glob()
+ * \return 0 on success, otherwise one of the <b>GLOB_*</b> error codes.
+ *
+ * \note This is a macro, which resolves to unixem_glob().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int glob(
@@ -166,20 +169,21 @@ int glob(
 # define glob                                               unixem_glob
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
-/** Frees the results of a call to glob
+/** Frees the results of a call to glob.
  *
  * This function releases any memory allocated in a call to glob. It must
  * always be called for a successful call to glob.
  *
- * \param pglob Pointer to a glob_t structure to receive the search results
+ * \param pglob Pointer to a glob_t structure to receive the search results;
  *
- * \note This is a macro, which resolves to unixem_globfree()
+ * \note This is a macro, which resolves to unixem_globfree().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 void globfree(glob_t* pglob);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
 # define globfree                                           unixem_globfree
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * language

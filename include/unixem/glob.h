@@ -5,7 +5,7 @@
  *          Windows platform.
  *
  * Created: 13th November 2002
- * Updated: 12th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -121,7 +121,7 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * typedefs
+ * types
  */
 
 /** Result structure for unixem_glob()
@@ -144,7 +144,8 @@ typedef struct
  */
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif /* __cplusplus */
 
 
@@ -152,16 +153,19 @@ extern "C" {
  * API functions
  */
 
-/** Generates pathnames matching a pattern
+/** Generates pathnames matching a pattern.
  *
  * This function is a pathname generator that implements the rules for
  * file name pattern matching used by the UNIX shell.
  *
- * \param pattern The pattern controlling the search
- * \param flags A combination of the <b>UNIXEM_GLOB_*</b> flags
- * \param errfunc A function that is called each time part of the search processing fails
- * \param pglob Pointer to a glob_t structure to receive the search results
- * \return 0 on success, otherwise one of the <b>UNIXEM_GLOB_*</b> result codes
+ * \param pattern The pattern controlling the search;
+ * \param flags A combination of the <b>UNIXEM_GLOB_*</b> flags;
+ * \param errfunc A function that is called each time part of the search
+ *  processing fails;
+ * \param pglob Pointer to a glob_t structure to receive the search results;
+ *
+ * \return 0 on success, otherwise one of the <b>UNIXEM_GLOB_*</b> result
+ *   codes.
  */
 int unixem_glob(
     char const*     pattern
@@ -170,14 +174,15 @@ int unixem_glob(
 ,   unixem_glob_t*  pglob
 );
 
-/** Frees the results of a call to unixem_glob()
+/** Frees the results of a call to unixem_glob().
  *
  * This function releases any memory allocated in a call to unixem_glob().
  * It must always be called for a successful call to unixem_glob().
  *
- * \param pglob Pointer to a glob_t structure to receive the search results
+ * \param pglob Pointer to a glob_t structure to receive the search results;
  */
 void unixem_globfree(unixem_glob_t* pglob);
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * language

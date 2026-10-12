@@ -56,7 +56,7 @@
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MAJOR       1
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MINOR       7
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_REVISION    11
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        37
+# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        38
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 /** \def UNIXEM_VER_MAJOR
@@ -98,7 +98,13 @@
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* UNIXEM_INCL_UNIXEM_H_UNIXEM */
 

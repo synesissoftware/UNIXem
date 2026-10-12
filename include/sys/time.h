@@ -5,7 +5,7 @@
  *          types for the Windows platform.
  *
  * Created: 8th December 2002
- * Updated: 12th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -78,7 +78,10 @@
  * @{
  */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
 
 /* /////////////////////////////////////////////////////////////////////////
  * language
@@ -88,6 +91,11 @@
 extern "C"
 {
 #endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
 
 #ifndef UNIXEM_WINSOCK_IS_INCLUDED
 
@@ -112,12 +120,12 @@ extern "C"
  *
  * Retrieves the current time and timezone information, relative to Greenwich Mean Time
  *
- * \param tv Pointer to a timeval structure to receive the time information
- * \param dummy This parameter is not used
+ * \param tv Pointer to a timeval structure to receive the time information;
+ * \param dummy This parameter is not used;
  *
  * \return Always returns 0.
  *
- * \note This is a macro, which resolves to unixem_gettimeofday()
+ * \note This is a macro, which resolves to unixem_gettimeofday().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int gettimeofday(
@@ -127,6 +135,7 @@ int gettimeofday(
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
 # define gettimeofday   unixem_gettimeofday
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * language
