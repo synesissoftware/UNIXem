@@ -103,10 +103,7 @@ int unixem_uname(
     }
 
     /* 3 & 4. release & version */
-#pragma warning(push)
-#pragma warning(disable : 4996)
     dwVersion = GetVersion();
-#pragma warning(pop)
 
     dwMajorVersion = (DWORD)(LOBYTE(LOWORD(dwVersion)));
     dwMinorVersion = (DWORD)(HIBYTE(LOWORD(dwVersion)));
@@ -117,10 +114,10 @@ int unixem_uname(
     }
 
     /* release: "major.minor" */
-    sprintf(name->release, "%u.%u", dwMajorVersion, dwMinorVersion);
+    sprintf(name->release, "%u.%u", (unsigned)dwMajorVersion, (unsigned)dwMinorVersion);
 
     /* version: "Build buildNumber" */
-    sprintf(name->version, "Build %u", dwBuild);
+    sprintf(name->version, "Build %u", (unsigned)dwBuild);
 
     /* 5. machine */
     GetSystemInfo(&si);

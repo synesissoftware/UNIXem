@@ -128,7 +128,7 @@ target_compile_options(UNIXem
 			-Werror -Wall -Wextra -pedantic
 		>
 		$<$<CXX_COMPILER_ID:MSVC>:
-			/WX /W4
+			/WX /W4 /wd4996
 		>
 )
 
