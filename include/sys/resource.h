@@ -5,7 +5,7 @@
  *          types for the Windows platform.
  *
  * Created: 9th June 2006
- * Updated: 9th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_RESOURCE_MAJOR    2
 # define SYNSOFT_UNIXEM_VER_SYS_H_RESOURCE_MINOR    0
 # define SYNSOFT_UNIXEM_VER_SYS_H_RESOURCE_REVISION 1
-# define SYNSOFT_UNIXEM_VER_SYS_H_RESOURCE_EDIT     13
+# define SYNSOFT_UNIXEM_VER_SYS_H_RESOURCE_EDIT     14
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -74,12 +74,10 @@
  * @{
  */
 
-/* ////////////////////////////////////////////////////////////////////// */
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif /* __cplusplus */
+/* /////////////////////////////////////////////////////////////////////////
+ * constants and definitions
+ */
 
 /** \def RUSAGE_SELF
  *
@@ -91,7 +89,7 @@ extern "C"
  * Requests that rusage() provide information about child processes
  *  of the calling process.
  *
- *  \note This flag is <b>not</b> supported
+ *  \note This flag is <b>not</b> supported.
  */
 #define RUSAGE_CHILDREN                                     (UNIXEM_RUSAGE_CHILDREN)
 
@@ -103,19 +101,34 @@ extern "C"
  */
 #define rusage                                              unixem_rusage
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
+
 /** Provide resource usage information.
  *
  * Retrieves resource usage information about the given process(es).
  *
  * \param who The process(es) about which the usage information is to be
- *  retrieved. One of RUSAGE_SELF or RUSAGE_CHILDREN.
+ *  retrieved. One of RUSAGE_SELF or RUSAGE_CHILDREN;
  * \param r_usage Pointer to an rusage structure to receive the rusage
- *  information.
+ *  information;
  *
  * \note This implementation only supports the RUSAGE_SELF flag for the
- *  <code>who</code> parameter.
+ *   <code>who</code> parameter.
  *
- * \note This is a macro, which resolves to unixem_getrusage()
+ * \note This is a macro, which resolves to unixem_getrusage().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int getrusage(
@@ -126,6 +139,11 @@ int getrusage(
 # define getrusage                                          unixem_getrusage
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
@@ -135,7 +153,14 @@ int getrusage(
 
 /** @} // end of group unixem_resource */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_SYS_H_RESOURCE */
 

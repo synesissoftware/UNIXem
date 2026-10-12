@@ -4,11 +4,11 @@
  * Purpose: Discrimination of integers.
  *
  * Created: 29th November 2024
- * Updated: 9th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2024-2026, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,12 +54,12 @@
 # define UNIXEM_VER_UNIXEM_internal_h_stdint_MAJOR      1
 # define UNIXEM_VER_UNIXEM_internal_h_stdint_MINOR      0
 # define UNIXEM_VER_UNIXEM_internal_h_stdint_REVISION   0
-# define UNIXEM_VER_UNIXEM_internal_h_stdint_EDIT       2
+# define UNIXEM_VER_UNIXEM_internal_h_stdint_EDIT       3
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * includes - 1
+ * includes
  */
 
 #include <unixem/unixem.h>
@@ -87,7 +87,7 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * includes - 2
+ * includes
  */
 
 #ifdef UNIXEM_HAS_h_stdint_
@@ -96,13 +96,7 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * macros
- */
-
-
-
-/* /////////////////////////////////////////////////////////////////////////
- * integer types
+ * types
  */
 
 #if 0
@@ -129,11 +123,12 @@ typedef signed long                                         unixem_ssize_t;
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * function declarations
+ * inclusion control
  */
 
-
-/* ////////////////////////////////////////////////////////////////////// */
+#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* UNIXEM_INCL_UNIXEM_internal_h_stdint */
 

@@ -5,11 +5,11 @@
  *          functions.
  *
  * Created: 1st January 2004
- * Updated: 1st May 2025
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,7 +53,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_MAJOR    3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_MINOR    0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_REVISION 1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_EDIT     22
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_EDIT     23
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -97,7 +97,7 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * API functions
+ * language
  */
 
 #ifdef __cplusplus
@@ -105,48 +105,62 @@ extern "C"
 {
 #endif /* __cplusplus */
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
+
 /** Loads the given module,
  *
  * \param moduleName The name of the module. The name is passed through to
  *  Windows's LoadLibrary(), so the value of this parameter is interpreted
- *  according to Windows's loading rules.
+ *  according to Windows's loading rules;
  * \param mode The loading mode. This is ignored on Windows platforms, and
- *  the function
- * always behaves as if RTLD_NOW was specified
- * \note
+ *  the function always behaves as if RTLD_NOW was specified;
  */
 void* unixem_dlopen(
     char const* moduleName
 ,   int         mode
 );
 
-/** Closes the given module
+/** Closes the given module.
  *
- * \param hModule The handle of the executable module to close
- * \retval 0 success
- * \retval !0 failure. dlerror() will return an error string
+ * \param hModule The handle of the executable module to close;
+ *
+ * \retval 0 success;
+ * \retval !0 failure. dlerror() will return an error string;
  */
 int unixem_dlclose(void* hModule);
 
-/** Looks up a symbol
+/** Looks up a symbol.
  *
- * \param hModule The handle of the executable module in which to search for the symbol
- * \param symbolName The name of the symbol
- * \return The pointer to the symbol, or NULL if no matching symbol was found
- * \retval NULL The symbol was not found
+ * \param hModule The handle of the executable module in which to search
+ *   for the symbol;
+ * \param symbolName The name of the symbol;
+ *
+ * \return The pointer to the symbol, or nullptr if no matching symbol was
+ *  found.
+ * \retval nullptr The symbol was not found;
  */
 void* unixem_dlsym(
     void*       hModule
 ,   char const* symbolName
 );
 
-/** Returns a descriptive string for the last error
+/** Returns a descriptive string for the last error.
  *
- * \return A pointer to a string describing the last error, or NULL.
- * \retval NULL No error occured, or dlerror() already called
- * \note Each call to this function resets it, so that a second call will always return NULL
+ * \return A pointer to a string describing the last error, or nullptr.
+ * \retval nullptr No error occured, or dlerror() already called;
+ *
+ * \note Each call to this function resets it, so that a second call will
+ *   always return nullptr.
  */
 char const* unixem_dlerror(void);
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
 
 #ifdef __cplusplus
 } /* extern "C" */
@@ -157,7 +171,14 @@ char const* unixem_dlerror(void);
 
 /** @} // end of group unixem_dlopen */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_H_DLFCN */
 

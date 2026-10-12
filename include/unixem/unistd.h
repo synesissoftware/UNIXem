@@ -4,7 +4,7 @@
  * Purpose: Declaration of various UNIX standard functions.
  *
  * Created: 1st November 2003
- * Updated: 9th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_MAJOR       3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_MINOR       1
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_REVISION    1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_EDIT        51
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNISTD_EDIT        52
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -132,7 +132,7 @@ enum
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * typedefs
+ * types
  */
 
 /** Process-identifier type */
@@ -140,35 +140,40 @@ typedef int                                                 unixem_pid_t;
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * API functions
+ * language
  */
 
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
+
 /** Creates a hardlink.
  *
  * This function creates a link from \c originalFile to \c linkName.
  *
- * \param originalFile Path of the original file
- * \param linkName Path of the link
+ * \param originalFile Path of the original file;
+ * \param linkName Path of the link;
  *
- * \return O on success, or -1 if there is an error
+ * \return O on success, or -1 if there is an error.
  *
- * \note Hardlink support is only available on Windows 2000 and later, and only
- *        works within a single drive.
+ * \note Hardlink support is only available on Windows 2000 and later, and
+ *   only works within a single drive.
  */
 int unixem_link(
     char const* originalFile
 ,   char const* linkName
 );
 
-/** Unlinks a file or directory
+/** Unlinks a file or directory.
  *
- * \param path The path of the file or directory to unlink
+ * \param path The path of the file or directory to unlink;
  *
- * \return O on success, or -1 if there is an error
+ * \return O on success, or -1 if there is an error.
  */
 int unixem_unlink(char const* path);
 
@@ -178,20 +183,22 @@ int unixem_unlink(char const* path);
  * This function changes the current working directory to the directory
  * specified by dirName. dirName must refer to an existing directory.
  *
- * \param dirName Path of new working directory
- * \return O on success, or -1 if there is an error
+ * \param dirName Path of new working directory;
+ *
+ * \return O on success, or -1 if there is an error.
  */
 int unixem_chdir(char const* dirName);
 
 
-/** Get the current working directory
+/** Get the current working directory.
  *
  * This function gets the full path of the current working directory
  * and stores it in buffer.
  *
- * \param buffer Storage location for the current working directory
- * \param max_len Maximum length of path (in characters)
- * \return buffer on success, or NULL to indicate error.
+ * \param buffer Storage location for the current working directory;
+ * \param max_len Maximum length of path (in characters);
+ *
+ * \return buffer on success, or nullptr to indicate error.
  */
 char* unixem_getcwd(
     char*   buffer
@@ -199,14 +206,14 @@ char* unixem_getcwd(
 );
 
 
-/** Creates the given directory
+/** Creates the given directory.
  *
  * This function creates the named directory.
  *
- * \param dirName Path of directory to remove
- * \param mode The access permissions of the directory
+ * \param dirName Path of directory to remove;
+ * \param mode The access permissions of the directory;
  *
- * \return O on success, or -1 if there is an error
+ * \return O on success, or -1 if there is an error.
  */
 int unixem_mkdir(
     char const* dirName
@@ -214,33 +221,37 @@ int unixem_mkdir(
 );
 
 
-/** Removes the given directory
+/** Removes the given directory.
  *
  * This function removes the named directory.
  *
- * \param dirName Path of directory to remove
- * \return O on success, or -1 if there is an error
+ * \param dirName Path of directory to remove;
+ *
+ * \return O on success, or -1 if there is an error.
  */
 int unixem_rmdir(char const* dirName);
 
 
-/** Closes a file
+/** Closes a file.
  *
- * \param handle The descriptor of the file to be closed
- * \return 0 on success, or -1 if there is an error
+ * \param handle The descriptor of the file to be closed;
+ *
+ * \return 0 on success, or -1 if there is an error.
  */
 int unixem_close(int fd);
 
 
-/* * Creates a pipe
+/* * Creates a pipe.
  *
  * \param handles An array of two handles. handles[0] will be set to the
- * read stream. handles[1] will be set to the write stream
- * \return 0 on success, or -1 if there is an error
+ *   read stream. handles[1] will be set to the write stream;
+ *
+ * \return 0 on success, or -1 if there is an error.
  */
 /* int pipe(int handles[2]); */
 
-/** Returns the size, in bytes, of the page size
+
+/** Returns the size, in bytes, of the page size.
  */
 int unixem_getpagesize(void);
 
@@ -255,35 +266,35 @@ long unixem_pathconf(
 /** Turns \c path into a fully qualified path, resolving all symbolic
  * links, multiple /, /./ and /../
  *
- * \param path The relative path to be converted into absolute form
- * \param resolvedPath Pointer to a buffer to receive the path. This must contain
- *  sufficient storage for a valid path
+ * \param path The relative path to be converted into absolute form;
+ * \param resolvedPath Pointer to a buffer to receive the path. This must
+ *  contain sufficient storage for a valid path;
  */
 char* unixem_realpath(
     char const* path
 ,   char        resolvedPath[]
 );
 
-/** Suspends execution for the given internal
+/** Suspends execution for the given internal.
  *
  * \param microSeconds The number of microseconds in the sleep interval
  */
 int unixem_usleep(unsigned long microSeconds);
 
 
-/** Returns the current process identifier
+/** Returns the current process identifier.
  */
 unixem_pid_t unixem_getpid(void);
 
 
 
-/** Obtains a temporary directory name
+/** Obtains a temporary directory name.
  *
  * \param template_path The last N letters that are 'X' are replaced by a
- *   string that makes the directory name unique
+ *   string that makes the directory name unique;
  *
- * \return template_path if successful
- * \retval NULL If the directory cannot be created
+ * \return template_path if successful.
+ * \retval nullptr If the directory cannot be created;
  */
 char*
 unixem_mkdtemp(
@@ -291,13 +302,13 @@ unixem_mkdtemp(
 );
 
 
-/** Obtains a temporary directory name
+/** Obtains a temporary directory name.
  *
  * \param template_path The last N letters that are 'X' are replaced by a
- *   string that makes the file name unique
+ *   string that makes the file name unique;
  *
- * \return The file handle, if successful
- * \retval -1 If the file cannot be created
+ * \return The file handle, if successful.
+ * \retval -1 If the file cannot be created;
  */
 int
 unixem_mkstemp(
@@ -306,22 +317,26 @@ unixem_mkstemp(
 
 
 
-
-/** Returns the host name for the current machine
+/** Returns the host name for the current machine.
  *
- * \param name Pointer to an array of characters to receive the results
- * \param cchName Number of characters available in the buffer
+ * \param name Pointer to an array of characters to receive the results;
+ * \param cchName Number of characters available in the buffer;
  *
- * \retval 0 the operation completed successfully
- * \retval -1 the operation failed
+ * \retval 0 the operation completed successfully;
+ * \retval -1 the operation failed;
  *
  * \note This function's calling convention is stdcall, to ensure
- * compatibility if it is loaded (from ws2_32l.dll) dynamically.
+ *   compatibility if it is loaded (from ws2_32l.dll) dynamically.
  */
 int __stdcall unixem_gethostname(
     char*   name
 ,   size_t  cchName
 );
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
 
 #ifdef __cplusplus
 } /* extern "C" */
@@ -332,7 +347,14 @@ int __stdcall unixem_gethostname(
 
 /** @} // end of group unixem_unistd */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_H_UNISTD */
 

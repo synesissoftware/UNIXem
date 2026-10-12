@@ -4,7 +4,7 @@
  * Purpose: Vector file read/write.
  *
  * Created: 19th September 2005
- * Updated: 9th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -51,7 +51,7 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_UIO_MAJOR     2
 # define SYNSOFT_UNIXEM_VER_SYS_H_UIO_MINOR     0
 # define SYNSOFT_UNIXEM_VER_SYS_H_UIO_REVISION  1
-# define SYNSOFT_UNIXEM_VER_SYS_H_UIO_EDIT      16
+# define SYNSOFT_UNIXEM_VER_SYS_H_UIO_EDIT      17
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -75,16 +75,8 @@
  */
 
 
-/* ////////////////////////////////////////////////////////////////////// */
-
-#ifdef __cplusplus
-extern "C"
-{
-#endif /* __cplusplus */
-
-
 /* /////////////////////////////////////////////////////////////////////////
- * typedefs
+ * types
  */
 
 #ifndef _SSIZE_T_DEFINED
@@ -101,19 +93,29 @@ typedef unixem_ssize_t                                      ssize_t;
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * functions
+ * language
+ */
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
  */
 
 /** Reads from a file into a set of memory blocks
  *
- * \param fd The file from which to read
- * \param vector pointer to the first element in the vector
- * \param count the number of elements in the vector
+ * \param fd The file from which to read;
+ * \param vector pointer to the first element in the vector;
+ * \param count the number of elements in the vector;
  *
- * \note This is a macro, which resolves to unixem_readv()
+ * \note This is a macro, which resolves to unixem_readv().
  *
  * \note This is implemented to read the total size in one call to the
- *  kernel except in the case that the total is "very large"
+ *  kernel except in the case that the total is "very large".
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 ssize_t readv(
@@ -127,11 +129,11 @@ ssize_t readv(
 
 /** Writes to a file from a set of memory blocks
  *
- * \param fd The file to which to write
- * \param vector pointer to the first element in the vector
- * \param count the number of elements in the vector
+ * \param fd The file to which to write;
+ * \param vector pointer to the first element in the vector;
+ * \param count the number of elements in the vector;
  *
- * \note This is a macro, which resolves to unixem_writev()
+ * \note This is a macro, which resolves to unixem_writev().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 ssize_t writev(
@@ -143,6 +145,11 @@ ssize_t writev(
 # define writev                                             unixem_writev
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
@@ -150,9 +157,16 @@ ssize_t writev(
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** @} // end of group unixem_time */
+/** @} // end of group unixem_uio */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_SYS_H_UIO */
 

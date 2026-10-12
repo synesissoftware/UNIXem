@@ -1,6 +1,16 @@
 # UNIXem - Changes <!-- omit in toc -->
 
 
+## 1.14.0 - 13th October 2026
+
+* Canonicalised public and internal header section layout (`types`, `language` / `extern "C"`, `API functions`, `inclusion control`);
+* Renamed remaining `typedefs` sections to `types`;
+* Normalised blank lines before section banners and end-of-file `inclusion control` blocks;
+* Corrected the Doxygen group close in **sys/uio.h** / **unixem/sys/uio.h** to `unixem_uio`;
+* Tidied **unixem/internal/stdint.h** and **unixem/asm/atomic.h** section structure;
+* Set `UNIXEM_VER_ALPHABETA` to `0xFF` for the **1.14.0** release in **include/unixem/unixem.h**;
+
+
 ## 1.14.0-rc1 - 21st September 2026
 
 * Canonicalised CMake exclusion variable from reserved `CMAKE_NO_SHWILD` to canonical `NO_SHWILD` in **CMakeLists.txt** and **prepare_cmake.sh**;

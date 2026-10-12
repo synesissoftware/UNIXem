@@ -5,7 +5,7 @@
  *          types for the Windows platform.
  *
  * Created: 8th December 2002
- * Updated: 9th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -53,7 +53,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_MAJOR     3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_MINOR     0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_REVISION  2
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_EDIT      30
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_TIME_EDIT      31
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -79,12 +79,10 @@
  * @{
  */
 
-/* ////////////////////////////////////////////////////////////////////// */
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif /* __cplusplus */
+/* /////////////////////////////////////////////////////////////////////////
+ * types
+ */
 
 #ifndef UNIXEM_WINSOCK_IS_INCLUDED
 
@@ -99,19 +97,33 @@ struct unixem_timeval
     long tv_sec;    /*!< The number of seconds, since Jan. 1, 1970, in the time value. */
     long tv_usec;   /*!< The number of microseconds in the time value. */
 };
-
 #else /* ? !UNIXEM_WINSOCK_IS_INCLUDED */
 
 # define unixem_timeval     timeval
-
 #endif /* !UNIXEM_WINSOCK_IS_INCLUDED */
 
-/** Accesses the current UTC time
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
+
+/** Accesses the current UTC time.
  *
- * Retrieves the current time and timezone information, relative to Greenwich Mean Time
+ * Retrieves the current time and timezone information, relative to
+ * Greenwich Mean Time.
  *
- * \param tv Pointer to a timeval structure to receive the time information
- * \param dummy This parameter is not used
+ * \param tv Pointer to a timeval structure to receive the time information;
+ * \param dummy This parameter is not used;
  *
  * \return Always returns 0.
  */
@@ -119,6 +131,11 @@ extern int unixem_gettimeofday(
     struct unixem_timeval*  tv
 ,   void*                   dummy
 );
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
 
 #ifdef __cplusplus
 } /* extern "C" */
@@ -129,7 +146,14 @@ extern int unixem_gettimeofday(
 
 /** @} // end of group unixem_time */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_SYS_H_TIME */
 

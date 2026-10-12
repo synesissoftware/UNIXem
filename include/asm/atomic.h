@@ -5,7 +5,7 @@
  *          Windows platform.
  *
  * Created: 21st November 2003
- * Updated: 9th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -47,7 +47,7 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_MAJOR      3
 # define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_MINOR      0
 # define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_REVISION   1
-# define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_EDIT       24
+# define SYNSOFT_UNIXEM_VER_SYS_H_ATOMIC_EDIT       25
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -68,19 +68,25 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * typedefs
+ * types
  */
 
 typedef unixem_atomic_t                                     atomic_t;
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * API functions
+ * language
  */
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
 
 #define ATOMIC_INIT(i)                                      UNIXEM_ATOMIC_INIT(i)
 
@@ -100,12 +106,23 @@ extern "C" {
 /** Returns the previous value */
 #define atomic_sub_and_test                                 unixem_atomic_sub_and_test
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
-}
+} /* extern "C" */
 #endif /* __cplusplus */
 
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_SYS_H_ATOMIC */
 

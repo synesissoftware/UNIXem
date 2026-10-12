@@ -5,7 +5,7 @@
  *          functions.
  *
  * Created: 1st January 2004
- * Updated: 9th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_H_DLFCN_MAJOR       3
 # define SYNSOFT_UNIXEM_VER_H_DLFCN_MINOR       0
 # define SYNSOFT_UNIXEM_VER_H_DLFCN_REVISION    1
-# define SYNSOFT_UNIXEM_VER_H_DLFCN_EDIT        24
+# define SYNSOFT_UNIXEM_VER_H_DLFCN_EDIT        25
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -95,7 +95,7 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * API functions
+ * language
  */
 
 #ifdef __cplusplus
@@ -103,15 +103,20 @@ extern "C"
 {
 #endif /* __cplusplus */
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
+
 /** Loads the given module,
  *
  * \param moduleName The name of the module. The name is passed through to
  *  Windows's LoadLibrary(), so the value of this parameter is interpreted
- *  according to Windows's loading rules.
+ *  according to Windows's loading rules;
  * \param mode The loading mode. This is ignored on Windows platforms, and
- *  the function always behaves as if RTLD_NOW was specified
+ *  the function always behaves as if RTLD_NOW was specified;
  *
- * \note This is a macro, which resolves to unixem_dlopen()
+ * \note This is a macro, which resolves to unixem_dlopen().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 void* dlopen(
@@ -122,13 +127,14 @@ void* dlopen(
 # define dlopen                                             unixem_dlopen
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
-/** Closes the given module
+/** Closes the given module.
  *
- * \param hModule The handle of the executable module to close
- * \retval 0 success
- * \retval !0 failure. dlerror() will return an error string
+ * \param hModule The handle of the executable module to close;
  *
- * \note This is a macro, which resolves to unixem_dlclose()
+ * \retval 0 success;
+ * \retval !0 failure. dlerror() will return an error string;
+ *
+ * \note This is a macro, which resolves to unixem_dlclose().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 void dlclose(void* hModule);
@@ -136,14 +142,16 @@ void dlclose(void* hModule);
 # define dlclose                                            unixem_dlclose
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
-/** Looks up a symbol
+/** Looks up a symbol.
  *
- * \param hModule The handle of the executable module in which to search for the symbol
- * \param symbolName The name of the symbol
- * \return The pointer to the symbol, or NULL if no matching symbol was found
- * \retval NULL The symbol was not found
+ * \param hModule The handle of the executable module in which to search for the symbol;
+ * \param symbolName The name of the symbol;
  *
- * \note This is a macro, which resolves to unixem_dlsym()
+ * \return The pointer to the symbol, or nullptr if no matching symbol was
+ *   found.
+ * \retval nullptr The symbol was not found;
+ *
+ * \note This is a macro, which resolves to unixem_dlsym().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 void* dlsym(
@@ -154,13 +162,15 @@ void* dlsym(
 # define dlsym                                              unixem_dlsym
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
-/** Returns a descriptive string for the last error
+/** Returns a descriptive string for the last error.
  *
- * \return A pointer to a string describing the last error, or NULL.
- * \retval NULL No error occured, or dlerror() already called
- * \note Each call to this function resets it, so that a second call will always return NULL
+ * \return A pointer to a string describing the last error, or nullptr.
+ * \retval nullptr No error occured, or dlerror() already called;
  *
- * \note This is a macro, which resolves to unixem_dlerror()
+ * \note Each call to this function resets it, so that a second call will
+ *   always return nullptr.
+ *
+ * \note This is a macro, which resolves to unixem_dlerror().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 char const* dlerror(void);
@@ -172,6 +182,11 @@ char const* dlerror(void);
 
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
@@ -181,7 +196,14 @@ char const* dlerror(void);
 
 /** @} // end of group unixem_dlopen */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_H_DLFCN */
 

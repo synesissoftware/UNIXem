@@ -4,7 +4,7 @@
  * Purpose: Vector file read/write.
  *
  * Created: 19th September 2005
- * Updated: 9th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_MAJOR      2
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_MINOR      0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_REVISION   2
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_EDIT       17
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_EDIT       18
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -82,16 +82,9 @@
  * @{
  */
 
-/* ////////////////////////////////////////////////////////////////////// */
-
-#ifdef __cplusplus
-extern "C"
-{
-#endif /* __cplusplus */
-
 
 /* /////////////////////////////////////////////////////////////////////////
- * typedefs
+ * types
  */
 
 /** Defines a memory vector */
@@ -103,14 +96,24 @@ struct unixem_iovec
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * functions
+ * language
  */
 
-/** Reads from a file into a set of memory blocks
+#ifdef __cplusplus
+extern "C"
+{
+#endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
+
+/** Reads from a file into a set of memory blocks.
  *
- * \param fd The file from which to read
- * \param vector pointer to the first element in the vector
- * \param count the number of elements in the vector
+ * \param fd The file from which to read;
+ * \param vector pointer to the first element in the vector;
+ * \param count the number of elements in the vector;
  */
 unixem_ssize_t
 unixem_readv(
@@ -119,11 +122,11 @@ unixem_readv(
 ,   int                         count
 );
 
-/** Writes to a file from a set of memory blocks
+/** Writes to a file from a set of memory blocks.
  *
- * \param fd The file to which to write
- * \param vector pointer to the first element in the vector
- * \param count the number of elements in the vector
+ * \param fd The file to which to write;
+ * \param vector pointer to the first element in the vector;
+ * \param count the number of elements in the vector;
  */
 unixem_ssize_t
 unixem_writev(
@@ -132,6 +135,11 @@ unixem_writev(
 ,   int                         count
 );
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
@@ -139,9 +147,16 @@ unixem_writev(
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-/** @} // end of group unixem_time */
+/** @} // end of group unixem_uio */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_SYS_H_UIO */
 

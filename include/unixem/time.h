@@ -4,7 +4,7 @@
  * Purpose: Time functions and types for the Windows platform.
  *
  * Created: 5th May 2014
- * Updated: 9th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_MAJOR      1
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_MINOR      0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_REVISION   1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_EDIT       6
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_EDIT       7
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -79,16 +79,24 @@
  * @{
  */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif /* __cplusplus */
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
+
 /** Converts a <code>struct tm</code> value into a <code>time_t</code> value.
  *
- * \param tm Pointer to a tm structure to receive the time information
+ * \param tm Pointer to a tm structure to receive the time information;
  *
  * \return The converted value.
  */
@@ -100,11 +108,11 @@ unixem_timegm(
 
 /** Converts a <code>struct tm</code> value into a <code>time_t</code> value.
  *
- * \param tm Pointer to a tm structure to receive the time information
+ * \param tm Pointer to a tm structure to receive the time information;
  *
  * \return The converted value.
  *
- * \note This is a macro, which resolves to unixem_timegm()
+ * \note This is a macro, which resolves to unixem_timegm().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 time_t
@@ -117,6 +125,11 @@ timegm(
 # endif /* !timegm */
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
@@ -126,7 +139,14 @@ timegm(
 
 /** @} // end of group unixem_time */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_H_TIME */
 
