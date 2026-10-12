@@ -126,9 +126,9 @@ typedef signed long                                         unixem_ssize_t;
  * inclusion control
  */
 
-#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
 # pragma once
-#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* UNIXEM_INCL_UNIXEM_internal_h_stdint */
 

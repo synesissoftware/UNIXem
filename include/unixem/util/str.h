@@ -122,9 +122,9 @@ unixem_util_str_wcpncpy(
  * inclusion control
  */
 
-#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
 # pragma once
-#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_UTIL_H_STR */
 

@@ -1,7 +1,7 @@
 
 /*
  * Created: ...
- * Updated: 18th May 2025
+ * Updated: 12th October 2026
  */
 
 #include <unistd.h>
@@ -40,11 +40,11 @@ int main(int argc, char* argv[])
 
                 rmdir(template_path);
 
-                XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(7u, len));
-                XTESTS_TEST_MULTIBYTE_STRING_EQUAL_N("abc.", template_path, 4u);
-                XTESTS_TEST_BOOLEAN_TRUE(isdigit(template_path[len - 3]));
-                XTESTS_TEST_BOOLEAN_TRUE(isdigit(template_path[len - 2]));
-                XTESTS_TEST_BOOLEAN_TRUE(isdigit(template_path[len - 1]));
+                XTESTS_REQUIRE(TEST_INT_EQ(7u, len));
+                TEST_MS_EQ_N("abc.", template_path, 4u);
+                TEST_BOOLEAN_TRUE(isdigit(template_path[len - 3]));
+                TEST_BOOLEAN_TRUE(isdigit(template_path[len - 2]));
+                TEST_BOOLEAN_TRUE(isdigit(template_path[len - 1]));
             }
 
             XTESTS_CASE_END("Test-1");
@@ -70,12 +70,12 @@ int main(int argc, char* argv[])
 
                     rmdir(template_path);
 
-                    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(16u, len));
-                    XTESTS_TEST_MULTIBYTE_STRING_EQUAL_N("C:\\temp\\abc.", template_path, 12u);
-                    XTESTS_TEST_BOOLEAN_TRUE(isdigit(template_path[len - 4]));
-                    XTESTS_TEST_BOOLEAN_TRUE(isdigit(template_path[len - 3]));
-                    XTESTS_TEST_BOOLEAN_TRUE(isdigit(template_path[len - 2]));
-                    XTESTS_TEST_BOOLEAN_TRUE(isdigit(template_path[len - 1]));
+                    XTESTS_REQUIRE(TEST_INT_EQ(16u, len));
+                    TEST_MS_EQ_N("C:\\temp\\abc.", template_path, 12u);
+                    TEST_BOOLEAN_TRUE(isdigit(template_path[len - 4]));
+                    TEST_BOOLEAN_TRUE(isdigit(template_path[len - 3]));
+                    TEST_BOOLEAN_TRUE(isdigit(template_path[len - 2]));
+                    TEST_BOOLEAN_TRUE(isdigit(template_path[len - 1]));
                 }
             }
 

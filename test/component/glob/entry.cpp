@@ -4,7 +4,7 @@
  * Purpose: Unit-test of `glob()`.
  *
  * Created: 20th May 2012
- * Updated: 9th October 2026
+ * Updated: 12th October 2026
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -218,15 +218,15 @@ static void test_1_0()
     int const   flags   =   0;
     int const   r       =   glob("file0", flags, NULL, &gl);
 
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(0, r));
+    XTESTS_REQUIRE(TEST_INT_EQ(0, r));
 
     stlsoft::scoped_handle<glob_t*> scoper(&gl, ::globfree);
 
 #ifdef GLOB_LIMIT
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(1, gl.gl_matchc));
+    XTESTS_REQUIRE(TEST_INT_EQ(1, gl.gl_matchc));
 #endif /* GLOB_LIMIT */
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(1, gl.gl_pathc));
-    XTESTS_TEST_MULTIBYTE_STRING_EQUAL("file0", gl.gl_pathv[0]);
+    XTESTS_REQUIRE(TEST_INT_EQ(1, gl.gl_pathc));
+    TEST_MS_EQ("file0", gl.gl_pathv[0]);
 }
 
 static void test_1_1()
@@ -235,17 +235,17 @@ static void test_1_1()
     int const   flags   =   0;
     int const   r       =   glob("file?", flags, NULL, &gl);
 
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(0, r));
+    XTESTS_REQUIRE(TEST_INT_EQ(0, r));
 
     stlsoft::scoped_handle<glob_t*> scoper(&gl, ::globfree);
 
 #ifdef GLOB_LIMIT
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(3, gl.gl_matchc));
+    XTESTS_REQUIRE(TEST_INT_EQ(3, gl.gl_matchc));
 #endif /* GLOB_LMIT */
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(3, gl.gl_pathc));
-    XTESTS_TEST_MULTIBYTE_STRING_EQUAL("file0", gl.gl_pathv[0]);
-    XTESTS_TEST_MULTIBYTE_STRING_EQUAL("file1", gl.gl_pathv[1]);
-    XTESTS_TEST_MULTIBYTE_STRING_EQUAL("file2", gl.gl_pathv[2]);
+    XTESTS_REQUIRE(TEST_INT_EQ(3, gl.gl_pathc));
+    TEST_MS_EQ("file0", gl.gl_pathv[0]);
+    TEST_MS_EQ("file1", gl.gl_pathv[1]);
+    TEST_MS_EQ("file2", gl.gl_pathv[2]);
 }
 
 static void test_1_2()
@@ -254,15 +254,15 @@ static void test_1_2()
     int const   flags   =   0;
     int const   r       =   glob("file0", flags, NULL, &gl);
 
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(0, r));
+    XTESTS_REQUIRE(TEST_INT_EQ(0, r));
 
     stlsoft::scoped_handle<glob_t*> scoper(&gl, ::globfree);
 
 #ifdef GLOB_LIMIT
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(1, gl.gl_matchc));
+    XTESTS_REQUIRE(TEST_INT_EQ(1, gl.gl_matchc));
 #endif /* GLOB_LMIT */
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(1, gl.gl_pathc));
-    XTESTS_TEST_MULTIBYTE_STRING_EQUAL("file0", gl.gl_pathv[0]);
+    XTESTS_REQUIRE(TEST_INT_EQ(1, gl.gl_pathc));
+    TEST_MS_EQ("file0", gl.gl_pathv[0]);
 }
 
 static void test_1_3()
@@ -273,15 +273,15 @@ static void test_1_3()
     int const   flags   =   GLOB_DOOFFS;
     int const   r       =   glob("file0", flags, NULL, &gl);
 
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(0, r));
+    XTESTS_REQUIRE(TEST_INT_EQ(0, r));
 
     stlsoft::scoped_handle<glob_t*> scoper(&gl, ::globfree);
 
 # ifdef GLOB_LIMIT
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(1, gl.gl_matchc));
+    XTESTS_REQUIRE(TEST_INT_EQ(1, gl.gl_matchc));
 # endif /* GLOB_LMIT */
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(1, gl.gl_pathc));
-    XTESTS_TEST_MULTIBYTE_STRING_EQUAL("file0", gl.gl_pathv[10]);
+    XTESTS_REQUIRE(TEST_INT_EQ(1, gl.gl_pathc));
+    TEST_MS_EQ("file0", gl.gl_pathv[10]);
 #endif /* GLOB_DOOFFS */
 }
 
@@ -291,7 +291,7 @@ static void test_1_4()
     int const   flags   =   0;
     int const   r       =   glob("xxx", flags, NULL, &gl);
 
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(GLOB_NOMATCH, r));
+    XTESTS_REQUIRE(TEST_INT_EQ(GLOB_NOMATCH, r));
 
     stlsoft::scoped_handle<glob_t*> scoper(&gl, ::globfree);
 }
@@ -302,15 +302,15 @@ static void test_1_5()
     int const   flags   =   GLOB_NOCHECK;
     int const   r       =   glob("xxx", flags, NULL, &gl);
 
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(0, r));
+    XTESTS_REQUIRE(TEST_INT_EQ(0, r));
 
     stlsoft::scoped_handle<glob_t*> scoper(&gl, ::globfree);
 
 #ifdef GLOB_LIMIT
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(1, gl.gl_matchc));
+    XTESTS_REQUIRE(TEST_INT_EQ(1, gl.gl_matchc));
 #endif /* GLOB_LMIT */
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(1, gl.gl_pathc));
-    XTESTS_TEST_MULTIBYTE_STRING_EQUAL("xxx", gl.gl_pathv[0]);
+    XTESTS_REQUIRE(TEST_INT_EQ(1, gl.gl_pathc));
+    TEST_MS_EQ("xxx", gl.gl_pathv[0]);
 }
 
 static void test_1_6()
@@ -319,15 +319,15 @@ static void test_1_6()
     int const   flags   =   GLOB_NOCHECK;
     int const   r       =   glob("x*y", flags, NULL, &gl);
 
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(0, r));
+    XTESTS_REQUIRE(TEST_INT_EQ(0, r));
 
     stlsoft::scoped_handle<glob_t*> scoper(&gl, ::globfree);
 
 #ifdef GLOB_LIMIT
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(1, gl.gl_matchc));
+    XTESTS_REQUIRE(TEST_INT_EQ(1, gl.gl_matchc));
 #endif /* GLOB_LMIT */
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(1, gl.gl_pathc));
-    XTESTS_TEST_MULTIBYTE_STRING_EQUAL("x*y", gl.gl_pathv[0]);
+    XTESTS_REQUIRE(TEST_INT_EQ(1, gl.gl_pathc));
+    TEST_MS_EQ("x*y", gl.gl_pathv[0]);
 }
 
 static void test_1_7()
@@ -338,14 +338,14 @@ static void test_1_7()
     int const   flags   =   GLOB_LIMIT;
     int const   r       =   glob("file?", flags, NULL, &gl);
 
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(GLOB_NOSPACE, r));
+    XTESTS_REQUIRE(TEST_INT_EQ(GLOB_NOSPACE, r));
 
     stlsoft::scoped_handle<glob_t*> scoper(&gl, ::globfree);
 
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(2, gl.gl_matchc));
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(2, gl.gl_pathc));
-    XTESTS_TEST_MULTIBYTE_STRING_EQUAL("file0", gl.gl_pathv[0]);
-    XTESTS_TEST_MULTIBYTE_STRING_EQUAL("file1", gl.gl_pathv[1]);
+    XTESTS_REQUIRE(TEST_INT_EQ(2, gl.gl_matchc));
+    XTESTS_REQUIRE(TEST_INT_EQ(2, gl.gl_pathc));
+    TEST_MS_EQ("file0", gl.gl_pathv[0]);
+    TEST_MS_EQ("file1", gl.gl_pathv[1]);
 #endif /* GLOB_LIMIT */
 }
 
@@ -358,14 +358,14 @@ static void test_1_8()
     int const   flags   =   GLOB_LIMIT | GLOB_DOOFFS;
     int const   r       =   glob("file?", flags, NULL, &gl);
 
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(GLOB_NOSPACE, r));
+    XTESTS_REQUIRE(TEST_INT_EQ(GLOB_NOSPACE, r));
 
     stlsoft::scoped_handle<glob_t*> scoper(&gl, ::globfree);
 
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(2, gl.gl_matchc));
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(2, gl.gl_pathc));
-    XTESTS_TEST_MULTIBYTE_STRING_EQUAL("file0", gl.gl_pathv[10]);
-    XTESTS_TEST_MULTIBYTE_STRING_EQUAL("file1", gl.gl_pathv[11]);
+    XTESTS_REQUIRE(TEST_INT_EQ(2, gl.gl_matchc));
+    XTESTS_REQUIRE(TEST_INT_EQ(2, gl.gl_pathc));
+    TEST_MS_EQ("file0", gl.gl_pathv[10]);
+    TEST_MS_EQ("file1", gl.gl_pathv[11]);
 #endif /* GLOB_LIMIT && GLOB_DOOFFS */
 }
 
@@ -379,15 +379,15 @@ static void test_1_10()
     int const   flags   =   0;
     int const   r       =   glob(".", flags, NULL, &gl);
 
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(0, r));
+    XTESTS_REQUIRE(TEST_INT_EQ(0, r));
 
     stlsoft::scoped_handle<glob_t*> scoper(&gl, ::globfree);
 
 #ifdef GLOB_LIMIT
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(1, gl.gl_matchc));
+    XTESTS_REQUIRE(TEST_INT_EQ(1, gl.gl_matchc));
 #endif /* GLOB_LIMIT */
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(1, gl.gl_pathc));
-    XTESTS_TEST_MULTIBYTE_STRING_EQUAL(".", gl.gl_pathv[0]);
+    XTESTS_REQUIRE(TEST_INT_EQ(1, gl.gl_pathc));
+    TEST_MS_EQ(".", gl.gl_pathv[0]);
 }
 
 static void test_1_11()
@@ -396,15 +396,15 @@ static void test_1_11()
     int const   flags   =   0;
     int const   r       =   glob("..", flags, NULL, &gl);
 
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(0, r));
+    XTESTS_REQUIRE(TEST_INT_EQ(0, r));
 
     stlsoft::scoped_handle<glob_t*> scoper(&gl, ::globfree);
 
 #ifdef GLOB_LIMIT
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(1, gl.gl_matchc));
+    XTESTS_REQUIRE(TEST_INT_EQ(1, gl.gl_matchc));
 #endif /* GLOB_LIMIT */
-    XTESTS_REQUIRE(XTESTS_TEST_INTEGER_EQUAL(1, gl.gl_pathc));
-    XTESTS_TEST_MULTIBYTE_STRING_EQUAL("..", gl.gl_pathv[0]);
+    XTESTS_REQUIRE(TEST_INT_EQ(1, gl.gl_pathc));
+    TEST_MS_EQ("..", gl.gl_pathv[0]);
 }
 #endif
 

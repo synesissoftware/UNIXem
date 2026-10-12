@@ -130,9 +130,9 @@ int     unixem_atomic_sub_and_test(int i, unixem_atomic_t volatile* v);
  * inclusion control
  */
 
-#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
 # pragma once
-#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_ASM_H_ATOMIC */
 

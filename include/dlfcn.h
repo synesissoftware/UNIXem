@@ -201,9 +201,9 @@ char const* dlerror(void);
  * inclusion control
  */
 
-#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
 # pragma once
-#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_H_DLFCN */
 

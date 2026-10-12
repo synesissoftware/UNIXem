@@ -4,7 +4,7 @@
  * Purpose: Unit-test of `usleep()`.
  *
  * Created: 29th November 2024
- * Updated: 9th October 2026
+ * Updated: 12th October 2026
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -84,8 +84,8 @@ void TEST_TIME_ZERO()
 
     platformstl::stopwatch::interval_type const total_time_ns = gram.total_event_time_ns_raw();
 
-    XTESTS_TEST_INTEGER_GREATER_OR_EQUAL(0, total_time_ns);
-    XTESTS_TEST_INTEGER_LESS_OR_EQUAL(100000, total_time_ns);
+    TEST_INT_GE(0, total_time_ns);
+    TEST_INT_LE(100000, total_time_ns);
 }
 
 void TEST_S_1()
@@ -104,8 +104,8 @@ void TEST_S_1()
 
     platformstl::stopwatch::interval_type const total_time_ns = gram.total_event_time_ns_raw();
 
-    XTESTS_TEST_INTEGER_GREATER_OR_EQUAL(1000000000, total_time_ns);
-    XTESTS_TEST_INTEGER_LESS_OR_EQUAL(1100000000, total_time_ns);
+    TEST_INT_GE(1000000000, total_time_ns);
+    TEST_INT_LE(1100000000, total_time_ns);
 }
 
 void TEST_MS_100()
@@ -124,8 +124,8 @@ void TEST_MS_100()
 
     platformstl::stopwatch::interval_type const total_time_ns = gram.total_event_time_ns_raw();
 
-    XTESTS_TEST_INTEGER_GREATER_OR_EQUAL(100000000, total_time_ns);
-    XTESTS_TEST_INTEGER_LESS_OR_EQUAL(150000000, total_time_ns);
+    TEST_INT_GE(100000000, total_time_ns);
+    TEST_INT_LE(150000000, total_time_ns);
 }
 } // anonymous namespace
 

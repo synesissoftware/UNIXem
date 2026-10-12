@@ -94,6 +94,11 @@ extern "C"
  * API functions
  */
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
+
 /** Inserts or resets the value of an environment variable.
  *
  * This function creates a link from \c originalFile to \c linkName.
@@ -137,9 +142,9 @@ void unixem_unsetenv(char const* name);
  * inclusion control
  */
 
-#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
 # pragma once
-#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_H_SETENV */
 
