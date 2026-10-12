@@ -3,6 +3,7 @@
 
 | Date                | News Item                 | Details                                                           |
 | ------------------- | ------------------------- | ----------------------------------------------------------------- |
+| 15th October 2026   | Release of [**UNIXem** 0.15.0-alpha1](https://github.com/synesissoftware/UNIXem/releases/tag/0.15.0-alpha1) | added `uname()`; component test `test.component.sys.utsname` |
 | 13th October 2026   | Release of [**UNIXem** 1.14.0](https://github.com/synesissoftware/UNIXem/releases/tag/1.14.0) | header section layout; transitioned tests to **xTests** terse API |
 | 21st September 2026 | Release of [**UNIXem** 1.14.0-rc1](https://github.com/synesissoftware/UNIXem/releases/tag/1.14.0-rc1) | `NO_SHWILD`; computed `UNIXEM_VER`; **misc-dev-scripts** drop-ins |
 | 9th August 2026     | Release of [**UNIXem** 1.14.0-beta1](https://github.com/synesissoftware/UNIXem/releases/tag/1.14.0-beta1) | `stpcpy()` |
