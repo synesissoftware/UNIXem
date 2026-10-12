@@ -5,7 +5,7 @@
  *          support timeval and gethostname()).
  *
  * Created: 28th December 2007
- * Updated: 9th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -57,7 +57,7 @@
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_MAJOR     1
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_MINOR     0
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_REVISION  3
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_EDIT      9
+# define UNIXEM_VER_UNIXEM_INTERNAL_H_WINSOCK_EDIT      10
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -106,7 +106,13 @@
 #endif /* WIN32 */
 
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* UNIXEM_INCL_UNIXEM_INTERNAL_H_WINSOCK */
 

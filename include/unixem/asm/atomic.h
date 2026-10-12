@@ -5,7 +5,7 @@
  *          Windows platform.
  *
  * Created: 21st November 2003
- * Updated: 9th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -48,11 +48,13 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_MAJOR       3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_MINOR       0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_REVISION    1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_EDIT        23
+# define SYNSOFT_UNIXEM_VER_UNIXEM_ASM_H_ATOMIC_EDIT        24
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * compatibility
+ */
 
 #ifndef _WIN32
 # error This file is only currently defined for compilation on Windows systems
@@ -60,28 +62,39 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * constants and definitions
+ * includes
  */
 
 #include <unixem/unixem.h>
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * typedefs
+ * types
  */
 
 typedef signed long                                         unixem_atomic_t;
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * API functions
+ * constants and definitions
+ */
+
+#define UNIXEM_ATOMIC_INIT(i)                               (i)
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
  */
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif /* __cplusplus */
 
-#define UNIXEM_ATOMIC_INIT(i)                               (i)
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
 
 void    unixem_atomic_set(unixem_atomic_t volatile* v, int i);
 int     unixem_atomic_write(unixem_atomic_t volatile* v, int i);
@@ -103,12 +116,23 @@ int     unixem_atomic_add_and_test(int i, unixem_atomic_t volatile* v);
 /** Returns the previous value */
 int     unixem_atomic_sub_and_test(int i, unixem_atomic_t volatile* v);
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
-}
+} /* extern "C" */
 #endif /* __cplusplus */
 
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_ASM_H_ATOMIC */
 

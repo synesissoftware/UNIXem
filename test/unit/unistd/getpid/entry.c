@@ -1,5 +1,5 @@
 
-#include <xtests/xtests.h>
+#include <xtests/terse-api.h>
 
 #include <unistd.h>
 
@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
         /* Test-1 */
         if (XTESTS_CASE_BEGIN("Test-1", "testing getpid"))
         {
-            XTESTS_TEST_INTEGER_EQUAL((pid_t)GetCurrentProcessId(), getpid());
+            TEST_INT_EQ((pid_t)GetCurrentProcessId(), getpid());
 
             XTESTS_CASE_END("Test-1");
         }

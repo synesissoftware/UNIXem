@@ -4,11 +4,11 @@
  * Purpose: Definition of the setenv() and unsetenv() functions.
  *
  * Created: 9th December 2005
- * Updated: 28th November 2024
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -50,7 +50,7 @@
 # define UNIXEM_VER_UNIXEM_H_SETENV_MAJOR       2
 # define UNIXEM_VER_UNIXEM_H_SETENV_MINOR       0
 # define UNIXEM_VER_UNIXEM_H_SETENV_REVISION    1
-# define UNIXEM_VER_UNIXEM_H_SETENV_EDIT        11
+# define UNIXEM_VER_UNIXEM_H_SETENV_EDIT        12
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -81,23 +81,34 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
  * API functions
  */
 
-# ifdef __cplusplus
-extern "C" {
-# endif /* __cplusplus */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
 
 /** Inserts or resets the value of an environment variable.
  *
  * This function creates a link from \c originalFile to \c linkName.
  *
- * \param name The name of the environment variable to add / set
- * \param value The value of the environment variable
- * \param bOverwrite Determines whether to overwrite the variable, if it exists,
- *         or to leave its current value intact
+ * \param name The name of the environment variable to add / set;
+ * \param value The value of the environment variable;
+ * \param bOverwrite Determines whether to overwrite the variable, if it
+ *   exists, or to leave its current value intact;
  *
- * \return O on success, or -1 if there is an error
+ * \return O on success, or -1 if there is an error.
  */
 int unixem_setenv(
     char const* name
@@ -108,20 +119,32 @@ int unixem_setenv(
 
 /** Deletes the named environment variable, if it exists.
  *
- * \param name The name of the environment to delete
+ * \param name The name of the environment to delete;
  */
 void unixem_unsetenv(char const* name);
 
-# ifdef __cplusplus
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
+#ifdef __cplusplus
 } /* extern "C" */
-# endif /* __cplusplus */
+#endif /* __cplusplus */
 
 
 /* ////////////////////////////////////////////////////////////////////// */
 
 /** @} // end of group unixem_setenv */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_H_SETENV */
 

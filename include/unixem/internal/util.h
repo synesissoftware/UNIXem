@@ -4,7 +4,7 @@
  * Purpose: Internal utility header for the UNIXem API.
  *
  * Created: 2nd September 2005
- * Updated: 9th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -55,7 +55,7 @@
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_MAJOR    1
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_MINOR    4
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_REVISION 2
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_EDIT     16
+# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_EDIT     17
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -74,7 +74,7 @@
  *
  * Evaluates the size of an array.
  *
- * \param ar The array.
+ * \param ar The array;
  *
  * \warning This produces unintended behaviour if used with a pointer, and
  *  undefined behaviour if used, in C++, with a user-defined type that
@@ -128,13 +128,22 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * function declarations
+ * language
+ */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
  */
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
 
 /** Converts a standard file handle to a Windows HANDLE
  */
@@ -164,12 +173,23 @@ unixem_internal_yearIsLeap(
     int year
 );
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
 
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* UNIXEM_INCL_UNIXEM_INTERNAL_H_UTIL */
 

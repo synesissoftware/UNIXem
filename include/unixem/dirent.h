@@ -5,7 +5,7 @@
  *          Windows platform.
  *
  * Created: 19th October 2002
- * Updated: 9th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -53,7 +53,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_MAJOR       4
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_MINOR       0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_REVISION    1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_EDIT        39
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_DIRENT_EDIT        40
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -92,16 +92,16 @@
  */
 
 #ifndef NAME_MAX
-# define NAME_MAX   (260)   /*!< The maximum number of characters (including null terminator) in a directory entry name */
+# define NAME_MAX                                           (260)   /*!< The maximum number of characters (including null terminator) in a directory entry name */
 #endif /* !NAME_MAX */
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * typedefs
+ * types
  */
 
-typedef struct dirent_dir   unixem_DIR;     /*!< Handle type for multibyte string directory enumeration. \note dirent_dir is defined internally */
-typedef struct wdirent_dir  unixem_wDIR;    /*!< Handle type for wide string directory enumeration. \note dirent_dir is defined internally */
+typedef struct dirent_dir                                   unixem_DIR;     /*!< Handle type for multibyte string directory enumeration. \note dirent_dir is defined internally */
+typedef struct wdirent_dir                                  unixem_wDIR;    /*!< Handle type for wide string directory enumeration. \note dirent_dir is defined internally */
 
 /** Results structure for readdir()
  */
@@ -121,22 +121,29 @@ struct unixem_wdirent
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * API functions
+ * language
  */
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
 
 /** Returns a pointer to the next directory entry.
  *
  * This function opens the directory named by filename, and returns a
- * directory to be used to in subsequent operations. NULL is returned
+ * directory to be used to in subsequent operations. nullptr is returned
  * if name cannot be accessed, or if resources cannot be acquired to
  * process the request.
  *
- * \param name The name of the directory to search
- * \return The directory handle from which the entries are read or NULL
+ * \param name The name of the directory to search;
+ *
+ * \return The directory handle from which the entries are read or nullptr.
  */
 unixem_DIR* unixem_opendir(char const* name);
 /** Identical semantics to opendir(), but for wide string searches.
@@ -148,7 +155,8 @@ unixem_wDIR* unixem_wopendir(wchar_t const* name);
  * This function closes a directory handle that was opened with opendir()
  * and releases any resources associated with that directory handle.
  *
- * \param dir The directory handle from which the entries are read
+ * \param dir The directory handle from which the entries are read;
+ *
  * \return 0 on success, or -1 to indicate error.
  */
 int unixem_closedir(unixem_DIR* dir);
@@ -161,7 +169,7 @@ int unixem_wclosedir(unixem_wDIR* dir);
  * This function resets the position of the named directory handle to
  * the beginning of the directory.
  *
- * \param dir The directory handle whose position should be reset
+ * \param dir The directory handle whose position should be reset;
  */
 void unixem_rewinddir(unixem_DIR* dir);
 /** Identical semantics to rewinddir(), but for wide string searches.
@@ -170,11 +178,12 @@ void unixem_wrewinddir(unixem_wDIR* dir);
 
 /** Returns a pointer to the next directory entry.
  *
- * This function returns a pointer to the next directory entry, or NULL upon
+ * This function returns a pointer to the next directory entry, or nullptr upon
  * reaching the end of the directory or detecting an invalid seekdir() operation
  *
- * \param dir The directory handle from which the entries are read
- * \return A dirent structure or NULL
+ * \param dir The directory handle from which the entries are read;
+ *
+ * \return A dirent structure or nullptr.
  */
 struct unixem_dirent*  unixem_readdir(unixem_DIR* dir);
 /** Identical semantics to readdir(), but for wide string searches.
@@ -182,8 +191,12 @@ struct unixem_dirent*  unixem_readdir(unixem_DIR* dir);
 struct unixem_wdirent* unixem_wreaddir(unixem_wDIR* dir);
 
 
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
-}
+} /* extern "C" */
 #endif /* __cplusplus */
 
 
@@ -191,7 +204,14 @@ struct unixem_wdirent* unixem_wreaddir(unixem_wDIR* dir);
 
 /** @} // end of group unixem_dirent */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_H_DIRENT */
 
