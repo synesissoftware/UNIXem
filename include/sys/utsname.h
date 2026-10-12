@@ -5,12 +5,11 @@
  *          types for the Windows platform.
  *
  * Created: 12th October 2026
- * Updated: 14th October 2026
+ * Updated: 15th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
- * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
+ * Copyright (c) 2026, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +51,7 @@
 # define SYNSOFT_UNIXEM_VER_SYS_H_UTSNAME_MAJOR     1
 # define SYNSOFT_UNIXEM_VER_SYS_H_UTSNAME_MINOR     0
 # define SYNSOFT_UNIXEM_VER_SYS_H_UTSNAME_REVISION  0
-# define SYNSOFT_UNIXEM_VER_SYS_H_UTSNAME_EDIT      1
+# define SYNSOFT_UNIXEM_VER_SYS_H_UTSNAME_EDIT      2
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 

@@ -4,12 +4,11 @@
  * Purpose: Implementation of the uname() function.
  *
  * Created: 12th October 2026
- * Updated: 14th October 2026
+ * Updated: 15th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
- * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
+ * Copyright (c) 2026, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,7 +44,7 @@
 # define _SYNSOFT_VER_C_UNAME_MAJOR     1
 # define _SYNSOFT_VER_C_UNAME_MINOR     0
 # define _SYNSOFT_VER_C_UNAME_REVISION  0
-# define _SYNSOFT_VER_C_UNAME_EDIT      1
+# define _SYNSOFT_VER_C_UNAME_EDIT      2
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
