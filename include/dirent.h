@@ -5,7 +5,7 @@
  *          Windows platform.
  *
  * Created: 19th October 2002
- * Updated: 9th October 2026
+ * Updated: 12th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_H_DIRENT_MAJOR      4
 # define SYNSOFT_UNIXEM_VER_H_DIRENT_MINOR      0
 # define SYNSOFT_UNIXEM_VER_H_DIRENT_REVISION   1
-# define SYNSOFT_UNIXEM_VER_H_DIRENT_EDIT       40
+# define SYNSOFT_UNIXEM_VER_H_DIRENT_EDIT       41
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -123,12 +123,17 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * API functions
+ * language
  */
 
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
 
 /** Returns a pointer to the next directory entry.
  *
@@ -207,8 +212,12 @@ struct dirent* readdir(DIR* dir);
 # define wreaddir                                           unixem_wreaddir
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
-}
+} /* extern "C" */
 #endif /* __cplusplus */
 
 
@@ -216,7 +225,14 @@ struct dirent* readdir(DIR* dir);
 
 /** @} // end of group unixem_dirent */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_H_DIRENT */
 

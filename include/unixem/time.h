@@ -4,7 +4,7 @@
  * Purpose: Time functions and types for the Windows platform.
  *
  * Created: 5th May 2014
- * Updated: 9th October 2026
+ * Updated: 12th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_MAJOR      1
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_MINOR      0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_REVISION   1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_EDIT       6
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_UNIXEM_TIME_EDIT       7
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -80,6 +80,10 @@
  */
 
 /* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
 
 #ifdef __cplusplus
 extern "C"
@@ -117,6 +121,10 @@ timegm(
 # endif /* !timegm */
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
@@ -126,7 +134,14 @@ timegm(
 
 /** @} // end of group unixem_time */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_H_TIME */
 

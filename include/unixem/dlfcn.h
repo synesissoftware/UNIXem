@@ -5,7 +5,7 @@
  *          functions.
  *
  * Created: 1st January 2004
- * Updated: 1st May 2025
+ * Updated: 12th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -53,7 +53,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_MAJOR    3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_MINOR    0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_REVISION 1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_EDIT     22
+# define SYNSOFT_UNIXEM_VER_UNIXEM_H_DLFCN_EDIT     23
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -97,13 +97,18 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * API functions
+ * language
  */
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
 
 /** Loads the given module,
  *
@@ -148,6 +153,10 @@ void* unixem_dlsym(
  */
 char const* unixem_dlerror(void);
 
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
@@ -157,7 +166,14 @@ char const* unixem_dlerror(void);
 
 /** @} // end of group unixem_dlopen */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_H_DLFCN */
 

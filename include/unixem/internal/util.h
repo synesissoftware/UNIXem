@@ -4,7 +4,7 @@
  * Purpose: Internal utility header for the UNIXem API.
  *
  * Created: 2nd September 2005
- * Updated: 9th October 2026
+ * Updated: 12th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -55,7 +55,7 @@
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_MAJOR    1
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_MINOR    4
 # define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_REVISION 2
-# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_EDIT     16
+# define UNIXEM_VER_UNIXEM_INTERNAL_H_UTIL_EDIT     17
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -131,6 +131,10 @@
  * function declarations
  */
 
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
 extern "C"
 {
@@ -164,12 +168,22 @@ unixem_internal_yearIsLeap(
     int year
 );
 
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
 
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* UNIXEM_INCL_UNIXEM_INTERNAL_H_UTIL */
 
