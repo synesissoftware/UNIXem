@@ -4,7 +4,7 @@
  * Purpose: Version header for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 14th October 2026
+ * Updated: 15th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -98,7 +98,13 @@
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* UNIXEM_INCL_UNIXEM_H_UNIXEM */
 

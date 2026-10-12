@@ -82,13 +82,6 @@ int unixem_uname(
 
     assert(NULL != name);
 
-    if (NULL == name)
-    {
-        errno = EFAULT;
-
-        return -1;
-    }
-
     /* 1. sysname */
     strncpy(name->sysname, "Windows", sizeof(name->sysname) - 1);
     name->sysname[sizeof(name->sysname) - 1] = '\0';
@@ -123,24 +116,30 @@ int unixem_uname(
 
     switch (si.wProcessorArchitecture)
     {
-        case PROCESSOR_ARCHITECTURE_AMD64:
-            strncpy(name->machine, "x86_64", sizeof(name->machine) - 1);
-            break;
-        case PROCESSOR_ARCHITECTURE_IA64:
-            strncpy(name->machine, "ia64", sizeof(name->machine) - 1);
-            break;
-        case PROCESSOR_ARCHITECTURE_INTEL:
-            strncpy(name->machine, "i686", sizeof(name->machine) - 1);
-            break;
-        case PROCESSOR_ARCHITECTURE_ARM:
-            strncpy(name->machine, "arm", sizeof(name->machine) - 1);
-            break;
-        case PROCESSOR_ARCHITECTURE_ARM64:
-            strncpy(name->machine, "arm64", sizeof(name->machine) - 1);
-            break;
-        default:
-            strncpy(name->machine, "unknown", sizeof(name->machine) - 1);
-            break;
+    case PROCESSOR_ARCHITECTURE_AMD64:
+
+        strncpy(name->machine, "x86_64", sizeof(name->machine) - 1);
+        break;
+    case PROCESSOR_ARCHITECTURE_IA64:
+
+        strncpy(name->machine, "ia64", sizeof(name->machine) - 1);
+        break;
+    case PROCESSOR_ARCHITECTURE_INTEL:
+
+        strncpy(name->machine, "i686", sizeof(name->machine) - 1);
+        break;
+    case PROCESSOR_ARCHITECTURE_ARM:
+
+        strncpy(name->machine, "arm", sizeof(name->machine) - 1);
+        break;
+    case PROCESSOR_ARCHITECTURE_ARM64:
+
+        strncpy(name->machine, "arm64", sizeof(name->machine) - 1);
+        break;
+    default:
+
+        strncpy(name->machine, "unknown", sizeof(name->machine) - 1);
+        break;
     }
     name->machine[sizeof(name->machine) - 1] = '\0';
 

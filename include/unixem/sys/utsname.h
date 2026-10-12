@@ -74,13 +74,10 @@
  * @{
  */
 
-/* ////////////////////////////////////////////////////////////////////// */
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif /* __cplusplus */
-
+/* /////////////////////////////////////////////////////////////////////////
+ * types
+ */
 
 /** Operating system identification structure.
  */
@@ -92,6 +89,21 @@ struct unixem_utsname
     char    version[257];   /*!< Operating system version level. */
     char    machine[257];   /*!< Hardware type name. */
 };
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
 
 /** Get name and information about current kernel.
  *
@@ -105,6 +117,11 @@ extern int unixem_uname(
     struct unixem_utsname*  name
 );
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
@@ -114,7 +131,14 @@ extern int unixem_uname(
 
 /** @} // end of group unixem_utsname */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_SYS_H_UTSNAME */
 

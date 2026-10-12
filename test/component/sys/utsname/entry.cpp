@@ -4,7 +4,7 @@
  * Purpose: Component test of uname().
  *
  * Created: 12th October 2026
- * Updated: 14th October 2026
+ * Updated: 15th October 2026
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -26,7 +26,7 @@
 
 namespace
 {
-    void TEST_UNAME_CALL();
+    void TEST_uname();
 } // anonymous namespace
 
 
@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
 
     if (XTESTS_START_RUNNER("test.component.sys.utsname", verbosity))
     {
-        XTESTS_RUN_CASE(TEST_UNAME_CALL);
+        XTESTS_RUN_CASE(TEST_uname);
 
         XTESTS_PRINT_RESULTS();
 
@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
 namespace
 {
 
-void TEST_UNAME_CALL()
+void TEST_uname()
 {
     struct utsname name;
 

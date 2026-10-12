@@ -73,13 +73,20 @@
  * @{
  */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif /* __cplusplus */
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
 
 /** \def utsname
  *
@@ -94,9 +101,11 @@ extern "C"
  * Retrieves system identification information.
  *
  * \param name Pointer to an utsname structure to receive the utsname
- *  information.
+ *  information;
  *
- * \note This is a macro, which resolves to unixem_uname()
+ * \note This is a macro, which resolves to unixem_uname().
+ *
+ * \pre nullptr != name
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int uname(
@@ -105,6 +114,11 @@ int uname(
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
 # define uname                                              unixem_uname
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
 
 #ifdef __cplusplus
 } /* extern "C" */
@@ -115,7 +129,14 @@ int uname(
 
 /** @} // end of group unixem_utsname */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef UNIXEM_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* UNIXEM_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_SYS_H_UTSNAME */
 
