@@ -1,6 +1,13 @@
 # UNIXem - Changes <!-- omit in toc -->
 
 
+## 0.15.0-alpha1 - 14th October 2026
+
+* Added implementation of `uname()` in **src/uname.c** with public header mapping in **include/sys/utsname.h** and **include/unixem/sys/utsname.h**;
+* Added component test **test.component.sys.utsname** under **test/component/sys/utsname/**;
+* Updated `UNIXEM_VER` and other version macros to target **0.15.0-alpha1**;
+
+
 ## 1.14.0-rc1 - 21st September 2026
 
 * Canonicalised CMake exclusion variable from reserved `CMAKE_NO_SHWILD` to canonical `NO_SHWILD` in **CMakeLists.txt** and **prepare_cmake.sh**;

@@ -90,6 +90,7 @@ set(CORE_SRCS
 	setenv.c
 	time.c
 	uio.c
+	uname.c
 	unistd.c
 	internal/util.c
 	util_fs.c
