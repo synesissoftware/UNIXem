@@ -5,7 +5,7 @@
  *          Windows platform.
  *
  * Created: 19th October 2002
- * Updated: 9th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_H_DIRENT_MAJOR      4
 # define SYNSOFT_UNIXEM_VER_H_DIRENT_MINOR      0
 # define SYNSOFT_UNIXEM_VER_H_DIRENT_REVISION   1
-# define SYNSOFT_UNIXEM_VER_H_DIRENT_EDIT       40
+# define SYNSOFT_UNIXEM_VER_H_DIRENT_EDIT       41
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -70,6 +70,13 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
+ * includes
+ */
+
+#include <unixem/dirent.h>
+
+
+/* /////////////////////////////////////////////////////////////////////////
  * compatibility
  */
 
@@ -79,14 +86,7 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * includes
- */
-
-#include <unixem/dirent.h>
-
-
-/* /////////////////////////////////////////////////////////////////////////
- * typedefs
+ * types
  */
 
 /** \def DIR
@@ -123,24 +123,31 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * API functions
+ * language
  */
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
 
 /** Returns a pointer to the next directory entry.
  *
  * This function opens the directory named by filename, and returns a
- * directory to be used to in subsequent operations. NULL is returned
+ * directory to be used to in subsequent operations. nullptr is returned
  * if name cannot be accessed, or if resources cannot be acquired to
  * process the request.
  *
- * \param name The name of the directory to search
- * \return The directory handle from which the entries are read or NULL
+ * \param name The name of the directory to search;
  *
- * \note This is a macro, that resolves to unixem_opendir()
+ * \return The directory handle from which the entries are read or nullptr.
+ *
+ * \note This is a macro, that resolves to unixem_opendir().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 DIR* opendir(char const* name);
@@ -156,10 +163,11 @@ DIR* opendir(char const* name);
  * This function closes a directory handle that was opened with opendir()
  * and releases any resources associated with that directory handle.
  *
- * \param dir The directory handle from which the entries are read
+ * \param dir The directory handle from which the entries are read;
+ *
  * \return 0 on success, or -1 to indicate error.
  *
- * \note This is a macro, that resolves to unixem_closedir()
+ * \note This is a macro, that resolves to unixem_closedir().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int closedir(DIR* dir);
@@ -175,9 +183,9 @@ int closedir(DIR* dir);
  * This function resets the position of the named directory handle to
  * the beginning of the directory.
  *
- * \param dir The directory handle whose position should be reset
+ * \param dir The directory handle whose position should be reset;
  *
- * \note This is a macro, that resolves to unixem_rewinddir()
+ * \note This is a macro, that resolves to unixem_rewinddir().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 void rewinddir(DIR* dir);
@@ -190,13 +198,14 @@ void rewinddir(DIR* dir);
 
 /** Returns a pointer to the next directory entry.
  *
- * This function returns a pointer to the next directory entry, or NULL upon
+ * This function returns a pointer to the next directory entry, or nullptr upon
  * reaching the end of the directory or detecting an invalid seekdir() operation
  *
- * \param dir The directory handle from which the entries are read
- * \return A dirent structure or NULL
+ * \param dir The directory handle from which the entries are read;
  *
- * \note This is a macro, that resolves to unixem_readdir()
+ * \return A dirent structure or nullptr.
+ *
+ * \note This is a macro, that resolves to unixem_readdir().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 struct dirent* readdir(DIR* dir);
@@ -207,8 +216,13 @@ struct dirent* readdir(DIR* dir);
 # define wreaddir                                           unixem_wreaddir
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
-}
+} /* extern "C" */
 #endif /* __cplusplus */
 
 
@@ -216,7 +230,14 @@ struct dirent* readdir(DIR* dir);
 
 /** @} // end of group unixem_dirent */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_H_DIRENT */
 

@@ -4,11 +4,11 @@
  * Purpose: UNIXem.Util.FS header.
  *
  * Created: 11th May 2025
- * Updated: 18th May 2025
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
- * Copyright (c) 2025, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2025-2026, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,6 +47,7 @@
 #ifndef SYNSOFT_UNIXEM_INCL_UNIXEM_UTIL_H_FS
 #define SYNSOFT_UNIXEM_INCL_UNIXEM_UTIL_H_FS
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -55,14 +56,18 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * API functions
+ * language
  */
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif /* __cplusplus */
 
 
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
 
 /** Indicates whether the given character is a path separator (i.e. `'/'` or
  * `'\'`)
@@ -77,7 +82,7 @@ unixem_util_fs_char_is_path_sep(char ch);
  * that is a directory.
  *
  * \retval 0 `path` does not name a directory, or names a file-sytem entry
- *  that is not a directory;
+ *   that is not a directory;
  * \retval 1 `path` names an existing directory;
  */
 int
@@ -87,7 +92,7 @@ unixem_util_fs_directory_exists(char const* path);
  *
  * \param ar Pointer to an array of `char` of size 260 (=== _MAX_PATH);
  * \param pnumWritten Optional pointer to a variable to receive the number
- *  of characters written (excluding the NUL terminator);
+ *   of characters written (excluding the NUL terminator);
  *
  * \retval 0 The character is not a separator;
  * \retval 1 The character is a separator;
@@ -99,14 +104,22 @@ unixem_util_fs_get_home_directory(
 );
 
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
 
 #ifdef __cplusplus
-}
+} /* extern "C" */
 #endif /* __cplusplus */
 
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_UTIL_H_FS */
 

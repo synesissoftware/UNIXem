@@ -5,7 +5,7 @@
  *          Windows platform.
  *
  * Created: 13th November 2002
- * Updated: 9th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_H_GLOB_MAJOR    3
 # define SYNSOFT_UNIXEM_VER_H_GLOB_MINOR    0
 # define SYNSOFT_UNIXEM_VER_H_GLOB_REVISION 4
-# define SYNSOFT_UNIXEM_VER_H_GLOB_EDIT     44
+# define SYNSOFT_UNIXEM_VER_H_GLOB_EDIT     45
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -70,19 +70,19 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
+ * includes
+ */
+
+#include <unixem/glob.h>
+
+
+/* /////////////////////////////////////////////////////////////////////////
  * compatibility
  */
 
 #ifndef _WIN32
 # error This file is only currently defined for compilation on Windows systems
 #endif /* _WIN32 */
-
-
-/* /////////////////////////////////////////////////////////////////////////
- * includes
- */
-
-#include <unixem/glob.h>
 
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -119,7 +119,7 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * typedefs
+ * types
  */
 
 /** Result structure for glob()
@@ -130,25 +130,33 @@ typedef unixem_glob_t glob_t;
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * API functions
+ * language
  */
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif /* __cplusplus */
 
-/** Generates pathnames matching a pattern
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
+
+/** Generates pathnames matching a pattern.
  *
  * This function is a pathname generator that implements the rules for
  * file name pattern matching used by the UNIX shell.
  *
- * \param pattern The pattern controlling the search
- * \param flags A combination of the <b>GLOB_*</b> flags
- * \param errfunc A function that is called each time part of the search processing fails
- * \param pglob Pointer to a glob_t structure to receive the search results
- * \return 0 on success, otherwise one of the <b>GLOB_*</b> error codes
+ * \param pattern The pattern controlling the search;
+ * \param flags A combination of the <b>GLOB_*</b> flags;
+ * \param errfunc A function that is called each time part of the search
+ *   processing fails;
+ * \param pglob Pointer to a glob_t structure to receive the search results;
  *
- * \note This is a macro, which resolves to unixem_glob()
+ * \return 0 on success, otherwise one of the <b>GLOB_*</b> error codes.
+ *
+ * \note This is a macro, which resolves to unixem_glob().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 int glob(
@@ -161,14 +169,14 @@ int glob(
 # define glob                                               unixem_glob
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
-/** Frees the results of a call to glob
+/** Frees the results of a call to glob.
  *
  * This function releases any memory allocated in a call to glob. It must
  * always be called for a successful call to glob.
  *
- * \param pglob Pointer to a glob_t structure to receive the search results
+ * \param pglob Pointer to a glob_t structure to receive the search results;
  *
- * \note This is a macro, which resolves to unixem_globfree()
+ * \note This is a macro, which resolves to unixem_globfree().
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 void globfree(glob_t* pglob);
@@ -176,8 +184,13 @@ void globfree(glob_t* pglob);
 # define globfree                                           unixem_globfree
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
-}
+} /* extern "C" */
 #endif /* __cplusplus */
 
 
@@ -185,7 +198,14 @@ void globfree(glob_t* pglob);
 
 /** @} // end of group unixem_glob */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_H_GLOB */
 

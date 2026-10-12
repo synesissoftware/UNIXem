@@ -4,7 +4,7 @@
  * Purpose: Declaration of the mmap() and munmap() API functions.
  *
  * Created: 18th December 2003
- * Updated: 9th October 2026
+ * Updated: 13th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_MAJOR     3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_MINOR     0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_REVISION  1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_EDIT      28
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_EDIT      29
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -75,6 +75,7 @@
  * \brief This API provides facilities for manipulating memory-mapped files
  * @{
  */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * compatibility
@@ -112,7 +113,7 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * API functions
+ * language
  */
 
 #ifdef __cplusplus
@@ -120,23 +121,28 @@ extern "C"
 {
 #endif /* __cplusplus */
 
-/** Maps a file into memory, and returns a pointer to it
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
+
+/** Maps a file into memory, and returns a pointer to it.
  *
- * \param addr Suggested address for the mapping
+ * \param addr Suggested address for the mapping;
  * \param len The number of bytes in the mapped region. The combination of
- *   len and offset must not exceed the length of the mapped file
- * \param prot Either PROT_NONE, or a combination of the other PROT_* flags
- * \param flags One of MAP_PRIVATE, MAP_ANONYMOUS or MAP_FIXED.
+ *   len and offset must not exceed the length of the mapped file;
+ * \param prot Either PROT_NONE, or a combination of the other PROT_* flags;
+ * \param flags One of MAP_PRIVATE, MAP_ANONYMOUS or MAP_FIXED;
  * \param fd The file descriptor of the file to map, or -1 to allocate an
- *  anonymous map
- * \param offset The offset within the file to start the mapped region
+ *  anonymous map;
+ * \param offset The offset within the file to start the mapped region;
  *
  * \return A pointer to the mapped region if successful; otherwise
- *   \c MAP_FAILED
+ *   \c MAP_FAILED.
  *
  * \note The current implementation supports the following three modes:
- * 1. Read-only file; 2. Read-write file; 3. Anonymous Read-write block of
- * system paging file.
+ *   1. Read-only file; 2. Read-write file; 3. Anonymous Read-write block of
+ *   system paging file.
  */
 
 void* unixem_mmap(
@@ -148,18 +154,18 @@ void* unixem_mmap(
 ,   off_t   offset
 );
 
-/** Deletes a mapped region
+/** Deletes a mapped region.
  *
  * The munmap() system call deletes the mappings for the specified address
  * range, and causes further references to addresses within the range to
  * generate invalid memory references.
  *
  * \param addr The base address of the mapped region to unmap
- * \param len The length of the mapped region. Ignore in the Windows
- *  implementation
+ * \param len The length of the mapped region. Ignore in the Windows;
+ *   implementation;
  *
- * \retval 0 if successful
- * \retval -1 if failed
+ * \retval 0 if successful;
+ * \retval -1 if failed;
  */
 
 int unixem_munmap(
@@ -167,12 +173,12 @@ int unixem_munmap(
 ,   size_t  len
 );
 
-/** Writes any dirty pages within the given range to disk
+/** Writes any dirty pages within the given range to disk.
  *
- * \param addr The base address of the mapped region
+ * \param addr The base address of the mapped region;
  * \param len The length of the mapped region to flush to disk. Will be
- *  rounded up to next page boundary
- * \param flags Ignored
+ *   rounded up to next page boundary;
+ * \param flags Ignored;
  */
 
 int unixem_msync(
@@ -180,6 +186,11 @@ int unixem_msync(
 ,   size_t  len
 ,   int     flags
 );
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
 
 #ifdef __cplusplus
 } /* extern "C" */
@@ -190,7 +201,14 @@ int unixem_msync(
 
 /** @} // end of group unixem_mmap */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_SYS_H_MMAP */
 
