@@ -1,5 +1,5 @@
 
-#include <xtests/xtests.h>
+#include <xtests/terse-api.h>
 
 #include <unistd.h>
 
@@ -20,21 +20,21 @@ int main(int argc, char* argv[])
         /* Test-1 */
         if (XTESTS_CASE_BEGIN("Test-1", "testing pathconf"))
         {
-            XTESTS_TEST_INTEGER_EQUAL(LONG_MAX,       pathconf("",          _PC_LINK_MAX));
-            XTESTS_TEST_INTEGER_EQUAL(LONG_MAX,       pathconf("",          _PC_MAX_CANON));
-            XTESTS_TEST_INTEGER_EQUAL(LONG_MAX,       pathconf("",          _PC_MAX_INPUT));
-            XTESTS_TEST_INTEGER_EQUAL(_MAX_FNAME - 1, pathconf("/",         _PC_NAME_MAX));
-            XTESTS_TEST_INTEGER_EQUAL(_MAX_FNAME - 9, pathconf("/01234567", _PC_NAME_MAX));
-            XTESTS_TEST_INTEGER_EQUAL(_MAX_PATH - 1,  pathconf("/",         _PC_PATH_MAX));
-            XTESTS_TEST_INTEGER_EQUAL(_MAX_PATH - 9,  pathconf("/01234567", _PC_PATH_MAX));
-            XTESTS_TEST_INTEGER_EQUAL(-1,             pathconf("",          _PC_PIPE_BUF));
-            XTESTS_TEST_INTEGER_EQUAL(-1,             pathconf("",          _PC_CHOWN_RESTRICTED));
-            XTESTS_TEST_INTEGER_EQUAL(-1,             pathconf("",          _PC_NO_TRUNC));
-            XTESTS_TEST_INTEGER_EQUAL(-1,             pathconf("",          _PC_VDISABLE));
-            XTESTS_TEST_INTEGER_EQUAL(-1,             pathconf("",          _PC_AIX_DISK_PARTITION));
-            XTESTS_TEST_INTEGER_EQUAL(-1,             pathconf("",          _PC_AIX_DISK_SIZE));
-            XTESTS_TEST_INTEGER_EQUAL(-1,             pathconf("",          _PC_FILESIZEBITS));
-            XTESTS_TEST_INTEGER_EQUAL(-1,             pathconf("",          _PC_SYNC_IO));
+            TEST_INT_EQ(LONG_MAX,       pathconf("",          _PC_LINK_MAX));
+            TEST_INT_EQ(LONG_MAX,       pathconf("",          _PC_MAX_CANON));
+            TEST_INT_EQ(LONG_MAX,       pathconf("",          _PC_MAX_INPUT));
+            TEST_INT_EQ(_MAX_FNAME - 1, pathconf("/",         _PC_NAME_MAX));
+            TEST_INT_EQ(_MAX_FNAME - 9, pathconf("/01234567", _PC_NAME_MAX));
+            TEST_INT_EQ(_MAX_PATH - 1,  pathconf("/",         _PC_PATH_MAX));
+            TEST_INT_EQ(_MAX_PATH - 9,  pathconf("/01234567", _PC_PATH_MAX));
+            TEST_INT_EQ(-1,             pathconf("",          _PC_PIPE_BUF));
+            TEST_INT_EQ(-1,             pathconf("",          _PC_CHOWN_RESTRICTED));
+            TEST_INT_EQ(-1,             pathconf("",          _PC_NO_TRUNC));
+            TEST_INT_EQ(-1,             pathconf("",          _PC_VDISABLE));
+            TEST_INT_EQ(-1,             pathconf("",          _PC_AIX_DISK_PARTITION));
+            TEST_INT_EQ(-1,             pathconf("",          _PC_AIX_DISK_SIZE));
+            TEST_INT_EQ(-1,             pathconf("",          _PC_FILESIZEBITS));
+            TEST_INT_EQ(-1,             pathconf("",          _PC_SYNC_IO));
 
             XTESTS_CASE_END("Test-1");
         }

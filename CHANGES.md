@@ -1,6 +1,11 @@
 # UNIXem - Changes <!-- omit in toc -->
 
 
+## 1.15.0-alpha1 - 14th October 2026
+
+* Migrated unit and component tests to use **xTests** terse API in **test/component/glob/entry.cpp**, **test/component/unistd/mkdtemp/entry.c**, **test/component/unistd/mkstemp/entry.c**, **test/component/unistd/usleep/entry.cpp**, **test/unit/unistd/gethostname/entry.c**, **test/unit/unistd/getpid/entry.c**, and **test/unit/unistd/pathconf/entry.c**;
+
+
 ## 1.14.0-rc1 - 21st September 2026
 
 * Canonicalised CMake exclusion variable from reserved `CMAKE_NO_SHWILD` to canonical `NO_SHWILD` in **CMakeLists.txt** and **prepare_cmake.sh**;
