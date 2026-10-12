@@ -1,5 +1,5 @@
 
-#include <xtests/xtests.h>
+#include <xtests/terse-api.h>
 
 #include <unistd.h>
 
@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
         {
             char hostName[100];
 
-            XTESTS_TEST_INTEGER_EQUAL((pid_t)GetCurrentProcessId(), getpid());
+            TEST_INT_EQ((pid_t)GetCurrentProcessId(), getpid());
 
             gethostname(&hostName[0], STLSOFT_NUM_ELEMENTS(hostName));
 

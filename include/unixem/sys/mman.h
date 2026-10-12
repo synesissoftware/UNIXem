@@ -4,7 +4,7 @@
  * Purpose: Declaration of the mmap() and munmap() API functions.
  *
  * Created: 18th December 2003
- * Updated: 9th October 2026
+ * Updated: 12th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_MAJOR     3
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_MINOR     0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_REVISION  1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_EDIT      28
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_MMAP_EDIT      29
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -112,13 +112,18 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * API functions
+ * language
  */
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
 
 /** Maps a file into memory, and returns a pointer to it
  *
@@ -181,6 +186,10 @@ int unixem_msync(
 ,   int     flags
 );
 
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
@@ -190,7 +199,14 @@ int unixem_msync(
 
 /** @} // end of group unixem_mmap */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_SYS_H_MMAP */
 

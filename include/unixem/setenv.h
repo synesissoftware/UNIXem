@@ -4,7 +4,7 @@
  * Purpose: Definition of the setenv() and unsetenv() functions.
  *
  * Created: 9th December 2005
- * Updated: 28th November 2024
+ * Updated: 12th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -50,7 +50,7 @@
 # define UNIXEM_VER_UNIXEM_H_SETENV_MAJOR       2
 # define UNIXEM_VER_UNIXEM_H_SETENV_MINOR       0
 # define UNIXEM_VER_UNIXEM_H_SETENV_REVISION    1
-# define UNIXEM_VER_UNIXEM_H_SETENV_EDIT        11
+# define UNIXEM_VER_UNIXEM_H_SETENV_EDIT        12
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -81,12 +81,17 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * API functions
+ * language
  */
 
 # ifdef __cplusplus
 extern "C" {
 # endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
 
 /** Inserts or resets the value of an environment variable.
  *
@@ -112,16 +117,27 @@ int unixem_setenv(
  */
 void unixem_unsetenv(char const* name);
 
-# ifdef __cplusplus
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
+#ifdef __cplusplus
 } /* extern "C" */
-# endif /* __cplusplus */
+#endif /* __cplusplus */
 
 
 /* ////////////////////////////////////////////////////////////////////// */
 
 /** @} // end of group unixem_setenv */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_H_SETENV */
 

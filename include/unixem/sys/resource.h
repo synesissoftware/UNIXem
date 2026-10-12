@@ -5,7 +5,7 @@
  *          types for the Windows platform.
  *
  * Created: 9th June 2006
- * Updated: 9th October 2026
+ * Updated: 12th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -53,7 +53,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_MAJOR     2
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_MINOR     0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_REVISION  1
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_EDIT      12
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_RESOURCE_EDIT      13
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -76,6 +76,10 @@
  */
 
 /* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
 
 #ifdef __cplusplus
 extern "C"
@@ -125,6 +129,10 @@ extern int unixem_getrusage(
 ,   struct unixem_rusage*   r_usage
 );
 
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
@@ -134,7 +142,14 @@ extern int unixem_getrusage(
 
 /** @} // end of group unixem_resource */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_SYS_H_RESOURCE */
 

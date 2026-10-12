@@ -4,7 +4,7 @@
  * Purpose: Vector file read/write.
  *
  * Created: 19th September 2005
- * Updated: 9th October 2026
+ * Updated: 12th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_MAJOR      2
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_MINOR      0
 # define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_REVISION   2
-# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_EDIT       17
+# define SYNSOFT_UNIXEM_VER_UNIXEM_SYS_H_UIO_EDIT       18
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -83,6 +83,10 @@
  */
 
 /* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
 
 #ifdef __cplusplus
 extern "C"
@@ -132,6 +136,10 @@ unixem_writev(
 ,   int                         count
 );
 
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif /* __cplusplus */
@@ -141,7 +149,14 @@ unixem_writev(
 
 /** @} // end of group unixem_time */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_UNIXEM_SYS_H_UIO */
 

@@ -5,7 +5,7 @@
  *          Windows platform.
  *
  * Created: 13th November 2002
- * Updated: 9th October 2026
+ * Updated: 12th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_H_GLOB_MAJOR    3
 # define SYNSOFT_UNIXEM_VER_H_GLOB_MINOR    0
 # define SYNSOFT_UNIXEM_VER_H_GLOB_REVISION 4
-# define SYNSOFT_UNIXEM_VER_H_GLOB_EDIT     44
+# define SYNSOFT_UNIXEM_VER_H_GLOB_EDIT     45
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -130,12 +130,17 @@ typedef unixem_glob_t glob_t;
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * API functions
+ * language
  */
 
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
 
 /** Generates pathnames matching a pattern
  *
@@ -176,8 +181,12 @@ void globfree(glob_t* pglob);
 # define globfree                                           unixem_globfree
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
+/* /////////////////////////////////////////////////////////////////////////
+ * language
+ */
+
 #ifdef __cplusplus
-}
+} /* extern "C" */
 #endif /* __cplusplus */
 
 
@@ -185,7 +194,14 @@ void globfree(glob_t* pglob);
 
 /** @} // end of group unixem_glob */
 
-/* ////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* SYNSOFT_UNIXEM_INCL_H_GLOB */
 
