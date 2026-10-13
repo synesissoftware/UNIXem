@@ -11,6 +11,7 @@ headers such as **unistd.h**) and link against the **UNIXem** library.
 
 - [Platform](#platform)
 - [CMake](#cmake)
+- [API binding convenience macros](#api-binding-convenience-macros)
 
 
 ## Platform
@@ -111,6 +112,38 @@ The primary choice for installation is by use of **CMake**.
       find_package(unixem REQUIRED)
       target_link_libraries(your_target PRIVATE UNIXem::UNIXem)
       ```
+
+
+## API binding convenience macros
+
+By default, POSIX names that **UNIXem** emulates (and that the CRT does not
+own as a provided POSIX API) resolve to `unixem_<API>()` — for example
+`getpid` → `unixem_getpid`. See the API binding policy in
+[**README.md**](./README.md).
+
+To prefer the compiler/CRT underscore form where one exists (e.g. map
+`getpid` to `_getpid` on Visual C++), define
+**`UNIXEM_PREFER_COMPILER_UNDERSCORE_FORM`** in the translation unit
+**before** including UNIXem shim headers:
+
+```c
+#define UNIXEM_PREFER_COMPILER_UNDERSCORE_FORM
+#include <unistd.h>
+```
+
+Or via the compiler / **CMake**:
+
+```bash
+# MSVC
+cl /DUNIXEM_PREFER_COMPILER_UNDERSCORE_FORM ...
+```
+
+```cmake
+target_compile_definitions(your_target PRIVATE UNIXEM_PREFER_COMPILER_UNDERSCORE_FORM)
+```
+
+The flag is per translation unit; it does not change the library build
+itself. `unixem_<API>()` remains available either way.
 
 
 <!-- ########################### end of file ########################### -->

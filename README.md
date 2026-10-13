@@ -16,6 +16,7 @@
 - [Installation](#installation)
 - [Components](#components)
   - [Unix API emulation](#unix-api-emulation)
+  - [API binding policy](#api-binding-policy)
   - [Atomic operations](#atomic-operations)
   - [Utility APIs](#utility-apis)
   - [Compatibility placeholders](#compatibility-placeholders)
@@ -63,6 +64,22 @@ Top-level compatibility headers (e.g. [`dirent.h`](./include/dirent.h), [`unistd
 | `readv()`, `writev()`                                                        | [`unixem/sys/uio.h`](./include/unixem/sys/uio.h)           | Vectored file read/write            | —                        |
 | `setenv()`, `unsetenv()`                                                     | [`unixem/setenv.h`](./include/unixem/setenv.h)             | Environment variable set/clear      | —                        |
 | `timegm()`                                                                   | [`unixem/time.h`](./include/unixem/time.h)                 | UTC `struct tm` to `time_t`         | —                        |
+
+
+### API binding policy
+
+For each emulated Unix API `<API>`:
+
+1. **UNIXem** always implements `unixem_<API>()` in the library;
+2. **UNIXem** always declares `unixem_<API>()` in the corresponding **unixem/** header;
+3. If the compiler/CRT does **not** provide the POSIX name `<API>`, the top-level shim (e.g. **unistd.h**) `#define`s `<API>` to `unixem_<API>`;
+4. If the CRT lacks the POSIX name but provides `_<API>` (common on Visual C++), (3) still applies by default — `<API>` maps to `unixem_<API>`. Define **`UNIXEM_PREFER_COMPILER_UNDERSCORE_FORM`** in the translation unit **before** including UNIXem shim headers to map `<API>` to `_<API>` instead.
+
+When the CRT already provides the POSIX name (recorded as `UNIXEM_*_PROVIDED_BY_COMPILER`), **UNIXem** does not install a POSIX-name macro for that API.
+
+Where a CRT header may declare the same name and a later inclusion would clash with the UNIXem macro (notably `getpid` and **process.h** on Visual C++), the shim includes that CRT header first so its include guard is set, then installs the UNIXem binding. Deprecated CRT POSIX aliases (such as Visual C++ `getpid`) are **not** treated as “provided” for binding purposes: by default `getpid` still maps to `unixem_getpid`.
+
+See also [**INSTALL.md**](./INSTALL.md) and the FAQ.
 
 
 ### Atomic operations

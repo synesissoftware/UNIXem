@@ -1,6 +1,14 @@
 # UNIXem - Changes <!-- omit in toc -->
 
 
+## 1.14.1 - 13th October 2026
+
+* Fixed clash between the `getpid` → `unixem_getpid` macro in **unistd.h** and VC++ / Intel CRT declarations of `getpid` in **process.h**: include **process.h** (and `#undef getpid` if the CRT defined it) before installing the UNIXem macro so a later **process.h** inclusion (e.g. from **unixstl/process/functions.h**) is a no-op and cannot expand to a conflicting `unixem_getpid` declaration, while keeping `getpid` bound to `unixem_getpid` by default;
+* Formalised the API binding policy (always implement/declare `unixem_<API>`; map POSIX names to `unixem_<API>` unless CRT-provided; optional `UNIXEM_PREFER_COMPILER_UNDERSCORE_FORM` to map to `_<API>` when the CRT has the underscore form) in **README.md**, **INSTALL.md**, **FAQ.md**, **unistd.h**, and **unixem/unixem.h**;
+* Added `UNIXEM_getpid_UNDERSCORE_PROVIDED_BY_COMPILER` and honour `UNIXEM_PREFER_COMPILER_UNDERSCORE_FORM` for `getpid` → `_getpid` on VC++ / Intel;
+* Extended **test.unit.unistd.getpid** to include **process.h** after **unistd.h**, assert agreement with `_getpid()`, and stringize-check the macro binding; added MSVC twin **test.unit.unistd.getpid.prefer_underscore**;
+
+
 ## 1.14.0 - 13th October 2026
 
 * Canonicalised public and internal header section layout (`types`, `language` / `extern "C"`, `API functions`, `inclusion control`);
