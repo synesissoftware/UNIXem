@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_MAJOR      3
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_MINOR      1
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_REVISION   1
-# define SYNSOFT_UNIXEM_VER_H_UNISTD_EDIT       50
+# define SYNSOFT_UNIXEM_VER_H_UNISTD_EDIT       52
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -103,6 +103,16 @@
 #  define UNIXEM_getcwd_PROVIDED_BY_COMPILER
 #  define UNIXEM_mkdir_PROVIDED_BY_COMPILER
 #  define UNIXEM_rmdir_PROVIDED_BY_COMPILER
+  /* Include <process.h> before #define getpid unixem_getpid so the
+   * CRT header's include guard is set. A later <process.h> inclusion
+   * (e.g. from unixstl/process/functions.h) then cannot expand a
+   * getpid declaration under that macro into a conflicting
+   * unixem_getpid with CRT linkage. Keep the UNIXem binding.
+   */
+#  include <process.h>
+#  ifdef getpid
+#   undef getpid
+#  endif /* getpid */
 # endif /* !__STDC__ */
 #elif defined(__MWERKS__)
 
@@ -126,6 +136,17 @@
 #  include <stdio.h>
 #  define UNIXEM_unlink_PROVIDED_BY_COMPILER
 #  define UNIXEM_close_PROVIDED_BY_COMPILER
+  /* Include <process.h> before #define getpid unixem_getpid so the
+   * CRT header's include guard is set. A later <process.h> inclusion
+   * (e.g. from unixstl/process/functions.h) then cannot expand a
+   * getpid declaration under that macro into a conflicting
+   * unixem_getpid with CRT linkage. Keep the UNIXem binding (and
+   * avoid CRT getpid deprecation warnings on modern VC++).
+   */
+#  include <process.h>
+#  ifdef getpid
+#   undef getpid
+#  endif /* getpid */
 # endif /* !__STDC__ */
 #else
 
