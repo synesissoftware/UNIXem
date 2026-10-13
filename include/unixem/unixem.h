@@ -56,7 +56,7 @@
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MAJOR       1
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MINOR       7
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_REVISION    11
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        40
+# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        41
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -77,11 +77,15 @@
  * <code>unixem_&lt;API&gt;()</code>. The flag is per translation unit.
  *
  * See the API binding policy comment in <code>unistd.h</code>.
+ *
+ * \note This macro is <b>not</b> defined by UNIXem; define it yourself
+ *   (before including shim headers) when you want the underscore
+ *   binding.
  */
 
-#ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
+#ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 # define UNIXEM_PREFER_COMPILER_UNDERSCORE_FORM
-#endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+#endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
 /** \def UNIXEM_VER_MAJOR
