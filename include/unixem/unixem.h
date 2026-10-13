@@ -56,8 +56,33 @@
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MAJOR       1
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MINOR       7
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_REVISION    11
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        39
+# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        40
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * configuration
+ */
+
+/** \def UNIXEM_PREFER_COMPILER_UNDERSCORE_FORM
+ *
+ * When defined by the consumer <b>before</b> including UNIXem shim
+ * headers (e.g. <code>unistd.h</code>), and the CRT provides an
+ * underscore-prefixed form of an API (e.g. <code>_getpid</code>) while
+ * UNIXem does not treat the POSIX name as provided by the compiler,
+ * the POSIX name is mapped to the CRT underscore form rather than to
+ * <code>unixem_&lt;API&gt;()</code>.
+ *
+ * By default (this macro undefined), such POSIX names map to
+ * <code>unixem_&lt;API&gt;()</code>. The flag is per translation unit.
+ *
+ * See the API binding policy comment in <code>unistd.h</code>.
+ */
+
+#ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
+# define UNIXEM_PREFER_COMPILER_UNDERSCORE_FORM
+#endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /** \def UNIXEM_VER_MAJOR
  * The major version number of UNIXem
