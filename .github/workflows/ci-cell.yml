@@ -1,3 +1,8 @@
+#
+# Created: 4th August 2026
+# Updated: 14th October 2026
+#
+
 name: CI cell
 
 on:
@@ -30,8 +35,8 @@ permissions:
 jobs:
   # One job per cell. Sequential steps keep each kind visible in the log
   # without a second checkout, a second MinGW setup, or an artifact
-  # round-trip. Windows runs native .cmd runners: they do not build, so they
-  # do not take the shell -M/--no-make or -v flags.
+  # round-trip (so no execute-bit restore is required). Windows dogfoods
+  # native .cmd runners; other OSes use Bash runners with -M.
   build-and-test:
     name: Build and test (${{ inputs.cell-id }})
     runs-on: ${{ inputs.os }}
@@ -102,7 +107,15 @@ jobs:
             cmake --build build --parallel
           fi
 
-      - name: Run examples
+      - name: Run examples (Bash)
+        if: runner.os != 'Windows'
+        shell: bash
+        run: |
+          set -euo pipefail
+          SIS_CMAKE_BUILD_DIR="${{ github.workspace }}/build" ./run_all_examples.sh -M
+
+      - name: Run examples (native cmd)
+        if: runner.os == 'Windows'
         shell: cmd
         env:
           MSYS2_LOCATION: ${{ steps.msys2.outputs.msys2-location }}
@@ -112,17 +125,33 @@ jobs:
           call run_all_examples.cmd
           if errorlevel 1 exit /b 1
 
-      - name: Run unit tests
+      - name: Run unit tests (Bash)
+        if: runner.os != 'Windows'
+        shell: bash
+        run: |
+          set -euo pipefail
+          SIS_CMAKE_BUILD_DIR="${{ github.workspace }}/build" ./run_all_unit_tests.sh -M --unit-only
+
+      - name: Run unit tests (native cmd)
+        if: runner.os == 'Windows'
         shell: cmd
         env:
           MSYS2_LOCATION: ${{ steps.msys2.outputs.msys2-location }}
           SIS_CMAKE_BUILD_DIR: ${{ github.workspace }}\build
         run: |
           if /I "${{ inputs.toolchain }}"=="mingw" set "PATH=%MSYS2_LOCATION%\mingw64\bin;%PATH%"
-          call run_all_unit_tests.cmd
+          call run_all_unit_tests.cmd --unit-only
           if errorlevel 1 exit /b 1
 
-      - name: Run component tests
+      - name: Run component tests (Bash)
+        if: runner.os != 'Windows'
+        shell: bash
+        run: |
+          set -euo pipefail
+          SIS_CMAKE_BUILD_DIR="${{ github.workspace }}/build" ./run_all_component_tests.sh -M
+
+      - name: Run component tests (native cmd)
+        if: runner.os == 'Windows'
         shell: cmd
         env:
           MSYS2_LOCATION: ${{ steps.msys2.outputs.msys2-location }}
@@ -132,7 +161,16 @@ jobs:
           call run_all_component_tests.cmd
           if errorlevel 1 exit /b 1
 
-      - name: Run scratch tests
+      - name: Run scratch tests (Bash)
+        if: runner.os != 'Windows'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          SIS_CMAKE_BUILD_DIR="${{ github.workspace }}/build" ./run_all_scratch_tests.sh -M
+
+      - name: Run scratch tests (native cmd)
+        if: runner.os == 'Windows'
         continue-on-error: true
         shell: cmd
         env:

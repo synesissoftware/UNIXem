@@ -1,6 +1,14 @@
 # UNIXem - Changes <!-- omit in toc -->
 
 
+## 1.14.2 - 14th October 2026
+
+* Synced tip **cmake-helpers** runners;
+* Migrated `UNIXEM_VER_ALPHABETA` to `UNIXEM_VER_RELSTATUS` (aliases retained);
+* Phase **4c** polish: `PROGRAM_NAME` **test.scratch.versions**;
+* CI execute-bit restore after artifact download;
+
+
 ## 1.14.1 - 13th October 2026
 
 * Fixed clash between the `getpid` → `unixem_getpid` macro in **unistd.h** and VC++ / Intel CRT declarations of `getpid` in **process.h**: include **process.h** (and `#undef getpid` if the CRT defined it) before installing the UNIXem macro so a later **process.h** inclusion (e.g. from **unixstl/process/functions.h**) is a no-op and cannot expand to a conflicting `unixem_getpid` declaration, while keeping `getpid` bound to `unixem_getpid` by default;
