@@ -3,6 +3,7 @@
 
 | Date                | News Item                 | Details                                                           |
 | ------------------- | ------------------------- | ----------------------------------------------------------------- |
+| 20th October 2026   | Release of [**UNIXem** 0.15.0-alpha1](https://github.com/synesissoftware/UNIXem/releases/tag/0.15.0-alpha1) | added `uname()`; component test `test.component.sys.utsname` |
 | 14th October 2026  | Release of [**UNIXem** 1.14.2](https://github.com/synesissoftware/UNIXem/releases/tag/1.14.2) | Tip helpers; `UNIXEM_VER_RELSTATUS`; Phase **4c**; CI xbit |
 | 13th October 2026   | Release of [**UNIXem** 1.14.1](https://github.com/synesissoftware/UNIXem/releases/tag/1.14.1) | `getpid`/`process.h` fix; API binding policy; prefer-underscore   |
 | 13th October 2026   | Release of [**UNIXem** 1.14.0](https://github.com/synesissoftware/UNIXem/releases/tag/1.14.0) | header section layout; transitioned tests to **xTests** terse API |

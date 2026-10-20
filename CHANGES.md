@@ -1,6 +1,12 @@
 # UNIXem - Changes <!-- omit in toc -->
 
 
+## 0.15.0-alpha1 - 20th October 2026
+
+* Added implementation of `uname()` in **src/uname.c** with public header mapping in **include/sys/utsname.h** and **include/unixem/sys/utsname.h**;
+* Added component test **test.component.sys.utsname** under **test/component/sys/utsname/**;
+
+
 ## 1.14.2 - 14th October 2026
 
 * Synced tip **cmake-helpers** runners;
