@@ -4,7 +4,7 @@
  * Purpose: Prints UNIXem composite version.
  *
  * Created: 17th September 2026
- * Updated: 9th October 2026
+ * Updated: 19th October 2026
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -13,9 +13,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-
-#define PROGRAM_NAME                                        "versions"
 
 
 static void

@@ -52,7 +52,7 @@
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_MAJOR      3
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_MINOR      1
 # define SYNSOFT_UNIXEM_VER_H_UNISTD_REVISION   1
-# define SYNSOFT_UNIXEM_VER_H_UNISTD_EDIT       50
+# define SYNSOFT_UNIXEM_VER_H_UNISTD_EDIT       53
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -62,9 +62,24 @@
 
 #include <unixem/unistd.h>
 
-/* Some of the functions declared here (and defined in unistd.c) may be
- * provided by some Windows compilers. So we discriminate for support here,
- * and exclude definitions as appropriate.
+/* API binding policy (POSIX name vs unixem_<API> vs CRT _<API>):
+ *
+ * 1. UNIXem always implements and declares unixem_<API>();
+ * 2. If the CRT provides the POSIX name <API>, UNIXem does not
+ *    install a POSIX-name macro (see UNIXEM_*_PROVIDED_BY_COMPILER);
+ * 3. Otherwise UNIXem #defines <API> to unixem_<API>;
+ * 4. If the CRT lacks the POSIX name but provides _<API>, (3) still
+ *    applies by default; define UNIXEM_PREFER_COMPILER_UNDERSCORE_FORM
+ *    before this header to map <API> to _<API> instead.
+ *
+ * Where a CRT header may declare <API> and a later inclusion would
+ * clash with the UNIXem macro (e.g. getpid / <process.h>), include
+ * that CRT header first so its include guard is set, then install the
+ * UNIXem binding.
+ *
+ * Some of the functions declared here (and defined in unistd.c) may be
+ * provided by some Windows compilers. So we discriminate for support
+ * here, and exclude definitions as appropriate.
  */
 
 #if 0
@@ -103,6 +118,16 @@
 #  define UNIXEM_getcwd_PROVIDED_BY_COMPILER
 #  define UNIXEM_mkdir_PROVIDED_BY_COMPILER
 #  define UNIXEM_rmdir_PROVIDED_BY_COMPILER
+  /* Include <process.h> before the getpid binding so the CRT
+   * header's include guard is set (see API binding policy above).
+   * VC++-compatible CRTs provide _getpid(); the deprecated POSIX
+   * getpid name is not treated as "provided" for binding purposes.
+   */
+#  include <process.h>
+#  ifdef getpid
+#   undef getpid
+#  endif /* getpid */
+#  define UNIXEM_getpid_UNDERSCORE_PROVIDED_BY_COMPILER
 # endif /* !__STDC__ */
 #elif defined(__MWERKS__)
 
@@ -126,6 +151,17 @@
 #  include <stdio.h>
 #  define UNIXEM_unlink_PROVIDED_BY_COMPILER
 #  define UNIXEM_close_PROVIDED_BY_COMPILER
+  /* Include <process.h> before the getpid binding so the CRT
+   * header's include guard is set (see API binding policy above).
+   * VC++ provides _getpid(); the deprecated POSIX getpid name is
+   * not treated as "provided" for binding purposes (avoids C4996
+   * when mapping to unixem_getpid by default).
+   */
+#  include <process.h>
+#  ifdef getpid
+#   undef getpid
+#  endif /* getpid */
+#  define UNIXEM_getpid_UNDERSCORE_PROVIDED_BY_COMPILER
 # endif /* !__STDC__ */
 #else
 
@@ -482,12 +518,19 @@ int usleep(unsigned long microSeconds);
 
 /** Returns the current process identifier
  *
- * \note This is a macro, which resolves to unixem_getpid().
+ * \note This is a macro. By default it resolves to unixem_getpid(). If
+ *   UNIXEM_PREFER_COMPILER_UNDERSCORE_FORM is defined and the CRT provides
+ *   _getpid(), it resolves to _getpid() instead.
  */
 #ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
 pid_t getpid(void);
 #else /* ? UNIXEM_DOCUMENTATION_SKIP_SECTION */
-# define getpid                                             unixem_getpid
+# if defined(UNIXEM_getpid_UNDERSCORE_PROVIDED_BY_COMPILER) && \
+     defined(UNIXEM_PREFER_COMPILER_UNDERSCORE_FORM)
+#  define getpid                                            _getpid
+# else /* ? UNIXEM_PREFER_COMPILER_UNDERSCORE_FORM */
+#  define getpid                                            unixem_getpid
+# endif /* UNIXEM_PREFER_COMPILER_UNDERSCORE_FORM */
 #endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 

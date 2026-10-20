@@ -4,7 +4,7 @@
  * Purpose: Version header for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 15th October 2026
+ * Updated: 20th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -56,8 +56,37 @@
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MAJOR       1
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MINOR       7
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_REVISION    12
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        39
+# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        42
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * configuration
+ */
+
+/** \def UNIXEM_PREFER_COMPILER_UNDERSCORE_FORM
+ *
+ * When defined by the consumer <b>before</b> including UNIXem shim
+ * headers (e.g. <code>unistd.h</code>), and the CRT provides an
+ * underscore-prefixed form of an API (e.g. <code>_getpid</code>) while
+ * UNIXem does not treat the POSIX name as provided by the compiler,
+ * the POSIX name is mapped to the CRT underscore form rather than to
+ * <code>unixem_&lt;API&gt;()</code>.
+ *
+ * By default (this macro undefined), such POSIX names map to
+ * <code>unixem_&lt;API&gt;()</code>. The flag is per translation unit.
+ *
+ * See the API binding policy comment in <code>unistd.h</code>.
+ *
+ * \note This macro is <b>not</b> defined by UNIXem; define it yourself
+ *   (before including shim headers) when you want the underscore
+ *   binding.
+ */
+
+#ifdef UNIXEM_DOCUMENTATION_SKIP_SECTION
+# define UNIXEM_PREFER_COMPILER_UNDERSCORE_FORM
+#endif /* UNIXEM_DOCUMENTATION_SKIP_SECTION */
+
 
 /** \def UNIXEM_VER_MAJOR
  * The major version number of UNIXem
@@ -82,18 +111,19 @@
 #define UNIXEM_VER_MAJOR        0
 #define UNIXEM_VER_MINOR        15
 #define UNIXEM_VER_PATCH        0
-#define UNIXEM_VER_ALPHABETA    0x81
+#define UNIXEM_VER_RELSTATUS    0x41
 
 #define UNIXEM_VER \
     (0\
         |   (   UNIXEM_VER_MAJOR       << 24   ) \
         |   (   UNIXEM_VER_MINOR       << 16   ) \
         |   (   UNIXEM_VER_PATCH       <<  8   ) \
-        |   (   UNIXEM_VER_ALPHABETA   <<  0   ) \
+        |   (   UNIXEM_VER_RELSTATUS   <<  0   ) \
     )
 
 #ifndef UNIXEM_DOCUMENTATION_SKIP_SECTION
-# define UNIXEM_VER_AB                                      UNIXEM_VER_ALPHABETA
+# define UNIXEM_VER_AB                                      UNIXEM_VER_RELSTATUS
+# define UNIXEM_VER_ALPHABETA                               UNIXEM_VER_RELSTATUS
 # define UNIXEM_VER_REVISION                                UNIXEM_VER_PATCH
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
