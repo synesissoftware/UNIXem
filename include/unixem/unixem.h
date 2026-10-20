@@ -108,7 +108,7 @@
  * The current composite version number of UNIXem
  */
 
-#define UNIXEM_VER_MAJOR        0
+#define UNIXEM_VER_MAJOR        1
 #define UNIXEM_VER_MINOR        15
 #define UNIXEM_VER_PATCH        0
 #define UNIXEM_VER_RELSTATUS    0x41
