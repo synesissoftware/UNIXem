@@ -66,7 +66,10 @@ int main(int argc, char* argv[])
 
 #ifdef HAS_shwild
 
-    (0 == efferent_counts++) && fputs("\nefferent dependencies:\n", stdout);
+    if (0 == efferent_counts++)
+    {
+        fputs("\nefferent dependencies:\n", stdout);
+    }
 
     {
         unsigned const libver = (unsigned)SHWILD_VER;
@@ -77,7 +80,10 @@ int main(int argc, char* argv[])
 
 #ifdef HAS_STLSoft
 
-    (0 == efferent_counts++) && fputs("\nefferent dependencies:\n", stdout);
+    if (0 == efferent_counts++)
+    {
+        fputs("\nefferent dependencies:\n", stdout);
+    }
 
     {
         unsigned const libver = (unsigned)_STLSOFT_VER;
@@ -88,7 +94,10 @@ int main(int argc, char* argv[])
 
 #ifdef HAS_xTests
 
-    (0 == efferent_counts++) && fputs("\nefferent dependencies:\n", stdout);
+    if (0 == efferent_counts++)
+    {
+        fputs("\nefferent dependencies:\n", stdout);
+    }
 
     {
         unsigned const libver = (unsigned)_XTESTS_VER;
