@@ -1,6 +1,11 @@
 # UNIXem - Changes <!-- omit in toc -->
 
 
+## 1.15.0-alpha2 - 27th October 2026
+
+* Defined `HAS_<Pkg>` and `HAS_<PKG>` when a Synesis package other than **STLSoft** is detected;
+
+
 ## 1.15.0-alpha1 - 20th October 2026
 
 * Added implementation of `uname()` in **src/uname.c** with public header mapping in **include/sys/utsname.h** and **include/unixem/sys/utsname.h**;
