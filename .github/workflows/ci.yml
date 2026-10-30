@@ -158,3 +158,31 @@ jobs:
             cmake --build consumer-build --parallel 2
             consumer-build/consumer.exe
           fi
+
+  # File: labels and XTESTS_START_RUNNER names. Source text only, so this
+  # job is one Ubuntu runner, not a cell per platform and compiler. The
+  # checker is STLSoft .dev/bin/check_unit_test_names.rb (not installed with
+  # the package). -R is this project. A mismatch total exits non-zero.
+  check-test-names:
+    name: Check test names
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check out STLSoft
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          path: _stlsoft
+          repository: synesissoftware/STLSoft
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+
+      - name: Install checker dependencies
+        run: gem install highline libclimate-ruby recls-ruby xqsr3
+
+      - name: "Check File: labels and runner names"
+        run: ./_stlsoft/.dev/bin/check_unit_test_names.rb -R . examples test

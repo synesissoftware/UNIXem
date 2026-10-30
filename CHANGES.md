@@ -6,6 +6,7 @@
 * testing:
   * automated-test runners pass `__FILE__` to `XTESTS_START_RUNNER`;
 * build:
+  * the **Check test names** job runs **STLSoft** **check_unit_test_names.rb** over **examples** and **test**;
   * **xTests** minimum is **0.28.2**;
 * documentation and boilerplate:
   * **NEWS.md** records **1.15.0-alpha3**;
