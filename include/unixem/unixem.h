@@ -4,7 +4,7 @@
  * Purpose: Version header for the UNIXem API.
  *
  * Created: 29th August 2005
- * Updated: 27th October 2026
+ * Updated: 30th October 2026
  *
  * Home:    https://github.com/synesissoftware/UNIXem
  *
@@ -56,7 +56,7 @@
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MAJOR       1
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_MINOR       7
 # define UNIXEM_VER_UNIXEM_H_UNIXEM_REVISION    12
-# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        43
+# define UNIXEM_VER_UNIXEM_H_UNIXEM_EDIT        44
 #endif /* !UNIXEM_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -111,7 +111,7 @@
 #define UNIXEM_VER_MAJOR        1
 #define UNIXEM_VER_MINOR        15
 #define UNIXEM_VER_PATCH        0
-#define UNIXEM_VER_RELSTATUS    0x42
+#define UNIXEM_VER_RELSTATUS    0x43
 
 #define UNIXEM_VER \
     (0\
