@@ -1,7 +1,7 @@
 # UNIXem - Changes <!-- omit in toc -->
 
 
-## 1.15.0-alpha3 - 31st October 2026
+## 1.15.0-alpha3 - 1st November 2026
 
 * testing:
   * automated-test runners pass `__FILE__` to `XTESTS_START_RUNNER`;
