@@ -4,7 +4,7 @@
 # Purpose:  Top-level CMake lists file for UNIXem
 #
 # Created:  10th July 2024
-# Updated:  30th October 2026
+# Updated:  2nd November 2026
 #
 # ######################################################################## #
 
@@ -133,7 +133,7 @@ if(BUILD_TESTING)
 
 	if(NOT DEFINED STLSOFT AND NOT DEFINED ENV{STLSOFT})
 
-		set(STLSoft_REQUIRED_VERSION_ 1.11)
+		set(STLSoft_REQUIRED_VERSION_ 1.11.5)
 
 		find_package(STLSoft ${STLSoft_REQUIRED_VERSION_} REQUIRED)
 
