@@ -1,6 +1,11 @@
 # UNIXem - Changes <!-- omit in toc -->
 
 
+## 1.15.0-alpha4 - 2nd November 2026
+
+* build:
+  * **STLSoft** minimum is **1.11.5**;
+
 ## 1.15.0-alpha3 - 1st November 2026
 
 * testing:
