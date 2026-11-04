@@ -1,6 +1,16 @@
 # UNIXem - Changes <!-- omit in toc -->
 
 
+## 1.15.0 - 4th November 2026
+
+* build:
+  * **xTests** minimum is **0.29.0**;
+  * optional **shwild** minimum is **0.12.16**;
+  * CI installs **woad** before **xTests**, which requires it;
+* version:
+  * `UNIXEM_VER_RELSTATUS` is `0xFF` for the **1.15.0** release;
+
+
 ## 1.15.0-alpha4 - 2nd November 2026
 
 * build:

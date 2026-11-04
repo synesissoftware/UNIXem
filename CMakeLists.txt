@@ -4,7 +4,7 @@
 # Purpose:  Top-level CMake lists file for UNIXem
 #
 # Created:  10th July 2024
-# Updated:  2nd November 2026
+# Updated:  4th November 2026
 #
 # ######################################################################## #
 
@@ -177,7 +177,7 @@ if(NOT NO_SHWILD)
 
 	if(BUILD_TESTING)
 
-		find_package(shwild QUIET)
+		find_package(shwild 0.12.16 QUIET)
 
 		if(shwild_FOUND)
 
@@ -200,7 +200,7 @@ endif()
 
 if(BUILD_TESTING)
 
-	set(xTests_REQUIRED_VERSION_ 0.28.2)
+	set(xTests_REQUIRED_VERSION_ 0.29.0)
 
 	find_package(xTests ${xTests_REQUIRED_VERSION_} REQUIRED)
 

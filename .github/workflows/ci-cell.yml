@@ -1,6 +1,6 @@
 #
 # Created: 4th August 2026
-# Updated: 14th October 2026
+# Updated: 4th November 2026
 #
 
 name: CI cell
@@ -56,13 +56,13 @@ jobs:
             mingw-w64-x86_64-cmake
             mingw-w64-x86_64-make
 
-      - name: Install test dependencies (STLSoft + shwild + xTests)
+      - name: Install test dependencies (STLSoft + shwild + woad + xTests)
         uses: ./.github/actions/install-sis-deps
         with:
           build-type: ${{ inputs.build-type }}
           c-compiler: ${{ inputs.c-compiler }}
           cpp-compiler: ${{ inputs.cpp-compiler }}
-          dependencies: STLSoft shwild xTests
+          dependencies: STLSoft shwild woad xTests
           toolchain: ${{ inputs.toolchain }}
 
       - name: Configure
