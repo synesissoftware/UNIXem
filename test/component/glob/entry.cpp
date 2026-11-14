@@ -4,7 +4,7 @@
  * Purpose: Unit-test of `glob()`.
  *
  * Created: 20th May 2012
- * Updated: 12th October 2026
+ * Updated: 14th November 2026
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -54,22 +54,22 @@ namespace
 
 #if 0
 
-    static void test_1_0(void);
-    static void test_1_1(void);
-    static void test_1_2(void);
-    static void test_1_3(void);
-    static void test_1_4(void);
-    static void test_1_5(void);
-    static void test_1_6(void);
-    static void test_1_7(void);
-    static void test_1_8(void);
-    static void test_1_9(void);
-    static void test_1_10(void);
-    static void test_1_11(void);
+    static void test_1_0();
+    static void test_1_1();
+    static void test_1_2();
+    static void test_1_3();
+    static void test_1_4();
+    static void test_1_5();
+    static void test_1_6();
+    static void test_1_7();
+    static void test_1_8();
+    static void test_1_9();
+    static void test_1_10();
+    static void test_1_11();
 #endif
-    static void TEST_readdir_CWD_FOR_DIRECTORIES_AND_FILES_AND_DOTS(void);
-    static void TEST_readdir_CWD_FOR_DIRECTORIES_AND_DOTS(void);
-    static void TEST_readdir_HOMEDIR_FOR_DIRECTORIES_AND_FILES_AND_DOTS(void);
+    static void TEST_readdir_CWD_FOR_DIRECTORIES_AND_FILES_AND_DOTS();
+    static void TEST_readdir_CWD_FOR_DIRECTORIES_AND_DOTS();
+    static void TEST_readdir_HOMEDIR_FOR_DIRECTORIES_AND_FILES_AND_DOTS();
 #if 0
 
     static int setup(void*);
